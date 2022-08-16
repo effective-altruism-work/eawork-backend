@@ -1,0 +1,9 @@
+**/.venv
+**/__pycache__
+**/.idea/**
+**/*.iml
+*.iml
+.env.*.override
+*.sql
+media/
+.DS_Store
