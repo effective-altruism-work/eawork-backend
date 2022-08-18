@@ -53,7 +53,7 @@ ALLOWED_HOSTS = env.list(
         ".localhost",
         "127.0.0.1",
         "[::1]",
-        "eawork.org",
+        "backend.eawork.org",
     ],
 )
 RENDER_EXTERNAL_HOSTNAME = env.str("RENDER_EXTERNAL_HOSTNAME", "")
