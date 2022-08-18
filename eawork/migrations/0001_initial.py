@@ -9,7 +9,7 @@ from django.conf import settings
 from django.db import migrations
 from django.db import models
 
-import eawork.models.post_job
+import eawork.models.job_post
 
 
 class Migration(migrations.Migration):
@@ -172,7 +172,7 @@ class Migration(migrations.Migration):
                     "status",
                     enumfields.fields.EnumField(
                         default="approved",
-                        enum=eawork.models.post_job.PostJobTagStatus,
+                        enum=eawork.models.job_post.PostJobTagStatus,
                         max_length=64,
                     ),
                 ),
@@ -192,7 +192,7 @@ class Migration(migrations.Migration):
                 (
                     "type",
                     enumfields.fields.EnumField(
-                        enum=eawork.models.post_job.JobPostTagTypeEnum,
+                        enum=eawork.models.job_post.JobPostTagTypeEnum,
                         max_length=128,
                         unique=True,
                     ),
@@ -233,7 +233,7 @@ class Migration(migrations.Migration):
                     models.ManyToManyField(
                         blank=True,
                         limit_choices_to={
-                            "types__type": eawork.models.post_job.JobPostTagTypeEnum[
+                            "types__type": eawork.models.job_post.JobPostTagTypeEnum[
                                 "AFFILIATION"
                             ]
                         },
@@ -246,7 +246,7 @@ class Migration(migrations.Migration):
                     models.ManyToManyField(
                         blank=True,
                         limit_choices_to={
-                            "types__type": eawork.models.post_job.JobPostTagTypeEnum[
+                            "types__type": eawork.models.job_post.JobPostTagTypeEnum[
                                 "CAUSE_AREA"
                             ]
                         },
@@ -259,7 +259,7 @@ class Migration(migrations.Migration):
                     models.ManyToManyField(
                         blank=True,
                         limit_choices_to={
-                            "types__type": eawork.models.post_job.JobPostTagTypeEnum["GENERIC"]
+                            "types__type": eawork.models.job_post.JobPostTagTypeEnum["GENERIC"]
                         },
                         related_name="tags_generic",
                         to="eawork.JobPostTag",

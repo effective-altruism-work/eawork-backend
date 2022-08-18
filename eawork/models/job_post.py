@@ -67,7 +67,13 @@ class JobPostTag(models.Model):
 
 
 class JobPostVersion(PostVersion):
-    post = models.ForeignKey(JobPost, on_delete=models.CASCADE, related_name="versions")
+    post = models.ForeignKey(
+        JobPost,
+        on_delete=models.CASCADE,
+        related_name="versions",
+        null=True,
+        blank=True,
+    )
 
     tags_generic = models.ManyToManyField(
         JobPostTag,

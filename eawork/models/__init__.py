@@ -1,4 +1,4 @@
 from .company import *
+from .job_post import *
 from .post import *
-from .post_job import *
 from .user import *

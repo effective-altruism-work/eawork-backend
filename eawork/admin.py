@@ -3,6 +3,7 @@ from django.contrib import admin
 from eawork.models import Company
 from eawork.models import JobPost
 from eawork.models import JobPostTag
+from eawork.models import JobPostTagType
 from eawork.models import JobPostVersion
 
 
@@ -44,4 +45,11 @@ class JobPostVersionAdmin(admin.ModelAdmin):
         "title",
         "pk",
         "created_at",
+    ]
+
+
+@admin.register(JobPostTagType)
+class JobPostTagTypeAdmin(admin.ModelAdmin):
+    list_display = [
+        "type",
     ]
