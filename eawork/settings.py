@@ -142,9 +142,7 @@ POSTGRES_PORT = env.str("POSTGRES_PORT", "5432")
 if DJANGO_ENV == DjangoEnv.DOCKER_BUILDER:
     DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
 else:
-    DATABASES = {
-        "default": {dj_database_url.config(conn_max_age=600)}
-    }
+    DATABASES = {"default": dj_database_url.config(conn_max_age=600)}
 
 RECAPTCHA_V2_SECRET = env.str("RECAPTCHA_V2_SECRET", "6La342IxAcTAAAAAGG-vFI1TnRWx2353jJ4WifJWe")
 RECAPTCHA_V3_SECRET = env.str("RECAPTCHA_V3_SECRET", "6LfJE3AAAAAO-rrTo4636491ZMRh234eL7")
