@@ -174,7 +174,7 @@ if env.str("AWS_STORAGE_BUCKET_NAME", ""):
     else:
         AWS_LOCATION = f"eawork-backend-{DjangoEnv.STAGE.value}/"
 else:
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    MEDIA_ROOT = env.str("MEDIA_ROOT", os.path.join(BASE_DIR, "media"))
 
 SELECT2_CACHE_BACKEND = "select2"
 
