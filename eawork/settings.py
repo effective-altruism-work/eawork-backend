@@ -41,11 +41,9 @@ if DJANGO_ENV in (DjangoEnv.STAGE, DjangoEnv.PROD):
         environment=DJANGO_ENV.value,
     )
 
-SECRET_KEY = env.str(
-    "SECRET_KEY", "P(*J)_(WQPL:ZK{_V)CX:P)(UF(WE*FHLSIUDHx7=9bcf2zka1yn#aid#"
-)
+SECRET_KEY = env.str("SECRET_KEY", "P(*J)_(WQPL:ZK{_V)CX:P)(UF(WE*FHLSIUDHx7=9bcf2zka1yn#aid#")
 
-DEBUG = env.bool("DJANGO_DEBUG", DJANGO_ENV not in (DjangoEnv.STAGING, DjangoEnv.PROD))
+DEBUG = env.bool("DJANGO_DEBUG", DJANGO_ENV not in (DjangoEnv.STAGE, DjangoEnv.PROD))
 
 ALLOWED_HOSTS = env.list(
     "ALLOWED_HOSTS",
@@ -54,6 +52,7 @@ ALLOWED_HOSTS = env.list(
         ".localhost",
         "127.0.0.1",
         "[::1]",
+        "eawork.org",
     ],
 )
 
@@ -83,7 +82,6 @@ INSTALLED_APPS = [
     "django_select2_admin_filters",
     "django_json_widget",
     "auditlog",
-    "django_extensions",
     "tinymce",
     "nested_inline",
     "django_object_actions",
@@ -91,10 +89,9 @@ INSTALLED_APPS = [
     "adminutils",
     "fieldsignals",
     "corsheaders",
-    "ddtrace.contrib.django",
     "anymail",
     "django_jsonform",
-    "eawork.app.EAWorkConfig",
+    "eawork",
 ]
 
 MIDDLEWARE = [
@@ -175,9 +172,7 @@ if env.str("AWS_STORAGE_BUCKET_NAME", ""):
     AWS_S3_VERIFY = True
     AWS_QUERYSTRING_AUTH = False
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    AWS_S3_CUSTOM_DOMAIN = env.str(
-        "AWS_CLOUDFRONT_DEFAULT_DOMAIN", "public.eawork.org"
-    )
+    AWS_S3_CUSTOM_DOMAIN = env.str("AWS_CLOUDFRONT_DEFAULT_DOMAIN", "public.eawork.org")
     if DJANGO_ENV == DjangoEnv.PROD:
         AWS_LOCATION = f"eawork-backend-{DJANGO_ENV.value}/"
     else:
@@ -287,11 +282,7 @@ ADMIN_REORDER = [
             "socialaccount.SocialApp",
         ],
     },
-    {
-        "app": "eawork",
-        "label": "Admin",
-        "models": ["sites.Site", "auditlog.LogEntry"],
-    },
+    "eawork",
 ]
 
 LOGGING = {

@@ -6,19 +6,24 @@ from eawork.models.post import Post
 from eawork.models.post import PostVersion
 
 
-class PostJob(Post):
-    pass
+class JobPost(Post):
+    version_current = models.OneToOneField(
+        "eawork.JobPostVersion",
+        null=True,
+        on_delete=models.SET_NULL,
+        related_query_name="post_current",
+    )
 
 
-class PostJobTagTypeEnum(Enum):
+class JobPostTagTypeEnum(Enum):
     GENERIC = "generic"
     AFFILIATION = "affiliation"
     CAUSE_AREA = "cause_area"
     ORGANISATIONAL_AFFILIATION = "organisational_affiliation"
 
 
-class PostJobTagType(models.Model):
-    type = EnumField(PostJobTagTypeEnum, max_length=128, unique=True)
+class JobPostTagType(models.Model):
+    type = EnumField(JobPostTagTypeEnum, max_length=128, unique=True)
 
     def __str__(self):
         return str(self.type)
@@ -30,17 +35,18 @@ class PostJobTagStatus(Enum):
     PENDING = "pending"
 
 
-class PostJobTag(models.Model):
+class JobPostTag(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    types = models.ManyToManyField(PostJobTagType)
+    types = models.ManyToManyField(JobPostTagType)
     author = models.ForeignKey(
-        "eawork.PostJobVersion", on_delete=models.SET_NULL, null=True, blank=True,
+        "eawork.JobPostVersion",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
     description = models.TextField(blank=True)
     synonyms = models.CharField(blank=True, max_length=1024)
-    status = EnumField(
-        PostJobTagStatus, default=PostJobTagStatus.APPROVED, max_length=64
-    )
+    status = EnumField(PostJobTagStatus, default=PostJobTagStatus.APPROVED, max_length=64)
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -49,9 +55,9 @@ class PostJobTag(models.Model):
 
     def count(self) -> int:
         count = 0
-        for enum_member in PostJobTagTypeEnum:
+        for enum_member in JobPostTagTypeEnum:
             lookup_name = f"version_published__tags_{enum_member.value}__in"
-            count += PostJob.objects.filter(
+            count += JobPost.objects.filter(
                 **{lookup_name: [self]},
             ).count()
         return count
@@ -60,22 +66,24 @@ class PostJobTag(models.Model):
         return self.name
 
 
-class PostJobVersion(PostVersion):
+class JobPostVersion(PostVersion):
+    post = models.ForeignKey(JobPost, on_delete=models.CASCADE, related_name="versions")
+
     tags_generic = models.ManyToManyField(
-        PostJobTag,
-        limit_choices_to={"types__type": PostJobTagTypeEnum.GENERIC},
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.GENERIC},
         blank=True,
         related_name="tags_generic",
     )
     tags_affiliation = models.ManyToManyField(
-        PostJobTag,
-        limit_choices_to={"types__type": PostJobTagTypeEnum.AFFILIATION},
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.AFFILIATION},
         blank=True,
         related_name="tags_affiliation",
     )
     tags_cause_area = models.ManyToManyField(
-        PostJobTag,
-        limit_choices_to={"types__type": PostJobTagTypeEnum.CAUSE_AREA},
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.CAUSE_AREA},
         blank=True,
         related_name="tags_cause_area",
     )

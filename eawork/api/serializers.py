@@ -2,15 +2,15 @@ from enumfields.drf import EnumSupportSerializerMixin
 from rest_framework import serializers
 from rest_framework.relations import PrimaryKeyRelatedField
 
-from eawork.models import PostJobTag
-from eawork.models import PostJobTagTypeEnum
-from eawork.models import PostJobVersion
-from eawork.models import PostJobTagType
+from eawork.models import JobPostTag
+from eawork.models import JobPostTagType
+from eawork.models import JobPostTagTypeEnum
+from eawork.models import JobPostVersion
 
 
 class TagTypeSerializer(EnumSupportSerializerMixin, serializers.ModelSerializer):
     class Meta:
-        model = PostJobTagType
+        model = JobPostTagType
         fields = [
             "type",
         ]
@@ -20,7 +20,7 @@ class TagSerializer(serializers.ModelSerializer):
     types = TagTypeSerializer(many=True)
 
     class Meta:
-        model = PostJobTag
+        model = JobPostTag
         fields = [
             "pk",
             "name",
@@ -29,27 +29,25 @@ class TagSerializer(serializers.ModelSerializer):
         ]
 
 
-class PostJobVersionSerializer(serializers.ModelSerializer):
+class JobPostVersionSerializer(serializers.ModelSerializer):
 
-    for tag_type_enum in PostJobTagTypeEnum:
-        locals()[f"tags_{tag_type_enum.value}"] = TagSerializer(
-            many=True, required=False
-        )
+    for tag_type_enum in JobPostTagTypeEnum:
+        locals()[f"tags_{tag_type_enum.value}"] = TagSerializer(many=True, required=False)
         locals()[f"tags_{tag_type_enum.value}_pks"] = PrimaryKeyRelatedField(
             many=True,
-            queryset=PostJobTag.objects.filter(types__type=tag_type_enum),
+            queryset=JobPostTag.objects.filter(types__type=tag_type_enum),
             source=f"tags_{tag_type_enum.value}",
             required=False,
         )
 
     class Meta:
-        model = PostJobVersion
+        model = JobPostVersion
         fields = []
-        for tag_type_enum in PostJobTagTypeEnum:
+        for tag_type_enum in JobPostTagTypeEnum:
             fields.append(f"tags_{tag_type_enum.value}")
             fields.append(f"tags_{tag_type_enum.value}_pks")
 
-    def update(self, instance: PostJobVersion, validated_data: dict) -> PostJobVersion:
+    def update(self, instance: JobPostVersion, validated_data: dict) -> JobPostVersion:
         for field in self.Meta.fields:
             is_updatable_field = not field.endswith("_pks")
             if is_updatable_field:
@@ -62,7 +60,7 @@ class PostJobVersionSerializer(serializers.ModelSerializer):
 
     def _m2m_field_update(
         self,
-        instance: PostJobVersion,
+        instance: JobPostVersion,
         validated_data: dict,
         field_name: str,
     ):
