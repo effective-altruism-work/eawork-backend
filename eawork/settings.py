@@ -4,6 +4,7 @@ from datetime import timedelta
 from enum import Enum
 from pathlib import Path
 
+import dj_database_url
 import environ
 import sentry_sdk
 from dotenv import load_dotenv
@@ -55,6 +56,10 @@ ALLOWED_HOSTS = env.list(
         "eawork.org",
     ],
 )
+RENDER_EXTERNAL_HOSTNAME = env.str("RENDER_EXTERNAL_HOSTNAME", "")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -138,14 +143,7 @@ if DJANGO_ENV == DjangoEnv.DOCKER_BUILDER:
     DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
 else:
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": POSTGRES_DB_NAME,
-            "USER": POSTGRES_USER,
-            "PASSWORD": POSTGRES_PASSWORD,
-            "HOST": POSTGRES_PRIMARY_HOST,
-            "PORT": POSTGRES_PORT,
-        }
+        "default": {dj_database_url.config(conn_max_age=600)}
     }
 
 RECAPTCHA_V2_SECRET = env.str("RECAPTCHA_V2_SECRET", "6La342IxAcTAAAAAGG-vFI1TnRWx2353jJ4WifJWe")

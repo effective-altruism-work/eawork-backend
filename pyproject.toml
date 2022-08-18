@@ -43,6 +43,7 @@ django-anymail = { extras = ["mailgun"], version = "^8.5" }
 html2text = "^2020.1.16"
 requests = "^2.27.1"
 django-jsonform = "^2.10.0"
+dj-database-url = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.9.3"
