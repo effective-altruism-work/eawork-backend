@@ -7,7 +7,7 @@ services:
   - type: web
     name: eawork
     env: python
-    buildCommand: python manage.py collectstatic --no-input && python manage.py migrate
+    buildCommand: poetry install && python manage.py collectstatic --no-input && python manage.py migrate
     startCommand: gunicorn eawork.wsgi:application
     envVars:
       - key: DATABASE_URL
