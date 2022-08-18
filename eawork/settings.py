@@ -19,7 +19,7 @@ class DjangoEnv(Enum):
     LOCAL = "local"
     STAGE = "stage"
     PROD = "prod"
-    DOCKER_BUILDER = "DOCKER_BUILDER"
+    DOCKER_BUILDER = "docker_builder"
 
 
 DJANGO_ENV_ENUM = DjangoEnv
@@ -85,11 +85,9 @@ INSTALLED_APPS = [
     "auditlog",
     "django_extensions",
     "tinymce",
-    "colorfield",
     "nested_inline",
     "django_object_actions",
     "adminsortable2",
-    "safedelete",
     "adminutils",
     "fieldsignals",
     "corsheaders",
