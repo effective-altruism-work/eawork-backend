@@ -42,7 +42,13 @@ class JobPostVersionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = JobPostVersion
-        fields = []
+        fields = [
+            "title",
+            "description",
+            "author",
+            "created_at",
+            "updated_at",
+        ]
         for tag_type_enum in JobPostTagTypeEnum:
             fields.append(f"tags_{tag_type_enum.value}")
             fields.append(f"tags_{tag_type_enum.value}_pks")

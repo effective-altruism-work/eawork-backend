@@ -15,11 +15,12 @@ from eawork.models import PostJobTagStatus
 
 
 class JobPostVersionViewSet(
+    mixins.ListModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
     GenericViewSet,
 ):
-    queryset = JobPostVersion.objects.filter(user__is_active=True)
+    queryset = JobPostVersion.objects.all()
     serializer_class = JobPostVersionSerializer
 
 

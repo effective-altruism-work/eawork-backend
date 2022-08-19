@@ -19,7 +19,6 @@ class JobPostTagTypeEnum(Enum):
     GENERIC = "generic"
     AFFILIATION = "affiliation"
     CAUSE_AREA = "cause_area"
-    ORGANISATIONAL_AFFILIATION = "organisational_affiliation"
 
 
 class JobPostTagType(models.Model):
@@ -56,9 +55,9 @@ class JobPostTag(models.Model):
     def count(self) -> int:
         count = 0
         for enum_member in JobPostTagTypeEnum:
-            lookup_name = f"version_published__tags_{enum_member.value}__in"
+            lookup_name = f"version_current__tags_{enum_member.value}__in"
             count += JobPost.objects.filter(
-                **{lookup_name: [self]},
+                **{lookup_name: [self.pk]},
             ).count()
         return count
 
