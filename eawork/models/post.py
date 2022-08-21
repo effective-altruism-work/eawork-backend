@@ -20,7 +20,10 @@ class Post(models.Model):
         abstract = True
 
     def __str__(self):
-        return self.version_current.title
+        if self.version_current:
+            return self.version_current.title
+        else:
+            return str(self.pk)
 
 
 class PostVersion(models.Model):

@@ -13,12 +13,18 @@ class JobPost(Post):
         on_delete=models.SET_NULL,
         related_query_name="post_current",
     )
+    id_external_80_000_hours = models.CharField(max_length=255, blank=True)
 
 
 class JobPostTagTypeEnum(Enum):
     GENERIC = "generic"
     AFFILIATION = "affiliation"
     CAUSE_AREA = "cause_area"
+    EXP_REQUIRED = "exp_required"
+    DEGREE_REQUIRED = "degree_required"
+    COUNTRY = "country"
+    CITY = "city"
+    ROLE_TYPE = "role_type"
 
 
 class JobPostTagType(models.Model):
@@ -74,6 +80,11 @@ class JobPostVersion(PostVersion):
         blank=True,
     )
 
+    closes_at = models.DateTimeField(null=True, blank=True)
+    posted_at = models.DateTimeField(null=True, blank=True)
+
+    url_external = models.URLField(blank=True, max_length=1023)
+
     tags_generic = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.GENERIC},
@@ -91,6 +102,36 @@ class JobPostVersion(PostVersion):
         limit_choices_to={"types__type": JobPostTagTypeEnum.CAUSE_AREA},
         blank=True,
         related_name="tags_cause_area",
+    )
+    tags_exp_required = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.EXP_REQUIRED},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.EXP_REQUIRED.value}",
+    )
+    tags_degree_required = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.DEGREE_REQUIRED},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.DEGREE_REQUIRED.value}",
+    )
+    tags_country = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.COUNTRY},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.COUNTRY.value}",
+    )
+    tags_city = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.CITY},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.CITY.value}",
+    )
+    tags_role_type = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.ROLE_TYPE},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.ROLE_TYPE.value}",
     )
 
     def get_tags_cause_area_formatted(self) -> list[str]:

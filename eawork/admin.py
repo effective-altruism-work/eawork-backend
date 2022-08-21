@@ -4,6 +4,7 @@ from eawork.models import Company
 from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
+from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 
 
@@ -46,6 +47,8 @@ class JobPostVersionAdmin(admin.ModelAdmin):
         "pk",
         "created_at",
     ]
+    filter_horizontal = [f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum]
+    list_filter = [f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum]
 
 
 @admin.register(JobPostTagType)

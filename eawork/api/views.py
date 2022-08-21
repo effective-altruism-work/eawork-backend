@@ -28,7 +28,7 @@ class JobPostVersionViewSet(
 @permission_classes([IsAuthenticated])
 def create_tag_view(request: Request) -> Response:
     tag_name = request.data["name"].strip()
-    tag = JobPostVersion.objects.filter(name__iexact=tag_name).first()
+    tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
     if not tag:
         tag = JobPostTag.objects.create(
             name=tag_name,
