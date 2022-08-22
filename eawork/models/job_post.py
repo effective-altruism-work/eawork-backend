@@ -18,13 +18,15 @@ class JobPost(Post):
 
 class JobPostTagTypeEnum(Enum):
     GENERIC = "generic"
-    AFFILIATION = "affiliation"
-    CAUSE_AREA = "cause_area"
-    EXP_REQUIRED = "exp_required"
+    AREA = "area"
     DEGREE_REQUIRED = "degree_required"
     COUNTRY = "country"
     CITY = "city"
     ROLE_TYPE = "role_type"
+    LOCATION_TYPE = "location_type"
+    WORKLOAD = "workload"
+    SKILL = "skill"
+    IMMIGRATION = "immigration"
 
 
 class JobPostTagType(models.Model):
@@ -85,29 +87,23 @@ class JobPostVersion(PostVersion):
 
     url_external = models.URLField(blank=True, max_length=1023)
 
+    experience_min = models.PositiveIntegerField(null=True, blank=True)
+    experience_avg = models.PositiveIntegerField(null=True, blank=True)
+
+    salary_min = models.PositiveIntegerField(null=True, blank=True)
+    salary_max = models.PositiveIntegerField(null=True, blank=True)
+
     tags_generic = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.GENERIC},
         blank=True,
         related_name="tags_generic",
     )
-    tags_affiliation = models.ManyToManyField(
+    tags_area = models.ManyToManyField(
         JobPostTag,
-        limit_choices_to={"types__type": JobPostTagTypeEnum.AFFILIATION},
+        limit_choices_to={"types__type": JobPostTagTypeEnum.AREA},
         blank=True,
-        related_name="tags_affiliation",
-    )
-    tags_cause_area = models.ManyToManyField(
-        JobPostTag,
-        limit_choices_to={"types__type": JobPostTagTypeEnum.CAUSE_AREA},
-        blank=True,
-        related_name="tags_cause_area",
-    )
-    tags_exp_required = models.ManyToManyField(
-        JobPostTag,
-        limit_choices_to={"types__type": JobPostTagTypeEnum.EXP_REQUIRED},
-        blank=True,
-        related_name=f"tags_{JobPostTagTypeEnum.EXP_REQUIRED.value}",
+        related_name="tags_area",
     )
     tags_degree_required = models.ManyToManyField(
         JobPostTag,
@@ -133,18 +129,36 @@ class JobPostVersion(PostVersion):
         blank=True,
         related_name=f"tags_{JobPostTagTypeEnum.ROLE_TYPE.value}",
     )
+    tags_location_type = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.LOCATION_TYPE},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.LOCATION_TYPE.value}",
+    )
+    tags_workload = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.WORKLOAD},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.WORKLOAD.value}",
+    )
+    tags_skill = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.SKILL},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.SKILL.value}",
+    )
+    tags_immigration = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.IMMIGRATION},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.IMMIGRATION.value}",
+    )
 
-    def get_tags_cause_area_formatted(self) -> list[str]:
-        return [tag.name for tag in self.tags_cause_area.all()]
+    def get_tags_area_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_area.all()]
 
     def get_tags_generic_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_generic.all()]
-
-    def get_tags_affiliation_formatted(self) -> list[str]:
-        return [tag.name for tag in self.tags_affiliation.all()]
-
-    def get_tags_exp_required_formatted(self) -> list[str]:
-        return [tag.name for tag in self.tags_exp_required.all()]
 
     def get_tags_degree_required_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_degree_required.all()]
@@ -157,6 +171,18 @@ class JobPostVersion(PostVersion):
 
     def get_tags_role_type_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_role_type.all()]
+
+    def get_tags_location_type_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_location_type.all()]
+
+    def get_tags_workload_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_workload.all()]
+
+    def get_tags_skill_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_skill.all()]
+
+    def get_tags_immigration_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_immigration.all()]
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
