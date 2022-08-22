@@ -32,7 +32,7 @@ class PostVersion(models.Model):
     title = models.CharField(max_length=511)
     description = models.TextField(blank=True)
 
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

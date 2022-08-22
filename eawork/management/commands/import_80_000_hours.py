@@ -1,7 +1,10 @@
+from typing import Literal
+
 import requests
 from algoliasearch_django.decorators import disable_auto_indexing
 from django.core.management.base import BaseCommand
 
+from eawork.models import Company
 from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
@@ -17,40 +20,79 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         with disable_auto_indexing():
             resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
-            jobs_raw = resp.json()["data"]["vacancies"]
-            if options["limit"]:
-                jobs_raw = jobs_raw[: options["limit"]]
+            data_raw = resp.json()["data"]
 
-            for job_raw in jobs_raw:
-                if JobPost.objects.filter(
-                    id_external_80_000_hours=job_raw["id"], version_current__isnull=False
-                ).exists():
-                    post_version = JobPostVersion.objects.get(
-                        post__id_external_80_000_hours=job_raw["id"]
-                    )
-                    post_version.title = job_raw["Job title"]
-                    post_version.description = self._get_job_desc(job_raw)
-                    post_version.url_external = job_raw["Link"]
-                    post_version.save()
+            self._import_companies(data_raw)
+            self._import_jobs(data_raw, limit=options["limit"])
 
-                    self._update_or_add_tags(post_version, job_raw)
-                else:
-                    post = JobPost.objects.create(
-                        id_external_80_000_hours=job_raw["id"],
-                        is_published=True,
-                    )
-                    post_version = JobPostVersion.objects.create(
-                        title=job_raw["Job title"],
-                        description=self._get_job_desc(job_raw),
-                        url_external=job_raw["Link"],
-                    )
+    def _import_companies(self, data_raw: dict):
+        companies_dict: dict[str, dict] = data_raw["organisations"]
+        for company_id in companies_dict:
+            company_raw: dict[
+                Literal["name", "description", "homepage", "logo", "career_page"], str
+            ] = companies_dict[company_id]
+            if Company.objects.filter(id_external_80_000_hours=company_id).exists():
+                company = Company.objects.get(id_external_80_000_hours=company_id)
+                company.name = company_raw["name"]
+                company.description = company_raw["description"]
+                company.url = company_raw["homepage"]
+                company.logo_url = company_raw["logo"]
+                company.career_page_url = company_raw["career_page"]
+            else:
+                Company.objects.create(
+                    name=company_raw["name"],
+                    id_external_80_000_hours=company_raw["name"],
+                    description=company_raw["description"],
+                    url=company_raw["homepage"],
+                    logo_url=company_raw["logo"],
+                    career_page_url=company_raw["career_page"],
+                )
 
-                    post.version_current = post_version
-                    post.save()
-                    post_version.post = post
-                    post_version.save()
+    def _import_jobs(self, data_raw, limit: int = None):
+        jobs_raw = data_raw["vacancies"]
+        if limit:
+            jobs_raw = jobs_raw[:limit]
 
-                    self._update_or_add_tags(post_version, job_raw)
+        for job_raw in jobs_raw:
+            company = Company.objects.get(
+                id_external_80_000_hours=job_raw["Hiring organisation ID"]
+            )
+            is_job_exists = JobPost.objects.filter(
+                id_external_80_000_hours=job_raw["id"],
+                version_current__isnull=False,
+            ).exists()
+            if is_job_exists:
+                post_version = JobPostVersion.objects.get(
+                    post__id_external_80_000_hours=job_raw["id"]
+                )
+                post_version.title = job_raw["Job title"]
+                post_version.description = self._get_job_desc(job_raw)
+                post_version.url_external = job_raw["Link"]
+
+                post_version.post.company = company
+                post_version.post.save()
+
+                post_version.save()
+
+                self._update_or_add_tags(post_version, job_raw)
+            else:
+                post = JobPost.objects.create(
+                    id_external_80_000_hours=job_raw["id"],
+                    is_published=True,
+                )
+                post.company = company
+                post_version = JobPostVersion.objects.create(
+                    title=job_raw["Job title"],
+                    description=self._get_job_desc(job_raw),
+                    url_external=job_raw["Link"],
+                )
+
+                post.version_current = post_version
+                post.save()
+                post_version.post = post
+                post_version.save()
+
+                self._update_or_add_tags(post_version, job_raw)
 
     def _get_job_desc(self, job_raw: dict) -> str:
         desc: str = job_raw["Job description"]
@@ -99,7 +141,7 @@ class Command(BaseCommand):
                         tag_type=JobPostTagTypeEnum.CITY,
                     )
             for country in job_raw["Locations"]["citiesAndCountries"]:
-                if city == "Remote":
+                if country == "Remote":
                     add_tag(
                         post=post_version,
                         tag_name="Remote",

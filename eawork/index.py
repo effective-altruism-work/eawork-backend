@@ -24,6 +24,11 @@ if settings.IS_ENABLE_ALGOLIA:
             "experience_avg",
             "salary_min",
             "salary_max",
+            ["get_company_name", "company_name"],
+            ["get_company_url", "company_url"],
+            ["get_company_logo_url", "company_logo_url"],
+            ["get_company_career_page_url", "company_career_page_url"],
+            ["get_company_description", "company_description"],
             [
                 "get_tags_generic_formatted",
                 "tags_generic",

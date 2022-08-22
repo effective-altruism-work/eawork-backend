@@ -2,6 +2,7 @@ from django.db import models
 from enumfields import Enum
 from enumfields import EnumField
 
+from eawork.models import Company
 from eawork.models.post import Post
 from eawork.models.post import PostVersion
 
@@ -13,6 +14,14 @@ class JobPost(Post):
         on_delete=models.SET_NULL,
         related_query_name="post_current",
     )
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.SET_NULL,
+        related_name="jobs",
+        null=True,
+        blank=True,
+    )
+
     id_external_80_000_hours = models.CharField(max_length=255, blank=True)
 
 
@@ -183,6 +192,21 @@ class JobPostVersion(PostVersion):
 
     def get_tags_immigration_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_immigration.all()]
+
+    def get_company_name(self) -> str:
+        return self.post.company.name
+
+    def get_company_url(self) -> str:
+        return self.post.company.url
+
+    def get_company_logo_url(self) -> str:
+        return self.post.company.logo_url
+
+    def get_company_career_page_url(self) -> str:
+        return self.post.company.career_page_url
+
+    def get_company_description(self) -> str:
+        return self.post.company.description
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:

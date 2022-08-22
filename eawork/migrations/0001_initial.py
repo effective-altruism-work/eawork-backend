@@ -151,6 +151,7 @@ class Migration(migrations.Migration):
                     "author",
                     models.ForeignKey(
                         null=True,
+                        blank=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         to=settings.AUTH_USER_MODEL,
                     ),
