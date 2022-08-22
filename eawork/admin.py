@@ -21,6 +21,7 @@ class CompanyAdmin(admin.ModelAdmin):
 class JobPostAdmin(admin.ModelAdmin):
     list_display = [
         "version_current",
+        "id_external_80_000_hours",
         "pk",
         "created_at",
         "updated_at",

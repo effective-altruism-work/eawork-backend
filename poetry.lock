@@ -30,6 +30,29 @@ python-versions = ">=3.6"
 frozenlist = ">=1.1.0"
 
 [[package]]
+name = "algoliasearch"
+version = "2.6.2"
+description = "Algolia Search API Client for Python."
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
+
+[package.dependencies]
+requests = ">=2.21,<3.0"
+
+[[package]]
+name = "algoliasearch-django"
+version = "2.0.0"
+description = "Algolia Search integration for Django"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+algoliasearch = ">=2.0,<3.0"
+django = ">=1.7"
+
+[[package]]
 name = "asgiref"
 version = "3.5.2"
 description = "ASGI specs, helper code, and adapters"
@@ -87,14 +110,14 @@ colorama = ["colorama (>=0.4.3)"]
 
 [[package]]
 name = "boto3"
-version = "1.24.54"
+version = "1.24.56"
 description = "The AWS SDK for Python"
 category = "main"
 optional = false
 python-versions = ">= 3.7"
 
 [package.dependencies]
-botocore = ">=1.27.54,<1.28.0"
+botocore = ">=1.27.56,<1.28.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.6.0,<0.7.0"
 
@@ -103,7 +126,7 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.27.54"
+version = "1.27.56"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = false
@@ -138,7 +161,7 @@ pycparser = "*"
 
 [[package]]
 name = "charset-normalizer"
-version = "2.1.0"
+version = "2.1.1"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
 category = "main"
 optional = false
@@ -321,8 +344,8 @@ requests-oauthlib = ">=0.3.0"
 
 [[package]]
 name = "django-anymail"
-version = "8.6"
-description = "Django email backends and webhooks for Amazon SES, Mailgun, Mailjet, Mandrill, Postal, Postmark, SendGrid, SendinBlue, and SparkPost"
+version = "8.5"
+description = "Django email integration for Amazon SES, Mailgun, Mailjet, Postmark, SendGrid, SendinBlue, SparkPost and other transactional ESPs"
 category = "main"
 optional = false
 python-versions = ">=3.5"
@@ -332,9 +355,9 @@ django = ">=2.0"
 requests = ">=2.4.3"
 
 [package.extras]
-postal = ["cryptography"]
-dev = ["wheel", "twine", "tox", "sphinx-rtd-theme", "sphinx", "flake8"]
 amazon_ses = ["boto3"]
+dev = ["flake8", "sphinx", "sphinx-rtd-theme", "tox", "twine", "wheel"]
+postal = ["cryptography"]
 
 [[package]]
 name = "django-appconf"
@@ -1181,7 +1204,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.10"
-content-hash = "5f615c26fca1dbfa487359fe3ad6861c86d271210684573f2125ce4bfc3d2229"
+content-hash = "08398ca33eafa8021d5b4ac6e06e7cb1cda09e993137226cea2818414145467d"
 
 [metadata.files]
 aiohttp = [
@@ -1262,6 +1285,8 @@ aiosignal = [
     {file = "aiosignal-1.2.0-py3-none-any.whl", hash = "sha256:26e62109036cd181df6e6ad646f91f0dcfd05fe16d0cb924138ff2ab75d64e3a"},
     {file = "aiosignal-1.2.0.tar.gz", hash = "sha256:78ed67db6c7b7ced4f98e495e572106d5c432a93e1ddd1bf475e1dc05f5b7df2"},
 ]
+algoliasearch = []
+algoliasearch-django = []
 asgiref = []
 async-timeout = [
     {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
@@ -1344,8 +1369,8 @@ django-allauth = [
     {file = "django-allauth-0.45.0.tar.gz", hash = "sha256:6d46be0e1480316ccd45476db3aefb39db70e038d2a543112d314b76bb999a4e"},
 ]
 django-anymail = [
-    {file = "django-anymail-8.6.tar.gz", hash = "sha256:783342d49dd07d68778b81dd12a94c86e1d217463a68a85450a0513fabe31345"},
-    {file = "django_anymail-8.6-py3-none-any.whl", hash = "sha256:49d83d7c16316ca86a624097496881d59b7d71b16bf1c5211cffa5b19ef98d0c"},
+    {file = "django-anymail-8.5.tar.gz", hash = "sha256:677e937dc9e2671ca7631abb1d94ddc6b840beb3d53c0fbf699e866a6a9ba92f"},
+    {file = "django_anymail-8.5-py3-none-any.whl", hash = "sha256:2325932f56f914d96e0a54db850f2b246ed2277b753f75319620d051a51551e2"},
 ]
 django-appconf = [
     {file = "django-appconf-1.0.5.tar.gz", hash = "sha256:be3db0be6c81fa84742000b89a81c016d70ae66a7ccb620cdef592b1f1a6aaa4"},

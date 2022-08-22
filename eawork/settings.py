@@ -82,7 +82,6 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "admin_reorder",
     "drf_yasg",
-    "import_export",
     "django_select2",
     "django_select2_admin_filters",
     "django_json_widget",
@@ -96,6 +95,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "anymail",
     "django_jsonform",
+    "algoliasearch_django",
     "eawork",
 ]
 
@@ -293,4 +293,21 @@ LOGGING = {
         "handlers": ["console"],
         "level": "INFO",
     },
+}
+
+IS_ENABLE_ALGOLIA = env.bool("IS_ENABLE_ALGOLIA", default=False)
+ALGOLIA = {
+    "APPLICATION_ID": env.str("ALGOLIA_APPLICATION_ID", default="S2T38ZKE0P"),
+    "API_KEY": env.str("ALGOLIA_API_KEY", default="d1c9139b2271e35f44a29b12dddb4b06"),
+    "API_KEY_READ_ONLY": env.str(
+        "API_KEY_READ_ONLY", default="b0e9cd27b37d64ac5bbb0b0671e1e84b"
+    ),
+    "INDEX_NAME_JOBS": env.str(
+        "ALGOLIA_INDEX_NAME_JOBS",
+        default="jobs_prod",
+    ),
+    "INDEX_NAME_TAGS": env.str(
+        "ALGOLIA_INDEX_NAME_TAGS",
+        default="tags_prod",
+    ),
 }

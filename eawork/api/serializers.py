@@ -45,7 +45,10 @@ class JobPostVersionSerializer(serializers.ModelSerializer):
         fields = [
             "title",
             "description",
+            "url_external",
             "author",
+            "closes_at",
+            "posted_at",
             "created_at",
             "updated_at",
         ]

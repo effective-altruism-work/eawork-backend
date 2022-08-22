@@ -142,3 +142,21 @@ class JobPostVersion(PostVersion):
 
     def get_tags_affiliation_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_affiliation.all()]
+
+    def get_tags_exp_required_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_exp_required.all()]
+
+    def get_tags_degree_required_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_degree_required.all()]
+
+    def get_tags_country_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_country.all()]
+
+    def get_tags_city_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_city.all()]
+
+    def get_tags_role_type_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_role_type.all()]
+
+    def is_should_submit_to_algolia(self) -> bool:
+        return self.post.is_published and self.post.version_current.id == self.id
