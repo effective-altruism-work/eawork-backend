@@ -1,9 +1,6 @@
-from typing import Type
-
 import requests
 from algoliasearch_django.decorators import disable_auto_indexing
 from django.core.management.base import BaseCommand
-from enumfields import Enum
 
 from eawork.models import JobPost
 from eawork.models import JobPostTag
@@ -35,6 +32,8 @@ class Command(BaseCommand):
                     post_version.description = self._get_job_desc(job_raw)
                     post_version.url_external = job_raw["Link"]
                     post_version.save()
+
+                    self._update_or_add_tags(post_version, job_raw)
                 else:
                     post = JobPost.objects.create(
                         id_external_80_000_hours=job_raw["id"],
@@ -51,15 +50,7 @@ class Command(BaseCommand):
                     post_version.post = post
                     post_version.save()
 
-                    for role_type in job_raw["Role types"]:
-                        tag = get_or_create_tag(
-                            tag_name=role_type, tag_type=JobPostTagTypeEnum.ROLE_TYPE
-                        )
-                        post_version.tags_role_type.add(tag)
-
-                    for area in job_raw["Problem areas"]:
-                        tag = get_or_create_tag(tag_name=area, tag_type=JobPostTagTypeEnum.AREA)
-                        post_version.tags_area.add(tag)
+                    self._update_or_add_tags(post_version, job_raw)
 
     def _get_job_desc(self, job_raw: dict) -> str:
         desc: str = job_raw["Job description"]
@@ -71,15 +62,65 @@ class Command(BaseCommand):
             desc = desc[:-1]
         return desc
 
+    def _update_or_add_tags(self, post_version: JobPostVersion, job_raw: dict):
+        for role_type in job_raw["Role types"]:
+            add_tag(
+                post=post_version,
+                tag_name=role_type,
+                tag_type=JobPostTagTypeEnum.ROLE_TYPE,
+            )
 
-def get_or_create_tag(tag_name: str, tag_type: Type[Enum]) -> JobPostTag:
+        for area in job_raw["Problem areas"]:
+            add_tag(
+                post=post_version,
+                tag_name=area,
+                tag_type=JobPostTagTypeEnum.AREA,
+            )
+
+        if job_raw["Degree requirements"]:
+            add_tag(
+                post_version,
+                tag_name=job_raw["Degree requirements"],
+                tag_type=JobPostTagTypeEnum.DEGREE_REQUIRED,
+            )
+
+        if job_raw["Locations"]:
+            for city in job_raw["Locations"]["citiesAndCountries"]:
+                if city == "Remote":
+                    add_tag(
+                        post=post_version,
+                        tag_name="Remote",
+                        tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
+                    )
+                else:
+                    add_tag(
+                        post=post_version,
+                        tag_name=city,
+                        tag_type=JobPostTagTypeEnum.CITY,
+                    )
+            for country in job_raw["Locations"]["citiesAndCountries"]:
+                if city == "Remote":
+                    add_tag(
+                        post=post_version,
+                        tag_name="Remote",
+                        tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
+                    )
+                else:
+                    add_tag(
+                        post=post_version,
+                        tag_name=country,
+                        tag_type=JobPostTagTypeEnum.COUNTRY,
+                    )
+
+
+def add_tag(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum):
     tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
     if not tag:
         tag = JobPostTag.objects.create(
             name=tag_name,
             status=PostJobTagStatus.APPROVED,
         )
-    tag_type = JobPostTagType.objects.get(type=tag_type)
-    tag.types.add(tag_type)
+    tag_type_instance = JobPostTagType.objects.get(type=tag_type)
+    tag.types.add(tag_type_instance)
     tag.save()
-    return tag
+    getattr(post, f"tags_{tag_type.value}").add(tag)
