@@ -13,12 +13,19 @@ from eawork.models import PostJobTagStatus
 
 
 class Command(BaseCommand):
+    def add_arguments(self, parser):
+        parser.add_argument("limit", type=int, nargs="?", default=False)
+
     def handle(self, *args, **options):
         resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
-        jobs_raw = resp.json()["data"]["vacancies"][:30]
+        jobs_raw = resp.json()["data"]["vacancies"]
+        if options["limit"]:
+            jobs_raw = jobs_raw[: options["limit"]]
 
         for job_raw in jobs_raw:
-            if JobPost.objects.filter(id_external_80_000_hours=job_raw["id"]).exists():
+            if JobPost.objects.filter(
+                id_external_80_000_hours=job_raw["id"], version_current__isnull=False
+            ).exists():
                 post_version = JobPostVersion.objects.get(
                     post__id_external_80_000_hours=job_raw["id"]
                 )

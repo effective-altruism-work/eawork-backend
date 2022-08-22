@@ -159,4 +159,7 @@ class JobPostVersion(PostVersion):
         return [tag.name for tag in self.tags_role_type.all()]
 
     def is_should_submit_to_algolia(self) -> bool:
-        return self.post.is_published and self.post.version_current.id == self.id
+        if self.post:
+            return self.post.is_published and self.post.version_current.id == self.id
+        else:
+            return False
