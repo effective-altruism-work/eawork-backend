@@ -2,6 +2,7 @@ from typing import Literal
 
 import requests
 from algoliasearch_django.decorators import disable_auto_indexing
+from dateutil.parser import parse
 from django.core.management.base import BaseCommand
 
 from eawork.models import Company
@@ -54,9 +55,6 @@ class Command(BaseCommand):
             jobs_raw = jobs_raw[:limit]
 
         for job_raw in jobs_raw:
-            company = Company.objects.get(
-                id_external_80_000_hours=job_raw["Hiring organisation ID"]
-            )
             is_job_exists = JobPost.objects.filter(
                 id_external_80_000_hours=job_raw["id"],
                 version_current__isnull=False,
@@ -65,34 +63,41 @@ class Command(BaseCommand):
                 post_version = JobPostVersion.objects.get(
                     post__id_external_80_000_hours=job_raw["id"]
                 )
-                post_version.title = job_raw["Job title"]
-                post_version.description = self._get_job_desc(job_raw)
-                post_version.url_external = job_raw["Link"]
-
-                post_version.post.company = company
-                post_version.post.save()
-
-                post_version.save()
-
-                self._update_or_add_tags(post_version, job_raw)
+                self._update_post_version(post_version, job_raw)
             else:
                 post = JobPost.objects.create(
                     id_external_80_000_hours=job_raw["id"],
                     is_published=True,
                 )
-                post.company = company
-                post_version = JobPostVersion.objects.create(
-                    title=job_raw["Job title"],
-                    description=self._get_job_desc(job_raw),
-                    url_external=job_raw["Link"],
+                post.company = Company.objects.get(
+                    id_external_80_000_hours=job_raw["Hiring organisation ID"]
                 )
+                post_version = JobPostVersion.objects.create(title=job_raw["Job title"])
 
                 post.version_current = post_version
                 post.save()
                 post_version.post = post
                 post_version.save()
 
-                self._update_or_add_tags(post_version, job_raw)
+                self._update_post_version(post_version, job_raw)
+
+    def _update_post_version(self, version: JobPostVersion, job_raw: dict):
+        version.title = job_raw["Job title"]
+        version.description = self._get_job_desc(job_raw)
+        version.url_external = job_raw["Link"]
+
+        hardcoded_80_000h_stub = "2050-01-01"
+        if job_raw["Closing date"] != hardcoded_80_000h_stub:
+            version.closes_at = parse(job_raw["Closing date"])
+        version.posted_at = parse(job_raw["Date listed"])
+
+        version.post.company = Company.objects.get(
+            id_external_80_000_hours=job_raw["Hiring organisation ID"]
+        )
+        version.post.save()
+        version.save()
+
+        self._update_or_add_tags(version, job_raw)
 
     def _get_job_desc(self, job_raw: dict) -> str:
         desc: str = job_raw["Job description"]

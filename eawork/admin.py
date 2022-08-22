@@ -47,6 +47,8 @@ class JobPostVersionAdmin(admin.ModelAdmin):
         "title",
         "pk",
         "created_at",
+        "closes_at",
+        "posted_at",
     ]
     filter_horizontal = [f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum]
     list_filter = [f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum]
