@@ -29,7 +29,7 @@ class TagSerializer(serializers.ModelSerializer):
         ]
 
 
-class JobPostVersionSerializer(serializers.ModelSerializer):
+class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSerializer):
 
     for tag_type_enum in JobPostTagTypeEnum:
         locals()[f"tags_{tag_type_enum.value}"] = TagSerializer(many=True, required=False)

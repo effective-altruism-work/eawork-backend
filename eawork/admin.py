@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from eawork.models import Company
+from eawork.models import JobAlert
 from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
@@ -58,4 +59,15 @@ class JobPostVersionAdmin(admin.ModelAdmin):
 class JobPostTagTypeAdmin(admin.ModelAdmin):
     list_display = [
         "type",
+    ]
+
+
+@admin.register(JobAlert)
+class JobPostTagTypeAdmin(admin.ModelAdmin):
+    list_display = [
+        "email",
+        "query_string",
+        "query_string",
+        "post_pk_seen_last",
+        "is_active",
     ]

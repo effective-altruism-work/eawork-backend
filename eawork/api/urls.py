@@ -11,15 +11,14 @@ api_router = DefaultRouter()
 api_router.register(r"jobs", JobPostVersionViewSet)
 
 urlpatterns_api = [
+    path("api/", api_ninja.urls),
     path(
         "api/",
         include(
             [
                 path("jobs/tags/create/", create_tag_view),
-                path("jobs/unsubscribe/<token>/", create_tag_view, name="jobs_unsubscribe"),
             ]
             + api_router.urls
         ),
     ),
-    path("api/", api_ninja.urls)
 ]

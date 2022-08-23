@@ -1,3 +1,6 @@
+from typing import Any
+from typing import Optional
+
 from ninja import NinjaAPI
 from ninja import Schema
 from rest_framework import mixins
@@ -61,15 +64,15 @@ def jobs_unsubscribe(request, token: str):
 
 class JobAlertReq(Schema):
     email: str
-    query: dict
-    query_raw: dict
+    query_json: Optional[Any]
+    query_string: Optional[str]
 
 
 @api_ninja.post("/jobs/subscribe/", url_name="jobs_subscribe")
-def jobs_unsubscribe(request, job_alert_req: JobAlertReq):
+def jobs_subscribe(request, job_alert_req: JobAlertReq):
     JobAlert.objects.create(
         email=job_alert_req.email,
-        query=job_alert_req.query,
-        query_raw=job_alert_req.query_raw,
+        query_json=job_alert_req.query_json,
+        query_string=job_alert_req.query_string,
     )
     return {"success": True}

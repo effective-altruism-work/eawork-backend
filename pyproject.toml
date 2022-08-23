@@ -45,6 +45,7 @@ requests = "^2.27.1"
 django-jsonform = "^2.10.0"
 dj-database-url = "^1.0.0"
 algoliasearch-django = "^2.0.0"
+django-admin-hstore-widget = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.9.3"

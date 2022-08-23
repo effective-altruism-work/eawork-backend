@@ -304,6 +304,14 @@ python-versions = "*"
 Django = ">=1.11"
 
 [[package]]
+name = "django-admin-hstore-widget"
+version = "1.2.0"
+description = "Widget and Field to properly render HStore data in Django-Admin"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "django-admin-sortable2"
 version = "1.0.4"
 description = "Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin"
@@ -470,6 +478,7 @@ django = "*"
 [package.source]
 type = "url"
 url = "https://github.com/bloodwithmilk25/django-modeladmin-reorder/archive/6cc5060dec2fe1e894c3ba17aeb703b56737c3e8.zip"
+
 [[package]]
 name = "django-nested-inline"
 version = "0.4.5"
@@ -1204,7 +1213,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.10"
-content-hash = "08398ca33eafa8021d5b4ac6e06e7cb1cda09e993137226cea2818414145467d"
+content-hash = "6fa1de9c4a89fa042361e541b083eff07fdc0e0c1aa53ad130d5f7f222394004"
 
 [metadata.files]
 aiohttp = [
@@ -1357,6 +1366,7 @@ django-add-default-value = [
     {file = "django-add-default-value-0.9.1.tar.gz", hash = "sha256:892b6b9a499173706034dc3cf396492be9e7de436d25252218d7b435ef8d090a"},
     {file = "django_add_default_value-0.9.1-py3-none-any.whl", hash = "sha256:622393edff54bba2d0a02c3e0360763543d7ffcd63b8ef1c5e567ee52df1cd72"},
 ]
+django-admin-hstore-widget = []
 django-admin-sortable2 = [
     {file = "django-admin-sortable2-1.0.4.tar.gz", hash = "sha256:f96044003176c6684c5f969792ca833a505d654fa0f7b24232a0a610e4332a53"},
     {file = "django_admin_sortable2-1.0.4-py3-none-any.whl", hash = "sha256:e22956889533b48a35a7f02859ae3a939753fa9a7d7d532cefc2835b41bdcebb"},
