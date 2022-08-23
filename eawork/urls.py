@@ -3,24 +3,14 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from eawork.api.urls import api_router
-from eawork.api.views import create_tag_view
+from eawork.api.urls import urlpatterns_api
 from eawork.settings import DjangoEnv
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("select2/", include("django_select2.urls")),
-    path(
-        "api/",
-        include(
-            [
-                path("profiles/tags/create/", create_tag_view),
-            ]
-            + api_router.urls
-        ),
-    ),
-]
+] + urlpatterns_api
 
 if settings.DJANGO_ENV in (DjangoEnv.LOCAL, DjangoEnv.DOCKER_BUILDER):
     from django.conf.urls.static import static

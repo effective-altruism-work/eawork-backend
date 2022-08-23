@@ -11,8 +11,10 @@ if settings.IS_ENABLE_ALGOLIA:
     class JobsIndex(AlgoliaIndex):
         index_name = settings.ALGOLIA["INDEX_NAME_JOBS"]
         should_index = "is_should_submit_to_algolia"
+        custom_objectID = "get_post_pk"
 
         fields = [
+            ["get_post_pk", "post_pk"],
             "title",
             "description",
             "created_at",

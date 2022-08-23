@@ -1,9 +1,10 @@
 from django.db import models
 
+from eawork.models.time_stamped import TimeStampedModel
 from eawork.models.user import User
 
 
-class Post(models.Model):
+class Post(TimeStampedModel):
     # version_current = models.OneToOneField(
     #     "eawork.PostVersion",
     #     null=True,
@@ -12,9 +13,6 @@ class Post(models.Model):
     # )
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     is_published = models.BooleanField(default=False)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
@@ -26,16 +24,13 @@ class Post(models.Model):
             return str(self.pk)
 
 
-class PostVersion(models.Model):
+class PostVersion(TimeStampedModel):
     # post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="versions")
 
     title = models.CharField(max_length=511)
     description = models.TextField(blank=True)
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True

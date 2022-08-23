@@ -163,6 +163,9 @@ class JobPostVersion(PostVersion):
         related_name=f"tags_{JobPostTagTypeEnum.IMMIGRATION.value}",
     )
 
+    def get_post_pk(self) -> int:
+        return self.post.pk
+
     def get_tags_area_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_area.all()]
 
