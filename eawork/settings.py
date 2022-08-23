@@ -113,6 +113,10 @@ MIDDLEWARE = [
     "admin_reorder.middleware.ModelAdminReorder",
 ]
 
+# CORS is required by all browsers, but only needed for cookie auth, hence useless for our API
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_URLS_REGEX = r"^/api/.*$"
+
 SITE_ID = 1
 
 ROOT_URLCONF = "eawork.urls"
