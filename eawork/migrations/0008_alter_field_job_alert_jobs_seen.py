@@ -7,13 +7,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('eawork', '0007_rename_job_alert_fields'),
+        ("eawork", "0007_rename_job_alert_fields"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='jobalert',
-            name='jobs_seen',
+            model_name="jobalert",
+            name="jobs_seen",
             field=django.contrib.postgres.fields.hstore.HStoreField(blank=True, null=True),
         ),
     ]

@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import HStoreField
 from django.db import models
 from django.db.models import JSONField
 
-from eawork.models import TimeStampedModel
+from eawork.models.time_stamped import TimeStampedModel
 
 
 class JobAlert(TimeStampedModel):

@@ -1,7 +1,7 @@
 import inspect
 
-from django.conf import settings
 from algoliasearch_django import raw_search
+from django.conf import settings
 from django.core.mail import EmailMessage
 from django.urls import reverse
 
