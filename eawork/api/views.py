@@ -18,6 +18,7 @@ from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
 from eawork.models import JobPostVersion
 from eawork.models import PostJobTagStatus
+from eawork.services.job_alert import check_new_jobs
 
 
 class JobPostVersionViewSet(
@@ -70,9 +71,10 @@ class JobAlertReq(Schema):
 
 @api_ninja.post("/jobs/subscribe/", url_name="jobs_subscribe")
 def jobs_subscribe(request, job_alert_req: JobAlertReq):
-    JobAlert.objects.create(
+    job_alert = JobAlert.objects.create(
         email=job_alert_req.email,
         query_json=job_alert_req.query_json,
         query_string=job_alert_req.query_string,
     )
+    check_new_jobs(job_alert, is_send_alert=False, algolia_hits_per_page=1)
     return {"success": True}
