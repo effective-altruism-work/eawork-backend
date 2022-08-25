@@ -73,12 +73,10 @@ class JobPostTag(models.Model):
         count = 0
         for enum_member in JobPostTagTypeEnum:
             lookup_name = f"version_current__tags_{enum_member.value}__in"
-            count += JobPost.objects.filter(
-                **{lookup_name: [self.pk]},
-            ).count()
+            count += JobPost.objects.filter(**{lookup_name: [self.pk]}).count()
         return count
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 

@@ -2,6 +2,7 @@ from algoliasearch_django import AlgoliaIndex
 from algoliasearch_django.decorators import register
 from django.conf import settings
 
+from eawork.models import JobPostTag
 from eawork.models import JobPostVersion
 
 
@@ -75,4 +76,18 @@ if settings.IS_ENABLE_ALGOLIA:
                 "get_tags_immigration_formatted",
                 "tags_immigration",
             ],
+        ]
+
+    @register(JobPostTag)
+    class JobPostTagIndex(AlgoliaIndex):
+        index_name = settings.ALGOLIA["INDEX_NAME_TAGS"]
+        fields = [
+            "name",
+            "description",
+            "synonyms",
+            ["get_types_formatted", "types"],
+            "created_at",
+            "status",
+            "is_featured",
+            "count",
         ]
