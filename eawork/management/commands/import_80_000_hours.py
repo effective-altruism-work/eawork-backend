@@ -1,6 +1,7 @@
 from typing import Literal
 
 import requests
+from algoliasearch_django import reindex_all
 from algoliasearch_django.decorators import disable_auto_indexing
 from dateutil.parser import parse
 from django.core.management.base import BaseCommand
@@ -26,6 +27,9 @@ class Command(BaseCommand):
 
             self._import_companies(data_raw)
             self._import_jobs(data_raw, limit=options["limit"])
+
+        reindex_all(JobPostVersion)
+        reindex_all(JobPostTag)
 
     def _import_companies(self, data_raw: dict):
         companies_dict: dict[str, dict] = data_raw["organisations"]
