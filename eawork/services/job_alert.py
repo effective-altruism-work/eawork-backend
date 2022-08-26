@@ -20,7 +20,7 @@ def check_new_jobs(
 ):
     filters = {}
     if job_alert.post_pk_seen_last:
-        filters = {"filters": f"objectID > {job_alert.post_pk_seen_last}"}
+        filters = {"filters": f"post_pk > {job_alert.post_pk_seen_last}"}
 
     res_json = raw_search(
         model=JobPostVersion,
@@ -33,9 +33,6 @@ def check_new_jobs(
     )
 
     if res_json["hits"]:
-        job_alert.post_pk_seen_last = res_json["hits"][0]["objectID"]
-        job_alert.save()
-
         jobs_new = []
         for hit in res_json["hits"]:
             jobs_new.append(hit)
@@ -43,18 +40,28 @@ def check_new_jobs(
         if is_send_alert:
             _send_email(job_alert, jobs_new)
 
+        job_alert.post_pk_seen_last = res_json["hits"][0]["objectID"]
+        job_alert.save()
+
 
 def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
-    newline = "\n"
-    url_unsubscribe = reverse("jobs_unsubscribe", kwargs={"token": job_alert.unsubscribe_token})
+    url_unsubscribe = reverse(
+        "api_ninja:jobs_unsubscribe", kwargs={"token": job_alert.unsubscribe_token}
+    )
+    jobs_list = "\n".join(
+        [
+            f"- {job['title']} at {job['company_name']} - {job['url_external']}"
+            for job in jobs_new
+        ]
+    )
     message = inspect.cleandoc(
         f"""
-        Your search results: {job_alert.query_raw}
+        Your search results: {settings.FRONTEND_URL}/{job_alert.query_string}
         
         New matched jobs:
-        {[f"- {job['title']} - {job['company_name']}{newline}" for job in jobs_new]}
+        {jobs_list}
         
-        Unsubscribe: {url_unsubscribe}
+        Unsubscribe: {settings.BASE_URL}{url_unsubscribe}
         """
     )
 

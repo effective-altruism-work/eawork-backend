@@ -12,6 +12,7 @@ from eawork.models import JobPostTagType
 from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import PostJobTagStatus
+from eawork.models import PostStatus
 
 
 class Command(BaseCommand):
@@ -57,33 +58,36 @@ class Command(BaseCommand):
         for job_raw in jobs_raw:
             is_job_exists = JobPost.objects.filter(
                 id_external_80_000_hours=job_raw["id"],
-                version_current__isnull=False,
+                versions__status=PostStatus.PUBLISHED,
             ).exists()
             if is_job_exists:
-                post_version = JobPostVersion.objects.get(
-                    post__id_external_80_000_hours=job_raw["id"]
+                post_version_last = (
+                    JobPostVersion.objects.filter(
+                        post__id_external_80_000_hours=job_raw["id"],
+                        status=PostStatus.PUBLISHED,
+                    )
+                    .order_by("created_at")
+                    .last()
                 )
-                self._update_post_version(post_version, job_raw)
+                self._update_post_version(post_version_last, job_raw)
             else:
                 post = JobPost.objects.create(
                     id_external_80_000_hours=job_raw["id"],
-                    is_published=True,
                 )
                 post.company = Company.objects.get(
-                    id_external_80_000_hours=job_raw["Hiring organisation ID"]
+                    id_external_80_000_hours=job_raw["Hiring organisation ID"],
                 )
-                post_version = JobPostVersion.objects.create(title=job_raw["Job title"])
-
-                post.version_current = post_version
                 post.save()
-                post_version.post = post
-                post_version.save()
-
-                self._update_post_version(post_version, job_raw)
+                post_version_last = JobPostVersion.objects.create(
+                    title=job_raw["Job title"],
+                    status=PostStatus.PUBLISHED,
+                    post=post,
+                )
+                self._update_post_version(post_version_last, job_raw)
 
     def _update_post_version(self, version: JobPostVersion, job_raw: dict):
         version.title = job_raw["Job title"]
-        version.description = self._get_job_desc(job_raw)
+        version.description_short = self._get_job_desc(job_raw)
         version.url_external = job_raw["Link"]
 
         hardcoded_80_000h_stub = "2050-01-01"

@@ -10,7 +10,7 @@ from eawork.models.time_stamped import TimeStampedModel
 class JobAlert(TimeStampedModel):
     email = models.EmailField(max_length=511)
     query_json = JSONField(null=True, blank=True)
-    query_string = models.URLField(max_length=1023, blank=True)
+    query_string = models.CharField(max_length=1023, blank=True)
     jobs_seen = HStoreField(null=True, blank=True)
     post_pk_seen_last = models.PositiveIntegerField(null=True, blank=True)
     is_active = models.BooleanField(default=True)

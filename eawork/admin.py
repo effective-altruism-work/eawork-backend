@@ -13,6 +13,7 @@ from eawork.models import JobPostVersion
 class CompanyAdmin(admin.ModelAdmin):
     list_display = [
         "name",
+        "url",
         "linkedin_url",
         "facebook_url",
     ]
@@ -21,13 +22,11 @@ class CompanyAdmin(admin.ModelAdmin):
 @admin.register(JobPost)
 class JobPostAdmin(admin.ModelAdmin):
     list_display = [
-        "version_current",
         "id_external_80_000_hours",
         "pk",
         "created_at",
         "updated_at",
         "author",
-        "is_published",
     ]
 
 
@@ -47,6 +46,7 @@ class JobPostVersionAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "pk",
+        "status",
         "created_at",
         "closes_at",
         "posted_at",

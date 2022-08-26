@@ -10,7 +10,7 @@ from eawork.settings import DjangoEnv
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("select2/", include("django_select2.urls")),
-    path('accounts/', include('allauth.urls')),
+    path("accounts/", include("allauth.urls")),
 ] + urlpatterns_api
 
 if settings.DJANGO_ENV in (DjangoEnv.LOCAL, DjangoEnv.DOCKER_BUILDER):

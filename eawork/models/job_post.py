@@ -1,19 +1,16 @@
+import html2text
 from django.db import models
 from enumfields import Enum
 from enumfields import EnumField
 
 from eawork.models import Company
+from eawork.models import User
 from eawork.models.post import Post
+from eawork.models.post import PostStatus
 from eawork.models.post import PostVersion
 
 
 class JobPost(Post):
-    version_current = models.OneToOneField(
-        "eawork.JobPostVersion",
-        null=True,
-        on_delete=models.SET_NULL,
-        related_query_name="post_current",
-    )
     company = models.ForeignKey(
         Company,
         on_delete=models.SET_NULL,
@@ -55,7 +52,7 @@ class JobPostTag(models.Model):
     name = models.CharField(max_length=128, unique=True)
     types = models.ManyToManyField(JobPostTagType)
     author = models.ForeignKey(
-        "eawork.JobPostVersion",
+        User,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -70,10 +67,15 @@ class JobPostTag(models.Model):
         return [type_instance.type.value for type_instance in self.types.all()]
 
     def count(self) -> int:
+        # todo probably doesn't work
         count = 0
         for enum_member in JobPostTagTypeEnum:
-            lookup_name = f"version_current__tags_{enum_member.value}__in"
-            count += JobPost.objects.filter(**{lookup_name: [self.pk]}).count()
+            for version in (
+                JobPostVersion.objects.filter(status=PostStatus.PUBLISHED)
+                .order_by("created_at")
+                .distinct("post", "created_at")
+            ):
+                count += getattr(version, f"tags_{enum_member.value}").count()
         return count
 
     def __str__(self) -> str:
@@ -161,6 +163,7 @@ class JobPostVersion(PostVersion):
         related_name=f"tags_{JobPostTagTypeEnum.IMMIGRATION.value}",
     )
 
+    @property
     def get_post_pk(self) -> int:
         return self.post.pk
 
@@ -209,8 +212,22 @@ class JobPostVersion(PostVersion):
     def get_company_description(self) -> str:
         return self.post.company.description
 
+    def get_description(self) -> str:
+        return html2text.html2text(self.description)
+
+    def get_description_short(self) -> str:
+        return html2text.html2text(self.description_short)
+
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
-            return self.post.is_published and self.post.version_current.id == self.id
+            version_last = (
+                self.post.versions.filter(status=PostStatus.PUBLISHED)
+                .order_by("created_at")
+                .last()
+            )
+            if version_last:
+                return version_last.pk == self.pk
+            else:
+                return False
         else:
             return False

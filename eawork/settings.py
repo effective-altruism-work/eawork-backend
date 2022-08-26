@@ -237,29 +237,12 @@ AUTH_PASSWORD_VALIDATORS = [
 DEFAULT_FROM_EMAIL = "support@eawork.org"
 DEFAULT_BCC_ADDRESSES = ["bcc@eawork.org"] if DJANGO_ENV == DjangoEnv.PROD else []
 
-if DJANGO_ENV == DjangoEnv.PROD:
-    # In production, send emails using Mailgun.
-    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-    EMAIL_HOST_USER = env.str("EMAIL_HOST_USER", "django@eawork.org")
-    EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD", "")
-    EMAIL_HOST = env.str("EMAIL_HOST", "smtp.mailgun.org")
-    EMAIL_PORT = env.int("EMAIL_PORT", 587)
-    EMAIL_USE_TLS = True
-else:
-    # In other environments (development, staging, etc.) send them to Mailtrap.
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = "smtp.mailtrap.io"
-    EMAIL_HOST_USER = env.str("EMAIL_HOST_USER", "rgsegsd")
-    EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD", "ergsdfgsfg")
-    EMAIL_PORT = "2525"
+# if DJANGO_ENV == DjangoEnv.PROD:
+EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"
+EMAIL_USE_TLS = True
 
 ANYMAIL = {
-    "MAILGUN_API_KEY": env.str(
-        "MAILGUN_API_KEY", "8a571fb2f15ab1449f4b81eedce25822-16ffd509-45f56420"
-    ),
-    "MAILGUN_SENDER_DOMAIN": env.str(
-        "MAIL_DOMAIN", "sandboxe1fddd2132d34b3998bdec51993a835c.mailgun.org"
-    ),
+    "POSTMARK_SERVER_TOKEN": env.str("POSTMARK_SERVER_TOKEN", "stub"),
 }
 
 REST_FRAMEWORK = {
@@ -298,6 +281,9 @@ LOGGING = {
         "level": "INFO",
     },
 }
+
+FRONTEND_URL = "https://eawork.org"
+BASE_URL = "https://backend.eawork.org"
 
 IS_ENABLE_ALGOLIA = env.bool("IS_ENABLE_ALGOLIA", default=False)
 ALGOLIA = {
