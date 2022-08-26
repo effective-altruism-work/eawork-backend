@@ -34,7 +34,7 @@ if DJANGO_ENV in (DjangoEnv.STAGE, DjangoEnv.PROD):
     sentry_sdk.init(
         dsn=env.str(
             "SENTRY_DSN",
-            "https://6ee12a58dd8241a7ad70886c32322ea682@o329384.ingest.sentry.io/5948898",
+            "https://23439f9b986c4be68697d4b11da25235@o1376636.ingest.sentry.io/6690029",
         ),
         integrations=[DjangoIntegration()],
         traces_sample_rate=env.float("SENTRY_TRACE_SAMPLE_RATE", 1.0),

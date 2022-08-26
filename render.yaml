@@ -21,12 +21,6 @@ services:
   - type: cron
     name: 80'000h import
     env: python
-    schedule: "0 8 * * *"
+    schedule: "0 6 * * *"
     buildCommand: poetry install
-    startCommand: python manage.py import_80_000_hours
-  - type: cron
-    name: check for new jobs and send alerts
-    env: python
-    schedule: "0 9 * * *"
-    buildCommand: poetry install
-    startCommand: python manage.py check_new_jobs_for_all_alerts
+    startCommand: python manage.py import_80_000_hours && python manage.py check_new_jobs_for_all_alerts
