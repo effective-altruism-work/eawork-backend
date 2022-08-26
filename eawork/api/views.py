@@ -2,6 +2,9 @@ import datetime
 from typing import Any
 from typing import Optional
 
+from algoliasearch_django import save_record
+from algoliasearch_django import update_records
+from algoliasearch_django.decorators import disable_auto_indexing
 from ninja import NinjaAPI
 from ninja import Schema
 from rest_framework import mixins
@@ -116,32 +119,39 @@ def jobs_create(request, job_post_json: JobPostJson):
 
 
 def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: User):
-    post_version = JobPostVersion.objects.create(
-        post=job_post,
-        author=author,
-        status=PostStatus.NEEDS_REVIEW,
-        title=job_post_json.title,
-        description_short=job_post_json.description_short,
-        description=job_post_json.description,
-        url_external=job_post_json.url_external,
-        posted_at=datetime.datetime.now(),
-    )
-    _add_tags(post_version, job_post_json, author)
+    with disable_auto_indexing():
+        post_version = JobPostVersion.objects.create(
+            post=job_post,
+            author=author,
+            status=PostStatus.NEEDS_REVIEW,
+            title=job_post_json.title,
+            description_short=job_post_json.description_short,
+            description=job_post_json.description,
+            url_external=job_post_json.url_external,
+            posted_at=datetime.datetime.now(),
+        )
+        job_post_tags_pks = _add_tags(post_version, job_post_json, author)
+
+    save_record(post_version)
+    update_records(model=JobPostTag, qs=JobPost.objects.filter(pk__in=job_post_tags_pks))
 
 
-def _add_tags(post_version: JobPostVersion, job_post_json: JobPostJson, author: User):
+def _add_tags(post_version: JobPostVersion, job_post_json: JobPostJson, author: User) -> list[int]:
+    job_post_tags_pks: list[int] = []
     for enum_member in JobPostTagTypeEnum:
         tag_field_name = f"tags_{enum_member.value}"
-        tags: list[str] = getattr(job_post_json, tag_field_name, [])
-        for tag in tags or []:
+        tag_names: list[str] = getattr(job_post_json, tag_field_name, [])
+        for tag_name in tag_names or []:
             post_version_tag_field = getattr(post_version, tag_field_name)
-            tag = _add_tag(post_version, tag_name=tag, tag_type=enum_member, author=author)
+            tag = _add_tag(post_version, tag_name=tag_name, tag_type=enum_member, author=author)
             post_version_tag_field.add(tag)
+            job_post_tags_pks.append(tag.pk)
+    return job_post_tags_pks
 
 
 def _add_tag(
     post_version: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum, author: User
-):
+) -> JobPostTag:
     tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
     if not tag:
         tag = JobPostTag.objects.create(
