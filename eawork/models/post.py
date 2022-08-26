@@ -45,4 +45,4 @@ class PostVersion(TimeStampedModel):
         abstract = True
 
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.status.value} - {self.pk}"
