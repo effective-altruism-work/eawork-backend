@@ -2,6 +2,8 @@ from enumfields.drf import EnumSupportSerializerMixin
 from rest_framework import serializers
 from rest_framework.relations import PrimaryKeyRelatedField
 
+from eawork.models import Company
+from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
 from eawork.models import JobPostTagTypeEnum
@@ -29,7 +31,36 @@ class TagSerializer(serializers.ModelSerializer):
         ]
 
 
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = [
+            "name",
+            "id_external_80_000_hours",
+            "description",
+            "logo_url",
+            "url",
+            "linkedin_url",
+            "facebook_url",
+            "career_page_url",
+            "created_at",
+            "updated_at",
+            "author",
+        ]
+
+
+class JobPostSerializer(serializers.ModelSerializer):
+    company = CompanySerializer(read_only=True)
+    class Meta:
+        model = JobPost
+        fields = [
+            "company",
+            "id_external_80_000_hours",
+        ]
+
+
 class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSerializer):
+    post = JobPostSerializer(read_only=True)
 
     for tag_type_enum in JobPostTagTypeEnum:
         locals()[f"tags_{tag_type_enum.value}"] = TagSerializer(many=True, required=False)
@@ -44,6 +75,7 @@ class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSeri
         model = JobPostVersion
         fields = [
             "title",
+            "post",
             "description",
             "description_short",
             "url_external",
