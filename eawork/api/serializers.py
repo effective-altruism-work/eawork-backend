@@ -90,7 +90,6 @@ class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSeri
         ]
         for tag_type_enum in JobPostTagTypeEnum:
             fields.append(f"tags_{tag_type_enum.value}")
-            fields.append(f"tags_{tag_type_enum.value}_pks")
 
     def update(self, instance: JobPostVersion, validated_data: dict) -> JobPostVersion:
         for field in self.Meta.fields:
