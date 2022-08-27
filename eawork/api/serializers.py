@@ -51,6 +51,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 class JobPostSerializer(serializers.ModelSerializer):
     company = CompanySerializer(read_only=True)
+
     class Meta:
         model = JobPost
         fields = [

@@ -5,6 +5,7 @@ import requests
 from algoliasearch_django import reindex_all
 from algoliasearch_django.decorators import disable_auto_indexing
 from dateutil.parser import parse
+from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from eawork.models import Company
@@ -29,8 +30,9 @@ class Command(BaseCommand):
             self._import_companies(data_raw)
             self._import_jobs(data_raw, limit=options["limit"])
 
-        reindex_all(JobPostVersion)
-        reindex_all(JobPostTag)
+        if settings.IS_ENABLE_ALGOLIA:
+            reindex_all(JobPostVersion)
+            reindex_all(JobPostTag)
 
     def _import_companies(self, data_raw: dict):
         companies_dict: dict[str, dict] = data_raw["organisations"]
@@ -55,8 +57,9 @@ class Command(BaseCommand):
                     career_page_url=company_raw["career_page"],
                 )
 
-    def _import_jobs(self, data_raw, limit: int = None):
-        jobs_raw = data_raw["vacancies"]
+    def _import_jobs(self, data_raw: dict, limit: int = None):
+        jobs_raw: list[dict] = self._strip_all_json_strings(data_raw["vacancies"])
+
         if limit:
             jobs_raw = jobs_raw[:limit]
 
@@ -172,6 +175,40 @@ class Command(BaseCommand):
                         tag_name=country,
                         tag_type=JobPostTagTypeEnum.COUNTRY,
                     )
+
+        if job_raw["Job title"] in {
+            "Front End Developer",
+            "Full Stack Developer",
+            "Full-stack Developer",
+            "PHP Developer",
+            "Project Lead, Molecular Systems Engineering Software",
+            "Data Systems Developer",
+            "Senior Data Systems Developer",
+            "Software Developer",
+            "Software Engineer",
+            "S-Process Developer",
+            "Lead Developer, Global",
+            "Developer",
+            "Senior Developer / Team Lead",
+            "Web Developer",
+            "Android Security Developer",
+            "Software Security Research Engineer",
+            "Cyber Operations Developer, Registration of Interest",
+            "Front-End Developer",
+        }:
+            add_tag(
+                post=post_version,
+                tag_name="Software Engineering",
+                tag_type=JobPostTagTypeEnum.AREA,
+            )
+
+    def _strip_all_json_strings(self, jobs_raw: list[dict]) -> list[dict]:
+        for job_raw in jobs_raw:
+            for key in job_raw:
+                value = job_raw[key]
+                if type(value) is str:
+                    job_raw[key] = value.strip()
+        return jobs_raw
 
 
 def add_tag(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum):
