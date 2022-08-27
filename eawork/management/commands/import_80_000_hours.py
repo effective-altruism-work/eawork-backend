@@ -176,7 +176,7 @@ class Command(BaseCommand):
                         tag_type=JobPostTagTypeEnum.COUNTRY,
                     )
 
-        if job_raw["Job title"] in {
+        SWE_roles = [
             "Front End Developer",
             "Full Stack Developer",
             "Full-stack Developer",
@@ -188,19 +188,21 @@ class Command(BaseCommand):
             "Software Engineer",
             "S-Process Developer",
             "Lead Developer, Global",
-            "Developer",
             "Senior Developer / Team Lead",
             "Web Developer",
             "Android Security Developer",
             "Software Security Research Engineer",
             "Cyber Operations Developer, Registration of Interest",
             "Front-End Developer",
-        }:
-            add_tag(
-                post=post_version,
-                tag_name="Software Engineering",
-                tag_type=JobPostTagTypeEnum.AREA,
-            )
+        ]
+        for SWE_role in SWE_roles:
+            if SWE_role in job_raw["Job title"] or job_raw["Job title"] == "Developer":
+                add_tag(
+                    post=post_version,
+                    tag_name="Software Engineering",
+                    tag_type=JobPostTagTypeEnum.ROLE_TYPE,
+                )
+                break
 
     def _strip_all_json_strings(self, jobs_raw: list[dict]) -> list[dict]:
         for job_raw in jobs_raw:
