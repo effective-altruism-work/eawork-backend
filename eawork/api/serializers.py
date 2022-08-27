@@ -1,6 +1,5 @@
 from enumfields.drf import EnumSupportSerializerMixin
 from rest_framework import serializers
-from rest_framework.relations import PrimaryKeyRelatedField
 
 from eawork.models import Company
 from eawork.models import JobPost
@@ -63,12 +62,13 @@ class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSeri
 
     for tag_type_enum in JobPostTagTypeEnum:
         locals()[f"tags_{tag_type_enum.value}"] = TagSerializer(many=True, required=False)
-        locals()[f"tags_{tag_type_enum.value}_pks"] = PrimaryKeyRelatedField(
-            many=True,
-            queryset=JobPostTag.objects.filter(types__type=tag_type_enum),
-            source=f"tags_{tag_type_enum.value}",
-            required=False,
-        )
+        # for tags editing:
+        # locals()[f"tags_{tag_type_enum.value}_pks"] = PrimaryKeyRelatedField(
+        #     many=True,
+        #     queryset=JobPostTag.objects.filter(types__type=tag_type_enum),
+        #     source=f"tags_{tag_type_enum.value}",
+        #     required=False,
+        # )
 
     class Meta:
         model = JobPostVersion
