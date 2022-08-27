@@ -1,5 +1,6 @@
 from typing import Literal
 
+import pytz
 import requests
 from algoliasearch_django import reindex_all
 from algoliasearch_django.decorators import disable_auto_indexing
@@ -62,7 +63,7 @@ class Command(BaseCommand):
         for job_raw in jobs_raw:
             is_job_exists = JobPost.objects.filter(
                 id_external_80_000_hours=job_raw["id"],
-                versions__status=PostStatus.PUBLISHED,
+                version_current__isnull=False,
             ).exists()
             if is_job_exists:
                 post_version_last = (
@@ -78,16 +79,17 @@ class Command(BaseCommand):
                 post = JobPost.objects.create(
                     id_external_80_000_hours=job_raw["id"],
                 )
-                post.company = Company.objects.get(
-                    id_external_80_000_hours=job_raw["Hiring organisation ID"],
-                )
-                post.save()
-                post_version_last = JobPostVersion.objects.create(
+                post_version = JobPostVersion.objects.create(
                     title=job_raw["Job title"],
                     status=PostStatus.PUBLISHED,
                     post=post,
                 )
-                self._update_post_version(post_version_last, job_raw)
+                post.version_current = post_version
+                post.company = Company.objects.get(
+                    id_external_80_000_hours=job_raw["Hiring organisation ID"],
+                )
+                post.save()
+                self._update_post_version(post_version, job_raw)
 
     def _update_post_version(self, version: JobPostVersion, job_raw: dict):
         version.title = job_raw["Job title"]
@@ -96,8 +98,12 @@ class Command(BaseCommand):
 
         hardcoded_80_000h_stub = "2050-01-01"
         if job_raw["Closing date"] != hardcoded_80_000h_stub:
-            version.closes_at = parse(job_raw["Closing date"])
-        version.posted_at = parse(job_raw["Date listed"])
+            version.closes_at = parse(job_raw["Closing date"]).replace(
+                tzinfo=pytz.timezone("Europe/London")
+            )
+        version.posted_at = parse(job_raw["Date listed"]).replace(
+            tzinfo=pytz.timezone("Europe/London")
+        )
 
         version.post.company = Company.objects.get(
             id_external_80_000_hours=job_raw["Hiring organisation ID"]
@@ -141,26 +147,26 @@ class Command(BaseCommand):
 
         if job_raw["Locations"]:
             for city in job_raw["Locations"]["citiesAndCountries"]:
-                if city == "Remote":
+                if "remote" in city.lower():
                     add_tag(
                         post=post_version,
                         tag_name="Remote",
                         tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
                     )
-                else:
+                elif city != "Remote":
                     add_tag(
                         post=post_version,
                         tag_name=city,
                         tag_type=JobPostTagTypeEnum.CITY,
                     )
-            for country in job_raw["Locations"]["citiesAndCountries"]:
-                if country == "Remote":
+            for country in job_raw["Locations"]["countries"]:
+                if "remote" in country.lower():
                     add_tag(
                         post=post_version,
                         tag_name="Remote",
                         tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
                     )
-                else:
+                elif country != "Remote":
                     add_tag(
                         post=post_version,
                         tag_name=country,

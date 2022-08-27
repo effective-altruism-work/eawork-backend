@@ -5,9 +5,12 @@ from typing import Optional
 from algoliasearch_django import save_record
 from algoliasearch_django import update_records
 from algoliasearch_django.decorators import disable_auto_indexing
+from django.http import Http404
+from django.utils import timezone
 from ninja import NinjaAPI
 from ninja import Schema
 from rest_framework import mixins
+from rest_framework.generics import get_object_or_404
 from rest_framework.viewsets import GenericViewSet
 
 from eawork.api.serializers import JobPostVersionSerializer
@@ -30,8 +33,20 @@ class JobPostVersionViewSet(
     mixins.UpdateModelMixin,
     GenericViewSet,
 ):
-    queryset = JobPostVersion.objects.all()
+    queryset = JobPostVersion.objects.filter(status=PostStatus.PUBLISHED)
     serializer_class = JobPostVersionSerializer
+    lookup_field = "post__pk"
+
+    def get_object(self) -> JobPostVersion:
+        queryset = self.filter_queryset(self.get_queryset())
+        filter_kwargs = {self.lookup_field: self.kwargs[self.lookup_field]}
+        post_version = queryset.filter(**filter_kwargs).order_by("created_at").last()
+        if not post_version:
+            raise Http404
+
+        self.check_object_permissions(self.request, post_version)
+
+        return post_version
 
 
 api_ninja = NinjaAPI(urls_namespace="api_ninja")
@@ -100,12 +115,11 @@ def jobs_create(request, job_post_json: JobPostJson):
 
         _create_post_version(job_post, job_post_json, author=user)
     else:
-        if job_post_json.company_name:
-            company = Company.objects.filter(name=job_post_json.company_name).first()
-        else:
+        company = Company.objects.filter(name=job_post_json.company_name).first()
+        if not company:
             company = Company.objects.create(
                 name=job_post_json.company_name,
-                logo_url=job_post_json.company_logo_url,
+                logo_url=job_post_json.company_logo_url or "",
                 author=user,
             )
 
@@ -128,15 +142,20 @@ def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: 
             description_short=job_post_json.description_short,
             description=job_post_json.description,
             url_external=job_post_json.url_external,
-            posted_at=datetime.datetime.now(),
+            posted_at=timezone.now(),
         )
         job_post_tags_pks = _add_tags(post_version, job_post_json, author)
+
+        job_post.version_current = post_version
+        job_post.save()
 
     save_record(post_version)
     update_records(model=JobPostTag, qs=JobPost.objects.filter(pk__in=job_post_tags_pks))
 
 
-def _add_tags(post_version: JobPostVersion, job_post_json: JobPostJson, author: User) -> list[int]:
+def _add_tags(
+    post_version: JobPostVersion, job_post_json: JobPostJson, author: User
+) -> list[int]:
     job_post_tags_pks: list[int] = []
     for enum_member in JobPostTagTypeEnum:
         tag_field_name = f"tags_{enum_member.value}"

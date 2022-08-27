@@ -45,12 +45,17 @@ class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSeri
         fields = [
             "title",
             "description",
+            "description_short",
             "url_external",
             "author",
             "closes_at",
             "posted_at",
             "created_at",
             "updated_at",
+            "experience_min",
+            "experience_avg",
+            "salary_min",
+            "salary_max",
         ]
         for tag_type_enum in JobPostTagTypeEnum:
             fields.append(f"tags_{tag_type_enum.value}")

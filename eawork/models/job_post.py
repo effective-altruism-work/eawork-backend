@@ -6,11 +6,16 @@ from enumfields import EnumField
 from eawork.models import Company
 from eawork.models import User
 from eawork.models.post import Post
-from eawork.models.post import PostStatus
 from eawork.models.post import PostVersion
 
 
 class JobPost(Post):
+    version_current = models.ForeignKey(
+        "eawork.JobPostVersion",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+    )
     company = models.ForeignKey(
         Company,
         on_delete=models.SET_NULL,
@@ -18,8 +23,13 @@ class JobPost(Post):
         null=True,
         blank=True,
     )
-
     id_external_80_000_hours = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        if self.version_current:
+            return self.version_current.title
+        else:
+            return str(self.pk)
 
 
 class JobPostTagTypeEnum(Enum):
@@ -67,15 +77,10 @@ class JobPostTag(models.Model):
         return [type_instance.type.value for type_instance in self.types.all()]
 
     def count(self) -> int:
-        # todo probably doesn't work
         count = 0
         for enum_member in JobPostTagTypeEnum:
-            for version in (
-                JobPostVersion.objects.filter(status=PostStatus.PUBLISHED)
-                .order_by("created_at")
-                .distinct("post", "created_at")
-            ):
-                count += getattr(version, f"tags_{enum_member.value}").count()
+            lookup_name = f"version_current__tags_{enum_member.value}__in"
+            count += JobPost.objects.filter(**{lookup_name: [self.pk]}).count()
         return count
 
     def __str__(self) -> str:
@@ -220,14 +225,6 @@ class JobPostVersion(PostVersion):
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
-            version_last = (
-                self.post.versions.filter(status=PostStatus.PUBLISHED)
-                .order_by("created_at")
-                .last()
-            )
-            if version_last:
-                return version_last.pk == self.pk
-            else:
-                return False
+            return self.post.version_current.pk == self.pk
         else:
             return False

@@ -26,7 +26,7 @@ def check_new_jobs(
         model=JobPostVersion,
         query=job_alert.query_json["query"],
         params={
-            "facetFilters": job_alert.query_json["facetFilters"],
+            "facetFilters": getattr(job_alert.query_json, "facetFilters", []),
             "hitsPerPage": algolia_hits_per_page,
             **filters,
         },

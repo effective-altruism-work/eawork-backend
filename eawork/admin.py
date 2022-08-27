@@ -1,4 +1,5 @@
 from django.contrib import admin
+from enumfields.admin import EnumFieldListFilter
 
 from eawork.models import Company
 from eawork.models import JobAlert
@@ -40,8 +41,7 @@ class CompanyAdmin(admin.ModelAdmin):
 @admin.register(JobPost)
 class JobPostAdmin(admin.ModelAdmin):
     list_display = [
-        "get_title",
-        "id_external_80_000_hours",
+        "version_current",
         "company",
         "author",
         "created_at",
@@ -50,6 +50,7 @@ class JobPostAdmin(admin.ModelAdmin):
     autocomplete_fields = [
         "author",
         "company",
+        "version_current",
     ]
     search_fields = [
         "pk",
@@ -57,9 +58,7 @@ class JobPostAdmin(admin.ModelAdmin):
         "versions__title",
         "id_external_80_000_hours",
     ]
-
-    def get_title(self, obj: JobPost) -> str:
-        return str(obj)
+    list_filter = [("version_current__status", EnumFieldListFilter)]
 
 
 @admin.register(JobPostTag)
@@ -89,8 +88,11 @@ class JobPostVersionAdmin(admin.ModelAdmin):
     autocomplete_fields = [
         "post",
     ]
+    search_fields = [
+        "title",
+    ]
     filter_horizontal = [f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum]
-    list_filter = ["status"] + [
+    list_filter = [("status", EnumFieldListFilter)] + [
         f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum
     ]
 

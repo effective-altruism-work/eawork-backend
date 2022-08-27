@@ -17,18 +17,15 @@ class PostStatus(Enum):
 
 class Post(TimeStampedModel):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    # version_current = models.ForeignKey(
+    #     PostVersion,
+    #     blank=True,
+    #     null=True,
+    #     on_delete=models.SET_NULL,
+    # )
 
     class Meta:
         abstract = True
-
-    def __str__(self):
-        version_published = (
-            self.versions.filter(status=PostStatus.PUBLISHED).order_by("created_at").last()
-        )
-        if version_published:
-            return version_published.title
-        else:
-            return str(self.pk)
 
 
 class PostVersion(TimeStampedModel):
@@ -45,4 +42,4 @@ class PostVersion(TimeStampedModel):
         abstract = True
 
     def __str__(self):
-        return f"{self.title} - {self.status.value} - {self.pk}"
+        return f"{self.title} | #{self.pk}"
