@@ -26,8 +26,8 @@ class TagSerializer(serializers.ModelSerializer):
         fields = [
             "pk",
             "name",
-            "types",
-            "count",
+            # "types",
+            # "count",
         ]
 
 
