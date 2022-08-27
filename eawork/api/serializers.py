@@ -19,8 +19,6 @@ class TagTypeSerializer(EnumSupportSerializerMixin, serializers.ModelSerializer)
 
 
 class TagSerializer(serializers.ModelSerializer):
-    types = TagTypeSerializer(many=True)
-
     class Meta:
         model = JobPostTag
         fields = [
