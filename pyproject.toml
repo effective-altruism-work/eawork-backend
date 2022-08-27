@@ -6,51 +6,51 @@ authors = []
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.10"
-sentry-sdk = "^1.3.1"
-psycopg2-binary = "^2.9.1"
-python-environ = "^0.4.54"
-python-dotenv = "^0.19.0"
-python-dateutil = "^2.8.2"
-gunicorn = "^20.1.0"
-whitenoise = "^5.3.0"
 Django = "^3.2.6"
 django-allauth = "^0.45.0"
-django-adminutils = "^0.0.10"
-django-modeladmin-reorder = { url = "https://github.com/bloodwithmilk25/django-modeladmin-reorder/archive/6cc5060dec2fe1e894c3ba17aeb703b56737c3e8.zip" } # for django 3.2 support
 django-ninja = "^0.18.0"
 django-import-export = "^2.5.0"
 django-enumfields = "^2.1.1"
 django-solo = "^1.1.5"
 djangorestframework = "^3.12.4"
-djangorestframework-simplejwt = "^4.7.2"
-drf-yasg = "^1.20.0"
+    djangorestframework-simplejwt = "^4.7.2"
+    dj-rest-auth = "^2.1.11"
+    drf-yasg = "^1.20.0"
 django-auditlog = "=1.0a1" # version update had broken migrations
 django-json-widget = "^1.1.1"
 django-add-default-value = "^0.9.1"
+django-adminutils = "^0.0.10"
+django-modeladmin-reorder = { url = "https://github.com/bloodwithmilk25/django-modeladmin-reorder/archive/6cc5060dec2fe1e894c3ba17aeb703b56737c3e8.zip" } # for django 3.2 support
 django-admin-sortable2 = "^1.0"
+django-admin-hstore-widget = "^1.2.0"
+django-select2-admin-filters = "^0.1.4"
+    django-select2 = "^7.7.1"
 django-nested-inline = "^0.4.4"
 django-tinymce = "^3.3.0"
 django-storages = "1.11.1" # 1.12+ pobably needs an update of boto3 & its reqs, otherwise throws an ssl error on upload
-boto3 = "^1.18.38"
+    boto3 = "^1.18.38"
 django-object-actions = "^3.0.2"
 django-fieldsignals = "^0.7.0"
-django-select2-admin-filters = "^0.1.4"
-django-select2 = "^7.7.1"
 django-cors-headers = "^3.10.0"
-dj-rest-auth = "^2.1.11"
-Faker = "^8.11.0"
 django-anymail = "8.5" # 8.6 is broken
     html2text = "^2020.1.16"
-requests = "^2.27.1"
-django-jsonform = "^2.10.0"
 dj-database-url = "^1.0.0"
+django-jsonform = "^2.10.0"
 algoliasearch-django = "^2.0.0"
-django-admin-hstore-widget = "^1.2.0"
+python-environ = "^0.4.54"
+python-dotenv = "^0.19.0"
+python-dateutil = "^2.8.2"
+requests = "^2.27.1"
+sentry-sdk = "^1.3.1"
+psycopg2-binary = "^2.9.1"
+gunicorn = "^20.1.0"
+whitenoise = "^5.3.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.9.3"
 black = { extras = ["d"], version = "^22.1.0" }
 model-bakery = "^1.3.2"
+Faker = "^8.11.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
