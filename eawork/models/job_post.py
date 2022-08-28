@@ -218,7 +218,7 @@ class JobPostVersion(PostVersion):
         return self.post.company.description
 
     def get_description_for_search(self) -> str:
-        return self.description_short + "\n" + html2text.html2text(self.description)
+        return html2text.html2text(self.description_short) + "\n" + html2text.html2text(self.description)
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
