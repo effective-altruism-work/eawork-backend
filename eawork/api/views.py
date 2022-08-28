@@ -123,8 +123,8 @@ class JobPostJson(Schema):
     tags_immigration: list[str] | None
 
 
-@api_ninja.post("/jobs/create", url_name="jobs_create")
-def jobs_create(request, job_post_json: JobPostJson):
+@api_ninja.post("/jobs/post", url_name="jobs_post")
+def jobs_post(request, job_post_json: JobPostJson):
     user = User.objects.filter(email=job_post_json.email).first()
     if not user:
         user = User.objects.create(email=job_post_json.email)

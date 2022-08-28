@@ -18,9 +18,9 @@ class JobCreateTest(EAWorkTestCase):
 
     def test_job_create(self):
         post_title = "Software Engineer"
-        tags_skill = ["Django", "PostgreSQL"]
+        tags_skill = ["Django", "Angular", "PostgreSQL"]
         res = self.client.post(
-            "/api/jobs/create",
+            "/api/jobs/post",
             dict(
                 email=self.gen.faker.email(),
                 company_name="Company Test Name",
