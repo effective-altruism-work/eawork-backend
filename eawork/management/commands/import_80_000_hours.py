@@ -108,6 +108,16 @@ class Command(BaseCommand):
             tzinfo=pytz.timezone("Europe/London")
         )
 
+        exp_reqs: str = job_raw["Experience requirements"]
+        if exp_reqs == "5+ years of experience":
+            version.experience_min = 5
+        elif exp_reqs == "0-2 years of experience":
+            version.experience_min = 0
+            version.experience_avg = 2
+        elif exp_reqs == "3-4 years of experience":
+            version.experience_min = 3
+            version.experience_avg = 4
+
         version.post.company = Company.objects.get(
             id_external_80_000_hours=job_raw["Hiring organisation ID"]
         )
