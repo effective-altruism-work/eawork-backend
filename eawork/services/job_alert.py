@@ -1,12 +1,15 @@
 import inspect
 
+import html2text
 from algoliasearch_django import raw_search
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from django.urls import reverse
 
 from eawork.models import JobAlert
 from eawork.models import JobPostVersion
+from eawork.send_email import send_email
 
 
 def check_new_jobs_for_all_alerts():
@@ -50,26 +53,26 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
     )
     jobs_list = "\n".join(
         [
-            f"- {job['title']} at {job['company_name']} - {job['url_external']}"
+            f"""
+                <li><a href="{job['url_external']}">{job['title']} at {job['company_name']}</a></li>
+            """
             for job in jobs_new
         ]
     )
-    message = inspect.cleandoc(
-        f"""
-        Your search results: {settings.FRONTEND_URL}/{job_alert.query_string}
+    message_html = f"""
+        <p>Your search results: {settings.FRONTEND_URL}/{job_alert.query_string}</p>
         
-        New matched jobs:
-        {jobs_list}
+        <p>New matched jobs:<p>
         
-        Unsubscribe: {settings.BASE_URL}{url_unsubscribe}
+        <ul>{jobs_list}</ul>
+        
+        <p>
+            <a href="{settings.BASE_URL}{url_unsubscribe}">Unsubscribe</a>
+        </p>
         """
-    )
 
-    msg = EmailMessage(
+    send_email(
         subject="EA Work Jobs Alert",
-        body=message,
-        headers={"List-Unsubscribe": url_unsubscribe},
-        from_email="support@eawork.org",
-        to=[job_alert.email],
+        message_html=message_html,
+        email_to=job_alert.email,
     )
-    msg.send()
