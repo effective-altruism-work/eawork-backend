@@ -132,7 +132,7 @@ def jobs_post(request, job_post_json: JobPostJson):
     if job_post_json.job_post_pk:
         job_post = JobPost.objects.get(pk=job_post_json.job_post_pk)
 
-        _create_post_version(job_post, job_post_json, author=user)
+        _create_post_version(job_post, job_post_json, author=user, is_only_version=False)
     else:
         company = Company.objects.filter(name=job_post_json.company_name).first()
         if not company:
@@ -146,12 +146,12 @@ def jobs_post(request, job_post_json: JobPostJson):
             author=user,
             company=company,
         )
-        _create_post_version(job_post, job_post_json, author=user)
+        _create_post_version(job_post, job_post_json, author=user, is_only_version=True)
 
     return {"success": True}
 
 
-def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: User):
+def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: User, is_only_version: bool):
     with disable_auto_indexing():
         post_version = JobPostVersion.objects.create(
             post=job_post,
@@ -163,13 +163,10 @@ def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: 
             url_external=job_post_json.url_external,
             posted_at=timezone.now(),
         )
-        job_post_tags_pks = _add_tags(post_version, job_post_json, author)
-
-        job_post.version_current = post_version
-        job_post.save()
-
-    save_record(post_version)
-    update_records(model=JobPostTag, qs=JobPost.objects.filter(pk__in=job_post_tags_pks))
+        _add_tags(post_version, job_post_json, author)
+        if is_only_version:
+            job_post.version_current = post_version
+            job_post.save()
 
 
 def _add_tags(
@@ -184,6 +181,7 @@ def _add_tags(
             tag = _add_tag(post_version, tag_name=tag_name, tag_type=enum_member, author=author)
             post_version_tag_field.add(tag)
             job_post_tags_pks.append(tag.pk)
+    update_records(model=JobPostTag, qs=JobPost.objects.filter(pk__in=job_post_tags_pks))
     return job_post_tags_pks
 
 

@@ -5,6 +5,7 @@ from enumfields import EnumField
 
 from eawork.models import Company
 from eawork.models import User
+from eawork.models.post import PostStatus
 from eawork.models.post import Post
 from eawork.models.post import PostVersion
 
@@ -225,6 +226,9 @@ class JobPostVersion(PostVersion):
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
-            return self.post.version_current.pk == self.pk
+            return (
+                (self.post.version_current.pk == self.pk) and
+                (self.status == PostStatus.PUBLISHED) 
+            )
         else:
             return False

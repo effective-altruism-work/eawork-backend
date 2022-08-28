@@ -24,7 +24,7 @@ class JobCreateTest(EAWorkTestCase):
             dict(
                 email=self.gen.faker.email(),
                 company_name="Company Test Name",
-                title="Software Engineer",
+                title=post_title,
                 description_short="<p>Short description.</p><p>Second paragraph.</p>",
                 description="<p>Kind of longer description.</p><p>Second paragraph.</p>",
                 url_external="https://givemomentum.com/careers",
