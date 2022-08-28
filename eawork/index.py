@@ -20,6 +20,7 @@ if settings.IS_ENABLE_ALGOLIA:
             "description",
             "description_short",
             ["get_description_for_search", "description_for_search"],
+            ["get_id_external_80_000_hours", "id_external_80_000_hours"],
             "created_at",
             "updated_at",
             "closes_at",
