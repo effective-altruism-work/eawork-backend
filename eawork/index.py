@@ -17,8 +17,9 @@ if settings.IS_ENABLE_ALGOLIA:
         fields = [
             ["get_post_pk", "post_pk"],
             "title",
-            ["get_description", "description"],
-            ["get_description_short", "description_short"],
+            "description",
+            "description_short",
+            ["get_description_for_search", "description_for_search"],
             "created_at",
             "updated_at",
             "closes_at",

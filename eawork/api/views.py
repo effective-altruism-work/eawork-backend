@@ -13,6 +13,7 @@ from rest_framework import mixins
 from rest_framework.generics import get_object_or_404
 from rest_framework.viewsets import GenericViewSet
 
+from eawork import settings
 from eawork.api.serializers import JobPostVersionSerializer
 from eawork.models import Company
 from eawork.models import JobAlert
@@ -24,6 +25,7 @@ from eawork.models import JobPostVersion
 from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
 from eawork.models import User
+from eawork.send_email import send_email
 from eawork.services.job_alert import check_new_jobs
 
 
@@ -77,6 +79,23 @@ def jobs_subscribe(request, job_alert_req: JobAlertReq):
         query_string=job_alert_req.query_string,
     )
     check_new_jobs(job_alert, is_send_alert=False, algolia_hits_per_page=1)
+    return {"success": True}
+
+
+class JobFlag(Schema):
+    job_pk: str | int
+    email: str | None
+    message: str
+
+
+@api_ninja.post("/jobs/flag", url_name="jobs_report")
+def flag_job(request, job_flag: JobFlag):
+    send_email(
+        subject=f"EA Work flag for #{job_flag.job_pk}"
+        + (f"from {job_flag.email}" if job_flag.email else ""),
+        message_html=job_flag.message,
+        email_to=settings.SERVER_EMAIL,
+    )
     return {"success": True}
 
 

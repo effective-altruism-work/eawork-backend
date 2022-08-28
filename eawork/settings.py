@@ -229,6 +229,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 DEFAULT_FROM_EMAIL = "support@eawork.org"
+ADMINS = [DEFAULT_FROM_EMAIL]
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 DEFAULT_BCC_ADDRESSES = ["bcc@eawork.org"] if DJANGO_ENV == DjangoEnv.PROD else []
 
 # if DJANGO_ENV == DjangoEnv.PROD:
