@@ -1,16 +1,14 @@
-import datetime
 from typing import Any
 from typing import Optional
 
-from algoliasearch_django import save_record
 from algoliasearch_django import update_records
 from algoliasearch_django.decorators import disable_auto_indexing
 from django.http import Http404
+from django.urls import reverse
 from django.utils import timezone
 from ninja import NinjaAPI
 from ninja import Schema
 from rest_framework import mixins
-from rest_framework.generics import get_object_or_404
 from rest_framework.viewsets import GenericViewSet
 
 from eawork import settings
@@ -151,7 +149,9 @@ def jobs_post(request, job_post_json: JobPostJson):
     return {"success": True}
 
 
-def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: User, is_only_version: bool):
+def _create_post_version(
+    job_post: JobPost, job_post_json: JobPostJson, author: User, is_only_version: bool
+):
     with disable_auto_indexing():
         post_version = JobPostVersion.objects.create(
             post=job_post,
@@ -167,6 +167,12 @@ def _create_post_version(job_post: JobPost, job_post_json: JobPostJson, author: 
         if is_only_version:
             job_post.version_current = post_version
             job_post.save()
+
+    send_email(
+        subject=f"Post needs review from {author.email}",
+        message_html=f"""{reverse("admin:eawork_jobpostversion_change", args=[post_version.pk])}""",
+        email_to=settings.SERVER_EMAIL,
+    )
 
 
 def _add_tags(
