@@ -5,8 +5,8 @@ from enumfields import EnumField
 
 from eawork.models import Company
 from eawork.models import User
-from eawork.models.post import PostStatus
 from eawork.models.post import Post
+from eawork.models.post import PostStatus
 from eawork.models.post import PostVersion
 
 
@@ -169,6 +169,12 @@ class JobPostVersion(PostVersion):
         related_name=f"tags_{JobPostTagTypeEnum.IMMIGRATION.value}",
     )
 
+    def publish(self):
+        self.post.version_current = self
+        self.post.save()
+        self.status = PostStatus.PUBLISHED
+        self.save()
+
     @property
     def get_post_pk(self) -> int:
         return self.post.pk
@@ -222,13 +228,16 @@ class JobPostVersion(PostVersion):
         return self.post.id_external_80_000_hours
 
     def get_description_for_search(self) -> str:
-        return html2text.html2text(self.description_short) + "\n" + html2text.html2text(self.description)
+        return (
+            html2text.html2text(self.description_short)
+            + "\n"
+            + html2text.html2text(self.description)
+        )
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
-            return (
-                (self.post.version_current.pk == self.pk) and
-                (self.status == PostStatus.PUBLISHED) 
+            return (self.post.version_current.pk == self.pk) and (
+                self.status == PostStatus.PUBLISHED
             )
         else:
             return False

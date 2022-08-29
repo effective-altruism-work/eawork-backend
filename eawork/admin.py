@@ -1,4 +1,9 @@
+from adminutils import options
 from django.contrib import admin
+from django.contrib import messages
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from enumfields.admin import EnumFieldListFilter
 
 from eawork.models import Company
@@ -95,6 +100,12 @@ class JobPostVersionAdmin(admin.ModelAdmin):
     list_filter = [("status", EnumFieldListFilter)] + [
         f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum
     ]
+
+    @options(label="Deploy")
+    def deploy_form(self, request, obj: JobPostVersion) -> HttpResponse:
+        obj.publish()
+        messages.success(request, "Version published")
+        return redirect(reverse("admin:eawork_jobpostversion_change", args=[obj.id]))
 
 
 @admin.register(JobPostTagType)
