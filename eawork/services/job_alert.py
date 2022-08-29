@@ -60,14 +60,14 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
         ]
     )
     message_html = f"""
-        <p>Your search results: {settings.FRONTEND_URL}/{job_alert.query_string}</p>
+        <p><a href="{settings.FRONTEND_URL}/{job_alert.query_string}">Link to your search results</a>.</p>
         
         <p>New matched jobs:<p>
         
         <ul>{jobs_list}</ul>
         
         <p>
-            <a href="{settings.BASE_URL}{url_unsubscribe}">Unsubscribe</a>
+            <a href="{settings.BASE_URL}{url_unsubscribe}" color="#718096">Unsubscribe</a>
         </p>
         """
 
