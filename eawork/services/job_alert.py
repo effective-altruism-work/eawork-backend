@@ -22,7 +22,7 @@ def check_new_jobs(
 
     res_json = raw_search(
         model=JobPostVersion,
-        query=job_alert.query_json["query"],
+        query=job_alert.query_json["query"] if job_alert.query_json else "",
         params={
             "facetFilters": getattr(job_alert.query_json, "facetFilters", []),
             "hitsPerPage": algolia_hits_per_page,
