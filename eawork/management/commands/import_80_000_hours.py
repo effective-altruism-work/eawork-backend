@@ -64,11 +64,15 @@ class Command(BaseCommand):
             jobs_raw = jobs_raw[:limit]
 
         for job_raw in jobs_raw:
-            is_job_exists = JobPost.objects.filter(
+            job_existing = JobPost.objects.filter(
                 id_external_80_000_hours=job_raw["id"],
                 version_current__isnull=False,
-            ).exists()
-            if is_job_exists:
+            ).last()
+
+            if job_existing and not job_existing.is_refetch_from_80_000_hours:
+                continue
+
+            if job_existing:
                 post_version_last = (
                     JobPostVersion.objects.filter(
                         post__id_external_80_000_hours=job_raw["id"],

@@ -31,8 +31,7 @@ class JobCreateTest(EAWorkTestCase):
         )
 
         check_new_jobs_for_all_alerts()
-        self.assertEquals(len(mail.outbox), 1)
-        print(mail.outbox[0].body)
+        self.assertEquals(len(mail.outbox), 2)
         alert.refresh_from_db()
         self.assertEquals(alert.post_pk_seen_last, post_first.pk)
 
@@ -40,7 +39,7 @@ class JobCreateTest(EAWorkTestCase):
 
         check_new_jobs_for_all_alerts()
 
-        self.assertEquals(len(mail.outbox), 2)
+        self.assertEquals(len(mail.outbox), 4)
         print(mail.outbox[1].body)
         alert.refresh_from_db()
         self.assertEquals(alert.post_pk_seen_last, post_second.pk)

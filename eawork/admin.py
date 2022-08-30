@@ -101,7 +101,7 @@ class JobPostVersionAdmin(DjangoObjectActions, admin.ModelAdmin):
     list_filter = [("status", EnumFieldListFilter)] + [
         f"tags_{tag_type_enum.value}" for tag_type_enum in JobPostTagTypeEnum
     ]
-    
+
     change_actions = [
         "publish",
     ]

@@ -25,6 +25,7 @@ class JobPost(Post):
         blank=True,
     )
     id_external_80_000_hours = models.CharField(max_length=255, blank=True)
+    is_refetch_from_80_000_hours = models.BooleanField(default=False)
 
     def __str__(self):
         if self.version_current:
@@ -171,6 +172,7 @@ class JobPostVersion(PostVersion):
 
     def publish(self):
         self.post.version_current = self
+        self.post.is_refetch_from_80_000_hours = False
         self.post.save()
         self.status = PostStatus.PUBLISHED
         self.save()
