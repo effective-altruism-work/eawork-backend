@@ -170,7 +170,7 @@ def _create_post_version(
 
     send_email(
         subject=f"Post needs review from {author.email}",
-        message_html=f"""{reverse("admin:eawork_jobpostversion_change", args=[post_version.pk])}""",
+        message_html=f"""{settings.BASE_URL}/{reverse("admin:eawork_jobpostversion_change", args=[post_version.pk])}""",
         email_to=settings.SERVER_EMAIL,
     )
 

@@ -1,10 +1,5 @@
-import inspect
-
-import html2text
 from algoliasearch_django import raw_search
 from django.conf import settings
-from django.core.mail import EmailMessage
-from django.core.mail import EmailMultiAlternatives
 from django.urls import reverse
 
 from eawork.models import JobAlert
