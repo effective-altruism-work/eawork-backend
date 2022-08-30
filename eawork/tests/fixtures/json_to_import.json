@@ -1,0 +1,914 @@
+{
+    "meta": {
+        "retrieved_at": 1661083753,
+        "cache_hit": true
+    },
+    "links": {
+        "self": "https:\/\/api.80000hours.org\/job-board\/vacancies\/"
+    },
+    "data": {
+        "status": 1,
+        "vacancies": [
+            {
+                "id": "reclXCL96rUWkKY9t",
+                "createdTime": "2022-08-18T06:51:30.000Z",
+                "slug": "project-manager___reclXCL96rUWkKY9t",
+                "Job title": "Project Manager",
+                "Closing date": "2022-08-30",
+                "Tier": "2",
+                "Link": "https:\/\/jobs.gainhealth.org\/vacancies\/900\/",
+                "Role type": "Operations",
+                "Hiring organisation ID": "Global Alliance for Improved Nutrition",
+                "Date listed": "2022\/08\/19 02:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"The Global Alliance for Improved Nutrition (GAIN) is seeking for a Project Manager, CASCADE to support the implementation of CASCADE project activities at GAIN Mozambique office. The Project Manager will provide strategic orientation while leading the overall CASCADE project components, in addition to leading project related technical assistance and implementation of activities as defined in the project proposal and work plan to meet set goals. Reporting to the External Engagement Manager, the Project Manager will monitor and manage the progress of CASCADE Project in Mozambique and oversee the operational management of Nacala office. Key responsibilities include: Leading in providing oversight, technical direction, and implementation of strategies and interventions as desired under the project as per the GAIN Project Management [...]\"",
+                "Location": [
+                    "recAixSSIc0bQhff4"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "2 days ago",
+                "Link UTM": "https:\/\/jobs.gainhealth.org\/vacancies\/900\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Global health & poverty"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Nampula, Mozambique"
+                    ],
+                    "countries": [
+                        "Mozambique"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Nampula",
+                "Location: Country": "Mozambique"
+            },
+            {
+                "id": "recigusRCHFP2kFbp",
+                "createdTime": "2022-08-18T08:57:08.000Z",
+                "slug": "senior-manager-monitoring-evaluation-a___recigusRCHFP2kFbp",
+                "Job title": "Senior Manager, Monitoring, Evaluation and Learning",
+                "Closing date": "2050-01-01",
+                "Tier": "2",
+                "Link": "https:\/\/livinggoods.applytojob.com\/apply\/cim3JIPROa\/Senior-Manager-Monitoring-Evaluation-Learning-MEL",
+                "Role type": "Operations",
+                "Hiring organisation ID": "LivingGoods",
+                "Date listed": "2022\/08\/19 02:00",
+                "Experience requirements": "5+ years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"Reporting into: Global Director, Performance, Evidence, and Insights. Purpose of role: The position is responsible for leading our Monitoring, Evaluation & Learning (MEL) efforts across the organisation to ensure LG and its partners deepen impact, strengthen programs, continuously learn and improve, and share out insights and evidence. The Global MEL Sr. Manager will create systems and tools to strengthen MEL approaches across the organisation and with partners, provide technical support to country teams, and lead a portfolio of MEL projects. The Global MEL Sr. Manager will strengthen a coordinated organisation-wide MEL system, facilitate the design, set-up, and implementation of standard MEL processes in close collaboration with country MEL teams, and ensure that data and analysis are used to make [...]\"",
+                "Location": [
+                    "recBn52lNIwaIZ2bB"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "2 days ago",
+                "Link UTM": "https:\/\/livinggoods.applytojob.com\/apply\/cim3JIPROa\/Senior-Manager-Monitoring-Evaluation-Learning-MEL?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations",
+                    "Manager"
+                ],
+                "Role type 2": "Manager",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Global health & poverty"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Various cities, Various countries"
+                    ],
+                    "countries": [
+                        "Various countries"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Various cities",
+                "Location: Country": "Various countries"
+            },
+            {
+                "id": "reckNCDFY8Ak0McNm",
+                "createdTime": "2022-08-18T06:55:28.000Z",
+                "slug": "data-analyst___reckNCDFY8Ak0McNm",
+                "Job title": "Data Analyst",
+                "Closing date": "2022-08-31",
+                "Tier": "2",
+                "Link": "https:\/\/malariaconsortium.current-vacancies.com\/Jobs\/Advert\/2784266?cid=2061&t=Data-Analyst",
+                "Role type": "Operations",
+                "Hiring organisation ID": "Malaria Consortium",
+                "Date listed": "2022\/08\/19 02:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Master's degree",
+                "Show for any requirement filter": "",
+                "Job description": "\"The main purpose of the role is to analyse and interpret quantitative monitoring and evaluation (M&E) and research data generated across Malaria Consortium\u2019s SMC programme. The Data Analyst is responsible for analysing and interpreting data in support of the SMC programme\u2019s efforts to generate robust high-quality evidence of performance and impact, and to use this evidence to inform improvements. The role contributes to shaping the SMC programme\u2019s M&E and research agenda, as well as implementing relevant frameworks and strategies. It works closely with M&E and research colleagues at country and programme level to ensure high quality of programme outputs and build capacity across the SMC team. Reporting to: Senior Epidemiologist. Key working relationships: Senior Epidemiologist. Research Advisor. Results [...]\"",
+                "Location": [
+                    "rec1epK4xfHpacNHs"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "2 days ago",
+                "Link UTM": "https:\/\/malariaconsortium.current-vacancies.com\/Jobs\/Advert\/2784266?cid=2061&t=Data-Analyst&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Global health & poverty"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "London, UK"
+                    ],
+                    "countries": [
+                        "UK"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "London",
+                "Location: Country": "UK"
+            },
+            {
+                "id": "rechGUywzVcZWylba",
+                "createdTime": "2022-08-17T07:22:13.000Z",
+                "slug": "coordinator-dietary-guidelines-initiati___rechGUywzVcZWylba",
+                "Job title": "Coordinator, Dietary Guidelines Initiative",
+                "Closing date": "2022-09-11",
+                "Tier": "2",
+                "Link": "https:\/\/proveg.jobs.personio.de\/job\/788125?display=en",
+                "Role type": "Operations",
+                "Hiring organisation ID": "ProVeg International",
+                "Date listed": "2022\/08\/19 02:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"We are looking for a Project Coordinator for our contribution to the Dietary Guidelines Initiative. The Project Coordinator will be working closely with several internal stakeholders such as the Research, Communications and Policy teams as well as our ProVeg countries and our external partner organisations to ensure that all project requirements, deadlines, and schedules are on track. Reports to: Project Lead Dietary Guidelines\/ Senior Nutrition and Health Specialist. Responsibilities: Coordinating with cross-discipline team members (internally) and with external stakeholders to make sure that all parties are on track with project requirements, deadlines, and schedules. Growing the supporter and endorser network of the initiative through bespoke outreach. Meeting with project team members to identify and resolve issues. Submitting project [...]\"",
+                "Location": [
+                    "rectprDqgcPMYinrv"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "2 days ago",
+                "Link UTM": "https:\/\/proveg.jobs.personio.de\/job\/788125?display=en&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Factory farming"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Remote"
+                    ],
+                    "countries": [
+                        "Remote"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Remote",
+                "Location: Country": "Remote"
+            },
+            {
+                "id": "recxRayjOwJbnfkX3",
+                "createdTime": "2022-08-19T08:03:38.000Z",
+                "slug": "regulatory-and-legislative-fellow___recxRayjOwJbnfkX3",
+                "Job title": "Regulatory and Legislative Fellow",
+                "Closing date": "2050-01-01",
+                "Tier": "2",
+                "Link": "https:\/\/gfi.org\/job\/?gh_jid=6336274002",
+                "Role type": "Other",
+                "Hiring organisation ID": "The Good Food Institute",
+                "Date listed": "2022\/08\/19 02:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"How You Will Make a Difference As a fellow, you will have the opportunity to advance GFI\u2019s mission by conducting research on timely regulatory and legislative issues facing the alternative protein industry and producing high-quality research memoranda that will support the Policy Team\u2019s work. The Regulatory and Legislative Fall Fellow will be responsible for the following: Conducting legal and policy research related to the regulation of alternative proteins. Conducting policy research related to state funding opportunities for alternative protein research. Producing clear legal analysis. Drafting research memoranda on topics related to the regulation of alternative proteins and state funding for alternative protein research. Attending internal and external meetings, workshops, and webinars as applicable. Performing [...]\"",
+                "Location": [
+                    "rech3eUZA9ja7t5hF",
+                    "rectprDqgcPMYinrv"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "2 days ago",
+                "Link UTM": "https:\/\/gfi.org\/job\/?gh_jid=6336274002&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Other",
+                    "Policy"
+                ],
+                "Role type 2": "Policy",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Factory farming"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Washington, DC metro area",
+                        "Remote"
+                    ],
+                    "countries": [
+                        "USA",
+                        "Remote"
+                    ]
+                },
+                "Additional Location: City": "Remote",
+                "Additional Location: Country": "Remote",
+                "Location: City": "Washington, DC metro area",
+                "Location: Country": "USA"
+            },
+            {
+                "id": "recNPOLJePb84n9lo",
+                "createdTime": "2022-08-19T08:22:47.000Z",
+                "slug": "lead-research-scientist-neonatal-and-ch___recNPOLJePb84n9lo",
+                "Job title": "Lead Research Scientist, Neonatal and Child Health",
+                "Closing date": "2050-01-01",
+                "Tier": "2",
+                "Link": "https:\/\/www.healthdata.org\/job-posting\/lead-research-scientist-neonatal-and-child-health",
+                "Role type": "Research",
+                "Hiring organisation ID": "University of Washington, Institute for Health Metrics and Evaluation",
+                "Date listed": "2022\/08\/19 02:00",
+                "Experience requirements": "5+ years of experience",
+                "Degree requirements": "Doctoral degree",
+                "Show for any requirement filter": "",
+                "Job description": "\"IHME has an excellent opportunity for a Lead Research Scientist in Neonatal and Child Health. As a Lead Research Scientist, you will co-lead a growing dynamic research team focused on multiple topics related to maternal, perinatal, and child health including birth defects, prematurity and fetal growth restriction, neonatal encephalopathy, sepsis, cerebral palsy, hemolytic disease, anemia and blood disorders, child growth failure, maternal care coverage, and oral disorders. You will develop and lead execution of research strategy; establish deadlines, deliverables, and resources; and provide methodological advice, interpretation, statistical analysis, and visualisation of research area to meet IHME\u2019s objectives. Responsibilities: Lead a research project and\/or research team in defining, executing, and managing analytic plans; developing [...]\"",
+                "Location": [
+                    "recSz49tNdu1lVQzl",
+                    "rech3eUZA9ja7t5hF",
+                    "rectprDqgcPMYinrv"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "2 days ago",
+                "Link UTM": "https:\/\/www.healthdata.org\/job-posting\/lead-research-scientist-neonatal-and-child-health?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Research"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Global health & poverty"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Seattle metro area",
+                        "Washington, DC metro area",
+                        "Remote"
+                    ],
+                    "countries": [
+                        "USA",
+                        "USA",
+                        "Remote"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Seattle metro area",
+                "Location: Country": "USA"
+            },
+            {
+                "id": "rec8FOvxocwPD5Fto",
+                "createdTime": "2022-08-18T07:29:13.000Z",
+                "slug": "senior-strategy-officer-chemistry-manu___rec8FOvxocwPD5Fto",
+                "Job title": "Senior Strategy Officer, Chemistry, Manufacturing and Controls",
+                "Closing date": "2050-01-01",
+                "Tier": "2",
+                "Link": "https:\/\/gatesfoundation.wd1.myworkdayjobs.com\/en-US\/Gates\/job\/Seattle-WA\/Senior-Strategy-Officer---Chemistry--Manufacturing---Controls_B017802-1",
+                "Role type": "Operations",
+                "Hiring organisation ID": "Bill and Melinda Gates Foundation",
+                "Date listed": "2022\/08\/19 00:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Master's degree",
+                "Show for any requirement filter": "",
+                "Job description": "\"Position Summary & Core Responsibilities: As a key member of the Chemistry, Manufacturing and Controls Domain, the Senior Strategy Officer, is accountable for supporting the execution and management of key initiative areas. You will partner closely with the Deputy Director (DD), Vaccine Development CMC and Deputy Director, Strategy Planning and Management (DDSPM) to contribute to the continued development of the team\u2019s strategic vision including participating in the setting of the overall strategy and goals for the group. This person will be a member of the business team and report to our DDSPM. Key responsibilities will include: CMC Strategic Support: Partner with Deputy Director (DD), Vaccine Development & Surveillance (VD&S) CMC, as well as other CMC team members and experts across subject areas, to drive [...]\"",
+                "Location": [
+                    "recSz49tNdu1lVQzl"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "3 days ago",
+                "Link UTM": "https:\/\/gatesfoundation.wd1.myworkdayjobs.com\/en-US\/Gates\/job\/Seattle-WA\/Senior-Strategy-Officer---Chemistry--Manufacturing---Controls_B017802-1?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations",
+                    "Other"
+                ],
+                "Role type 2": "Other",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Global health & poverty"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Seattle metro area"
+                    ],
+                    "countries": [
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Seattle metro area",
+                "Location: Country": "USA"
+            },
+            {
+                "id": "recAAdDO8AAXHhNl0",
+                "createdTime": "2022-08-19T05:27:33.000Z",
+                "slug": "program-assistant-nigeria-country-offic___recAAdDO8AAXHhNl0",
+                "Job title": "Program Assistant, Nigeria Country Office",
+                "Closing date": "2050-01-01",
+                "Tier": "2",
+                "Link": "https:\/\/gatesfoundation.wd1.myworkdayjobs.com\/en-US\/Gates\/job\/Abuja-Nigeria\/Program-Assistant--Nigeria-Country-Office_B017803-1",
+                "Role type": "Operations",
+                "Hiring organisation ID": "Bill and Melinda Gates Foundation",
+                "Date listed": "2022\/08\/19 00:00",
+                "Experience requirements": "3-4 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"The Program Assistant is an integral member of the team, ensuring that all administrative and scheduling functions are completed in a timely manner allowing for highly productive environments! The Program Assistant will provide a wide and varied range of organisational and administrative support to the leaders and staff in the Nigeria Country Office while assisting with project coordination and collaborating with a small team of other assistants to support the overall work and ensure the smooth running of the Nigeria office based in Abuja. Core Responsibilities: Schedule numerous appointments and meetings while managing complex calendars for multiple people, and making travel arrangements. Proactively review upcoming weeks\/months and support principals with planning, recognising potential bottlenecks and making [...]\"",
+                "Location": [
+                    "rec3zWBC64QisQgBD"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "3 days ago",
+                "Link UTM": "https:\/\/gatesfoundation.wd1.myworkdayjobs.com\/en-US\/Gates\/job\/Abuja-Nigeria\/Program-Assistant--Nigeria-Country-Office_B017803-1?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Global health & poverty"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Abuja, Nigeria"
+                    ],
+                    "countries": [
+                        "Nigeria"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Abuja",
+                "Location: Country": "Nigeria"
+            },
+            {
+                "id": "recZ8iTrNEa7XeYTC",
+                "createdTime": "2022-08-18T06:49:19.000Z",
+                "slug": "operations-manager___recZ8iTrNEa7XeYTC",
+                "Job title": "Operations Manager",
+                "Closing date": "2022-08-31",
+                "Tier": "1",
+                "Link": "https:\/\/ceealar.org\/job-operations-manager\/",
+                "Role type": "Operations",
+                "Hiring organisation ID": "Centre For Enabling EA Learning & Research",
+                "Date listed": "2022\/08\/19 00:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"In your role, you will be focusing on building maintenance management, with the following responsibilities: Ensuring the hotel is a welcoming, safe and comfortable environment. Monitoring and recording building maintenance. Calling and overseeing contractors and inspecting completed jobs for repairs and improvements (or doing them yourself when possible). Overseeing safety systems (fire safety, first aid procedures, etc.) and ensuring adherence to all regulations. Team building and presenting the place to new guests\nVegan cooking (twice a week on average). Working with the other managers to ensure that all tasks have someone taking responsibility for them, and none fall between the cracks. Covering holidays for other staff (food\/inventory management, email\/mail management), and ensuring your own holidays are covered. [...]\"",
+                "Location": [
+                    "recp4Lsk0LapFbuyz"
+                ],
+                "Vacancy CTA": "<h5>Interested? Speak with our team.<\/h5>\n\n<p>If you have a good shot at getting any of these positions, we\u2019d be keen to discuss your next career decision in-person.<\/p>\n\n<p class=\"margin-top-smaller\"><a href=\"\/advising\/?int_campaign=job_board\" class=\"btn btn-default btn-small\">Speak with us<\/a><\/p>",
+                "Date listed human friendly": "3 days ago",
+                "Link UTM": "https:\/\/ceealar.org\/job-operations-manager\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Building effective altruism"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Blackpool, UK"
+                    ],
+                    "countries": [
+                        "UK"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Blackpool",
+                "Location: Country": "UK"
+            },
+            {
+                "id": "recMWSfr8gVxRkTIX",
+                "createdTime": "2022-08-12T09:53:16.000Z",
+                "slug": "launch-lead___recMWSfr8gVxRkTIX",
+                "Job title": "Launch Lead",
+                "Closing date": "2050-01-01",
+                "Tier": "1",
+                "Link": "https:\/\/jobs.lever.co\/convergentresearch\/6135ac94-c03c-42ce-9bb2-e1b58da45fbf",
+                "Role type": "Operations",
+                "Hiring organisation ID": "Convergent Research",
+                "Date listed": "2022\/08\/19 00:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"The Launch Lead will take a critical role in helping our existing FROs with their processes, learning from their launch experience and applying the lessons learned to our upcoming launches. You will: Be responsible for our relationship with new FROs. You will be their main contact person and support in building an impactful and smoothly operating organisation. Create systems and processes that make it easy to launch new FROs - for us but especially for the FROs themselves. You will interview relevant stakeholders, write comprehensive guides and help the FROs keep track of the multitude of tasks that need to get done when launching a new organisation. Be a coach. Our FROs are fast-growing, and the people involved come from a variety of professional backgrounds. You will learn quickly what skills the team needs, what they or you [...]\"",
+                "Location": [
+                    "rectprDqgcPMYinrv",
+                    "rec3IxfkeqbLdutxS"
+                ],
+                "Vacancy CTA": "<h5>Interested? Speak with our team.<\/h5>\n\n<p>If you have a good shot at getting any of these positions, we\u2019d be keen to discuss your next career decision in-person.<\/p>\n\n<p class=\"margin-top-smaller\"><a href=\"\/advising\/?int_campaign=job_board\" class=\"btn btn-default btn-small\">Speak with us<\/a><\/p>",
+                "Date listed human friendly": "3 days ago",
+                "Link UTM": "https:\/\/jobs.lever.co\/convergentresearch\/6135ac94-c03c-42ce-9bb2-e1b58da45fbf?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations",
+                    "Other"
+                ],
+                "Role type 2": "Other",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Biosecurity & pandemic preparedness",
+                    "Other (top recommended)"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Remote",
+                        "Boston metro area"
+                    ],
+                    "countries": [
+                        "Remote",
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "Boston metro area",
+                "Additional Location: Country": "USA",
+                "Location: City": "Remote",
+                "Location: Country": "Remote"
+            },
+            {
+                "id": "rec59Dk9Xgwlg5LVG",
+                "createdTime": "2022-08-17T07:02:35.000Z",
+                "slug": "cybersecurity-fellow___rec59Dk9Xgwlg5LVG",
+                "Job title": "Cybersecurity Fellow",
+                "Closing date": "2022-09-16",
+                "Tier": "1",
+                "Link": "https:\/\/newamerica.smapply.org\/prog\/sharethemicincyber\/",
+                "Role type": "Engineering",
+                "Hiring organisation ID": "New America Foundation",
+                "Date listed": "2022\/08\/19 00:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"The #STMIC Fellowship, hosted in partnership between #ShareTheMicInCyber and New America, is focused on providing a platform for under-represented mid-career cybersecurity professionals or those transitioning into the cyber field, and presenting opportunities for professional development to further their careers in the field.  It aims to support new independent research and enhancing projects while also providing opportunities for professional development to further Fellows\u2019 careers in cybersecurity.\"",
+                "Location": [
+                    "rech3eUZA9ja7t5hF"
+                ],
+                "Vacancy CTA": "<h5>Interested? Speak with our team.<\/h5>\n\n<p>If you have a good shot at getting any of these positions, we\u2019d be keen to discuss your next career decision in-person.<\/p>\n\n<p class=\"margin-top-smaller\"><a href=\"\/advising\/?int_campaign=job_board\" class=\"btn btn-default btn-small\">Speak with us<\/a><\/p>",
+                "Date listed human friendly": "3 days ago",
+                "Link UTM": "https:\/\/newamerica.smapply.org\/prog\/sharethemicincyber\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Engineering",
+                    "Other",
+                    "Research"
+                ],
+                "Role type 2": "Other",
+                "Role type 3": "Research",
+                "Problem areas": [
+                    "Other (top recommended)"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Washington, DC metro area"
+                    ],
+                    "countries": [
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Washington, DC metro area",
+                "Location: Country": "USA"
+            },
+            {
+                "id": "rec5CpqLqwVuC8eYs",
+                "createdTime": "2022-08-17T09:28:22.000Z",
+                "slug": "research-assistant___rec5CpqLqwVuC8eYs",
+                "Job title": "Research Assistant",
+                "Closing date": "2050-01-01",
+                "Tier": "1",
+                "Link": "https:\/\/apply.interfolio.com\/110643",
+                "Role type": "Research",
+                "Hiring organisation ID": "New York University, Leonard N. Stern School of Business",
+                "Date listed": "2022\/08\/19 00:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"The Research Scientist will work primarily with Professor Joshua Lewis at NYU Stern\u2019s Marketing Department. At least 90% of time will be spent on research with the remaining time spent on other assigned responsibilities. The topics include: Judgments and decisions about catastrophic risk from climate, artificial intelligence, pandemics, etc. (existential risk). Biases that prevent choosing the most effective options for improving wellbeing (effective altruism). Decisions that will affect others who are distant in terms of demographics, culture, space, time, or species (moral circle). Responsibilities include (but not limited to): Literature research, summaries. Conducting and reporting analyses for survey experiments. Setting up studies on Qualtrics. Helping to review and improve book chapters and papers. Writing up study results. [...]\"",
+                "Location": [
+                    "recwQyL9w51Yu01ag"
+                ],
+                "Vacancy CTA": "<h5>Interested? Speak with our team.<\/h5>\n\n<p>If you have a good shot at getting any of these positions, we\u2019d be keen to discuss your next career decision in-person.<\/p>\n\n<p class=\"margin-top-smaller\"><a href=\"\/advising\/?int_campaign=job_board\" class=\"btn btn-default btn-small\">Speak with us<\/a><\/p>",
+                "Date listed human friendly": "3 days ago",
+                "Link UTM": "https:\/\/apply.interfolio.com\/110643?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Research",
+                    "Assistant"
+                ],
+                "Role type 2": "Assistant",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Building effective altruism"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "New York, NY"
+                    ],
+                    "countries": [
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "New York, NY",
+                "Location: Country": "USA"
+            },
+            {
+                "id": "recmQiCDUBo13YqXU",
+                "createdTime": "2022-08-12T07:06:49.000Z",
+                "slug": "visual-communications-specialist___recmQiCDUBo13YqXU",
+                "Job title": "Visual Communications Specialist",
+                "Closing date": "2022-09-16",
+                "Tier": "1",
+                "Link": "https:\/\/cset.georgetown.edu\/job\/visual-communications-specialist\/",
+                "Role type": "Outreach",
+                "Hiring organisation ID": "Georgetown University, Center for Security and Emerging Technology",
+                "Date listed": "2022\/08\/17 00:00",
+                "Experience requirements": "3-4 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"The Center for Security and Emerging Technology (CSET) seeks applications for a new Visual Communications Specialist opportunity. The Visual Communications Specialist supports the work of the External Affairs Team to raise the profile of CSET researchers and our research through a variety of outreach activities. Work Interactions: Reporting to CSET\u2019s Director of External Affairs, the Visual Communications Specialist is responsible for assisting with CSET\u2019s externally facing activities and communications with a focus on graphics, multimedia, and publications. Major responsibilities include but are not limited to: Designing graphics (.ai, .png, .jpg, .svg)  for use on social media, on CSET\u2019s website, in email campaigns, and in research publications. Ensuring visual consistency through quality control of [...]\"",
+                "Location": [
+                    "rectprDqgcPMYinrv",
+                    "rech3eUZA9ja7t5hF"
+                ],
+                "Vacancy CTA": "<h5>Interested? Speak with our team.<\/h5>\n\n<p>If you have a good shot at getting any of these positions, we\u2019d be keen to discuss your next career decision in-person.<\/p>\n\n<p class=\"margin-top-smaller\"><a href=\"\/advising\/?int_campaign=job_board\" class=\"btn btn-default btn-small\">Speak with us<\/a><\/p>",
+                "Date listed human friendly": "5 days ago",
+                "Link UTM": "https:\/\/cset.georgetown.edu\/job\/visual-communications-specialist\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Outreach"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "AI safety & policy"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Remote",
+                        "Washington, DC metro area"
+                    ],
+                    "countries": [
+                        "Remote",
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "Washington, DC metro area",
+                "Additional Location: Country": "USA",
+                "Location: City": "Remote",
+                "Location: Country": "Remote"
+            },
+            {
+                "id": "recrYk2PrhWls4XIN",
+                "createdTime": "2022-08-12T07:13:36.000Z",
+                "slug": "operational-specialist___recrYk2PrhWls4XIN",
+                "Job title": "Operational Specialist",
+                "Closing date": "2050-01-01",
+                "Tier": "1",
+                "Link": "https:\/\/careers-iqt.icims.com\/jobs\/1268\/operational-specialist\/job",
+                "Role type": "Operations",
+                "Hiring organisation ID": "In-Q-Tel",
+                "Date listed": "2022\/08\/17 00:00",
+                "Experience requirements": "3-4 years of experience",
+                "Degree requirements": "Undergraduate degree or less",
+                "Show for any requirement filter": "",
+                "Job description": "\"Job Overview: Seeking someone who possesses project and administrative management skills to support multi-faceted programs aimed at accelerating and maximising the impact of commercialising technology. This person will manage the deliverables, expectations, and relationships between In-Q-Tel (IQT), IQT Emerge and its program partners. Responsibilities: Assist Commercialisation Advisers (subject matter experts) in assessing government technologies from due diligence through execution, tracking and monitoring performance and metrics though program milestones. Develop program documentations and technical content, involving all relevant stakeholders and ensuring technical feasibility. Assist and organise technical reviews, market research, stakeholder workshops, etc. Prepare agendas, read-ahead [...]\"",
+                "Location": [
+                    "rech3eUZA9ja7t5hF"
+                ],
+                "Vacancy CTA": "<h5>Interested? Speak with our team.<\/h5>\n\n<p>If you have a good shot at getting any of these positions, we\u2019d be keen to discuss your next career decision in-person.<\/p>\n\n<p class=\"margin-top-smaller\"><a href=\"\/advising\/?int_campaign=job_board\" class=\"btn btn-default btn-small\">Speak with us<\/a><\/p>",
+                "Date listed human friendly": "5 days ago",
+                "Link UTM": "https:\/\/careers-iqt.icims.com\/jobs\/1268\/operational-specialist\/job?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Operations"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "International security & cooperation"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Washington, DC metro area"
+                    ],
+                    "countries": [
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Washington, DC metro area",
+                "Location: Country": "USA"
+            },
+            {
+                "id": "recfN3arFQSYPVUlg",
+                "createdTime": "2022-08-12T08:26:59.000Z",
+                "slug": "policy-analyst-behavioral-and-policy-sc___recfN3arFQSYPVUlg",
+                "Job title": "Policy Analyst, Behavioral and Policy Sciences",
+                "Closing date": "2050-01-01",
+                "Tier": "2",
+                "Link": "https:\/\/rand.wd5.myworkdayjobs.com\/en-US\/External_Career_Site\/job\/Santa-Monica-CA-Greater-Los-Angeles-Area\/Policy-Analyst--Behavioral-and-Policy-Sciences_R1267",
+                "Role type": "Policy",
+                "Hiring organisation ID": "Rand Corporation",
+                "Date listed": "2022\/08\/17 00:00",
+                "Experience requirements": "0-2 years of experience",
+                "Degree requirements": "Master's degree",
+                "Show for any requirement filter": "",
+                "Job description": "\"RAND Policy Analysts work closely with project leaders to provide research support and project management on a range of policy topics, including topics related to health and healthcare, behavioral health, substance use\/abuse, public health preparedness, military manpower, personnel, and training, K-12 and higher education, public safety, and national security. Duties may include conducting literature reviews, job analyses, interviews and focus groups, supporting quantitative and qualitative data analysis, and preparation of draft documents and presentations. Tasks also include overall project management, developing and maintaining budgets, establishing timelines, tracking project deliverables, keeping the project and its members on task and schedule, and working with other groups within the organisation to ensure [...]\"",
+                "Location": [
+                    "rect8BMTbuIqO5CnA",
+                    "rech3eUZA9ja7t5hF",
+                    "rec4Eur1ZLDBjOIoh"
+                ],
+                "Vacancy CTA": null,
+                "Date listed human friendly": "5 days ago",
+                "Link UTM": "https:\/\/rand.wd5.myworkdayjobs.com\/en-US\/External_Career_Site\/job\/Santa-Monica-CA-Greater-Los-Angeles-Area\/Policy-Analyst--Behavioral-and-Policy-Sciences_R1267?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "Logo": "",
+                "Role types": [
+                    "Policy"
+                ],
+                "Role type 2": "",
+                "Role type 3": "",
+                "Problem areas": [
+                    "Other (pressing)"
+                ],
+                "Locations": {
+                    "citiesAndCountries": [
+                        "Pittsburgh, PA",
+                        "Washington, DC metro area",
+                        "Los Angeles, CA"
+                    ],
+                    "countries": [
+                        "USA",
+                        "USA",
+                        "USA"
+                    ]
+                },
+                "Additional Location: City": "",
+                "Additional Location: Country": "",
+                "Location: City": "Pittsburgh, PA",
+                "Location: Country": "USA"
+            }
+        ],
+        "organisations": {
+            "Global Alliance for Improved Nutrition": {
+                "name": "Global Alliance for Improved Nutrition",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/global-alliance-for-improved-nutrition-160x160.jpg",
+                "description": "The Global Alliance for Improved Nutrition is a Swiss-based foundation launched at the United Nations in 2002 to tackle the human suffering caused by malnutrition. Working with governments, NGOs, the private sector, and Academia, it aims to transform food systems so that they deliver more nutritious foods for all people, especially the most vulnerable. By understanding that there is no \"one-size-fits-all\" way of dealing with the problem, they develop alliances and build tailored programmes using a variety of models and approaches. They have offices in countries with high levels of malnutrition: Bangladesh, Ethiopia, India, Indonesia, Kenya, Mozambique, Nigeria, Pakistan, and Tanzania. To support work in those countries, they have representative offices in Denmark, the Netherlands, the United Kingdom, and the United States.",
+                "homepage": "https:\/\/gainhealth.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.gainhealth.org\/vacancies\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#results"
+            },
+            "LivingGoods": {
+                "name": "LivingGoods",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Living-Goods-160x160.png",
+                "description": "Living Goods helps governments ensure that community health workers (CHW) can deliver high-quality services. They do this via data-driven performance management, incentive systems, regular in-service training, and supportive supervision that empowers local CHWs who to better deliver on-demand life-saving care, including treating sick children, counseling women on modern family planning choices, and delivering high-impact medicines and health products. Without attempting to replace licensed doctors and nurses, CHWs help relieve the burden on hospitals and facilities in resource-strapped areas by reaching more people before their health conditions turn life-threatening. Effectively utilized CHWs can prevent more than 3 million child deaths annually while also providing a 1:10 return on investment.",
+                "homepage": "https:\/\/livinggoods.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/livinggoods.applytojob.com\/apply\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Malaria Consortium": {
+                "name": "Malaria Consortium",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Malaria-Consortium-160x160.png",
+                "description": "Malaria Consortium is one of the world\u2019s leading non-profit organisations specialising in the prevention, control, and treatment of communicable diseases among vulnerable populations. They focus on Malaria, NTDs, Dengue, Pneumonia, Diarrhoea, and Malnutrition in 12 countries across Africa and Southeast Asia, creating evidence-based solutions that have a positive impact on the wider health system and economy. They partner with all levels of government to (1) design and implement cutting edge research and evaluation, (2) scale up and deliver sustainable programmes, (3) provide technical assistance and consulting services that shape national and international health policies and systems, and (4) ensure that their experience and findings are effectively communicated and contribute to improving the access to and quality of healthcare. ",
+                "homepage": "https:\/\/www.malariaconsortium.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/malariaconsortium.current-vacancies.com\/Careers\/Malaria%20Consortium%20vacancy%20search%20page-2061?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "ProVeg International": {
+                "name": "ProVeg International",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/ProVeg_Logo_1500x1500-1-160x160.png",
+                "description": "ProVeg is a leading international food awareness organisation working across four continents to substantially reduce the global consumption of animals. They encourage people to choose tasty and healthy foods that are good for all humans, animals, and the planet, and they collaborate with governments, public institutions, and the food industry to improve the taste, ease, and accessibility of plant-based food. Their projects include awareness campaigns, community building, corporate engagement, and political outreach.",
+                "homepage": "https:\/\/proveg.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/proveg.com\/job-listing\/?language=en&type=permanent&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The Good Food Institute": {
+                "name": "The Good Food Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/05\/good-food-institute-160x160.png",
+                "description": "The Good Food Institute is a nonprofit that works with scientists, investors, and entrepreneurs to produce plant-based alternatives to animal products \u2014 foods that are tasty, safe to eat, and better for the planet than their meat-based counterparts. \n<br><br>\nGFI provides marketing, design, legal, business, media, and other support to a select number of early-stage companies producing plant-based products, and help the products of more established companies succeed in the marketplace by mobilizing supportive consumers to encourage their sale in stores, restaurants, and foodservice outlets. They also connect students, scientists, and entrepreneurs with opportunities in the academic and for-profit sectors, and educate grant-making institutions, corporations, and governmental bodies on plant-based meat R&D as a critical component of endeavors related to sustainability, climate change, and global health.",
+                "homepage": "https:\/\/gfi.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.gfi.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Bill and Melinda Gates Foundation": {
+                "name": "Bill and Melinda Gates Foundation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/Gates-foundation-160x160.png",
+                "description": "The Bill and Melinda Gates Foundation works to reduce inequity based on the belief that all lives have equal value. In developing countries, they focus on improving people\u2019s health and well-being, helping individuals lift themselves out of hunger and extreme poverty. In the United States, they seek to ensure that all people\u2014especially those with the fewest resources\u2014can access the opportunities they need to succeed in school and life.",
+                "homepage": "https:\/\/gatesfoundation.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/gatesfoundation.wd1.myworkdayjobs.com\/Gates?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Centre For Enabling EA Learning & Research": {
+                "name": "Centre For Enabling EA Learning & Research",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/CEEALAR-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/ceealar.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/ceealar.org\/were-hiring\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Convergent Research": {
+                "name": "Convergent Research",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/Convergent-Research-Logo-1-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.convergentresearch.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.convergentresearch.org\/get-involved?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New America Foundation": {
+                "name": "New America Foundation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/08\/New-America-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.newamerica.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.newamerica.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New York University, Leonard N. Stern School of Business": {
+                "name": "New York University, Leonard N. Stern School of Business",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/new-york-university-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.stern.nyu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.nyu.edu\/about\/careers-at-nyu\/faculty-and-researchers.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "US Government, Agency for International Development": {
+                "name": "US Government, Agency for International Development",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/02\/us-agency-for-international-development-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/usaid.gov?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.usaid.gov\/work-with-us\/careers\/vacancy-announcements?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Bipartisan Policy Center": {
+                "name": "Bipartisan Policy Center",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/03\/bipartisan-policy-center-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/bipartisanpolicy.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.bipartisanpolicy.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Brookings Institution": {
+                "name": "Brookings Institution",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/10\/Brookings-160x160.jpg",
+                "description": "The Brookings Institution is a DC-based nonprofit public policy organization that aims to conduct in-depth research that leads to new ideas for solving problems facing society at the local, national, and global level. It brings together more than 300 experts in government and academia from around the world who provide research, policy recommendations, and analysis on a full range of public policy issues.",
+                "homepage": "https:\/\/www.brookings.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers-brookings.icims.com\/jobs\/search?ss=1&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Council on Foreign Relations": {
+                "name": "Council on Foreign Relations",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/02\/council-on-foreign-relations-logo-160x160.jpg",
+                "description": "The Council on Foreign Relations is one of the most influential foreign policy think tanks in the United States.",
+                "homepage": "https:\/\/cfr.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.cfr.org\/career-opportunities\/open-positions?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Epoch": {
+                "name": "Epoch",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/Epoch-logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/epochai.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/epochai.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Founders Pledge": {
+                "name": "Founders Pledge",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/06\/founders-pledge-160x160.png",
+                "description": "Founders Pledge is an international nonprofit that encourages startup founders and investors to make a legally binding pledge to donate a portion of their personal proceeds from exit to charity. They seek to establish impactful giving as the norm, not the exception, in the startup ecosystem. Operating in the UK, the US, and Germany, they equip their community of entrepreneurs with charity research, a streamlined giving infrastructure, and a global network of experts to learn from, so that they can make strategic and informed giving choices. Their members have collectively pledged over $2 billion to high-impact charities and fulfilled over $230 million of those commitments. ",
+                "homepage": "https:\/\/founderspledge.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/founders-pledge.jobs.personio.de\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "GlassWall Syndicate": {
+                "name": "GlassWall Syndicate",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/glasswall-syndicate-1-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/glasswallsyndicate.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Malaria No More": {
+                "name": "Malaria No More",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/02\/malaria-no-more-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/malarianomore.org.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/malarianomore.org.uk\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New York University, Effective Altruism Psychology Lab": {
+                "name": "New York University, Effective Altruism Psychology Lab",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/new-york-university-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.eapsychology.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.eapsychology.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Open Philanthropy": {
+                "name": "Open Philanthropy",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/OP_Logo-scaled-1-160x160.png",
+                "description": "The Open Philanthropy Project is a grant-making and research nonprofit that identifies outstanding giving opportunities, makes grants, follows the results, and publishes their findings. Their mission is to give as effectively as possible and share their findings openly so that anyone can build on their work. Current giving areas include global health and development, scientific research, U.S. policy (primarily criminal justice reform and farm animal welfare), and global catastrophic risks (primarily biosecurity and pandemic preparedness, and potential risks from advanced artificial intelligence). Their main funders are Cari Tuna and Dustin Moskovitz, a co-founder of Facebook and Asana. \n<br><br>\n<em>Disclaimer of conflict of interest: 80,000 Hours and our parent organisation, the Centre For Effective Altruism, have received funding from the Open Philanthropy Project.<\/em>",
+                "homepage": "https:\/\/openphilanthropy.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.ashbyhq.com\/openphilanthropy?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Principles of Intelligent Behavior in Biological and Social Systems": {
+                "name": "Principles of Intelligent Behavior in Biological and Social Systems",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/01\/Principles-of-intelligent-behavior-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.pibbss.ai\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Richman Law and Policy": {
+                "name": "Richman Law and Policy",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/08\/Richman-law-and-policy-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.richmanlawpolicy.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Schmidt Futures": {
+                "name": "Schmidt Futures",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/schmidt-futures-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/schmidtfutures.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/schmidtfutures.com\/our-method\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Shrimp Welfare Project": {
+                "name": "Shrimp Welfare Project",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/05\/Shrimp-welfare-project-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.shrimpwelfareproject.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.shrimpwelfareproject.org\/work-with-us?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Suvita": {
+                "name": "Suvita",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/Suvita-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.suvita.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.suvita.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "University of Chicago, Bulletin of Atomic Scientists": {
+                "name": "University of Chicago, Bulletin of Atomic Scientists",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/Bulletin-of-the-Atomic-Scientists-160x160.jpeg",
+                "description": "The Bulletin of the Atomic Scientists believes that advances in science and technology should make life on earth better, not worse. They equip the public, policy makers, and scientists with the information needed to demand, recognize, and support public policies that reduce manmade existential threats such as nuclear war, climate change, and disruptive technologies. The Bulletin focuses its coverage on three topics: Nuclear risk, climate change, and disruptive technologies. What links them together is that these are man-made threats to our existence. ",
+                "homepage": "https:\/\/thebulletin.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/thebulletin.org\/about-us\/open-positions\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "We Animals Media": {
+                "name": "We Animals Media",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/we-animals-media-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/weanimalsmedia.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/weanimalsmedia.org\/work-with-us\/join-our-team\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Imperial College London, Schistosomiasis Control Initiative": {
+                "name": "Imperial College London, Schistosomiasis Control Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/03\/Schistosomasis-Control-Initiative-160x160.png",
+                "description": "The Schistosomiasis Control Initiative at Imperial College London is a non-profit foundation that helps governments in sub-Saharan African countries develop sustainable and highly effective programmes against parasitic worm infections.\u202f\u202fSince their foundation in 2002, they've supported the delivery of over 200 million treatments against diseases like schistosomiasis and intestinal worms, and have been consistently ranked as one of the most cost-effective non-profits in the world by the international charity evaluator GiveWell. An evidence-based approach informs their practices and decisions, and a focus on supporting governments and strengthen existing systems ensures that their work is sustainable.  ",
+                "homepage": "https:\/\/www.schistosomiasiscontrolinitiative.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.schistosomiasiscontrolinitiative.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Georgetown University, Center for Security and Emerging Technology": {
+                "name": "Georgetown University, Center for Security and Emerging Technology",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/08\/center-for-security-and-emerging-technology-160x160.png",
+                "description": "The recently-founded Center for Security and Emerging Technology at Georgetown\u2019s Walsh School of Foreign Service is a research organization that aims to prepare a generation of policymakers, analysts, and diplomats to address the challenges and opportunities of emerging technologies. Their focus is on studying the security impacts of these technologies, supporting academic work in security and technology studies, and delivering relevant nonpartisan analysis to the policy community. During its first two years, CSET plans to concentrate on the effects of progress in artificial intelligence and advanced computing.",
+                "homepage": "https:\/\/cset.georgetown.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/cset.georgetown.edu\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "In-Q-Tel": {
+                "name": "In-Q-Tel",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/07\/in-q-tel-160x160.jpeg",
+                "description": "IQT invests in commercially-focused startups to identify and adapt cutting-edge technology products that can be modified, tested, and delivered quickly and cost effectively. Focusing on technologies critical to US National Security, it identifies venture capital investment opportunities, works with startups to deliver new capabilities, and serves as an advisor to government partners.",
+                "homepage": "https:\/\/www.iqt.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers-iqt.icims.com\/jobs\/search?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Rand Corporation": {
+                "name": "Rand Corporation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/11\/Rand-corporation-160x160.png",
+                "description": "The RAND Corporation is a nonprofit, nonpartisan research organization that develops solutions to public policy challenges to help make communities throughout the world safer, healthier, and more prosperous. They deliver fact-based, actionable policy solutions grounded in rigorous analysis. ",
+                "homepage": "https:\/\/rand.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/rand.wd5.myworkdayjobs.com\/External_Career_Site\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "UK Government, House of Commons": {
+                "name": "UK Government, House of Commons",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/01\/UK-house-of-commons-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.parliament.uk\/business\/commons\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.civilservicejobs.service.gov.uk\/csr\/index.cgi?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            }
+        }
+    }
+}
