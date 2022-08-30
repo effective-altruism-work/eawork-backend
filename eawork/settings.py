@@ -262,6 +262,11 @@ ADMIN_REORDER = [
         ],
     },
     "eawork",
+    {
+        "app": "eawork",
+        "label": "Admin",
+        "models": ["sites.Site", "auditlog.LogEntry"],
+    },
 ]
 
 LOGGING = {

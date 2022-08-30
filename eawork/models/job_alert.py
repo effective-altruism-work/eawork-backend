@@ -1,5 +1,7 @@
 from secrets import token_hex
 
+from auditlog.models import AuditlogHistoryField
+from auditlog.registry import auditlog
 from django.contrib.postgres.fields import HStoreField
 from django.db import models
 from django.db.models import JSONField
@@ -16,5 +18,10 @@ class JobAlert(TimeStampedModel):
     is_active = models.BooleanField(default=True)
     unsubscribe_token = models.CharField(default=token_hex, max_length=10240)
 
+    history = AuditlogHistoryField()
+
     def __str__(self):
         return self.email
+
+
+auditlog.register(JobAlert)
