@@ -720,6 +720,13 @@
                 "homepage": "https:\/\/gfi.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
                 "career_page": "https:\/\/www.gfi.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
             },
+            "University of Washington, Institute for Health Metrics and Evaluation": {
+                "name": "University of Washington, Institute for Health Metrics and Evaluation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/08\/Institute-for-Health-Metrics-and-Evaluation-160x160.png",
+                "description": "",
+                "homepage": "http:\/\/www.healthdata.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.healthdata.org\/get-involved\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
             "Bill and Melinda Gates Foundation": {
                 "name": "Bill and Melinda Gates Foundation",
                 "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/Gates-foundation-160x160.png",
@@ -754,6 +761,27 @@
                 "description": "",
                 "homepage": "https:\/\/www.stern.nyu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
                 "career_page": "https:\/\/www.nyu.edu\/about\/careers-at-nyu\/faculty-and-researchers.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The Humane Society": {
+                "name": "The Humane Society",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/humane-society-160x160.jpg",
+                "description": "The Humane Society International works around the globe to promote the human-animal bond and confront cruelty to animals in all of its forms. They help protect street animals, support farm animal welfare, stop wildlife abuse, eliminate painful animal testing, and respond to natural disasters. Their farm animal-focused program works with governments, corporations, producers, and institutions to enact reform, end intensive confinement farming (like battery cages and gestation crates), and promote alternatives to inhumane practices. Their efforts have contributed to the commitment of over 25 food companies', like Hilton Worldwide and their 2,000+ restaurants, to cage-free supply chain and sourcing policies, and their Responsible Minimum Standards for farmed animals were added to the Principles of Responsible Banking Guide published by the UN Environment Program's Finance Initiative in 2019. ",
+                "homepage": "https:\/\/www.hsi.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.hsi.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "UK Government, GCHQ": {
+                "name": "UK Government, GCHQ",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/06\/UK-government-communication-headquarters-160x160.jpg",
+                "description": "GCHQ is a world-leading intelligence, cyber and security agency with a mission to keep the UK safe. Its priorities are set by the National Security Strategy and the decisions of the National Security Council, chaired by the Prime Minister, as well as the Joint Intelligence Committee. ",
+                "homepage": "https:\/\/www.gchq.gov.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/recruitmentservices.applicationtrack.com\/vx\/lang-en-GB\/mobile-0\/appcentre-3\/brand-2\/xf-12992c55d881\/candidate\/jobboard\/vacancy\/3?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "United Nations, UN Foundation": {
+                "name": "United Nations, UN Foundation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/04\/united-nations-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.un.org\/en\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.un.org\/lbw\/home.aspx?viewtype=SJ&vacancy=All&lang=en-US&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
             },
             "US Government, Agency for International Development": {
                 "name": "US Government, Agency for International Development",
@@ -881,6 +909,90 @@
                 "homepage": "https:\/\/www.schistosomiasiscontrolinitiative.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
                 "career_page": "https:\/\/www.schistosomiasiscontrolinitiative.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
             },
+            "Centre for Effective Altruism": {
+                "name": "Centre for Effective Altruism",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2015\/08\/cea-logo-150x150.png",
+                "description": "The Centre for Effective Altruism helps grow, support, and coordinate the effective altruism movement and community. Effective altruism is about using evidence and reason to figure out how to benefit others as much as possible, and taking action on that basis. CEA's projects include running Effective Altruism Funds, a group of philanthropic funds in specific cause areas managed by experts, EA Global, a set of conferences and other smaller events for the effective altruism community, and Giving What We Can, which encourages people to pledge 10% of their income to the most effective organizations they can find.\n<br><br>\n<i>N.B. 80,000 Hours is fiscally sponsored by the Centre for Effective Altruism<\/i>",
+                "homepage": "https:\/\/centreforeffectivealtruism.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.centreforeffectivealtruism.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "High Impact Medicine": {
+                "name": "High Impact Medicine",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/High-impact-medicine-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.highimpactmedicine.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Johns Hopkins University, Krieger School of Arts and Sciences": {
+                "name": "Johns Hopkins University, Krieger School of Arts and Sciences",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/Johns-hopkins-university-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/krieger.jhu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.jhu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Sandia National Laboratories": {
+                "name": "Sandia National Laboratories",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/sandia-national-laboratories-1-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.sandia.gov\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Taptap Send": {
+                "name": "Taptap Send",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/taptap-send-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.taptapsend.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.lever.co\/taptapsend?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "UK Government, Information Commissioner's Office": {
+                "name": "UK Government, Information Commissioner's Office",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/10\/UK-gov-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/ico.org.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/ico.org.uk\/about-the-ico\/jobs\/vacancies\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "UK Government, Office for Science": {
+                "name": "UK Government, Office for Science",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/10\/UK-gov-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.gov.uk\/government\/organisations\/government-office-for-science?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.civilservicejobs.service.gov.uk\/csr\/index.cgi?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Center for a New American Security": {
+                "name": "Center for a New American Security",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2017\/10\/centre-for-a-new-american-security-150x150.png",
+                "description": "The Center for a New American Security is a bipartisan think tank working on national security and defence policy. Their technology and national security program looks at how new technologies such as artificial intelligence affect national security. One of their adjunct fellows co-authored <a href=\"https:\/\/www.belfercenter.org\/sites\/default\/files\/files\/publication\/AI%20NatSec%20-%20final.pdf\">this report<\/a> on AI and security for the US Intelligence Advanced Research Projects Activity.",
+                "homepage": "https:\/\/www.cnas.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.cnas.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "1Day Sooner": {
+                "name": "1Day Sooner",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/08\/1day-sooner-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/1daysooner.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/1daysooner.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Alan Turing Institute": {
+                "name": "Alan Turing Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/The-Alan-Turing-Institute-160x160.jpg",
+                "description": "Five founding universities \u2013 Cambridge, Edinburgh, Oxford, UCL and Warwick \u2013 and the UK Engineering and Physical Sciences Research Council created The Alan Turing Institute in 2015 as the national institute for data science. In 2017, the Institute added artificial intelligence to their remit as a result of government recommendation, and eight new universities joined in 2018.",
+                "homepage": "https:\/\/turing.ac.uk?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/cezanneondemand.intervieweb.it\/turing\/en\/career?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Analytic Services (Anser)": {
+                "name": "Analytic Services (Anser)",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/Anser-160x160.jpg",
+                "description": "",
+                "homepage": "http:\/\/www.anser.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.anser.org\/careers\/opportunity\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Federation of American Scientists": {
+                "name": "Federation of American Scientists",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/10\/Federation-of-American-Scientists-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/fas.org\/about-fas\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/fas.org\/about-fas\/career-opportunities\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
             "Georgetown University, Center for Security and Emerging Technology": {
                 "name": "Georgetown University, Center for Security and Emerging Technology",
                 "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/08\/center-for-security-and-emerging-technology-160x160.png",
@@ -908,6 +1020,1154 @@
                 "description": "",
                 "homepage": "https:\/\/www.parliament.uk\/business\/commons\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
                 "career_page": "https:\/\/www.civilservicejobs.service.gov.uk\/csr\/index.cgi?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Union of Concerned Scientists": {
+                "name": "Union of Concerned Scientists",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/03\/union-of-concerned-scientists-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.ucsusa.org\/nuclear-weapons\/solutions?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.ucsusa.org\/about\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "BlueDot": {
+                "name": "BlueDot",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/05\/BlueDot-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/bluedot.global\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.lever.co\/bluedot?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Fish Welfare Initiative": {
+                "name": "Fish Welfare Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/05\/Fish-Welfare-Initiative-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.charityentrepreneurship.com\/fish-welfare-initiative?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.fishwelfareinitiative.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New York University, Brennan Center for Justice": {
+                "name": "New York University, Brennan Center for Justice",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/Brennan-center-160x160.png",
+                "description": "The Brennan Center for Justice at NYU School of Law is a nonpartisan law and policy institute that works to reform, revitalize, and defend the US' systems of democracy and justice. They focus on voting rights, campaign finance reform, ending mass incarceration, and preserving liberties while also maintaining national security. They craft innovative policies and fight for them \u2013 in Congress and the states, the courts, and the court of public opinion.",
+                "homepage": "https:\/\/www.brennancenter.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/brennancenter.theresumator.com\/apply\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Prague Fall Season": {
+                "name": "Prague Fall Season",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/Prague-fall-season-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/praguefallseason.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Sherlock Biosciences": {
+                "name": "Sherlock Biosciences",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/02\/sherlock-biosciences-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/sherlock.bio\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/sherlock.bio\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The Humane League": {
+                "name": "The Humane League",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/he-humane-league-160x160.png",
+                "description": "The Humane League is a global nonprofit organization that runs campaigns to persuade individuals, businesses, and organisations to adopt behaviours that reduce farmed animal suffering. Their corporate accountability campaigns and grassroots organising has helped push General Mills, PepsiCo, Grupo Bimbo, Starbucks, Subway, Burger King, Chipotle, Pret A Manger, and some the world's biggest institutional food providers\u2014Sodexo, Aramark, and Compass Group\u2014towards enacting animal welfare policies. ",
+                "homepage": "https:\/\/thehumaneleague.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/thehumaneleague.com\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Animal Equality": {
+                "name": "Animal Equality",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/AnimalEqualitySquareLogo-160x160.png",
+                "description": "Animal Equality is an international non-profit organization working with society, governments, and companies to end farmed animal suffering. It defends animals through public education programs, corporate campaigns, undercover investigations, and legal advocacy, and has offices in the United States, United Kingdom, Germany, Italy, Spain, Mexico, Brazil, and India. It's committed to continually assess the impact of it's programs in order to continually increase their efficiency. \n\n",
+                "homepage": "https:\/\/animalequality.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/animalequality.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Bertelsmann Foundation": {
+                "name": "Bertelsmann Foundation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/06\/Bertelsmann-Foundation-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.bfna.org\/about\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobsearch.createyourowncareer.com\/BertelsmannStiftung\/go\/BertelsmannStiftung_all_jobs\/3933401?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Equalia": {
+                "name": "Equalia",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/Equalia-logo-1-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/en.equaliaong.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/en.equaliaong.org\/ofertas-empleo-equalia?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Mercy for Animals": {
+                "name": "Mercy for Animals",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/03\/Mercy-For-Anmials-160x160.png",
+                "description": "Mercy For Animals seeks to reduce the greatest amount of suffering for the largest number of animals. Their efforts focus on protecting farmed animals\u2014the most abused and exploited animals on the planet\u2014utilize a broad range of strategic approaches that seek to expose cruelty, prosecute abusers, and inspire consumers to make compassionate food choices. They seek to replace the current food system with one that is not just kind to animals and essential to the planet's sustainability.",
+                "homepage": "https:\/\/mercyforanimals.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.mercyforanimals.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Royal Society for the Prevention of Cruelty to Animals": {
+                "name": "Royal Society for the Prevention of Cruelty to Animals",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/08\/royal-society-for-the-prevention-of-cruelty-to-animals-160x160.jpg",
+                "description": "The UK's Royal Society for the Prevention of Cruelty to Animals, active since 1824, works to foster respect and compassion towards all animals. They run rescue, rehabilitation, and rehoming programs, as well as investigations, prosecutions, and campaigns aimed to raise the standards affecting wild and farm animals, pets, and animals used in research and testing. Their work focused on farm animals is carried out by livestock welfare specialists who take a number of different approaches towards improving the lives of as many farm animals as possible. They develop welfare standards and certification programs, commission research, and work with and positively influence stakeholders such as food and farming industry decision-makers, smallholders, and scientists and veterinarians. The RSPCA also has representatives on several influential government, farming industry, and scientific research project committees, and is consulted on farm animal welfare issues by a range of national and international government bodies and organisations.",
+                "homepage": "https:\/\/www.rspca.org.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.rspca.org.uk\/utilities\/jobs\/jobvacancies?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Sightsavers": {
+                "name": "Sightsavers",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/sightsavers-160x160.png",
+                "description": "Founded in 1950 as the British Empire Society for the Blind, Sightsavers is an independent research organisation working to prevent and treat avoidable eye conditions in more than 30 countries worldwide, focusing on Africa and Asia. Several of their programs are focused on treating and preventing five debilitating neglected tropical diseases (NTDs) \u2014 trachoma, river blindness, lymphatic filariasis, intestinal worms, and schistosomiasis \u2014 which altogether affect more than a billion people. They work with thousands of local volunteers to distribute donated treatments to protect people against NTDs and to teach them about the importance of good hygiene to prevent infection. \n\n\n\n",
+                "homepage": "https:\/\/www.sightsavers.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.sightsavers.org\/?utm_source=80000+Hours+Job+Board&utm_medium=referral&utm_content=&utm_campaign=80000+Hours+Job+Board"
+            },
+            "The Long Now": {
+                "name": "The Long Now",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/07\/Long-now-foundation-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/longnow.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/longnow.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Third Way": {
+                "name": "Third Way",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/04\/third-way-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.thirdway.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.thirdway.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Wave": {
+                "name": "Wave",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/05\/Screenshot-2021-05-10-at-7.06.16-pm-160x160.png",
+                "description": "Wave is a tech start-up that makes it cheaper and quicker to send money to East Africa. Close to one billion migrants worldwide send over $600 billion home to family and friends each year, dwarfing the foreign governmental aid their home countries receive. They often have to pay fees averaging over 7% for transfers that typically take 24 hours or more to reach their recipients.\n<br><br>\nWave\u2019s mission is to make sending remittances as easy and affordable as sending a text. Since 2014, their app has saved users countless hours and tens of millions of dollars in transfer fees.",
+                "homepage": "https:\/\/www.wave.com\/en\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.wave.com\/en\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#roles"
+            },
+            "EqualAI": {
+                "name": "EqualAI",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/EqualAI-logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.equalai.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.thebridgework.com\/employers\/1135867-equalai?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Center for Strategic and International Studies": {
+                "name": "Center for Strategic and International Studies",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/07\/Center-for-Strategic-and-International-Studies-160x160.jpg",
+                "description": "The Center for Strategic and International Studies is a bipartisan, nonprofit policy research organization dedicated to providing strategic insights and policy solutions to help decisionmakers chart a course toward a better world. It is one of the world\u2019s top international policy institutions focused on defense and security, regional study, and transnational challenges ranging from energy and trade to global development and economic integration. ",
+                "homepage": "https:\/\/www.csis.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/csis-careers.netlify.com\/opportunities?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Chan Zuckerberg Initiative": {
+                "name": "Chan Zuckerberg Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/Chan-zuckerberg-initiative-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/chanzuckerberg.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/chanzuckerberg.com\/careers\/career-opportunities\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Compassion in World Farming": {
+                "name": "Compassion in World Farming",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/10\/Compassion-in-World-Farming-160x160.jpg",
+                "description": "Compassion in World Farming was founded in 1967 a British farmer who was disturbed by the development of intensive factory farming. It's an international non-profit that campaigns peacefully on behalf of all areas that are detrimentally impacted by factory farming practices, including animal wellbeing, the environment, public health, and community and workers\u2019 justice.",
+                "homepage": "https:\/\/ciwf.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.ciwf.com\/take-action\/join-our-team\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Nuffield Foundation, Ada Lovelace Institute": {
+                "name": "Nuffield Foundation, Ada Lovelace Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/Ada-Lovelace-Insitute-new-160x160.jpeg",
+                "description": "The Ada Lovelace Institute is an independent research and deliberative body with the mission to ensure data and AI work for people and society. It promotes informed public understanding of the impact of AI and data-driven technologies and undertakes research and long-term thinking to lay the foundations for a data-driven society with well-being at its core.",
+                "homepage": "https:\/\/www.adalovelaceinstitute.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.nuffieldfoundation.org\/about\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "OpenAI": {
+                "name": "OpenAI",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2017\/03\/openAI_logo2-150x150.png",
+                "description": "OpenAI is a non-profit research laboratory aiming to discover and enact the path to safe artificial general intelligence. It was co-founded by Elon Musk and Y Combinator's former president Sam Altman, has received over $1 billion in funding commitments from the technology community, and is often perceived as one of the leading organisations working on the development of beneficial AGI. As described in their charter, OpenAI is committed to (1) using any influence they obtain over AGI\u2019s deployment to ensure it is used for the benefit of all, (2) doing the research required to make AGI safe and driving it's broad adoption across the AI community, (3) staying on the cutting edge of AI capabilities, and (4) actively cooperating with other research and policy institutions, creating a global community that works together to address AGI\u2019s global challenges.",
+                "homepage": "https:\/\/openai.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/openai.com\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#open"
+            },
+            "Roots of Progress": {
+                "name": "Roots of Progress",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/04\/roots-of-progress-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/rootsofprogress.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "The Royal Society": {
+                "name": "The Royal Society",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/royal-society-160x160.jpg",
+                "description": "The Royal Society is the independent scientific academy of the UK and the Commonwealth, dedicated to promoting excellence in science. Its fundamental purpose is to recognize, promote, and support excellence in science and to encourage the development and use of science for the benefit of humanity.",
+                "homepage": "https:\/\/royalsociety.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers-royalsociety.icims.com\/jobs\/search?ss=1&hashed=-435622304&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Unnamed FTX Funded Project": {
+                "name": "Unnamed FTX Funded Project",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/Blank-logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/docs.google.com\/document\/d\/1UK1WaeY0_GsikRGnDwrxH72kPDgdE6aUjob2kme2sn0\/edit?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "US Government, Congressional Research Service": {
+                "name": "US Government, Congressional Research Service",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/05\/Library-of-congress-160x160.jpg",
+                "description": "Part of the Library of Congress, the Congressional Research Service exclusively serves Congress by providing confidential, objective and authoritative research and analysis to help inform the legislative debate.",
+                "homepage": "https:\/\/www.loc.gov\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.loc.gov\/crsinfo\/opportunities\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Existential Risk Observatory": {
+                "name": "Existential Risk Observatory",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/08\/Existential-Risk-Observatory-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.existentialriskobservatory.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Gryphon Scientific": {
+                "name": "Gryphon Scientific",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/09\/Gryphon-Scientific-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.gryphonscientific.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.gryphonscientific.com\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New Incentives": {
+                "name": "New Incentives",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/01\/new-incentives-logo-150x150.png",
+                "description": "New Incentives gives poor mothers in rural West Africa small stipends on the condition that they vaccinate their children against deadly diseases. The stipends, called Conditional Cash Transfers, allow women to afford transport to the clinic where the vaccinations are provided along with food for their families. 1.5 million children under five lose their lives to vaccine-preventable diseases each year. The New Incentives program protects them against these risks whilst also strengthening their and their mother's position in a family setting: Their health is no longer seen as a luxury but as a smart investment.\n",
+                "homepage": "https:\/\/newincentives.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/new-incentives.breezy.hr\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New Science": {
+                "name": "New Science",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/08\/New-science-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/newscience.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/newscience.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Massachusetts Institute of Technology, Nucleic Acid Observatory": {
+                "name": "Massachusetts Institute of Technology, Nucleic Acid Observatory",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/massachusetts-institute-of-technology-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.naobservatory.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.naobservatory.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#work-with-us"
+            },
+            "The Quantified Uncertainty Research Institute": {
+                "name": "The Quantified Uncertainty Research Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/LOGO-QURI-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/quantifieduncertainty.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/quantifieduncertainty.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Cambridge University, Leverhulme Centre for the Future of Intelligence": {
+                "name": "Cambridge University, Leverhulme Centre for the Future of Intelligence",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/Leverhume-CFI-logo-160x160.jpg",
+                "description": "The Leverhulme Centre for the Future of Intelligence at the University of Cambridge is an interdisciplinary community of researchers, with strong links to technologists and the policy world, aiming to help ensure that humans make the best of artificial intelligence as it develops over coming decades. Their research tackles topics like the value alignment problem in the long-term development of AI, the development of responsible AI policy, the impact of AI systems on society today, the relationship between justice and AI, the philosophical and ethical challenges of AI, and the exploration of the nature of intelligence through the integrated study of machines, humans, and other animals. ",
+                "homepage": "https:\/\/lcfi.ac.uk?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/lcfi.ac.uk\/get-involved\/vacancies\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Center for AI Safety": {
+                "name": "Center for AI Safety",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/LOGO-center-for-ai-safety-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.cais.ai\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Council on Strategic Risks": {
+                "name": "Council on Strategic Risks",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/council-on-strategic-risks-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/councilonstrategicrisks.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Metaculus": {
+                "name": "Metaculus",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/07\/Metaculus-160x160.jpeg",
+                "description": "Metaculus aims to aggregate many people's information, expertise, and predictive power into a single high-quality estimation of the probability that something will occur by providing a central generation and aggregation point for predictions. They believe this can help individuals, groups, corporations, governments, and humanity as a whole make better decisions.",
+                "homepage": "https:\/\/www.metaculus.com\/questions\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/apply.workable.com\/metaculus\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Rockefeller Foundation": {
+                "name": "Rockefeller Foundation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/rockefeller-foundation-160x160.jpg",
+                "description": "The Rockefeller Foundation seeks to inspire and foster large-scale human impact that promotes the well-being of humanity by identifying and accelerating breakthrough solutions, ideas and conversations. It advances new frontiers of science, data, policy, and innovation to solve global challenges related to health, food, power, and economic mobility. ",
+                "homepage": "https:\/\/rockefellerfoundation.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/workforcenow.adp.com\/mascsr\/default\/mdf\/recruitment\/recruitment.html?cid=24726181-f57f-46a1-824d-3c8a89c3328a&ccId=19000101_000001&type=MP&lang=en_US&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Rutgers University, Center for Population-Level Bioethics": {
+                "name": "Rutgers University, Center for Population-Level Bioethics",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Rutgers-university-160x160.jpg",
+                "description": "The Center for Population-Level Bioethics (CPLB) is dedicated to the study of macro-level bioethical dilemmas: those that arise outside the clinical encounter, at the level of the population, the state, the country, or the globe. Questions of interest range from the theoretical to the applied, for example how to conceptualize, measure and evaluate health inequalities or disease severity; how to prioritize resources between disease areas, rural and urban patients, and age cohorts or generations; the acceptability of paternalistic health promotion measures; and many others.\n\nOur approach emphasizes collaboration and interdisciplinarity, and seeks to inform and be informed by other fields of inquiry such as general ethics and philosophy, health policy, and health economics. We welcome innovative questions and methods and ambitious thinking, and value clear presentation of ideas.",
+                "homepage": "https:\/\/ihhcpar.rutgers.edu\/events\/event\/population-level-bioethics\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.rutgers.edu\/postings\/search?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Encultured AI": {
+                "name": "Encultured AI",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/mindflower-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/encultured.ai\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/encultured.ai\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#jobs"
+            },
+            "Institute for Public Policy Research": {
+                "name": "Institute for Public Policy Research",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/03\/institute-for-progressive-policy-research-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.ippr.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.ippr.org\/about\/vacancies?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "University of Maryland": {
+                "name": "University of Maryland",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/08\/logo-maryland-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.umd.edu?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/ejobs.umd.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Center for Global Development": {
+                "name": "Center for Global Development",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/Center-For-GLobal-Development-160x160.jpg",
+                "description": "The Center for Global Development  is a nonprofit think tank based in Washington DC that works to reduce global poverty and improve lives through innovative economic research that drives better policy and practice by the world\u2019s top decision makers. Their scholars conduct rigorous and impartial analysis informed by evidence and by experts from around the world, and design practical and nonpartisan policy solutions and recommendations. CGD's work is currently focused on the following areas critical to development progress: (1) Global Health Policy, (2) Migration, Displacement, and Humanitarian Policy, (3) Sustainable Development Finance, (4) Technology, (5) Education, and (6) Governments and Development.",
+                "homepage": "https:\/\/cgdev.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/centerforglobaldevelopment.applytojob.com\/apply\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "International Society for Applied Ethology": {
+                "name": "International Society for Applied Ethology",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/society-for-applied-ethology-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.applied-ethology.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/americanhumane.applytojob.com\/apply\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Sinergia Animal": {
+                "name": "Sinergia Animal",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Sinergia-Animal-160x160.png",
+                "description": "Sinergia Animal is an international animal protection NGO working to reduce meat consumption in Latin America and Asia in order to reduce animal suffering. They advocate for vegan and vegetarian diets through campaigns that address some the worse practices in industrial farming, like the use of battery cages and gestation crates, and highlight the environmental, health, societal, and ethical benefits benefits of a compassionate, animal-free diet. Sinergia Animal is a member of The Humane League's Open Wing Alliance, an international coalition sharing campaign strategies, tactics, and resources to help free egg-laying hens from cages.  \n",
+                "homepage": "https:\/\/www.sinergiaanimal.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.sinergiaanimalinternational.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Carnegie Council for Ethics and International Affairs": {
+                "name": "Carnegie Council for Ethics and International Affairs",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/09\/carnegie-council-for-ethics-and-international-affairs-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.carnegiecouncil.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.carnegiecouncil.org\/about\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "European Union, Centre for Disease Prevention and Control": {
+                "name": "European Union, Centre for Disease Prevention and Control",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/European-Union-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.ecdc.europa.eu\/en\/home?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.ecdc.europa.eu\/en\/about-us\/work-with-us?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Ought": {
+                "name": "Ought",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/ought-logo-160x160.png",
+                "description": "Ought is a machine learning research lab automating and scaling open-ended reasoning. Ought is building <a href=\"https:\/\/elicit.org\/\">Elicit<\/a>, an AI research assistant for academics, forecasters, and policy analysts which uses language models like GPT-3 to automate tasks like annotating datasets or decomposing questions. Roles at Ought can be remote or based in San Francisco. ",
+                "homepage": "https:\/\/ought.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/ought.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Oxford University, Nuffield Department of Population Health": {
+                "name": "Oxford University, Nuffield Department of Population Health",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2015\/04\/university-of-oxford-logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.ndph.ox.ac.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/my.corehr.com\/pls\/uoxrecruit\/erq_search_package.search_form?p_company=10&p_internal_external=E#"
+            },
+            "Spark Wave": {
+                "name": "Spark Wave",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/SparkWave-160x160.png",
+                "description": "Spark Wave is a startup foundry that applies social science, strategic thinking, and iterative experimentation to create socially beneficial software companies from scratch. It's products help accelerate social science, improve decision-making, calm anxiety, reduce depression, enable behavior change, and increase learning speeds.",
+                "homepage": "https:\/\/www.sparkwave.tech\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Spark Wave, ClearerThinking": {
+                "name": "Spark Wave, ClearerThinking",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/Clearer-Thinking-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.clearerthinking.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Stanford Effective Altruism": {
+                "name": "Stanford Effective Altruism",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/EA-bulb-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/web.stanford.edu\/group\/ea\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Trail of Bits": {
+                "name": "Trail of Bits",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/08\/Trail-of-bits-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.trailofbits.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.lever.co\/trailofbits?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Village Enterprise": {
+                "name": "Village Enterprise",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/Village-Enterprice-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/villageenterprise.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/villageenterprise.org\/about-us\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "80,000 Hours": {
+                "name": "80,000 Hours",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/80k-logo-Square-white-blue-160x160.jpg",
+                "description": "80,000 Hours is a non-profit aiming to solve the most pressing skill bottlenecks in the world\u2019s most pressing problems. We do this by helping people choose or switch into careers that effectively tackle these problems. Our work includes (1) conducting research that identifies which careers best contribute to solving pressing problems, (2) producing online content (including articles and guides, our podcast, and our job board) that informs people about these opportunities and how to enter them, and (3) giving one-on-one support that helps our most engaged readers enter the path that best fits them (including making introductions and facilitating specific job placements).\n<br><br>\n80,000 Hours is funded by philanthropic donations, and all of our programmes are free. So far we've had over 8 million readers, given one-on-one advice to over 1000 people, and have heard from 3000 people about how they've significantly changed their career plans and expect to have a larger social impact due to engaging with us. We\u2019re part of the effective altruism community, are fiscally sponsored by the Centre for Effective Altruism, and are affiliated with Oxford University\u2019s Future of Humanity Institute and Uehiro Centre for Practical Ethics. We attended Y Combinator in 2015 and remain part of their alumni community.",
+                "homepage": "https:\/\/80000hours.org\/",
+                "career_page": "https:\/\/80000hours.org\/about\/work-with-us\/"
+            },
+            "University of York": {
+                "name": "University of York",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/u-of-york-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.york.ac.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.york.ac.uk\/wd\/plsql\/wd_portal.list?p_web_site_id=3885&p_function=map&p_title=Current+jobs&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "WirklichGut Podcast": {
+                "name": "WirklichGut Podcast",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/WirklichGut-Podcast-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/wirklichgut-podcast.de\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Anthropic": {
+                "name": "Anthropic",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/06\/Anthropic-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.anthropic.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.lever.co\/Anthropic?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Active Longtermist Emergency Response Team": {
+                "name": "Active Longtermist Emergency Response Team",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/07\/ALERT-not-offical-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/forum.effectivealtruism.org\/posts\/sgcxDwyD2KL6BHH2C\/case-for-emergency-response-teams?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Jeremy Coller Foundation": {
+                "name": "Jeremy Coller Foundation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/CF-logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/jeremycollerfoundation.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.linkedin.com\/company\/jeremy-coller-foundation\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Berkeley Existential Risk Initiative": {
+                "name": "Berkeley Existential Risk Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2017\/09\/Berkeley-150x150.jpeg",
+                "description": "The Berkeley Existential Risk Initiative is a non-profit that aims to accelerate the work of existential risk researchers. It gives them support that academic funding often doesn\u2019t cover, such as administrative and technical help.",
+                "homepage": "https:\/\/existence.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/existence.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Helen Keller International": {
+                "name": "Helen Keller International",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Hellen-Keller-International-160x160.png",
+                "description": "Helen Keller International has been working prevent blindness for more than 100 years, and runs several interventions focused on the control, elimination, and morbidity management of neglected tropical diseases (NTDs). Running across 19 African and Asian countries, these programs use mass drug administration to address onchocerciasis and trachoma \u2014 which lead to blindness, schistosomiasis, and soil-transmitted helminths \u2014 which lead to malnutrition, and lymphatic filariasis \u2014 which lead to morbidity and disability. These conditions often keep children from attending school and adults from being able to work, severely limiting economic productivity in some of the poorest communities in the world. HKI's values include the application of evidence-based approaches across all aspects of their operations and a commitment to organizational honestly, fairness, and transparency.",
+                "homepage": "https:\/\/www.hki.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.hki.org\/careers\/us-international\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Redwood Research": {
+                "name": "Redwood Research",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/09\/Redwood-research-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.redwoodresearch.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.redwoodresearch.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "University of California, Center for Effective Global Action": {
+                "name": "University of California, Center for Effective Global Action",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/03\/CEGA-160x160.png",
+                "description": "Headquartered at the University of California, Berkeley, The Center for Effective Global Action is large and interdisciplinary network of scholars, including a growing number of scholars from low- and middle-income countries, that identifies and tests large-scale innovations designed to reduce poverty and promote economic development. Their researchers use rigorous methods as well as novel measurement tools\u2013including wireless sensors, mobile data, and analytics to evaluate complex programs, even when randomization is not feasible. Through matchmaking, grantmaking, and research dissemination activities, CEGA also works to ensure that their research is relevant, timely, and actionable to policymakers.\n\n",
+                "homepage": "https:\/\/cega.berkeley.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/cega.berkeley.edu\/our-careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "University of Toronto": {
+                "name": "University of Toronto",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/university-of-toronto-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.utoronto.ca\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.utoronto.ca\/search\/?q=&utm_source=80000+Hours+Job+Board&startrow=1&utm_campaign=80000+Hours+Job+Board"
+            },
+            "Animal Outlook": {
+                "name": "Animal Outlook",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/02\/animal-outlook-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/animaloutlook.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/cok.net\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Charter Cities Institute": {
+                "name": "Charter Cities Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/07\/charter-cities-institute-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.chartercitiesinstitute.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/chartercitiesinstitute.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Eurogroup for Animals": {
+                "name": "Eurogroup for Animals",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/02\/eurogroup-for-animals-160x160.png",
+                "description": "The Eurogroup for Animals challenges decision-makers and delivers political advocacy campaigns at the EU level to improve the protection of animal wellbeing. They aim to influence EU law and achieve better legislation, standards, enforcement, and societal attitudes through a community of animal protection organisations. They currently represent 70 memeber organisations in 25 EU Member States, the UK, Switzerland, Serbia, Norway, Australia and the USA, and have held the secretariat for the European Parliament's Intergroup on the Welfare and Conservation of Animals since its inauguration. They work in policy areas related to the trade of animal products, the use of animals for science research, and other farm, pet, and wild animal topics.",
+                "homepage": "https:\/\/www.eurogroupforanimals.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.eurogroupforanimals.org\/vacancies?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Evidence Action": {
+                "name": "Evidence Action",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/04\/evidence_action-150x150.png",
+                "description": "Evidence Action scales cost-effective, evidence-based programs that reduce the burden of poverty for millions of people across Africa and Asia. Their approach fills the gap between research about what works and solutions for people in need. They operate in ten countries across the globe and positively impact the lives of hundreds of millions every year in a measurable way.\n<br><br>\nEvidence Action's flagship programs are (1) Dispensers for Safe Water, which installs chlorine dispensers next to rural water sources so that residents can add a precise dose of diluted chlorine to their jerricans, and (2) the Deworm the World Initiative, which partners with governments to develop and implement national, school-based deworming programs. Evidence Action\u2019s Accelerator drives new program development, selecting high-potential interventions with massive opportunity for evidence-based, cost-effective impact.",
+                "homepage": "https:\/\/www.evidenceaction.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/evidenceaction.bamboohr.com\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "fp21": {
+                "name": "fp21",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/02\/fp21-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.fp21.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.fp21.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Lantern Ventures": {
+                "name": "Lantern Ventures",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/03\/Lantern-Ventures-160x160.png",
+                "description": "Lantern Ventures is a fast growing, London-based proprietary trading firm specialising in cryptocurrencies, with ~$300m in assets under management. They use technologies developed in-house to identify and execute on trading opportunities arising in cryptocurrency markets worldwide. Lantern Ventures donates 50% of firm profits to highly effective charities; applicants with an interest in this mission will be favourably considered.",
+                "homepage": "http:\/\/www.lanternventures.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.lanternventures.com\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Alphabet, DeepMind": {
+                "name": "Alphabet, DeepMind",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/05\/deepmind-150x150.png",
+                "description": "DeepMind is a subsidiary of Alphabet Inc. It aims to research and build safe AI systems that learn how to solve problems and advance scientific discovery for the benefit of all. It has research centers in Canada, France, UK, and US, and it's the largest and one of the most advanced groups developing artificial general intelligence. Its <a href=\"https:\/\/deepmind.com\/applied\/deepmind-ethics-society\/\">ethics and society team<\/a>, comprised by an interdisciplinary group of policy experts, philosophers, and researchers, works with other groups in academia, civil society, and the broader AI community to help keep AI technology safe, accountable, and socially beneficial.  DeepMind and has published a <a href=\"https:\/\/arxiv.org\/abs\/1711.09883\">number<\/a> <a href=\"https:\/\/arxiv.org\/abs\/1706.03741\">of influential<\/a> <a href=\"https:\/\/arxiv.org\/abs\/1812.01647v1\">research<\/a> <a href=\"https:\/\/arxiv.org\/abs\/1802.05666\">papers<\/a> and <a href=\"https:\/\/medium.com\/@deepmindsafetyresearch\/building-safe-artificial-intelligence-52f5f75058f1\">blog<\/a> <a href=\"https:\/\/medium.com\/@deepmindsafetyresearch\/scalable-agent-alignment-via-reward-modeling-bf4ab06dfd84\">posts<\/a> on safety issues. ",
+                "homepage": "https:\/\/deepmind.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/deepmind.com\/careers\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Effective Altruism Norway": {
+                "name": "Effective Altruism Norway",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/06\/Effective-altruism-norway-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/effektivaltruisme.no\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/effektivaltruisme.no\/ledige-stillinger?fbclid=IwAR1dY7iBMoE34omgsgDKaUSF61bPh8J3eVbo6395G3UfxC9HqzWpPaEY7jI&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Johns Hopkins University, Bloomberg School of Public Health": {
+                "name": "Johns Hopkins University, Bloomberg School of Public Health",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/Johns-hopkins-university-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.jhsph.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/jobs.jhu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "GiveWell": {
+                "name": "GiveWell",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2017\/03\/GiveWell_square-160x160.jpg",
+                "description": "GiveWell is a nonprofit focused on helping individual donors and larger funders do as much good as possible with their donations. On an annual basis, they recommend a short list of top charities in global health and development which they believe can save or improve the greatest number of lives per dollar donated. They extensively research each charity before recommending it, continue its evaluation every year, and publish the full details of their analyses so donors can fully vet their reasoning. GiveWell focuses on what additional funding can accomplish, seeking to understand what activities marginal donations would enable that a charity wouldn't be able to do otherwise. They approach charities from a skeptical point of view, looking for independent evidence of effectiveness that is highly specific, representative, and credible.\n<br><br>\nMore than 50,000 donors have trusted GiveWell to direct their donations, and together, they have given over $500 million to their recommended organizations. These donations will help save over 75,000 lives and provide cash grants of over $90 million to the global poor. GiveWell is independently supported by donors who give directly to their operations. They don\u2019t take fees from donations directed to the charities they recommend nor receive fees from charities for featuring them on their site.\n<br><br>\n<em>Disclaimer: 80,000 Hours has received a grant from the Open Philanthropy Project, which works closely with GiveWell.<\/em>",
+                "homepage": "https:\/\/givewell.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.givewell.org\/about\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Cambridge University, Centre for Science and Policy": {
+                "name": "Cambridge University, Centre for Science and Policy",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/07\/Cambreidge-university-160x160.jpg",
+                "description": "CSaP works with a unique network of academics and decision-makers to improve the use of evidence and expertise in public policy. Its approach is based on addressing the questions which policy makers identify, and on building relationships characterised by mutual understanding, respect and trust.",
+                "homepage": "http:\/\/www.csap.cam.ac.uk\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.jobs.cam.ac.uk\/job\/"
+            },
+            "Center for Election Science": {
+                "name": "Center for Election Science",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/election-science-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.electionscience.org\/about\/meet-the-team\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.electionscience.org\/about\/careers-and-board\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Cornell University, Digital Life Initiative": {
+                "name": "Cornell University, Digital Life Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/02\/Cornell-university-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.dli.tech.cornell.edu\/https:\/\/www.dli.tech.cornell.edu\/join?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.dli.tech.cornell.edu\/join?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Geneva Centre for Security Policy": {
+                "name": "Geneva Centre for Security Policy",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/07\/Geneva-Centre-for-Security-Policy-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.gcsp.ch\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.gcsp.ch\/gfi?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#fellowships"
+            },
+            "Invincible Wellbeing": {
+                "name": "Invincible Wellbeing",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/04\/invincible-wellbeing-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.invinciblewellbeing.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.invinciblewellbeing.com\/volunteer?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "MITRE": {
+                "name": "MITRE",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/08\/MITRE-corporation-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.mitre.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.mitre.org\/us\/en\/search-results?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "US Government, Department of Defense": {
+                "name": "US Government, Department of Defense",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/05\/us-department-of-defense-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/dodstem.us\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.usajobs.gov\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "US Government, Office of the Secretary of Defense": {
+                "name": "US Government, Office of the Secretary of Defense",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/08\/us-department-of-defense-160x160.png",
+                "description": "The Office of the Secretary of Defense is responsible for policy development, planning, resource management, and program evaluation. It includes the offices of top civilian defense decision-makers with regard to personnel, weapons acquisition, research, intelligence and fiscal policy, as well as offices the Secretary establishes to assist in carrying out assigned responsibilities.",
+                "homepage": "https:\/\/www.defense.gov\/Our-Story\/Office-of-the-Secretary-of-Defense\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.usajobs.gov\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Yale University, Tobin Center for Economic Policy": {
+                "name": "Yale University, Tobin Center for Economic Policy",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/yale-university-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/economics.yale.edu\/tobin-center?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/your.yale.edu\/work-yale\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Effective Altruism Cambridge": {
+                "name": "Effective Altruism Cambridge",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/05\/EA-Cam-New-Logo-Transparent-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/eacambridge.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Fund for Alignment Research": {
+                "name": "Fund for Alignment Research",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/04\/Fund-for-alignment-research-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/alignmentfund.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/alignmentfund.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#jobs"
+            },
+            "China-Britain Business Council": {
+                "name": "China-Britain Business Council",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/China-britain-business-council-160x160.png",
+                "description": "",
+                "homepage": "http:\/\/www.cbbc.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.cbbc.org\/about\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Aspen Institute": {
+                "name": "Aspen Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/01\/Aspen-Institute-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.aspeninstitute.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.aspeninstitute.org\/careers\/career-opportunities\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The Future Society": {
+                "name": "The Future Society",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/08\/the-future-society-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/thefuturesociety.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/thefuturesociety.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Fortify Health": {
+                "name": "Fortify Health",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Fortify-Health-160x160.png",
+                "description": "Fortify Health is a Mumbai-based NGO that battles anaemia and neural tube defects \u200bin India through flour fortification. Micronutrient malnutrition imposes significant costs on economic development in terms of reduced labour productivity, increased healthcare costs, and overall obstacles to the development of a nation. Fortify Health helps tackle India's high malnutrition rates by expanding the fortification of wheat flour with iron, folic acid, and vitamin B12. 2019 was their first full year of operations, and they're currently scaling up implementation across Maharashtra and West Bengal states.\n\n",
+                "homepage": "http:\/\/www.fortifyhealth.global\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.fortifyhealth.global\/jobs.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Partnership for Public Service": {
+                "name": "Partnership for Public Service",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/03\/partnership-for-public-service-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/ourpublicservice.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/ourpublicservice.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#openings"
+            },
+            "US Government, Institute for Peace": {
+                "name": "US Government, Institute for Peace",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/institute-for-peace-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.usip.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/recruiting.ultipro.com\/UNI1083USIOP\/JobBoard\/14900d11-c546-42ff-ab52-7bbbfa78cb97\/?q=&o=postedDateDesc&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Pandemic Prevention Network": {
+                "name": "Pandemic Prevention Network",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/Pandemic-Prevention-Network-Logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.pandemicpreventionnetwork.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.pandemicpreventionnetwork.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Rethink Priorities": {
+                "name": "Rethink Priorities",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/04\/Rethink-Priorities-160x160.png",
+                "description": "Rethink Priorities aims to conduct foundational research on neglected causes in a highly empirical and transparent manner. Their current primary focus is on improving the welfare and lives of nonhuman animals, but they also work towards minimizing the risk of civilization-ending events like widespread nuclear war, on finding and developing other neglected but promising areas to improve the world, and on building the community of people working on those issues. ",
+                "homepage": "https:\/\/www.rethinkpriorities.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/rethinkpriorities.applytojob.com\/apply?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Animal Advocacy Africa": {
+                "name": "Animal Advocacy Africa",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/Logo-Animal-Advocasy-Africa-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.animaladvocacyafrica.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Carbon Re": {
+                "name": "Carbon Re",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/11\/Carbon-Re-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.carbonre.tech\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/apply.workable.com\/carbon-re\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Center for American Progress": {
+                "name": "Center for American Progress",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/06\/Center-for-American-Progress-160x160.jpg",
+                "description": "The Center for American Progress is an independent nonpartisan policy institute that is dedicated to improving the lives of all Americans, through bold, progressive ideas, as well as strong leadership and concerted action. They develop new policy ideas, challenge the media to cover the issues that truly matter, and help shape the national debate. ",
+                "homepage": "https:\/\/www.americanprogress.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.americanprogress.org\/about-us\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "TechCongress": {
+                "name": "TechCongress",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/TechCongress-160x160.jpg",
+                "description": "TechCongress gives talented technologists the opportunity to gain first-\u00adhand experience in federal policymaking and shape the future of tech policy through a one-year Congressional Innovation Fellowship with a Member of Congress or Congressional Committee.  ",
+                "homepage": "https:\/\/techcongress.io?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.techcongress.io\/congressional-innovation-fellows?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Charles University, Centre for Theoretical Studies": {
+                "name": "Charles University, Centre for Theoretical Studies",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/Frame-13-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/cuni.cz\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Global Catastrophic Risk Institute": {
+                "name": "Global Catastrophic Risk Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/02\/global-catastrophic-risks-institute-160x160.png",
+                "description": "The Global Catastrophic Risk Institute is a nonprofit, nonpartisan think tank that analyzes risks to the survival of human civilization with the aim of developing ways to confront humanity's gravest threats. It bridges the world of scholarship and the world of professional practice in government, private industry, and other sectors, and leverages both the best available scholarship and the demands of real-world decision-making. Current GCRI research topics include the aftermath of global catastrophes, the governance of artificial intelligence, the reduction of nuclear war risk, the impact of transformative nanotechnology, and cross-risk evaluation and prioritization. ",
+                "homepage": "https:\/\/gcrinstitute.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Atlantic Media": {
+                "name": "Atlantic Media",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/atlantic-media-160x160.jpeg",
+                "description": "",
+                "homepage": "http:\/\/atlanticmedia.com\/brands\/government-executive\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/atlanticmedia.wd1.myworkdayjobs.com\/Careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "United Nations, Institute for Disarmament Research": {
+                "name": "United Nations, Institute for Disarmament Research",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/04\/united-nations-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.un.org\/en\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.un.org\/lbw\/home.aspx?viewtype=SJ&vacancy=All&lang=en-US&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Legal Impact for Chickens": {
+                "name": "Legal Impact for Chickens",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/legal-impact-for-chickens-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.legalimpactforchickens.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "University of Chicago, Becker Friedman Institute for Economics": {
+                "name": "University of Chicago, Becker Friedman Institute for Economics",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/iversity-of-chicago-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/bfi.uchicago.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/academicjobs.uchicago.edu\/positions?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Global Health Investment Corporation": {
+                "name": "Global Health Investment Corporation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/06\/global-health-investment-corporation-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/ghicfunds.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/global-health-investment-corporation.breezy.hr\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "New York University, Center for Data Science": {
+                "name": "New York University, Center for Data Science",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/new-york-university-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/cds.nyu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.nyu.edu\/about\/careers-at-nyu\/faculty-and-researchers.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Alliance to Feed the Earth in Disasters": {
+                "name": "Alliance to Feed the Earth in Disasters",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/01\/allfed-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/allfed.info\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/allfed.info\/join-us?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Atlantic Council": {
+                "name": "Atlantic Council",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/02\/atlantic-council-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.atlanticcouncil.org\/about\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.atlanticcouncil.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#openings"
+            },
+            "Information Technology and Innovation Foundation, Center for Data Innovation": {
+                "name": "Information Technology and Innovation Foundation, Center for Data Innovation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/02\/center-for-data-innovation-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/datainnovation.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/datainnovation.org\/about\/jobs-and-internships\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "National Committee on US-China Relations": {
+                "name": "National Committee on US-China Relations",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/03\/committee-on-us-china-relations-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.ncuscr.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.ncuscr.org\/about\/employment?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Omidyar Network": {
+                "name": "Omidyar Network",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/omidyar-network-160x160.png",
+                "description": "The Omidyar Network is a philanthropic investment firm and foundation that seeks to create a more equitable economy, promote responsible technology that improves lives, expand human capability, and discover the emergent issues that will shape the future\u200b.",
+                "homepage": "https:\/\/omidyar.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/boards.greenhouse.io\/omidyarnetwork?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "American Institute of Physics": {
+                "name": "American Institute of Physics",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/10\/american-institute-of-physics-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.aip.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/americaninstituteofphysics.applicantstack.com\/x\/openings?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Asia Society Policy Institute": {
+                "name": "Asia Society Policy Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/07\/Asia-Society-Policy-Institute-160x160.jpg",
+                "description": "The Asia Society Policy Institute is a think-and-do tank that has built bridges and helped to solve problems within the region and between Asia and the wider world since 1956. It expands this mission by tackling major policy challenges confronting the Asia-Pacific in security, prosperity, and sustainability, and by helping to develop common norms and values for the region.",
+                "homepage": "https:\/\/asiasociety.org\/policy-institute?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/asiasociety.org\/policy-institute\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Our World In Data": {
+                "name": "Our World In Data",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/our-world-in-data-160x160.jpg",
+                "description": "The goal of Our World In Data is to make knowledge about the big problems accessible and understandable. The world faces many great and terrifying problems at the same time, and measuring economic growth is not enough. OWID's work encompasses a large range of global problems in health, education, violence, political power, human rights, war, poverty, inequality, energy, hunger, and humanity\u2019s impact on the environment. It's a nonprofit, collaborative effort between researchers at the University of Oxford and the Global Change Data Lab.",
+                "homepage": "https:\/\/ourworldindata.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/ourworldindata.org\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "US Government, Joint Artificial Intelligence Center": {
+                "name": "US Government, Joint Artificial Intelligence Center",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/joint-artificial-intelligence-center-160x160.jpg",
+                "description": "The Joint Artificial Intelligence Center provides expertise on AI to the US Department of Defense. ",
+                "homepage": "https:\/\/www.ai.mil\/index.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.ai.mil\/careers.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Future of Life Institute": {
+                "name": "Future of Life Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/future-of-life-160x160.jpg",
+                "description": "With an MIT cosmology professor, a DeepMind AI safety researcher, and the co-founder of Skype amongst it's founders, The Future of Life Institute works to ensure that tomorrow\u2019s most powerful technologies are beneficial for humanity. They're a charity and outreach organisation that makes grants and gives out awards, organizes conferences and workshops, and engages in social and political outreach with the aim of supporting research and initiatives that safeguard life and develop optimistic visions of the future. It's current focus is on keeping artificial intelligence beneficial and on exploring ways to reduce risks from nuclear weapons and biotechnology.",
+                "homepage": "https:\/\/futureoflife.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/futureoflife.org\/job-postings\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "United Nations, International Atomic Energy Agency": {
+                "name": "United Nations, International Atomic Energy Agency",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/International-Atomic-Energy-Agency-160x160.jpg",
+                "description": "The International Atomic Energy Agency is the world's central intergovernmental forum for scientific and technical co-operation in the nuclear field. It works for the safe, secure and peaceful uses of nuclear science and technology, contributing to international peace and security and the United Nations' Sustainable Development Goals.",
+                "homepage": "https:\/\/www.iaea.org\/about\/overview?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.un.org\/lbw\/home.aspx?viewtype=SJ&vacancy=All&lang=en-US&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Charity Entrepreneurship": {
+                "name": "Charity Entrepreneurship",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/Charity-Entrepreneurship-160x160.jpg",
+                "description": "Charity Entrepreneurship, a project of Charity Science Foundation in Canada, is a research and training program aimed at creating multiple high impact charities with a different focus area each year. Their mission is to increase the number of effective charities that exist in the world by connecting talented individuals with high-impact intervention opportunities. They achieve this through an extensive research process and their Incubation Program.\n\nMH alt: Charity Entrepreneurship is an incubator for high impact charities. It does research to find particularly effective interventions, then recruits and trains people to found charities implementing those interventions. They're a project of the Charity Science Foundation. ",
+                "homepage": "https:\/\/charityentrepreneurship.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.charityentrepreneurship.com\/jobs.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Preamble": {
+                "name": "Preamble",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/09\/Screenshot-2021-09-13-at-3.40.07-pm-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.preamble.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.preamble.com\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Aligned AI": {
+                "name": "Aligned AI",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/04\/Aligned-AI-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/buildaligned.ai\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Probably Good": {
+                "name": "Probably Good",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/12\/Screenshot-2021-12-03-at-9.31.33-am-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.probablygood.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.probablygood.org\/work-with-us?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Aquaculture Stewardship Council": {
+                "name": "Aquaculture Stewardship Council",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Aquaculture-stweardship-council-160x160.png",
+                "description": "The Aquaculture Stewardship Council is an international non-profit that works with scientists, conservation groups, food producers, retail and foodservice companies, and consumers to manage the world\u2019s leading certification programme for responsible aquaculture. As the fastest growing food production system in the world, is already responsible for more than half of the fish consumed globally. ASC's standards, which are in line with UN Food and Agriculture Organisation guidelines, help minimise the environmental and social footprint of fish farming by addressing it's key environmental impacts, setting requirements for workers\u2019 rights, and protecting communities surrounding certified farms. \n<br><br>\nChain of Custody certification ensures that companies selling seafood with ASC certification have identification, segregation, and traceability procedures in place, and ASC uses the ISEAL Code of Good Practice to demonstrate the ongoing validity of their work.",
+                "homepage": "https:\/\/www.asc-aqua.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.asc-aqua.org\/about-us\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "World Animal Protection": {
+                "name": "World Animal Protection",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/12\/world-animal-protection-160x160.png",
+                "description": "World Animal Protection is a global nonprofit organisation aiming to reduce the suffering of wild, farm, and pet animals. As part of their factory farming-focused work, they run programs and campaigns that push governments and global bodies to improve regulations, help food businesses change the way they work, educate farmers on practical and affordable ways to protect animals, and encourage people to choose food produced in line with high welfare standards. Together with Compassion in World Farming, World Animal Protection produces the Business Benchmark on Farm Animal Welfare Report, one of the leading global measures of farm animal welfare management, policy commitment, performance, and disclosure in food companies. Their 500,000+ collected petition signatures moved KFC to joint the Better Chicken Commitment for all farms supplying their fast food restaurants in the UK, Ireland, Germany, Netherlands, Sweden and Belgium, which will lead to better lives for tens of millions of chickens.",
+                "homepage": "https:\/\/www.worldanimalprotection.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.worldanimalprotection.org\/jobs-volunteer?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Wisconsin Project on Nuclear Arms Control": {
+                "name": "Wisconsin Project on Nuclear Arms Control",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/winsconsin-project-on-nuclear-arms-control-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.wisconsinproject.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.wisconsinproject.org\/about-us\/employment\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Longview Philanthropy": {
+                "name": "Longview Philanthropy",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/02\/longview-philanthropy-160x160.jpeg",
+                "description": "Longview Philanthropy is an independent non-profit that advises major donors on their giving strategies. Their grant recommendations are informed by evidence and reason, and aim to find the highest-impact opportunities in the world. They focus on global challenges that could transform the future for many generations to come, including safely navigating emerging technologies and fostering a society with a more long-term outlook.  They currently advise donors in Europe, North America and Asia, whose giving capacity ranges from $1 million p.a. to several billion.",
+                "homepage": "https:\/\/www.longview.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.longview.org\/contact?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Nuclear Threat Initiative": {
+                "name": "Nuclear Threat Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/Nuclear-threat-initiative-logo-160x160.jpg",
+                "description": "Founded in 2001 by former US Senator Sam Nunn and philanthropist Ted Turner, the Nuclear Threat Initiative works with governments, scientists, and citizens to prevent catastrophic attacks with weapons of mass destruction and disruption\u2014nuclear, biological, radiological, chemical and cyber. They design  security-building projects and conduct research on threat-reduction intended to build international cooperation, momentum and support for action. Examples of recent NTI projects include: 1) Convening Russian and American experts to map out practical proposals for future U.S. and Russia nuclear cooperation; 2) Working with the International Partnership for Nuclear Disarmament Verification to develop procedures and technologies addressing nuclear disarmament verification; 3) Releasing the Nuclear Security Index, which benchmarks the progress countries have made on nuclear security.",
+                "homepage": "https:\/\/nti.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.nti.org\/about\/employment\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The Economist Group": {
+                "name": "The Economist Group",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/economist-group-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.economistgroup.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/globalcareers-economist.icims.com\/jobs\/search?ss=1&hashed=-435742557&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "WildAid": {
+                "name": "WildAid",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/02\/Wildaid-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/wildaid.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/wildaid.org\/about\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "AI Impacts": {
+                "name": "AI Impacts",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/05\/AI-Impacts-logo-Ipad-Retina-Icon-Katja-Grace-160x160.png",
+                "description": "AI Impacts is a project aiming to conduct research that improves our understanding of the long-term impacts of sophisticated artificial intelligence. They explore topics like the timelines of AI development, how much advanced notice of disruptive change we should expect to have, the likely economic impacts of AI, and whether of not human-level AI will tend to pursue particular goals. Their goal is to present and organize the considerations which inform contemporary views on these and related issues, to identify and explore disagreements, and to assemble whatever empirical evidence is relevant. They hope that more credible and clearly communicated views on these matters might help improve estimates of the social returns to AI investment, identify neglected research areas, improve policy, or productively channel public interest in AI. ",
+                "homepage": "https:\/\/aiimpacts.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/aiimpacts.org\/jobs\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Legal Priorities Project": {
+                "name": "Legal Priorities Project",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/02\/legal-priorities-project-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.legalpriorities.org\/index.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.legalpriorities.org\/opportunities.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Alphabet, X Development": {
+                "name": "Alphabet, X Development",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/Alphabet-160x160.png",
+                "description": "",
+                "homepage": "http:\/\/iipm.zju.edu.cn\/en\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#:~:text=The%20Institute%20for%20Intellectual%20Property%20Management%20(IIPM)%20conducts%20research%20on,training%20on%20Intellectual%20Property%20management.",
+                "career_page": "https:\/\/x.company\/careers-at-x\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Future Matters Project": {
+                "name": "Future Matters Project",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2022\/03\/Future-matters-project-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/en.futuremattersproject.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/work.futuremattersproject.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "International Monetary Fund": {
+                "name": "International Monetary Fund",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/35078154_1767370563342954_8626837247359975424_n-160x160.png",
+                "description": "The International Monetary Fund is governed by and accountable to the 190 countries that make up its near-global membership. Its primary purpose is to ensure the stability of the international monetary system\u2014the system of exchange rates and international payments that enables countries and their citizens to transact with each other. It works to foster global monetary cooperation, secure financial stability, facilitate international trade, promote high employment and sustainable economic growth, and reduce poverty around the world.",
+                "homepage": "https:\/\/www.imf.org\/external\/index.htm?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/imf.wd5.myworkdayjobs.com\/IMF?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "SoGive": {
+                "name": "SoGive",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/03\/So-Give-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/sogive.org\/index.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/sogive.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board#careers"
+            },
+            "US-China Business Council": {
+                "name": "US-China Business Council",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/11\/us-china-business-council-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.uschina.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.uschina.org\/about\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Vox Media": {
+                "name": "Vox Media",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/07\/vox-media-logo-160x160.png",
+                "description": "Vox Media is a modern media company that believes in the power of going deeper to connect with global, passionate, curious audiences.",
+                "homepage": "https:\/\/voxmedia.com?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.voxmedia.com\/pages\/careers-jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Astera": {
+                "name": "Astera",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/08\/Astera-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/astera.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/astera.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The Life You Can Save": {
+                "name": "The Life You Can Save",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/08\/The-life-you-can-save-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/thelifeyoucansave.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.thelifeyoucansave.org\/work-and-volunteer-with-us\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Innovations for Poverty Action": {
+                "name": "Innovations for Poverty Action",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/08\/Innovatons-for-Poverty-Action-160x160.jpg",
+                "description": "Innovations for Poverty Action is a research and policy nonprofit that discovers and promotes effective solutions to global poverty problems, evaluates and refine these solutions and their applications, and helps ensure that the evidence created is used to improve the lives of the world\u2019s poor. An extensive network of more than 600 researchers from among the world's top universities and local presence in 21 countries allows IPA to develop strong relationships with decision-makers and a long-term view for evidence-based policy.",
+                "homepage": "https:\/\/poverty-action.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.poverty-action.org\/work-with-ipa\/current-opportunities?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "IDinsight": {
+                "name": "IDinsight",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/10\/IDInsight-160x160.png",
+                "description": "IDinsight is a global advisory, data analytics, and research organization that helps development leaders maximize their social impact. They tailor a wide range of data and evidence tools, including randomized evaluations and machine learning, to help decision-makers design effective programs and rigorously test what works to support communities. They work with governments, multilaterals, foundations, and innovative non-profit organizations in Asia and Africa across a wide range of sectors, including agriculture, education, health, governance, sanitation, and financial inclusion.",
+                "homepage": "https:\/\/idinsight.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/idinsight.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Momentum": {
+                "name": "Momentum",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/04\/Momentum-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/givemomentum.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/givemomentum.com\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Stockholm International Peace Research Institute": {
+                "name": "Stockholm International Peace Research Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/07\/Stockholm-International-Peace-Research-Institute-160x160.jpeg",
+                "description": "The Stockholm International Peace Research Institute is an independent international institute dedicated to research into conflict, armaments, arms control and disarmament. It provides data, analysis and recommendations, based on open sources, to policymakers, researchers, media and the interested public. ",
+                "homepage": "https:\/\/www.sipri.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.sipri.org\/about\/vacancies?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Center for Democracy and Technology": {
+                "name": "Center for Democracy and Technology",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/11\/Center-for-Democracy-and-Technology-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/cdt.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/cdt.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "EA Funds": {
+                "name": "EA Funds",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/04\/EA-bulb-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/funds.effectivealtruism.org\/apply-for-funding?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Longevity Fund": {
+                "name": "Longevity Fund",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/12\/longevity-fund-160x160.jpeg",
+                "description": "",
+                "homepage": "https:\/\/www.longevity.vc\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Segovia": {
+                "name": "Segovia",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/06\/Segovia-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.thesegovia.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/thesegovia.recruiterbox.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "The New York Times": {
+                "name": "The New York Times",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/08\/New-york-times-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.nytco.com\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/nytimes.wd5.myworkdayjobs.com\/en-US\/NYT?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "University of Texas, Population Wellbeing Initiative": {
+                "name": "University of Texas, Population Wellbeing Initiative",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/12\/university-of-texas-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/liberalarts.utexas.edu\/prc\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/utaustin.wd1.myworkdayjobs.com\/en-US\/UTstaff?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Giving What We Can": {
+                "name": "Giving What We Can",
+                "logo": "http:\/\/80000hours.org\/wp-content\/uploads\/2015\/08\/gwwc-logo-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.givingwhatwecan.org\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.givingwhatwecan.org\/get-involved\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Secure DNA Project": {
+                "name": "Secure DNA Project",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/09\/Secure-DNA-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.securedna.org\/main-en?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": ""
+            },
+            "Federation of Indian Animal Protection Organisations": {
+                "name": "Federation of Indian Animal Protection Organisations",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/05\/Federation-of-Indian-Animal-Protection-Organisations-160x160.jpg",
+                "description": "The Federation of Indian Animal Protection Organisations is a comprehensive NGO network with more than 80 member organisations, 200 supporter organisations, and 400 individual activists working to protect the rights and interests of animals at a local and national level. They aim to connect and support animal protectors to create a high-impact, well-connected movement that continually addresses ongoing animal issues through education, research, lobbying, mobilisation, training, and direct action. It's efforts helped pass a ban on cetacean captivity and stop the establishment of India\u2019s first mega dairy, which was intending to set up with 40,000 cows. Their long-term goals include ending the use of animals in the food, clothing, entertainment, and pet industries, and the use of animals for experimentation and sacrifice.",
+                "homepage": "http:\/\/www.fiapo.org\/fiaporg\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/www.fiapo.org\/fiaporg\/work-with-us\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Lightcone Infrastructure": {
+                "name": "Lightcone Infrastructure",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/10\/lightcone-infrastructure-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.lightconeinfrastructure.com\/index.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.lightconeinfrastructure.com\/index.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Massachusetts Institute of Technology, Abdul Latif Jameel Poverty Action Lab": {
+                "name": "Massachusetts Institute of Technology, Abdul Latif Jameel Poverty Action Lab",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/05\/j-pal-150x150.jpg",
+                "description": "The Abdul Latif Jameel Poverty Action Lab at the MIT is a global research center working to reduce poverty by ensuring that policy is informed by scientific evidence. It conducts randomized impact evaluations to answer critical questions in international development and the fight against poverty. Their policy analysis and outreach translates research into action, promoting a culture of evidence-informed policymaking around the world. J-PAL\u2019s core staff includes more than 400 research, policy, education, and training professionals across seven offices worldwide, who are supported by a network of more than 150 affiliated professors at universities around the world.",
+                "homepage": "https:\/\/povertyactionlab.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.povertyactionlab.org\/careers?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Western University, Free Appropriate Sustainability Technology Lab": {
+                "name": "Western University, Free Appropriate Sustainability Technology Lab",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2021\/10\/free-appropriate-sustainability-technology-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/www.appropedia.org\/Category:FAST?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.appropedia.org\/FAST_application_process?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Stanford University, Center for AI Safety": {
+                "name": "Stanford University, Center for AI Safety",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2017\/03\/stanford_logo-160x160.png",
+                "description": "",
+                "homepage": "http:\/\/aisafety.stanford.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careersearch.stanford.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Harvard University, Berkman Klein Center for Internet and Society": {
+                "name": "Harvard University, Berkman Klein Center for Internet and Society",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/Harvard-160x160.jpg",
+                "description": "The Berkman Klein Center's mission is to explore and understand cyberspace; to study its development, dynamics, norms, and standards; and to assess the need or lack thereof for laws and sanctions. As an interdisciplinary, University-wide center, it brings talented and thoughtful people from around the globe to tackle the biggest challenges presented by the Internet.",
+                "homepage": "https:\/\/cyber.harvard.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/academicpositions.harvard.edu\/postings\/search?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "World Bank Group": {
+                "name": "World Bank Group",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/world-bank-160x160.png",
+                "description": "With 189 member countries, staff from more than 170 countries, and offices in over 130 locations, the World Bank Group is the largest and most well-known development bank in the world. It's a global partnership of five institutions working for sustainable solutions that reduce poverty and build shared prosperity in developing countries. Its five organizations are the International Bank for Reconstruction and Development, the International Development Association, the International Finance Corporation, the Multilateral Investment Guarantee Agency, and the International Centre for Settlement of Investment Disputes.\n",
+                "homepage": "https:\/\/web.worldbank.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/worldbankgroup.csod.com\/ats\/careersite\/search.aspx?site=1&c=worldbankgroup&sid=%5E%5E%5EFLGscZMYY2RrwVaMR%2FtHYw%3D%3D&utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "University of California, Center for Human-Compatible Artificial Intelligence": {
+                "name": "University of California, Center for Human-Compatible Artificial Intelligence",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2018\/05\/chai-150x150.png",
+                "description": "The Center for Human-Compatible Artificial Intelligence is a multi-institution research group based at UC Berkeley with academic affiliates at a variety of other universities. CHAI's goal is to develop the conceptual and technical means to reorient the general thrust of artificial intelligence research towards beneficial systems. They aim to refocus AI away from the capability to achieve arbitrary objectives and towards the ability to generate provably beneficial behavior. Because the meaning of beneficial depends on properties of humans, this task inevitably includes elements from the social sciences in addition to AI.",
+                "homepage": "https:\/\/humancompatible.ai?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "http:\/\/humancompatible.ai\/jobs?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Massachusetts Institute of Technology, Media Lab": {
+                "name": "Massachusetts Institute of Technology, Media Lab",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/massachusetts-institute-of-technology-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.media.mit.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.peopleclick.com\/careerscp\/client_mit\/external\/search\/search.html?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "George Washington University, School of Media and Public Affairs": {
+                "name": "George Washington University, School of Media and Public Affairs",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/04\/The-George-washington-university-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/smpa.gwu.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.gwu.jobs\/postings\/search?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Machine Intelligence Research Institute": {
+                "name": "Machine Intelligence Research Institute",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2017\/03\/miri_logo2-150x150.png",
+                "description": "The Machine Intelligence Research Institute was one of the first groups to become concerned about the risks from artificial intelligence in the early 2000s.  It is a research nonprofit studying the mathematical underpinnings of intelligent behavior. The organisation's mission is to develop formal tools for the clean design and analysis of general-purpose AI systems, with the intent of making such systems safer and more reliable when they are developed. Their methodology is to break down the alignment problem into simpler and more precisely stated subproblems, develop basic mathematical theory for understanding these problems, and then make use of the newfound understanding in engineering applications. MIRI seeks to help jump-start a paradigm of AI research that is conscious of the field\u2019s long-term impact. ",
+                "homepage": "https:\/\/intelligence.org?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/intelligence.org\/careers\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Columbia University, Department of Microbiology and Immunology": {
+                "name": "Columbia University, Department of Microbiology and Immunology",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/01\/columbia-university-160x160.png",
+                "description": "",
+                "homepage": "https:\/\/microbiology.columbia.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/careers.columbia.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Harvard University, Faculty of Arts and Sciences": {
+                "name": "Harvard University, Faculty of Arts and Sciences",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/Harvard-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.fas.harvard.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/academicpositions.harvard.edu\/postings\/search?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "US Government, Federal Bureau of Investigation": {
+                "name": "US Government, Federal Bureau of Investigation",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2020\/09\/federal-bureau-of-investigation-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.fbi.gov\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/www.fbijobs.gov\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
+            },
+            "Harvard University, T.H. Chan School of Public Health": {
+                "name": "Harvard University, T.H. Chan School of Public Health",
+                "logo": "https:\/\/80000hours.org\/wp-content\/uploads\/2019\/09\/Harvard-160x160.jpg",
+                "description": "",
+                "homepage": "https:\/\/www.hsph.harvard.edu\/?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board",
+                "career_page": "https:\/\/academicpositions.harvard.edu\/postings\/search?utm_campaign=80000+Hours+Job+Board&utm_source=80000+Hours+Job+Board"
             }
         }
     }

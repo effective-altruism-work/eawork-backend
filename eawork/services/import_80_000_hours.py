@@ -17,7 +17,7 @@ from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
 
 
-def import_80_000_hours_jobs(json_to_import: dict = None, limit: int = None, is_import_companies: bool = True):
+def import_80_000_hours_jobs(json_to_import: dict = None, limit: int = None):
     with disable_auto_indexing():
         if json_to_import:
             data_raw = json_to_import["data"]
@@ -25,9 +25,8 @@ def import_80_000_hours_jobs(json_to_import: dict = None, limit: int = None, is_
             resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
             data_raw = resp.json()["data"]
 
-        if is_import_companies:
-            _import_companies(data_raw)
-        _import_jobs(data_raw, limit=limit, is_import_companies=is_import_companies)
+        _import_companies(data_raw)
+        _import_jobs(data_raw, limit=limit)
 
     if settings.IS_ENABLE_ALGOLIA:
         reindex_all(JobPostVersion)
@@ -57,7 +56,8 @@ def _import_companies(data_raw: dict):
                 career_page_url=company_raw["career_page"],
             )
 
-def _import_jobs(data_raw: dict, limit: int = None, is_import_companies: bool = True):
+
+def _import_jobs(data_raw: dict, limit: int = None):
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
 
     if limit:
@@ -92,10 +92,9 @@ def _import_jobs(data_raw: dict, limit: int = None, is_import_companies: bool = 
                 post=post,
             )
             post.version_current = post_version
-            if is_import_companies:
-                post.company = Company.objects.get(
-                    id_external_80_000_hours=job_raw["Hiring organisation ID"],
-                )
+            post.company = Company.objects.get(
+                id_external_80_000_hours=job_raw["Hiring organisation ID"],
+            )
             post.save()
             _update_post_version(post_version, job_raw)
 

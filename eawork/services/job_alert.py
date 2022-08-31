@@ -38,7 +38,8 @@ def check_new_jobs(
         if is_send_alert:
             _send_email(job_alert, jobs_new)
 
-        job_alert.post_pk_seen_last = res_json["hits"][0]["objectID"]
+        hits_sorted = sorted(res_json["hits"], key=lambda hit: hit["post_pk"], reverse=True)
+        job_alert.post_pk_seen_last = hits_sorted[0]["post_pk"]
         job_alert.save()
 
 

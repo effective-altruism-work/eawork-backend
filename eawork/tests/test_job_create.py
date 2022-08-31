@@ -15,7 +15,7 @@ from eawork.tests.cases import EAWorkTestCase
 
 class JobCreateTest(EAWorkTestCase):
     algolia_caching_time_s = 3
-    
+
     @classmethod
     def setUpClass(cls):
         clear_index(JobPostVersion)
@@ -48,7 +48,7 @@ class JobCreateTest(EAWorkTestCase):
         alert.refresh_from_db()
         self.assertEquals(alert.post_pk_seen_last, post_second.pk)
 
-    def test_80_000_hours_import(self):
+    def test_80_000_hours_double_import(self):
         JobAlert.objects.create(
             email="victor+git@givemomentum.com",
             query_json={
@@ -57,23 +57,19 @@ class JobCreateTest(EAWorkTestCase):
             },
             post_pk_seen_last=0,
         )
-        
+
         with open("eawork/tests/fixtures/json_to_import.json", "r") as json_to_import:
             json_to_import = json.loads(json_to_import.read())
 
-        import_80_000_hours_jobs(json_to_import, limit=3)
+        import_80_000_hours_jobs(json_to_import)
         time.sleep(self.algolia_caching_time_s)
         check_new_jobs_for_all_alerts()
         self.assertEquals(len(mail.outbox), 1)
-        print(mail.outbox[0].body)
 
-        import_80_000_hours_jobs(json_to_import, limit=3)
+        import_80_000_hours_jobs(json_to_import)
         time.sleep(self.algolia_caching_time_s)
         check_new_jobs_for_all_alerts()
-        print(mail.outbox[0].body)
-        print(len(mail.outbox))
-        if len(mail.outbox) == 2:
-            print(mail.outbox[1].body)
+        self.assertEquals(len(mail.outbox), 1)
 
     def _create_post_and_publish_it(self, title: str) -> JobPost:
         tags_skill = ["Django", "Angular", "PostgreSQL"]
