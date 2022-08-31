@@ -91,7 +91,7 @@ def jobs_subscribe(request, job_alert_req: JobAlertReq):
         query_json=job_alert_req.query_json,
         query_string=job_alert_req.query_string,
     )
-    check_new_jobs(job_alert, is_send_alert=False, algolia_hits_per_page=1)
+    check_new_jobs(job_alert, is_send_alert=False)
     return {"success": True}
 
 
