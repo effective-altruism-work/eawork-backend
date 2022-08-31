@@ -6,13 +6,16 @@ from algoliasearch_django.decorators import disable_auto_indexing
 from django.http import Http404
 from django.urls import reverse
 from django.utils import timezone
+from django_filters.rest_framework import DjangoFilterBackend
 from ninja import NinjaAPI
 from ninja import Schema
 from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 
 from eawork import settings
+from eawork.api.serializers import CommentSerializer
 from eawork.api.serializers import JobPostVersionSerializer
+from eawork.models import Comment
 from eawork.models import Company
 from eawork.models import JobAlert
 from eawork.models import JobPost
@@ -47,6 +50,18 @@ class JobPostVersionViewSet(
         self.check_object_permissions(self.request, post_version)
 
         return post_version
+
+
+class CommentViewSet(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    GenericViewSet,
+):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["post"]
 
 
 api_ninja = NinjaAPI(urls_namespace="api_ninja")

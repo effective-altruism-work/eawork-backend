@@ -3,11 +3,11 @@ from django.db import models
 from enumfields import Enum
 from enumfields import EnumField
 
-from eawork.models import Company
-from eawork.models import User
+from eawork.models.company import Company
 from eawork.models.post import Post
 from eawork.models.post import PostStatus
 from eawork.models.post import PostVersion
+from eawork.models.user import User
 
 
 class JobPost(Post):
@@ -29,7 +29,7 @@ class JobPost(Post):
 
     def __str__(self):
         if self.version_current:
-            return self.version_current.title
+            return f"{self.version_current.title} | #{self.pk}"
         else:
             return str(self.pk)
 

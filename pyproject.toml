@@ -32,6 +32,7 @@ django-storages = "1.11.1" # 1.12+ pobably needs an update of boto3 & its reqs, 
 django-object-actions = "^3.0.2"
 django-fieldsignals = "^0.7.0"
 django-cors-headers = "^3.10.0"
+django-filter = "^21.1"
 django-anymail = "8.5" # 8.6 is broken
     html2text = "^2020.1.16"
 dj-database-url = "^1.0.0"

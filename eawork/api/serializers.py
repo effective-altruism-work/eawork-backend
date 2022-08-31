@@ -1,5 +1,6 @@
 from enumfields.drf import EnumSupportSerializerMixin
 from rest_framework import serializers
+from rest_framework.fields import SerializerMethodField
 
 from eawork.models import Company
 from eawork.models import JobPost
@@ -7,6 +8,7 @@ from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
 from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
+from eawork.models.comment import Comment
 
 
 class TagTypeSerializer(EnumSupportSerializerMixin, serializers.ModelSerializer):
@@ -112,3 +114,22 @@ class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSeri
             tags_new = validated_data.pop(field_name)
             tags_field = getattr(instance, field_name)
             tags_field.set(tags_new)
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    children = SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = [
+            "post",
+            "author",
+            "content",
+            "children",
+            "created_at",
+        ]
+
+    def get_children(self, comment: Comment) -> dict | None:
+        if comment.children.exists():
+            return CommentSerializer(comment.children, many=True, read_only=True).data
+        return None

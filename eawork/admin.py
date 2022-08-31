@@ -15,6 +15,7 @@ from eawork.models import JobPostTagType
 from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import User
+from eawork.models.comment import Comment
 
 
 @admin.register(User)
@@ -121,11 +122,36 @@ class JobPostTagTypeAdmin(admin.ModelAdmin):
 
 
 @admin.register(JobAlert)
-class JobPostTagTypeAdmin(admin.ModelAdmin):
+class JobAlertAdmin(admin.ModelAdmin):
     list_display = [
         "email",
-        "query_string",
-        "query_string",
         "post_pk_seen_last",
         "is_active",
+        "created_at",
+        "updated_at",
+        "query_string",
     ]
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = [
+        "author",
+        "post",
+        "parent",
+        "get_content",
+        "created_at",
+    ]
+    autocomplete_fields = [
+        "author",
+        "post",
+        "parent",
+    ]
+    search_fields = [
+        "author",
+        "content",
+    ]
+
+    @options(desc="Content")
+    def get_content(self, obj: JobPostVersion) -> str:
+        return str(obj)
