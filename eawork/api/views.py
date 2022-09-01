@@ -56,6 +56,7 @@ class CommentViewSet(
     mixins.ListModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
+    mixins.CreateModelMixin,
     GenericViewSet,
 ):
     queryset = Comment.objects.all()

@@ -1,3 +1,4 @@
+from drf_writable_nested import WritableNestedModelSerializer
 from enumfields.drf import EnumSupportSerializerMixin
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
@@ -8,6 +9,7 @@ from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
 from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
+from eawork.models import User
 from eawork.models.comment import Comment
 
 
@@ -116,16 +118,41 @@ class JobPostVersionSerializer(EnumSupportSerializerMixin, serializers.ModelSeri
             tags_field.set(tags_new)
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "email",
+            "first_name",
+            "last_name",
+        ]
+        extra_kwargs = {
+            "email": {
+                "validators": []
+            }
+        }
+
+    def create(self, validated_data: dict) -> User:
+        user = User.objects.filter(email=validated_data["email"]).last()
+        if not user:
+            user = User.objects.create(**validated_data)
+        return user
+
+
+class CommentSerializer(WritableNestedModelSerializer):
     children = SerializerMethodField()
+    author = UserSerializer()
 
     class Meta:
         model = Comment
         fields = [
+            "pk",
+            "parent",
             "post",
             "author",
             "content",
             "children",
+            "updated_at",
             "created_at",
         ]
 
