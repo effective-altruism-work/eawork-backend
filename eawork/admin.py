@@ -1,6 +1,7 @@
 from adminutils import options
 from django.contrib import admin
 from django.contrib import messages
+from django.contrib.auth.admin import UserAdmin
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -19,7 +20,7 @@ from eawork.models.comment import Comment
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(UserAdmin):
     list_display = [
         "email",
         "is_active",
@@ -29,7 +30,44 @@ class UserAdmin(admin.ModelAdmin):
     ]
     search_fields = [
         "email",
+        "first_name",
+        "last_name",
     ]
+    ordering = ["email"]
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": [
+                    "email",
+                    "password",
+                    "first_name",
+                    "last_name",
+                ]
+            },
+        ),
+        (
+            "Permissions",
+            {
+                "fields": [
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                ],
+            },
+        ),
+        (
+            "Important dates",
+            {
+                "fields": [
+                    "last_login",
+                    "date_joined",
+                ]
+            },
+        ),
+    )
 
 
 @admin.register(Company)
