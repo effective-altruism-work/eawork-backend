@@ -15,6 +15,7 @@ from rest_framework.viewsets import GenericViewSet
 from eawork import settings
 from eawork.api.serializers import CommentSerializer
 from eawork.api.serializers import JobPostVersionSerializer
+from eawork.api.serializers import TagSerializer
 from eawork.models import Comment
 from eawork.models import Company
 from eawork.models import JobAlert
@@ -63,6 +64,16 @@ class CommentViewSet(
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["post"]
+
+
+class JobPostTagViewSet(
+    mixins.ListModelMixin,
+    GenericViewSet,
+):
+    queryset = JobPostTag.objects.filter(status=PostJobTagStatus.APPROVED)
+    serializer_class = TagSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["is_featured"]
 
 
 api_ninja = NinjaAPI(urls_namespace="api_ninja")

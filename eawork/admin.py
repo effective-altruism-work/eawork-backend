@@ -120,11 +120,17 @@ class JobPostTagAdmin(admin.ModelAdmin):
         "author",
         "description",
         "status",
+        "is_featured",
         "created_at",
     ]
     filter_horizontal = ["types"]
     autocomplete_fields = [
         "author",
+    ]
+    list_filter = [
+        "types",
+        "is_featured",
+        "created_at",
     ]
 
 
