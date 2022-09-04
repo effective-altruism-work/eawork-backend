@@ -253,7 +253,6 @@ REST_FRAMEWORK = {
 }
 REST_USE_JWT = True
 
-
 ADMIN_REORDER = [
     {
         "label": "Users",
@@ -262,14 +261,35 @@ ADMIN_REORDER = [
             "eawork.User",
             "account.EmailAddress",
             "auth.Group",
-            "socialaccount.SocialApp",
         ],
     },
-    "eawork",
+    {
+        "label": "Jobs",
+        "app": "eawork",
+        "models": [
+            {"model": "eawork.JobAlert", "label": "Email alerts"},
+            {"model": "eawork.JobPost", "label": "Posts"},
+            {"model": "eawork.JobPostVersion", "label": "Post versions"},
+            {"model": "eawork.Comment", "label": "Post comments"},
+            {"model": "eawork.Company", "label": "Companies"},
+        ],
+    },
+    {
+        "label": "Tags",
+        "app": "eawork",
+        "models": [
+            {"model": "eawork.JobPostTag", "label": "Tags"},
+            {"model": "eawork.JobPostTagType", "label": "Tag types"},
+        ],
+    },
     {
         "app": "eawork",
         "label": "Admin",
-        "models": ["sites.Site", "auditlog.LogEntry"],
+        "models": [
+            "sites.Site",
+            "auditlog.LogEntry",
+            "socialaccount.SocialApp",
+        ],
     },
 ]
 

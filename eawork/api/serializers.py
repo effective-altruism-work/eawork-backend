@@ -127,11 +127,7 @@ class UserSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
         ]
-        extra_kwargs = {
-            "email": {
-                "validators": []
-            }
-        }
+        extra_kwargs = {"email": {"validators": []}}
 
     def create(self, validated_data: dict) -> User:
         user = User.objects.filter(email=validated_data["email"]).last()
