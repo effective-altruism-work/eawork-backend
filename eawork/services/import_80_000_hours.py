@@ -165,6 +165,14 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
             tag_type=JobPostTagTypeEnum.DEGREE_REQUIRED,
         )
 
+    exp_required: str = job_raw["Experience requirements"]
+    if exp_required:
+        add_tag(
+            post_version,
+            tag_name=exp_required,
+            tag_type=JobPostTagTypeEnum.EXP_REQUIRED,
+        )
+
     if job_raw["Locations"]:
         for city in job_raw["Locations"]["citiesAndCountries"]:
             if "remote" in city.lower():

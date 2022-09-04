@@ -48,6 +48,10 @@ if settings.IS_ENABLE_ALGOLIA:
                 "tags_degree_required",
             ],
             [
+                "get_tags_exp_required_formatted",
+                "tags_exp_required",
+            ],
+            [
                 "get_tags_country_formatted",
                 "tags_country",
             ],

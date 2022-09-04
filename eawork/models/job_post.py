@@ -45,6 +45,7 @@ class JobPostTagTypeEnum(Enum):
     WORKLOAD = "workload"
     SKILL = "skill"
     IMMIGRATION = "immigration"
+    EXP_REQUIRED = "exp_required"
 
 
 class JobPostTagType(models.Model):
@@ -127,6 +128,12 @@ class JobPostVersion(PostVersion):
         blank=True,
         related_name=f"tags_{JobPostTagTypeEnum.DEGREE_REQUIRED.value}",
     )
+    tags_exp_required = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.EXP_REQUIRED},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.EXP_REQUIRED.value}",
+    )
     tags_country = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.COUNTRY},
@@ -189,6 +196,9 @@ class JobPostVersion(PostVersion):
 
     def get_tags_degree_required_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_degree_required.all()]
+
+    def get_tags_exp_required_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_exp_required.all()]
 
     def get_tags_country_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_country.all()]

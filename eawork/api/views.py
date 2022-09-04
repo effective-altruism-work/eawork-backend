@@ -139,6 +139,7 @@ class JobPostJson(Schema):
     tags_generic: list[str] | None
     tags_area: list[str] | None
     tags_degree_required: list[str] | None
+    tags_exp_required: list[str] | None
     tags_country: list[str] | None
     tags_city: list[str] | None
     tags_role_type: list[str] | None
