@@ -1,5 +1,6 @@
 import html2text
 from django.db import models
+from django.utils import timezone
 from enumfields import Enum
 from enumfields import EnumField
 
@@ -248,8 +249,13 @@ class JobPostVersion(PostVersion):
 
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
-            return (self.post.version_current.pk == self.pk) and (
-                self.status == PostStatus.PUBLISHED
+            is_active = True
+            if self.closes_at:
+                is_active = self.closes_at <= timezone.now()
+            return (
+                is_active
+                and (self.post.version_current.pk == self.pk)
+                and (self.status == PostStatus.PUBLISHED)
             )
         else:
             return False
