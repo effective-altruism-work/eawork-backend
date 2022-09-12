@@ -261,7 +261,7 @@ class JobPostVersion(PostVersion):
         if self.post:
             is_active = True
             if self.closes_at:
-                is_active = self.closes_at <= timezone.now()
+                is_active = timezone.now() <= self.closes_at
             return (
                 is_active
                 and (self.post.version_current.pk == self.pk)
