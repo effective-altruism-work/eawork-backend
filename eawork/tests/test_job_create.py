@@ -1,7 +1,10 @@
+import datetime
 import json
 import time
 
+import pytz
 from algoliasearch_django import clear_index
+from dateutil.relativedelta import relativedelta
 from django.core import mail
 
 from eawork.models import JobAlert
@@ -14,7 +17,8 @@ from eawork.tests.cases import EAWorkTestCase
 
 
 class JobCreateTest(EAWorkTestCase):
-    algolia_caching_time_s = 3
+    algolia_caching_time_s = 6  # 5s isn't enough
+    fixtures_posted_at_years_offset = 50
 
     @classmethod
     def setUpClass(cls):
@@ -24,38 +28,34 @@ class JobCreateTest(EAWorkTestCase):
 
     def test_job_create(self):
         post_title = "Software Engineer"
-        post_first: JobPost = self._create_post_and_publish_it(post_title)
+        self._create_post_and_publish_it(post_title)
+        self.assertEquals(len(mail.outbox), 1)
 
-        alert = JobAlert.objects.create(
+        JobAlert.objects.create(
             email="victor+git@givemomentum.com",
             query_json={
                 "query": post_title,
             },
-            post_pk_seen_last=0,
         )
 
         check_new_jobs_for_all_alerts()
-        self.assertEquals(len(mail.outbox), 2)
-        alert.refresh_from_db()
-        self.assertEquals(alert.post_pk_seen_last, post_first.pk)
+        self.assertEquals(len(mail.outbox), 1)
 
-        post_second: JobPost = self._create_post_and_publish_it(post_title + "2")
+        self._create_post_and_publish_it(post_title + "2")
 
         check_new_jobs_for_all_alerts()
 
-        self.assertEquals(len(mail.outbox), 4)
-        print(mail.outbox[1].body)
-        alert.refresh_from_db()
-        self.assertEquals(alert.post_pk_seen_last, post_second.pk)
+        # 3 including the 2 new post notifications for the admin
+        self.assertEquals(len(mail.outbox), 3)
+        print(mail.outbox[2].body)
 
     def test_80_000_hours_double_import(self):
-        JobAlert.objects.create(
+        alert = JobAlert.objects.create(
             email="victor+git@givemomentum.com",
             query_json={
                 "query": "",
-                "facetFilters": ["tags_area:Global health & poverty"],
+                "facetFilters": ["tags_role_type:Research"],
             },
-            post_pk_seen_last=0,
         )
 
         with open("eawork/tests/fixtures/json_to_import.json", "r") as json_to_import:
@@ -65,6 +65,12 @@ class JobCreateTest(EAWorkTestCase):
         time.sleep(self.algolia_caching_time_s)
         check_new_jobs_for_all_alerts()
         self.assertEquals(len(mail.outbox), 1)
+        print(mail.outbox[0].body)
+
+        alert.last_checked_at = datetime.datetime.now(pytz.utc) + relativedelta(
+            years=self.fixtures_posted_at_years_offset
+        )
+        alert.save()
 
         import_80_000_hours_jobs(json_to_import)
         time.sleep(self.algolia_caching_time_s)
