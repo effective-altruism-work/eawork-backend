@@ -4,6 +4,13 @@ from django.db import migrations
 from django.db import models
 
 import eawork.models.job_post
+from eawork.models import JobPostTagTypeEnum
+
+
+def add_tag_types(apps, schema_editor):
+    for tag_type in JobPostTagTypeEnum:
+        JobPostTagType = apps.get_model("eawork", "JobPostTagType")
+        JobPostTagType.objects.get_or_create(type=tag_type)
 
 
 class Migration(migrations.Migration):
@@ -25,4 +32,5 @@ class Migration(migrations.Migration):
                 to="eawork.JobPostTag",
             ),
         ),
+        migrations.RunPython(add_tag_types, migrations.RunPython.noop),
     ]

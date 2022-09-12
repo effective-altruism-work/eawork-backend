@@ -18,7 +18,11 @@ from eawork.models import PostStatus
 
 
 def import_80_000_hours_jobs(
-    json_to_import: dict = None, limit: int = None, is_reindex: bool = True
+    json_to_import: dict = None,
+    limit: int = None,
+    is_reindex: bool = True,
+    is_companies_only: bool = False,
+    is_jobs_only: bool = False,
 ):
     with disable_auto_indexing():
         if json_to_import:
@@ -27,8 +31,13 @@ def import_80_000_hours_jobs(
             resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
             data_raw = resp.json()["data"]
 
-        _import_companies(data_raw)
-        _import_jobs(data_raw, limit=limit)
+        if is_companies_only:
+            _import_companies(data_raw)
+        elif is_jobs_only:
+            _import_jobs(data_raw, limit=limit)
+        else:
+            _import_companies(data_raw)
+            _import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
         reindex_all(JobPostVersion)

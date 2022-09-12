@@ -1,4 +1,5 @@
 from adminutils import options
+from algoliasearch_django import reindex_all
 from django.contrib import admin
 from django.contrib import messages
 from django.contrib.auth.admin import UserAdmin
@@ -17,6 +18,7 @@ from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import User
 from eawork.models.comment import Comment
+from eawork.services.import_80_000_hours import import_80_000_hours_jobs
 
 
 @admin.register(User)
@@ -93,7 +95,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 
 @admin.register(JobPost)
-class JobPostAdmin(admin.ModelAdmin):
+class JobPostAdmin(DjangoObjectActions, admin.ModelAdmin):
     list_display = [
         "version_current",
         "company",
@@ -113,6 +115,30 @@ class JobPostAdmin(admin.ModelAdmin):
         "id_external_80_000_hours",
     ]
     list_filter = [("version_current__status", EnumFieldListFilter)]
+    changelist_actions = [
+        "run_80k_import_companies",
+        "run_80k_import_jobs",
+        "reindex_algolia",
+    ]
+
+    @options(label="Run 80k companies import")
+    def run_80k_import_companies(self, request, queryset) -> HttpResponse:
+        import_80_000_hours_jobs(is_reindex=False, is_companies_only=True)
+        messages.success(request, "Companies imported")
+        return redirect(reverse("admin:eawork_jobpost_changelist"))
+
+    @options(label="Run 80k jobs import")
+    def run_80k_import_jobs(self, request, queryset) -> HttpResponse:
+        import_80_000_hours_jobs(is_reindex=False, is_jobs_only=True)
+        messages.success(request, "Jobs imported")
+        return redirect(reverse("admin:eawork_jobpost_changelist"))
+
+    @options(label="Reindex jobs & tags in Algolia")
+    def reindex_algolia(self, request, queryset) -> HttpResponse:
+        reindex_all(JobPostVersion)
+        reindex_all(JobPostTag)
+        messages.success(request, "Reindexed jobs & tags")
+        return redirect(reverse("admin:eawork_jobpost_changelist"))
 
 
 @admin.register(JobPostTag)
@@ -178,11 +204,17 @@ class JobPostTagTypeAdmin(admin.ModelAdmin):
 class JobAlertAdmin(admin.ModelAdmin):
     list_display = [
         "email",
-        "post_pk_seen_last",
+        "is_active",
+        "last_checked_at",
+        "created_at",
+        "query_json",
+        "query_string",
+    ]
+    list_filter = [
         "is_active",
         "created_at",
         "updated_at",
-        "query_string",
+        "last_checked_at",
     ]
 
 
