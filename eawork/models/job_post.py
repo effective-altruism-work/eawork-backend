@@ -40,6 +40,7 @@ class JobPostTagTypeEnum(Enum):
     AREA = "area"
     DEGREE_REQUIRED = "degree_required"
     COUNTRY = "country"
+    LOCATION_80K = "location_80k"
     CITY = "city"
     ROLE_TYPE = "role_type"
     LOCATION_TYPE = "location_type"
@@ -159,6 +160,12 @@ class JobPostVersion(PostVersion):
         blank=True,
         related_name=f"tags_{JobPostTagTypeEnum.LOCATION_TYPE.value}",
     )
+    tags_location_80k = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.LOCATION_80K},
+        blank=True,
+        related_name=f"tags_{JobPostTagTypeEnum.LOCATION_80K.value}",
+    )
     tags_workload = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.WORKLOAD},
@@ -209,6 +216,9 @@ class JobPostVersion(PostVersion):
 
     def get_tags_role_type_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_role_type.all()]
+
+    def get_tags_location_80k_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_location_80k.all()]
 
     def get_tags_location_type_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_location_type.all()]

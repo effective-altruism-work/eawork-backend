@@ -72,6 +72,10 @@ if settings.IS_ENABLE_ALGOLIA:
                 "tags_location_type",
             ],
             [
+                "get_tags_location_80k_formatted",
+                "tags_location_80k",
+            ],
+            [
                 "get_tags_location_type_formatted",
                 "tags_location_type",
             ],

@@ -144,6 +144,7 @@ class JobPostJson(Schema):
     tags_city: list[str] | None
     tags_role_type: list[str] | None
     tags_location_type: list[str] | None
+    tags_location_80k: list[str] | None
     tags_workload: list[str] | None
     tags_skill: list[str] | None
     tags_immigration: list[str] | None

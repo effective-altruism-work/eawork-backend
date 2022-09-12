@@ -17,7 +17,9 @@ from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
 
 
-def import_80_000_hours_jobs(json_to_import: dict = None, limit: int = None):
+def import_80_000_hours_jobs(
+    json_to_import: dict = None, limit: int = None, is_reindex: bool = True
+):
     with disable_auto_indexing():
         if json_to_import:
             data_raw = json_to_import["data"]
@@ -28,7 +30,7 @@ def import_80_000_hours_jobs(json_to_import: dict = None, limit: int = None):
         _import_companies(data_raw)
         _import_jobs(data_raw, limit=limit)
 
-    if settings.IS_ENABLE_ALGOLIA:
+    if is_reindex and settings.IS_ENABLE_ALGOLIA:
         reindex_all(JobPostVersion)
         reindex_all(JobPostTag)
 
@@ -187,6 +189,12 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
                     tag_name=city,
                     tag_type=JobPostTagTypeEnum.CITY,
                 )
+            add_tag(
+                post=post_version,
+                tag_name=city,
+                tag_type=JobPostTagTypeEnum.LOCATION_80K,
+            )
+
         for country in job_raw["Locations"]["countries"]:
             if "remote" in country.lower():
                 add_tag(
@@ -200,6 +208,11 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
                     tag_name=country,
                     tag_type=JobPostTagTypeEnum.COUNTRY,
                 )
+            add_tag(
+                post=post_version,
+                tag_name=country,
+                tag_type=JobPostTagTypeEnum.LOCATION_80K,
+            )
 
     SWE_roles = [
         "Front End Developer",
@@ -221,7 +234,10 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
         "Front-End Developer",
     ]
     for SWE_role in SWE_roles:
-        if SWE_role in job_raw["Job title"] or job_raw["Job title"] == "Developer":
+        if (
+            SWE_role.lower() in job_raw["Job title"].lower()
+            or job_raw["Job title"] == "Developer"
+        ):
             add_tag(
                 post=post_version,
                 tag_name="Software Engineering",
