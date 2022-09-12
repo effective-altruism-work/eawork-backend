@@ -96,6 +96,7 @@ def _import_jobs(data_raw: dict, limit: int = None):
         else:
             post = JobPost.objects.create(
                 id_external_80_000_hours=job_raw["id"],
+                is_refetch_from_80_000_hours=True,
             )
             post_version = JobPostVersion.objects.create(
                 title=job_raw["Job title"],

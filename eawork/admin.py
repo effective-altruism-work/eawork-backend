@@ -114,7 +114,10 @@ class JobPostAdmin(DjangoObjectActions, admin.ModelAdmin):
         "versions__title",
         "id_external_80_000_hours",
     ]
-    list_filter = [("version_current__status", EnumFieldListFilter)]
+    list_filter = [
+        ("version_current__status", EnumFieldListFilter),
+        "is_refetch_from_80_000_hours",
+    ]
     changelist_actions = [
         "run_80k_import_companies",
         "run_80k_import_jobs",
