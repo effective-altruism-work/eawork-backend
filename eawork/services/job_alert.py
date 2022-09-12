@@ -19,9 +19,9 @@ def check_new_jobs(
 ):
     res_json = raw_search(
         model=JobPostVersion,
-        query=job_alert.query_json.get("query", ""),
+        query=job_alert.query_json.get("query", "") if job_alert.query_json else "",
         params={
-            "facetFilters": job_alert.query_json.get("facetFilters", []),
+            "facetFilters": job_alert.query_json.get("facetFilters", []) if job_alert.query_json else [],
             "hitsPerPage": algolia_hits_per_page,
             "filters": f"posted_at > {job_alert.last_checked_at.timestamp()}",
         },
