@@ -155,6 +155,19 @@ def _get_job_desc(job_raw: dict) -> str:
 
 
 def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
+    post_version.tags_generic.clear()
+    post_version.tags_area.clear()
+    post_version.tags_degree_required.clear()
+    post_version.tags_exp_required.clear()
+    post_version.tags_country.clear()
+    post_version.tags_city.clear()
+    post_version.tags_role_type.clear()
+    post_version.tags_location_type.clear()
+    post_version.tags_location_80k.clear()
+    post_version.tags_workload.clear()
+    post_version.tags_skill.clear()
+    post_version.tags_immigration.clear()
+
     for role_type in job_raw["Role types"]:
         add_tag(
             post=post_version,
