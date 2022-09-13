@@ -10,27 +10,45 @@ services:
     buildCommand: ./build.sh
     startCommand: gunicorn eawork.wsgi:application
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: eawork
-          property: connectionString
-      - key: SECRET_KEY
-        generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
+      - fromGroup: eawork-envs
   - type: worker
     name: eawork-celery
     env: python
     buildCommand: ./build.sh
     startCommand: celery --app tasks worker --loglevel info --concurrency 4
     envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          name: eawork-redis
-          type: redis
-          property: connectionString
+      - fromGroup: eawork-envs
   - type: redis
     name: eawork-redis
     plan: starter
     maxmemoryPolicy: noeviction
     ipAllowList: [] # only allow internal connections
+
+envVarGroups:
+- name: eawork-envs
+  envVars:
+    - key: DATABASE_URL
+      fromDatabase:
+        name: eawork-database
+        property: connectionString
+    - key: CELERY_BROKER_URL
+      fromService:
+        name: eawork-redis
+        type: redis
+        property: connectionString
+    - key: WEB_CONCURRENCY
+      value: 4
+    - key: PYTHON_VERSION
+      value: 3.10.5
+    - key: SECRET_KEY
+      generateValue: true
+    - key: DJANGO_ENV
+      value: prod
+    - key: MEDIA_ROOT
+      value: /var/eawork/media
+    - key: IS_ENABLE_ALGOLIA
+      value: true
+    - key: ALGOLIA_API_KEY
+      sync: false
+    - key: POSTMARK_SERVER_TOKEN
+      sync: false
