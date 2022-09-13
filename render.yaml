@@ -1,13 +1,13 @@
 databases:
-  - name: eawork
+  - name: eawork-database
     databaseName: eawork
     user: eawork
 
 services:
   - type: web
-    name: eawork
+    name: eawork-web
     env: python
-    buildCommand: poetry install && python manage.py collectstatic --no-input && python manage.py migrate
+    buildCommand: ./build.sh
     startCommand: gunicorn eawork.wsgi:application
     envVars:
       - key: DATABASE_URL
@@ -18,3 +18,19 @@ services:
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
+  - type: worker
+    name: eawork-celery
+    env: python
+    buildCommand: ./build.sh
+    startCommand: celery --app tasks worker --loglevel info --concurrency 4
+    envVars:
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: celery-redis
+          type: redis
+          property: connectionString
+  - type: redis
+    name: eawork-redis
+    plan: starter
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # only allow internal connections
