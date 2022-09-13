@@ -18,11 +18,6 @@ services:
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
-  - type: redis
-    name: eawork-redis
-    plan: starter
-    maxmemoryPolicy: noeviction
-    ipAllowList: [] # only allow internal connections
   - type: worker
     name: eawork-celery
     env: python
@@ -31,6 +26,11 @@ services:
     envVars:
       - key: CELERY_BROKER_URL
         fromService:
-          name: celery-redis
+          name: eawork-redis
           type: redis
           property: connectionString
+  - type: redis
+    name: eawork-redis
+    plan: starter
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # only allow internal connections
