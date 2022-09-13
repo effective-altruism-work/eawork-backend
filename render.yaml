@@ -11,6 +11,15 @@ services:
     startCommand: gunicorn eawork.wsgi:application
     envVars:
       - fromGroup: eawork-envs
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eawork-database
+          property: connectionString
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: eawork-redis
+          type: redis
+          property: connectionString
   - type: worker
     name: eawork-celery
     env: python
@@ -18,6 +27,15 @@ services:
     startCommand: celery --app tasks worker --loglevel info --concurrency 4
     envVars:
       - fromGroup: eawork-envs
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eawork-database
+          property: connectionString
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: eawork-redis
+          type: redis
+          property: connectionString
   - type: redis
     name: eawork-redis
     plan: starter
@@ -27,15 +45,6 @@ services:
 envVarGroups:
 - name: eawork-envs
   envVars:
-    - key: DATABASE_URL
-      fromDatabase:
-        name: eawork-database
-        property: connectionString
-    - key: CELERY_BROKER_URL
-      fromService:
-        name: eawork-redis
-        type: redis
-        property: connectionString
     - key: WEB_CONCURRENCY
       value: 4
     - key: PYTHON_VERSION
