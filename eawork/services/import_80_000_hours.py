@@ -71,6 +71,8 @@ def _import_companies(data_raw: dict):
 def _import_jobs(data_raw: dict, limit: int = None):
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
 
+    _cleanup_removed_jobs(jobs_raw)
+
     if limit:
         jobs_raw = jobs_raw[:limit]
 
@@ -109,6 +111,18 @@ def _import_jobs(data_raw: dict, limit: int = None):
             )
             post.save()
             _update_post_version(post_version, job_raw)
+
+
+def _cleanup_removed_jobs(jobs_raw: list[dict]):
+    jobs_new_ids: list[str] = list(map(lambda job: job["id"], jobs_raw))
+    jobs_current_ids: list[str] = JobPost.objects.exclude(
+        id_external_80_000_hours=""
+    ).values_list(
+        "id_external_80_000_hours",
+        flat=True,
+    )
+    ids_to_drop = set(jobs_current_ids) - set(jobs_new_ids)
+    JobPost.objects.filter(id_external_80_000_hours__in=ids_to_drop).delete()
 
 
 def _update_post_version(version: JobPostVersion, job_raw: dict):
