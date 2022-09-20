@@ -24,7 +24,7 @@ services:
     name: eawork-celery
     env: python
     buildCommand: ./build.sh
-    startCommand: celery --app tasks worker --loglevel info --concurrency 4
+    startCommand: celery --app eawork worker --loglevel info --concurrency 4
     envVars:
       - fromGroup: eawork-envs
       - key: DATABASE_URL
