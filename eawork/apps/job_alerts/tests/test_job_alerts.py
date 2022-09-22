@@ -7,12 +7,12 @@ from algoliasearch_django import clear_index
 from dateutil.relativedelta import relativedelta
 from django.core import mail
 
+from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 from eawork.models import JobAlert
 from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostVersion
 from eawork.services.import_80_000_hours import import_80_000_hours_jobs
-from eawork.services.job_alert import check_new_jobs_for_all_alerts
 from eawork.tests.cases import EAWorkTestCase
 
 

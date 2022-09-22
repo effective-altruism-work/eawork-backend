@@ -98,6 +98,7 @@ INSTALLED_APPS = [
     "django_filters",
     "algoliasearch_django",
     "eawork",
+    "eawork.apps.job_alerts",
 ]
 
 MIDDLEWARE = [
@@ -229,10 +230,10 @@ AUTH_PASSWORD_VALIDATORS = [
         },
     },
 ]
-DEFAULT_FROM_EMAIL = "support@eawork.org"
+DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", "team@80000hours.org")
 ADMINS = [("Victor", DEFAULT_FROM_EMAIL)]
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-DEFAULT_BCC_ADDRESSES = ["bcc@eawork.org"] if DJANGO_ENV == DjangoEnv.PROD else []
+DEFAULT_BCC_ADDRESSES = ["bcc@80000hours.org"] if DJANGO_ENV == DjangoEnv.PROD else []
 
 # if DJANGO_ENV == DjangoEnv.PROD:
 EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"
@@ -307,7 +308,7 @@ LOGGING = {
     },
 }
 
-FRONTEND_URL = "https://eawork.org"
+FRONTEND_URL = "https://jobs.80000hours.org"
 BASE_URL = "https://backend.eawork.org"
 
 IS_ENABLE_ALGOLIA = env.bool("IS_ENABLE_ALGOLIA", default=False)

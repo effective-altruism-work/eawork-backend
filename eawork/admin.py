@@ -10,7 +10,6 @@ from django_object_actions import DjangoObjectActions
 from enumfields.admin import EnumFieldListFilter
 
 from eawork.models import Company
-from eawork.models import JobAlert
 from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
@@ -200,24 +199,6 @@ class JobPostVersionAdmin(DjangoObjectActions, admin.ModelAdmin):
 class JobPostTagTypeAdmin(admin.ModelAdmin):
     list_display = [
         "type",
-    ]
-
-
-@admin.register(JobAlert)
-class JobAlertAdmin(admin.ModelAdmin):
-    list_display = [
-        "email",
-        "is_active",
-        "last_checked_at",
-        "created_at",
-        "query_json",
-        "query_string",
-    ]
-    list_filter = [
-        "is_active",
-        "created_at",
-        "updated_at",
-        "last_checked_at",
     ]
 
 

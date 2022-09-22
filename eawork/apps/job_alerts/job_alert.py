@@ -15,7 +15,9 @@ def check_new_jobs_for_all_alerts():
 
 
 def check_new_jobs(
-    job_alert: JobAlert, is_send_alert: bool = True, algolia_hits_per_page: int = 500
+    job_alert: JobAlert,
+    is_send_alert: bool = True,
+    algolia_hits_per_page: int = 500,
 ):
     res_json = raw_search(
         model=JobPostVersion,
@@ -41,31 +43,15 @@ def check_new_jobs(
 
 
 def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
-    url_unsubscribe = reverse(
-        "api_ninja:jobs_unsubscribe", kwargs={"token": job_alert.unsubscribe_token}
-    )
-    jobs_list = "\n".join(
-        [
-            f"""
-                <li><a href="{job['url_external']}">{job['title']} at {job['company_name']}</a></li>
-            """
-            for job in jobs_new
-        ]
-    )
-    message_html = f"""
-        <p><a href="{settings.FRONTEND_URL}/{job_alert.query_string}">Link to your search results</a>.</p>
-        
-        <p>New matched jobs:<p>
-        
-        <ul>{jobs_list}</ul>
-        
-        <p>
-            <a href="{settings.BASE_URL}{url_unsubscribe}" color="#718096">Unsubscribe</a>
-        </p>
-        """
-
     send_email(
-        subject="EA Work Jobs Alert",
-        message_html=message_html,
+        subject="New Jobs Alert [Beta]",
+        template_name="job_alerts/job_alert.html",
+        template_context={
+            "url_unsubscribe": reverse(
+                "api_ninja:jobs_unsubscribe", kwargs={"token": job_alert.unsubscribe_token}
+            ),
+            "jobs_new": jobs_new,
+            "job_alert": job_alert,
+        },
         email_to=job_alert.email,
     )

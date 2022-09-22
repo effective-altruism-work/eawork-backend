@@ -1,6 +1,3 @@
-from typing import Any
-from typing import Optional
-
 from algoliasearch_django import update_records
 from algoliasearch_django.decorators import disable_auto_indexing
 from django.http import Http404
@@ -18,7 +15,6 @@ from eawork.api.serializers import JobPostVersionSerializer
 from eawork.api.serializers import TagSerializer
 from eawork.models import Comment
 from eawork.models import Company
-from eawork.models import JobAlert
 from eawork.models import JobPost
 from eawork.models import JobPostTag
 from eawork.models import JobPostTagType
@@ -28,7 +24,6 @@ from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
 from eawork.models import User
 from eawork.send_email import send_email
-from eawork.services.job_alert import check_new_jobs
 
 
 class JobPostVersionViewSet(
@@ -79,34 +74,6 @@ class JobPostTagViewSet(
 api_ninja = NinjaAPI(urls_namespace="api_ninja")
 
 
-@api_ninja.get("/jobs/unsubscribe/{token}", url_name="jobs_unsubscribe")
-def jobs_unsubscribe(request, token: str):
-    alert = JobAlert.objects.filter(unsubscribe_token=token).last()
-    if alert:
-        alert.is_active = False
-        alert.save()
-        return "success"
-    else:
-        return "subscription doesn't exist"
-
-
-class JobAlertReq(Schema):
-    email: str
-    query_json: Optional[Any]
-    query_string: Optional[str]
-
-
-@api_ninja.post("/jobs/subscribe", url_name="jobs_subscribe")
-def jobs_subscribe(request, job_alert_req: JobAlertReq):
-    job_alert = JobAlert.objects.create(
-        email=job_alert_req.email,
-        query_json=job_alert_req.query_json,
-        query_string=job_alert_req.query_string,
-    )
-    check_new_jobs(job_alert, is_send_alert=False)
-    return {"success": True}
-
-
 class JobFlag(Schema):
     job_pk: str | int
     email: str | None
@@ -118,7 +85,7 @@ def flag_job(request, job_flag: JobFlag):
     send_email(
         subject=f"EA Work flag for #{job_flag.job_pk}"
         + (f"from {job_flag.email}" if job_flag.email else ""),
-        message_html=job_flag.message,
+        content_html=job_flag.message,
         email_to=settings.SERVER_EMAIL,
     )
     return {"success": True}
@@ -179,7 +146,10 @@ def jobs_post(request, job_post_json: JobPostJson):
 
 
 def _create_post_version(
-    job_post: JobPost, job_post_json: JobPostJson, author: User, is_only_version: bool
+    job_post: JobPost,
+    job_post_json: JobPostJson,
+    author: User,
+    is_only_version: bool,
 ):
     with disable_auto_indexing():
         post_version = JobPostVersion.objects.create(
@@ -199,7 +169,7 @@ def _create_post_version(
 
     send_email(
         subject=f"Post needs review from {author.email}",
-        message_html=f"""{settings.BASE_URL}/{reverse("admin:eawork_jobpostversion_change", args=[post_version.pk])}""",
+        content_html=f"""{settings.BASE_URL}{reverse("admin:eawork_jobpostversion_change", args=[post_version.pk])}""",
         email_to=settings.SERVER_EMAIL,
     )
 

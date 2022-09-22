@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from eawork.services.job_alert import check_new_jobs_for_all_alerts
+from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 
 
 class Command(BaseCommand):
