@@ -230,10 +230,10 @@ AUTH_PASSWORD_VALIDATORS = [
         },
     },
 ]
-DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", "team@80000hours.org")
+DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", "alerts@jobs.80000hours.org")
 ADMINS = [("Victor", DEFAULT_FROM_EMAIL)]
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-DEFAULT_BCC_ADDRESSES = ["bcc@80000hours.org"] if DJANGO_ENV == DjangoEnv.PROD else []
+DEFAULT_BCC_ADDRESSES = ["bcc@jobs.80000hours.org"] if DJANGO_ENV == DjangoEnv.PROD else []
 
 # if DJANGO_ENV == DjangoEnv.PROD:
 EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"
