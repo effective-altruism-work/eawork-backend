@@ -10,7 +10,7 @@ def send_email(
     template_name: str = None,
     content_html: str = None,
     template_context: dict = None,
-    email_from: str = "support@eawork.org",
+    email_from: str = settings.DEFAULT_FROM_EMAIL,
 ):
     if template_name:
         template_html = get_template(template_name)
