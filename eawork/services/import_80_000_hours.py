@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, TypedDict
 
 import pytz
 import requests
@@ -37,6 +37,7 @@ def import_80_000_hours_jobs(
             _import_jobs(data_raw, limit=limit)
         else:
             _import_companies(data_raw)
+            return
             _import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
@@ -44,8 +45,31 @@ def import_80_000_hours_jobs(
         reindex_all(JobPostTag)
 
 
+class Bonus(TypedDict):
+    forum_link: str
+    is_recommended: bool
+
+# At present, the Airtable API returns the below properties only attached to vacancies, not companies. 
+# We want these properties associated with companies, so we extract them here.
+def _derive_some_company_data(data_raw: dict):
+    jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
+    print(jobs_raw[0])
+    mixed_up_data: dict[str, Bonus] = {}
+    for job_raw in jobs_raw:
+        company = Company.objects.get(
+                id_external_80_000_hours=job_raw["Hiring organisation ID"],
+        )
+        if (company.name not in mixed_up_data):
+            mixed_up_data[company.name] = {
+                'forum_link': str(job_raw["ea_forum_link"][0] if isinstance(job_raw["ea_forum_link"], list) and job_raw["ea_forum_link"][0] != None else ""), 
+                'is_recommended': bool(job_raw["is_recommended_org"][0] if isinstance(job_raw["is_recommended_org"], list) else False),
+            }
+
+    return mixed_up_data
+
 def _import_companies(data_raw: dict):
     companies_dict: dict[str, dict] = data_raw["organisations"]
+    bonus_data = _derive_some_company_data(data_raw)
     for company_id in companies_dict:
         company_raw: dict[
             Literal["name", "description", "homepage", "logo", "career_page"], str
