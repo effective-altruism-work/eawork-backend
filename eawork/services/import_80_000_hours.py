@@ -37,7 +37,6 @@ def import_80_000_hours_jobs(
             _import_jobs(data_raw, limit=limit)
         else:
             _import_companies(data_raw)
-            return
             _import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
@@ -53,7 +52,6 @@ class Bonus(TypedDict):
 # We want these properties associated with companies, so we extract them here.
 def _derive_some_company_data(data_raw: dict):
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
-    print(jobs_raw[0])
     mixed_up_data: dict[str, Bonus] = {}
     for job_raw in jobs_raw:
         company = Company.objects.get(
@@ -81,6 +79,9 @@ def _import_companies(data_raw: dict):
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
             company.career_page_url = company_raw["career_page"]
+            company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
+            company.forum_url = bonus_data[company_raw["name"]]["forum_link"]
+            company.save() 
         else:
             Company.objects.create(
                 name=company_raw["name"],
@@ -89,6 +90,8 @@ def _import_companies(data_raw: dict):
                 url=company_raw["homepage"],
                 logo_url=company_raw["logo"],
                 career_page_url=company_raw["career_page"],
+                is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"],
+                forum_url = bonus_data[company_raw["name"]]["forum_link"]
             )
 
 
