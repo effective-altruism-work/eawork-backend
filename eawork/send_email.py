@@ -36,4 +36,5 @@ def send_email(
         to=[email_to],
     )
     msg.attach_alternative(content_html, "text/html")
-    msg.send()
+    num_success = msg.send()
+    return not bool(num_success)

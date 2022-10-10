@@ -10,9 +10,16 @@ from eawork.send_email import send_email
 
 def check_new_jobs_for_all_alerts():
     if settings.IS_ENABLE_ALGOLIA:  # todo remove
+        successes = 0
+        failures = 0
         for job_alert in JobAlert.objects.filter(is_active=True):
-            check_new_jobs(job_alert)
-
+            sent = check_new_jobs(job_alert)
+            if (sent is not None):
+                if (sent == True):
+                    successes += 1
+                else:
+                    failures += 1
+        print(f"Successful emails: {successes}, failed emails: {failures}")
 
 def check_new_jobs(
     job_alert: JobAlert,
@@ -35,15 +42,18 @@ def check_new_jobs(
         for hit in res_json["hits"]:
             jobs_new.append(hit)
 
+        sent = None
         if is_send_alert:
-            _send_email(job_alert, jobs_new)
+            sent = _send_email(job_alert, jobs_new)
+            
 
         job_alert.last_checked_at = timezone.now()
         job_alert.save()
+        return sent
 
 
 def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
-    send_email(
+    return send_email(
         subject="New Jobs Alert [Beta]",
         template_name="job_alerts/job_alert.html",
         template_context={
