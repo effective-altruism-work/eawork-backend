@@ -244,6 +244,12 @@ class JobPostVersion(PostVersion):
     def get_company_career_page_url(self) -> str:
         return self.post.company.career_page_url
 
+    def get_company_ea_forum_url(self) -> str:
+        return self.post.company.forum_url
+
+    def get_company_is_top_recommended_org(self) -> bool:
+        return self.post.company.is_top_recommended_org
+
     def get_company_description(self) -> str:
         return self.post.company.description
 

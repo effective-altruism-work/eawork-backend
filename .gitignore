@@ -8,3 +8,6 @@
 media/
 .DS_Store
 todo.md
+test.http
+notes.txt
+shell.sh

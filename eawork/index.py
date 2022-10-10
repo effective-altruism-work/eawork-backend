@@ -34,6 +34,8 @@ if settings.IS_ENABLE_ALGOLIA:
             ["get_company_url", "company_url"],
             ["get_company_logo_url", "company_logo_url"],
             ["get_company_career_page_url", "company_career_page_url"],
+            ["get_company_ea_forum_url", "company_ea_forum_url"],
+            ["get_company_is_top_recommended_org", "company_is_recommended_org"],
             ["get_company_description", "company_description"],
             [
                 "get_tags_generic_formatted",

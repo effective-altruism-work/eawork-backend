@@ -12,6 +12,8 @@ class Company(models.Model):
     linkedin_url = models.URLField(max_length=511, blank=True, verbose_name="Linkedin")
     facebook_url = models.URLField(max_length=511, blank=True, verbose_name="Facebook")
     career_page_url = models.URLField(max_length=511, blank=True)
+    forum_url = models.URLField(max_length=511, blank=True, verbose_name="Forum")
+    is_top_recommended_org = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

@@ -9,7 +9,8 @@ Features:
 
 ### Installation
 
-- start postgres 14 and add its address to `.env.local.override` `DATABASE_ENV` var
+- start postgres 14 and add its address to `.env.local.override` `DATABASE_URL` var
+- Add the `hstore` connection to the database: `CREATE EXTENSION hstore;`
 - poetry install
 - python manage.py migrate
 - python manage.py runserver
