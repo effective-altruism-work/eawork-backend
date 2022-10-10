@@ -18,8 +18,8 @@ def check_new_jobs_for_all_alerts():
         for job_alert in JobAlert.objects.filter(is_active=True):
             job_alert_count += 1
             sent = check_new_jobs(job_alert)
-            if (sent is not None):
-                if (sent == True):
+            if sent is not None:
+                if sent == True:
                     successes += 1
                 else:
                     failures += 1
@@ -30,6 +30,7 @@ def check_new_jobs_for_all_alerts():
         print(f"Alerts without new emails to send: {nohits}")
         print(f"Successful emails: {successes}")
         print(f"Failed emails: {failures}")
+
 
 def check_new_jobs(
     job_alert: JobAlert,
@@ -56,13 +57,15 @@ def check_new_jobs(
             jobs_new.append(hit)
 
         if is_send_alert:
-            sent = _send_email(job_alert, jobs_new) # sent is overwritten with a bool to indicate the success status of an email
-            
+            sent = _send_email(
+                job_alert, jobs_new
+            )  # sent is overwritten with a bool to indicate the success status of an email
 
         job_alert.last_checked_at = timezone.now()
         job_alert.save()
 
-    return sent # if sent was not overwritten, its value remains None, indicating that there was nothing to send.
+    return sent  # if sent was not overwritten, its value remains None, indicating that there was nothing to send.
+
 
 def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
     return send_email(

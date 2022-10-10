@@ -1,4 +1,5 @@
-from typing import Literal, TypedDict
+from typing import Literal
+from typing import TypedDict
 
 import pytz
 import requests
@@ -48,22 +49,33 @@ class Bonus(TypedDict):
     forum_link: str
     is_recommended: bool
 
-# At present, the Airtable API returns the below properties only attached to vacancies, not companies. 
+
+# At present, the Airtable API returns the below properties only attached to vacancies, not companies.
 # We want these properties associated with companies, so we extract them here.
 def _derive_some_company_data(data_raw: dict):
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
     mixed_up_data: dict[str, Bonus] = {}
     for job_raw in jobs_raw:
         company = Company.objects.get(
-                id_external_80_000_hours=job_raw["Hiring organisation ID"],
+            id_external_80_000_hours=job_raw["Hiring organisation ID"],
         )
-        if (company.name not in mixed_up_data):
+        if company.name not in mixed_up_data:
             mixed_up_data[company.name] = {
-                'forum_link': str(job_raw["ea_forum_link"][0] if isinstance(job_raw["ea_forum_link"], list) and job_raw["ea_forum_link"][0] != None else ""), 
-                'is_recommended': bool(job_raw["is_recommended_org"][0] if isinstance(job_raw["is_recommended_org"], list) else False),
+                "forum_link": str(
+                    job_raw["ea_forum_link"][0]
+                    if isinstance(job_raw["ea_forum_link"], list)
+                    and job_raw["ea_forum_link"][0] != None
+                    else ""
+                ),
+                "is_recommended": bool(
+                    job_raw["is_recommended_org"][0]
+                    if isinstance(job_raw["is_recommended_org"], list)
+                    else False
+                ),
             }
 
     return mixed_up_data
+
 
 def _import_companies(data_raw: dict):
     companies_dict: dict[str, dict] = data_raw["organisations"]
@@ -81,7 +93,7 @@ def _import_companies(data_raw: dict):
             company.career_page_url = company_raw["career_page"]
             company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
             company.forum_url = bonus_data[company_raw["name"]]["forum_link"]
-            company.save() 
+            company.save()
         else:
             Company.objects.create(
                 name=company_raw["name"],
@@ -90,8 +102,8 @@ def _import_companies(data_raw: dict):
                 url=company_raw["homepage"],
                 logo_url=company_raw["logo"],
                 career_page_url=company_raw["career_page"],
-                is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"],
-                forum_url = bonus_data[company_raw["name"]]["forum_link"]
+                is_top_recommended_org=bonus_data[company_raw["name"]]["is_recommended"],
+                forum_url=bonus_data[company_raw["name"]]["forum_link"],
             )
 
 
