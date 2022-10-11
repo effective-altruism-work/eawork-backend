@@ -3,7 +3,7 @@
 <ul>
   {% for job in jobs_new %}
     <li>
-      <a style="color: #4CA6BC" href="{{ job.url_external }}">{{ job.title }} at {{ job.company_name}}</a>
+      <a style="color: #4CA6BC" href="https://jobs.80000hours.org/?jobPk={{ job.post_pk }}">{{ job.title }} at {{ job.company_name}}</a>
     </li>
   {% endfor %}
 </ul>
