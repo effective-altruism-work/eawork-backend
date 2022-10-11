@@ -37,4 +37,4 @@ def send_email(
     )
     msg.attach_alternative(content_html, "text/html")
     num_success = msg.send()
-    return not bool(num_success)
+    return bool(num_success)

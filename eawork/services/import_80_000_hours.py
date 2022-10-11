@@ -56,11 +56,8 @@ def _derive_some_company_data(data_raw: dict):
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
     mixed_up_data: dict[str, Bonus] = {}
     for job_raw in jobs_raw:
-        company = Company.objects.get(
-            id_external_80_000_hours=job_raw["Hiring organisation ID"],
-        )
-        if company.name not in mixed_up_data:
-            mixed_up_data[company.name] = {
+        if job_raw["Hiring organisation ID"] not in mixed_up_data:
+            mixed_up_data[job_raw["Hiring organisation ID"]] = {
                 "forum_link": str(
                     job_raw["ea_forum_link"][0]
                     if isinstance(job_raw["ea_forum_link"], list)
