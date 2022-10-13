@@ -25,6 +25,7 @@ def import_80_000_hours_jobs(
     is_companies_only: bool = False,
     is_jobs_only: bool = False,
 ):
+    print("\nimport 80K")
     with disable_auto_indexing():
         if json_to_import:
             data_raw = json_to_import["data"]
@@ -41,6 +42,7 @@ def import_80_000_hours_jobs(
             _import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
+        print("\nreindex algolia")
         reindex_all(JobPostVersion)
         reindex_all(JobPostTag)
 
@@ -75,6 +77,7 @@ def _derive_some_company_data(data_raw: dict):
 
 
 def _import_companies(data_raw: dict):
+    print("\nimport companies")
     companies_dict: dict[str, dict] = data_raw["organisations"]
     bonus_data = _derive_some_company_data(data_raw)
     for company_id in companies_dict:
@@ -105,6 +108,7 @@ def _import_companies(data_raw: dict):
 
 
 def _import_jobs(data_raw: dict, limit: int = None):
+    print("\nimport jobs")
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
 
     _cleanup_removed_jobs(jobs_raw)
@@ -176,7 +180,7 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
     )
 
     exp_reqs: str = job_raw["Experience requirements"]
-    if exp_reqs == "5+ years of experience":
+    if exp_reqs == "5+ years of experience" or exp_reqs == "5-9 years of experience":
         version.experience_min = 5
     elif exp_reqs == "0-2 years of experience":
         version.experience_min = 0
@@ -287,36 +291,37 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
                 tag_type=JobPostTagTypeEnum.LOCATION_80K,
             )
 
-    SWE_roles = [
-        "Front End Developer",
-        "Full Stack Developer",
-        "Full-stack Developer",
-        "PHP Developer",
-        "Project Lead, Molecular Systems Engineering Software",
-        "Data Systems Developer",
-        "Senior Data Systems Developer",
-        "Software Developer",
-        "Software Engineer",
-        "S-Process Developer",
-        "Lead Developer, Global",
-        "Senior Developer / Team Lead",
-        "Web Developer",
-        "Android Security Developer",
-        "Software Security Research Engineer",
-        "Cyber Operations Developer, Registration of Interest",
-        "Front-End Developer",
-    ]
-    for SWE_role in SWE_roles:
-        if (
-            SWE_role.lower() in job_raw["Job title"].lower()
-            or job_raw["Job title"] == "Developer"
-        ):
-            add_tag(
-                post=post_version,
-                tag_name="Software Engineering",
-                tag_type=JobPostTagTypeEnum.ROLE_TYPE,
-            )
-            break
+    # keeping for reference while this gets moved to the airtable. 
+    # SWE_roles = [
+    #     "Front End Developer",
+    #     "Full Stack Developer",
+    #     "Full-stack Developer",
+    #     "PHP Developer",
+    #     "Project Lead, Molecular Systems Engineering Software",
+    #     "Data Systems Developer",
+    #     "Senior Data Systems Developer",
+    #     "Software Developer",
+    #     "Software Engineer",
+    #     "S-Process Developer",
+    #     "Lead Developer, Global",
+    #     "Senior Developer / Team Lead",
+    #     "Web Developer",
+    #     "Android Security Developer",
+    #     "Software Security Research Engineer",
+    #     "Cyber Operations Developer, Registration of Interest",
+    #     "Front-End Developer",
+    # ]
+    # for SWE_role in SWE_roles:
+    #     if (
+    #         SWE_role.lower() in job_raw["Job title"].lower()
+    #         or job_raw["Job title"] == "Developer"
+    #     ):
+    #         add_tag(
+    #             post=post_version,
+    #             tag_name="Software Engineering",
+    #             tag_type=JobPostTagTypeEnum.ROLE_TYPE,
+    #         )
+    #         break
 
 
 def _strip_all_json_strings(jobs_raw: list[dict]) -> list[dict]:
