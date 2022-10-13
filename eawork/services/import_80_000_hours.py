@@ -18,35 +18,6 @@ from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
 
 
-def import_80_000_hours_jobs(
-    json_to_import: dict = None,
-    limit: int = None,
-    is_reindex: bool = True,
-    is_companies_only: bool = False,
-    is_jobs_only: bool = False,
-):
-    print("\nimport 80K")
-    with disable_auto_indexing():
-        if json_to_import:
-            data_raw = json_to_import["data"]
-        else:
-            resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
-            data_raw = resp.json()["data"]
-
-        if is_companies_only:
-            _import_companies(data_raw)
-        elif is_jobs_only:
-            _import_jobs(data_raw, limit=limit)
-        else:
-            _import_companies(data_raw)
-            _import_jobs(data_raw, limit=limit)
-
-    if is_reindex and settings.IS_ENABLE_ALGOLIA:
-        print("\nreindex algolia")
-        reindex_all(JobPostVersion)
-        reindex_all(JobPostTag)
-
-
 class Bonus(TypedDict):
     forum_link: str
     is_recommended: bool
@@ -76,7 +47,7 @@ def _derive_some_company_data(data_raw: dict):
     return mixed_up_data
 
 
-def _import_companies(data_raw: dict):
+def import_companies(data_raw: dict):
     print("\nimport companies")
     companies_dict: dict[str, dict] = data_raw["organisations"]
     bonus_data = _derive_some_company_data(data_raw)
@@ -107,7 +78,7 @@ def _import_companies(data_raw: dict):
             )
 
 
-def _import_jobs(data_raw: dict, limit: int = None):
+def import_jobs(data_raw: dict, limit: int = None):
     print("\nimport jobs")
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
 
@@ -291,7 +262,7 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
                 tag_type=JobPostTagTypeEnum.LOCATION_80K,
             )
 
-    # keeping for reference while this gets moved to the airtable. 
+    # keeping for reference while this gets moved to the airtable.
     # SWE_roles = [
     #     "Front End Developer",
     #     "Full Stack Developer",

@@ -1,6 +1,14 @@
 from celery import shared_task
 from celery.utils.log import get_task_logger
 
+import requests
+from algoliasearch_django import reindex_all
+from algoliasearch_django.decorators import disable_auto_indexing
+from django.conf import settings
+
+from eawork.models import JobPostTag
+from eawork.models import JobPostVersion
+from eawork.services.import_80_000_hours import import_companies, import_jobs
 
 logger = get_task_logger(__name__)
 
@@ -9,3 +17,39 @@ logger = get_task_logger(__name__)
 def add(x, y):
     logger.info(f"Adding {x} + {y}")
     return x + y
+
+
+@shared_task
+def import_80_000_hours_jobs(
+    json_to_import: dict = None,
+    limit: int = None,
+    is_reindex: bool = True,
+    is_companies_only: bool = False,
+    is_jobs_only: bool = False,
+):
+    print("\nimport 80K")
+    with disable_auto_indexing():
+        if json_to_import:
+            data_raw = json_to_import["data"]
+        else:
+            resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
+            data_raw = resp.json()["data"]
+
+        if is_companies_only:
+            import_companies(data_raw)
+        elif is_jobs_only:
+            import_jobs(data_raw, limit=limit)
+        else:
+            import_companies(data_raw)
+            import_jobs(data_raw, limit=limit)
+
+    if is_reindex and settings.IS_ENABLE_ALGOLIA:
+        reindex_algolia()
+
+
+# ALGOLIA
+@shared_task
+def reindex_algolia():
+    print("\nreindex algolia")
+    reindex_all(JobPostVersion)
+    reindex_all(JobPostTag)
