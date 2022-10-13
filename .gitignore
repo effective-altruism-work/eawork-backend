@@ -11,3 +11,5 @@ todo.md
 test.http
 notes.txt
 shell.sh
+dev.sh
+cron.sh
