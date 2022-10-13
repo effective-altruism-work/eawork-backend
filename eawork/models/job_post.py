@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from enumfields import Enum
 from enumfields import EnumField
+import logging
 
 from eawork.models.company import Company
 from eawork.models.post import Post
@@ -268,6 +269,13 @@ class JobPostVersion(PostVersion):
             is_active = True
             if self.closes_at:
                 is_active = timezone.now() <= self.closes_at
+
+            if not self.post.version_current:
+                str = f"Post {self.post.pk} has no version_current field. Please check Post {self.post.pk} and PostVersion {self.pk}."
+                print(str)
+                logging.error(str)
+                return False
+
             return (
                 is_active
                 and (self.post.version_current.pk == self.pk)
