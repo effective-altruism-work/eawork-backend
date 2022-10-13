@@ -25,7 +25,7 @@ def import_80_000_hours_jobs(
     is_companies_only: bool = False,
     is_jobs_only: bool = False,
 ):
-    print("\nimport 80K jobs")
+    print("\nimport 80K")
     with disable_auto_indexing():
         if json_to_import:
             data_raw = json_to_import["data"]
@@ -42,6 +42,7 @@ def import_80_000_hours_jobs(
             _import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
+        print("\nreindex algolia")
         reindex_all(JobPostVersion)
         reindex_all(JobPostTag)
 
