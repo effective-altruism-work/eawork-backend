@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from eawork.services.import_80_000_hours import import_80_000_hours_jobs
+from eawork.tasks import import_80_000_hours_jobs
 
 
 class Command(BaseCommand):
@@ -8,4 +8,4 @@ class Command(BaseCommand):
         parser.add_argument("limit", type=int, nargs="?", default=False)
 
     def handle(self, *args, **options):
-        import_80_000_hours_jobs(limit=options["limit"])
+        import_80_000_hours_jobs.delay(limit=options["limit"])
