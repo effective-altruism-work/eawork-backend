@@ -8,4 +8,5 @@ class Command(BaseCommand):
         parser.add_argument("limit", type=int, nargs="?", default=False)
 
     def handle(self, *args, **options):
-        import_80_000_hours_jobs.delay(limit=options["limit"])
+        # does not use celery for now for sake of synchronicity with check_new_jobs_for_all_alerts command
+        import_80_000_hours_jobs(limit=options["limit"])
