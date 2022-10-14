@@ -1,10 +1,11 @@
-from celery import shared_task
+from celery import shared_task, chain
 from celery.utils.log import get_task_logger
 
 import requests
 from algoliasearch_django import reindex_all
 from algoliasearch_django.decorators import disable_auto_indexing
 from django.conf import settings
+from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 
 from eawork.models import JobPostTag
 from eawork.models import JobPostVersion
@@ -53,3 +54,14 @@ def reindex_algolia():
     print("\nreindex algolia")
     reindex_all(JobPostVersion)
     reindex_all(JobPostTag)
+
+
+@shared_task
+def check_new_jobs_celery():
+    check_new_jobs_for_all_alerts()
+
+
+def import_and_check_new_jobs_for_all_alerts(limit: int = None):
+    print("sending to celery")
+    # 'si' below makes the call signature immutable, otherwise the function becomes frightened that the previous function is trying to pass it an argument.
+    chain(import_80_000_hours_jobs.s(limit=limit), check_new_jobs_celery.si()).apply_async()
