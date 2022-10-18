@@ -228,6 +228,7 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
         if isinstance(job_raw["MinimumExperienceLevel"], list)
         else ""
     )
+    
     if exp_min:
         add_tag(
             post_version,
