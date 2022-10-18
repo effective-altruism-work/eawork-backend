@@ -12,6 +12,7 @@ def send_email(
     template_context: dict = None,
     email_from: str = settings.DEFAULT_FROM_EMAIL,
 ):
+    origin_param = ""
     if template_name:
         template_html = get_template(template_name)
         content_html = template_html.render(
@@ -19,6 +20,7 @@ def send_email(
                 "settings": {
                     "BASE_URL": settings.BASE_URL,
                     "FRONTEND_URL": settings.FRONTEND_URL,
+                    "ORIGIN_PARAM": origin_param,
                 },
                 **template_context,
             }

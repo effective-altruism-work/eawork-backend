@@ -17,7 +17,11 @@ from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import User
 from eawork.models.comment import Comment
-from eawork.tasks import reindex_algolia, import_80_000_hours_jobs
+from eawork.tasks import (
+    import_and_check_new_jobs_for_all_alerts,
+    reindex_algolia,
+    import_80_000_hours_jobs,
+)
 
 
 @admin.register(User)
@@ -121,6 +125,7 @@ class JobPostAdmin(DjangoObjectActions, admin.ModelAdmin):
         "run_80k_import_companies",
         "run_80k_import_jobs",
         "reindex_algolia",
+        "import_and_reindex",
     ]
 
     @options(label="Run 80k companies import")
@@ -139,6 +144,12 @@ class JobPostAdmin(DjangoObjectActions, admin.ModelAdmin):
     def reindex_algolia(self, request, queryset) -> HttpResponse:
         reindex_algolia.delay()
         messages.success(request, "Reindexing jobs & tags")
+        return redirect(reverse("admin:eawork_jobpost_changelist"))
+
+    @options(label="Combined Import & Reindex")
+    def import_and_reindex(self, request, queryset) -> HttpResponse:
+        import_80_000_hours_jobs.delay(is_reindex=True)
+        messages.success(request, "Importing and reindexing")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
 
