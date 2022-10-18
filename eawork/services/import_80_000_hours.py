@@ -150,13 +150,11 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
         tzinfo=pytz.timezone("Europe/London")
     )
 
-    print("GET HERE")
     exp_min: str = (
         job_raw["MinimumExperienceLevel"][0]
         if isinstance(job_raw["MinimumExperienceLevel"], list)
         else ""
     )
-    print(exp_min)
     if exp_min == "Senior (10+ years experience)":
         version.experience_min = 10
     elif exp_min == "Mid (5-9 years experience)":
