@@ -150,14 +150,24 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
         tzinfo=pytz.timezone("Europe/London")
     )
 
-    exp_reqs: str = job_raw["Experience requirements"]
-    if exp_reqs == "5+ years of experience" or exp_reqs == "5-9 years of experience":
+    print("GET HERE")
+    exp_min: str = (
+        job_raw["MinimumExperienceLevel"][0]
+        if isinstance(job_raw["MinimumExperienceLevel"], list)
+        else ""
+    )
+    print(exp_min)
+    if exp_min == "Senior (10+ years experience)":
+        version.experience_min = 10
+    elif exp_min == "Mid (5-9 years experience)":
         version.experience_min = 5
-    elif exp_reqs == "0-2 years of experience":
+        version.experience_avg = 9
+
+    elif exp_min == "Entry-level":
         version.experience_min = 0
         version.experience_avg = 2
-    elif exp_reqs == "3-4 years of experience":
-        version.experience_min = 3
+    elif exp_min == "Junior (1-4 years experience)":
+        version.experience_min = 1
         version.experience_avg = 4
 
     version.post.company = Company.objects.get(
@@ -215,11 +225,15 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
             tag_type=JobPostTagTypeEnum.DEGREE_REQUIRED,
         )
 
-    exp_required: str = job_raw["Experience requirements"]
-    if exp_required:
+    exp_min: str = (
+        job_raw["MinimumExperienceLevel"][0]
+        if isinstance(job_raw["MinimumExperienceLevel"], list)
+        else ""
+    )
+    if exp_min:
         add_tag(
             post_version,
-            tag_name=exp_required,
+            tag_name=exp_min,
             tag_type=JobPostTagTypeEnum.EXP_REQUIRED,
         )
 
