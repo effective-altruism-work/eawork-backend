@@ -12,7 +12,7 @@ def send_email(
     template_context: dict = None,
     email_from: str = settings.DEFAULT_FROM_EMAIL,
 ):
-    origin_param = ""
+    origin_param = "&utm_source=job-board-alerts"
     if template_name:
         template_html = get_template(template_name)
         content_html = template_html.render(
