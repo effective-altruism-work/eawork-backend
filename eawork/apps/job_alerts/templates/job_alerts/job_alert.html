@@ -3,20 +3,20 @@
 <ul>
   {% for job in jobs_new %}
     <li>
-      <a style="color: #4CA6BC" href="https://jobs.80000hours.org/?jobPk={{ job.post_pk }}">{{ job.title }} at {{ job.company_name}}</a>
+      <a style="color: #4CA6BC" href="https://jobs.80000hours.org/?jobPk={{ job.post_pk }}&utm_source=job-board-alerts">{{ job.title }} at {{ job.company_name}}</a>
     </li>
   {% endfor %}
 </ul>
 
 <p>
-  <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}/{{ job_alert.query_string }}{{ settings.ORIGIN_PARAM }}">
-    Link to your search results
+  <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}/{{ job_alert.query_string }}&utm_source=job-board-alerts&utm_campaign=filters">
+    Link to your search results.
   </a>
-  (you can also see your filter terms here).
+  <!-- (you can also see your filter terms here). -->
 </p>
 
 <p>
-  Or see <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}{{ settings.ORIGIN_PARAM }}">our full list of curated roles</a>.
+  Or see <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}?utm_source=job-board-alerts&utm_campaign=home">our full list of curated roles</a>.
 </p>
 
 <p>
