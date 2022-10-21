@@ -29,16 +29,24 @@ def jobs_unsubscribe_response(request: HttpRequest, token: str):
 def jobs_unsubscribe(request, token: str):
     alert = JobAlert.objects.filter(unsubscribe_token=token).last()
 
-    return render(
-        request, "subscription/unsubscribe.html", {"base_url": settings.BASE_URL, "token": token}
-    )
+    # return render(
+    #     request, "subscription/unsubscribe.html", {"base_url": settings.BASE_URL, "token": token}
+    # )
 
-    # if alert:
-    #     alert.is_active = False
-    #     alert.save()
-    #     return "success"
-    # else:
-    #     return "subscription doesn't exist"
+    if alert:
+        alert.is_active = False
+        alert.save()
+        return render(
+            request,
+            "subscription/unsubscribe.html",
+            {"base_url": settings.BASE_URL, "token": token},
+        )
+    else:
+        return render(
+            request,
+            "subscription/notoken.html",
+            {"base_url": settings.BASE_URL, "token": token},
+        )
 
 
 class JobAlertReq(Schema):

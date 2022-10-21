@@ -1,5 +1,5 @@
-<div class="page">
-<div class="container">
+{% extends "./base.html" %}
+{% block content %}
 <p>Success! You will no longer receive this alert. </p>
 
 <p>Why did you unsubscribe?</p>
@@ -17,8 +17,6 @@
 <input type="submit" id='submit'/>
 </form>
 
-</div>
-</div>
 <style>
     
     * {
@@ -89,3 +87,4 @@
         background-color: #0aa9bf;
     }
 </style>
+{% endblock content %}
