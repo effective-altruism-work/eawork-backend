@@ -269,6 +269,7 @@ ADMIN_REORDER = [
         "app": "eawork",
         "models": [
             {"model": "eawork.JobAlert", "label": "Email alerts"},
+            {"model": "eawork.Unsubscription", "label": "Unsubscriptions"},
             {"model": "eawork.JobPost", "label": "Posts"},
             {"model": "eawork.JobPostVersion", "label": "Post versions"},
             {"model": "eawork.Comment", "label": "Post comments"},
