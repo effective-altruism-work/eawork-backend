@@ -6,32 +6,51 @@ from django.template import Context, Template
 from django.conf import settings
 
 from ninja import Schema
+from django.conf import settings
 
 from eawork.api.views import api_ninja
 from eawork.apps.job_alerts.job_alert import check_new_jobs
-from eawork.models import JobAlert
+from eawork.models import JobAlert, job_alert
+from eawork.models import unsubscription
+from eawork.models.unsubscription import Unsubscription
 from .forms import UnsubscribeForm
+from sentry_sdk import capture_exception, capture_message
 
 
 @api_ninja.post("/jobs/unsubscribe/thankyou/{token}", url_name="jobs_unsubscribe_thanks")
 def jobs_unsubscribe_response(request: HttpRequest, token: str):
-    too_many_emails = request.POST.get("too_many_emails")
-    alerts = request.POST.get("alerts")
-    irrelevant = request.POST.get("irrelevant")
-    unexpected = request.POST.get("unexpected")
-    other_reason = request.POST.get("other_reason")
+    too_many_emails = bool(request.POST.get("too_many_emails"))
+    alerts = bool(request.POST.get("alerts"))
+    irrelevant = bool(request.POST.get("irrelevant"))
+    unexpected = bool(request.POST.get("unexpected"))
+    other_reason = bool(request.POST.get("other_reason"))
 
-    print(too_many_emails, alerts, irrelevant, unexpected, other_reason)
+    alert = JobAlert.objects.filter(unsubscribe_token=token).last()
+
+    if alert is not None:
+        unsubscription = Unsubscription.objects.create(
+            too_many_emails=too_many_emails,
+            alerts=alerts,
+            irrelevant=irrelevant,
+            unexpected=unexpected,
+            other_reason=other_reason,
+            job_alert=alert,
+        )
+
+        unsubscription.save()
+    else:
+        msg = f"A user attempted to send an unsubscription message, but their token was not for a valid alert: {token}"
+        if not settings.DEBUG:
+            capture_message(msg)
+        else:
+            print(msg)
+
     return render(request, "subscription/thankyou.html")
 
 
 @api_ninja.get("/jobs/unsubscribe/{token}", url_name="jobs_unsubscribe")
 def jobs_unsubscribe(request, token: str):
     alert = JobAlert.objects.filter(unsubscribe_token=token).last()
-
-    # return render(
-    #     request, "subscription/unsubscribe.html", {"base_url": settings.BASE_URL, "token": token}
-    # )
 
     if alert:
         alert.is_active = False
