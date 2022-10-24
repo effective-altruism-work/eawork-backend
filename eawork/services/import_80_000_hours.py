@@ -3,8 +3,6 @@ from typing import TypedDict
 
 import pytz
 import requests
-from algoliasearch_django import reindex_all
-from algoliasearch_django.decorators import disable_auto_indexing
 from dateutil.parser import parse
 from django.conf import settings
 
@@ -81,7 +79,7 @@ def import_companies(data_raw: dict):
 def import_jobs(data_raw: dict, limit: int = None):
     print("\nimport jobs")
     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
-
+    
     _cleanup_removed_jobs(jobs_raw)
 
     if limit:
@@ -228,7 +226,7 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
         if isinstance(job_raw["MinimumExperienceLevel"], list)
         else ""
     )
-    
+
     if exp_min:
         add_tag(
             post_version,

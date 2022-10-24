@@ -1,5 +1,4 @@
 from adminutils import options
-from algoliasearch_django import reindex_all
 from django.contrib import admin
 from django.contrib import messages
 from django.contrib.auth.admin import UserAdmin
