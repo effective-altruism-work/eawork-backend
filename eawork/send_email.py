@@ -34,6 +34,9 @@ def send_email(
         body=context_txt,
         from_email=email_from,
         to=[email_to],
+        reply_to=[
+            settings.REPLY_TO_EMAIL,
+        ],
     )
     msg.attach_alternative(content_html, "text/html")
     num_success = msg.send(fail_silently=True)
