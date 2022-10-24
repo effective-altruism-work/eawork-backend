@@ -230,10 +230,14 @@ AUTH_PASSWORD_VALIDATORS = [
         },
     },
 ]
-DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", "Job Board Team <alerts@jobs.80000hours.org>")
+DEFAULT_FROM_EMAIL = env.str(
+    "DEFAULT_FROM_EMAIL", "Job Board Team (80,000 Hours) <alerts@jobs.80000hours.org>"
+)
 ADMINS = [("Victor", DEFAULT_FROM_EMAIL)]
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 DEFAULT_BCC_ADDRESSES = ["bcc@jobs.80000hours.org"] if DJANGO_ENV == DjangoEnv.PROD else []
+REPLY_TO_EMAIL = env.str("REPLY_TO_EMAIL", "jobs@80000hours.org")
+
 
 # if DJANGO_ENV == DjangoEnv.PROD:
 EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"
@@ -269,6 +273,7 @@ ADMIN_REORDER = [
         "app": "eawork",
         "models": [
             {"model": "eawork.JobAlert", "label": "Email alerts"},
+            {"model": "eawork.Unsubscription", "label": "Unsubscriptions"},
             {"model": "eawork.JobPost", "label": "Posts"},
             {"model": "eawork.JobPostVersion", "label": "Post versions"},
             {"model": "eawork.Comment", "label": "Post comments"},

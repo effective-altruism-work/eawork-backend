@@ -17,6 +17,7 @@ from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import User
 from eawork.models.comment import Comment
+from eawork.models.unsubscription import Unsubscription
 from eawork.tasks import (
     import_and_check_new_jobs_for_all_alerts,
     reindex_algolia,
@@ -234,3 +235,16 @@ class CommentAdmin(admin.ModelAdmin):
     @options(desc="Content")
     def get_content(self, obj: JobPostVersion) -> str:
         return str(obj)
+
+
+@admin.register(Unsubscription)
+class UnsubscriptionAdmin(admin.ModelAdmin):
+    list_display = [
+        "too_many_emails",
+        "alerts",
+        "unexpected",
+        "irrelevant",
+        "other_reason",
+        "created_at",
+    ]
+    search_fields = ["other_reason"]
