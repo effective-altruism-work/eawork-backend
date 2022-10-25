@@ -282,4 +282,5 @@ class JobPostVersion(PostVersion):
                 and (self.status == PostStatus.PUBLISHED)
             )
         else:
+            print("NOT THIS BOI")
             return False

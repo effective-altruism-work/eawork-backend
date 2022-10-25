@@ -15,12 +15,17 @@ class Code(Enum):
     FAILURE = "Failure"
 
 
-def email_log(task: Task, code: Code, status="", content=""):
+def email_log(task: Task, code: Code, content=""):
     icon = "\N{grinning face}" if code == Code.SUCCESS else "\N{cross mark}"
     return send_email(
-        subject=f"{icon} {task.value}: {status}",
+        subject=f"{icon} {task.value}: {code.value}",
         email_from=settings.DEFAULT_FROM_EMAIL,
         email_to=settings.LOG_EMAIL,
         template_name="email_log.html",
-        template_context={"task": task.value, "status": status, "icon": icon, "content": content},
+        template_context={
+            "task": task.value,
+            "status": code.value,
+            "icon": icon,
+            "content": content,
+        },
     )

@@ -32,8 +32,7 @@ def check_new_jobs_for_all_alerts():
         print(content)
 
         code = Code.SUCCESS if (nohits > 0 or successes > 0) else Code.FAILURE
-        status = "Success" if code == Code.SUCCESS else "Failure"
-        email_log(Task.EMAIL_ALERT, code, status=status, content=content)
+        email_log(Task.EMAIL_ALERT, code, content=content)
 
 
 def check_new_jobs(

@@ -14,6 +14,8 @@ from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
+from eawork.services.email_log import Code, Task, email_log
+from sentry_sdk import capture_exception, capture_message
 
 
 class Bonus(TypedDict):
@@ -78,48 +80,56 @@ def import_companies(data_raw: dict):
 
 def import_jobs(data_raw: dict, limit: int = None):
     print("\nimport jobs")
-    jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
-    
-    _cleanup_removed_jobs(jobs_raw)
 
-    if limit:
-        jobs_raw = jobs_raw[:limit]
+    try:
+        jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
 
-    for job_raw in jobs_raw:
-        job_existing = JobPost.objects.filter(
-            id_external_80_000_hours=job_raw["id"],
-            version_current__isnull=False,
-        ).last()
+        _cleanup_removed_jobs(jobs_raw)
 
-        if job_existing and not job_existing.is_refetch_from_80_000_hours:
-            continue
+        if limit:
+            jobs_raw = jobs_raw[:limit]
 
-        if job_existing:
-            post_version_last = (
-                JobPostVersion.objects.filter(
-                    post__id_external_80_000_hours=job_raw["id"],
-                    status=PostStatus.PUBLISHED,
-                )
-                .order_by("created_at")
-                .last()
-            )
-            _update_post_version(post_version_last, job_raw)
-        else:
-            post = JobPost.objects.create(
+        for job_raw in jobs_raw:
+            job_existing = JobPost.objects.filter(
                 id_external_80_000_hours=job_raw["id"],
-                is_refetch_from_80_000_hours=True,
-            )
-            post_version = JobPostVersion.objects.create(
-                title=job_raw["Job title"],
-                status=PostStatus.PUBLISHED,
-                post=post,
-            )
-            post.version_current = post_version
-            post.company = Company.objects.get(
-                id_external_80_000_hours=job_raw["Hiring organisation ID"],
-            )
-            post.save()
-            _update_post_version(post_version, job_raw)
+                version_current__isnull=False,
+            ).last()
+
+            if job_existing and not job_existing.is_refetch_from_80_000_hours:
+                continue
+
+            if job_existing:
+                post_version_last = (
+                    JobPostVersion.objects.filter(
+                        post__id_external_80_000_hours=job_raw["id"],
+                        status=PostStatus.PUBLISHED,
+                    )
+                    .order_by("created_at")
+                    .last()
+                )
+                _update_post_version(post_version_last, job_raw)
+            else:
+                post = JobPost.objects.create(
+                    id_external_80_000_hours=job_raw["id"],
+                    is_refetch_from_80_000_hours=True,
+                )
+                post_version = JobPostVersion.objects.create(
+                    title=job_raw["Job title"],
+                    status=PostStatus.PUBLISHED,
+                    post=post,
+                )
+                post.version_current = post_version
+                post.company = Company.objects.get(
+                    id_external_80_000_hours=job_raw["Hiring organisation ID"],
+                )
+                post.save()
+                _update_post_version(post_version, job_raw)
+
+        count = JobPostVersion.objects.all().count()
+        email_log(Task.IMPORT, Code.SUCCESS, content=f"{count} jobs imported")
+    except Exception as err:
+        email_log(Task.IMPORT, Code.FAILURE, content=f"Error:\n{err}")
+        capture_exception(err)
 
 
 def _cleanup_removed_jobs(jobs_raw: list[dict]):
