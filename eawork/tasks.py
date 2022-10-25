@@ -1,14 +1,16 @@
+import json
 from celery import shared_task, chain
 from celery.utils.log import get_task_logger
 
 import requests
-from algoliasearch_django import reindex_all
+from algoliasearch_django import reindex_all, raw_search
 from algoliasearch_django.decorators import disable_auto_indexing
 from django.conf import settings
 from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 
 from eawork.models import JobPostTag
 from eawork.models import JobPostVersion
+from eawork.services.email_log import Code, Task, email_log
 from eawork.services.import_80_000_hours import import_companies, import_jobs
 
 logger = get_task_logger(__name__)
@@ -51,9 +53,23 @@ def import_80_000_hours_jobs(
 # ALGOLIA
 @shared_task
 def reindex_algolia():
+    count = JobPostVersion.objects.all().count()
     print("\nreindex algolia")
+    
     reindex_all(JobPostVersion)
     reindex_all(JobPostTag)
+
+    res = raw_search(JobPostVersion)
+    hits = res.get("nbHits")
+
+    if count == hits:
+        email_log(Task.INDEX_PARITY_CHECK, Code.SUCCESS, content=f"Algolia indexed {hits}, which is the amount we have in our DB")
+    else:
+        email_log(
+            Task.INDEX_PARITY_CHECK,
+            Code.FAILURE,
+            content=f"We have {count} job post version in the DB, but Algolia only indexed {hits}",
+        )
 
 
 @shared_task

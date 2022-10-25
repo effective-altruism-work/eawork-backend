@@ -6,6 +6,7 @@ from django.utils import timezone
 from eawork.models import JobAlert
 from eawork.models import JobPostVersion
 from eawork.send_email import send_email
+from eawork.services.email_log import Code, Task, email_log
 
 
 def check_new_jobs_for_all_alerts():
@@ -27,10 +28,11 @@ def check_new_jobs_for_all_alerts():
             else:
                 nohits += 1
 
-        print(f"\nJob alert count: {job_alert_count}")
-        print(f"Alerts without new emails to send: {nohits}")
-        print(f"Successful emails: {successes}")
-        print(f"Failed emails: {failures}")
+        content = f"Job alert count: {job_alert_count}\nAlerts without new emails to send: {nohits}\nSuccessful emails: {successes}\nFailed emails: {failures}"
+        print(content)
+
+        code = Code.SUCCESS if (nohits > 0 or successes > 0) else Code.FAILURE
+        email_log(Task.EMAIL_ALERT, code, content=content)
 
 
 def check_new_jobs(

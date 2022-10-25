@@ -276,10 +276,17 @@ class JobPostVersion(PostVersion):
                 logging.error(str)
                 return False
 
-            return (
+            factors = (
                 is_active
                 and (self.post.version_current.pk == self.pk)
                 and (self.status == PostStatus.PUBLISHED)
             )
+
+            if not factors:
+                print(
+                    f"is active: {is_active}, close date: {self.closes_at}, current version pk: {self.post.version_current.pk} self pk: {self.pk} status: {self.status}"
+                )
+                
+            return factors
         else:
             return False
