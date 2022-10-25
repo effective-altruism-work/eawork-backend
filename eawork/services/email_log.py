@@ -3,22 +3,24 @@ from eawork.send_email import send_email
 from django.conf import settings
 from enum import Enum
 
+
 class Task(Enum):
     IMPORT = "API import"
     EMAIL_ALERT = "Email alerts"
     INDEX_PARITY_CHECK = "Algolia index parity check"
 
+
 class Code(Enum):
-    SUCCESS = "success"
-    FAILURE = "failure"
+    SUCCESS = "Success"
+    FAILURE = "Failure"
 
 
-def email_log(task: Task, status: str, code: Code, content=""):
-    icon = "\U0002705" if code == Code.SUCCESS else "\U00026A0"
+def email_log(task: Task, code: Code, status="", content=""):
+    icon = "\N{grinning face}" if code == Code.SUCCESS else "\N{cross mark}"
     return send_email(
-        subject=f"{task}: {status} {code}",
+        subject=f"{icon} {task.value}: {status}",
         email_from=settings.DEFAULT_FROM_EMAIL,
         email_to=settings.LOG_EMAIL,
-        template_name="templates/email_log.html",
-        template_context={"task": task, "status": status, "icon": icon, "content": content},
+        template_name="email_log.html",
+        template_context={"task": task.value, "status": status, "icon": icon, "content": content},
     )

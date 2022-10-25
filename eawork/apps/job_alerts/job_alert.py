@@ -28,15 +28,12 @@ def check_new_jobs_for_all_alerts():
             else:
                 nohits += 1
 
-        content = """\nJob alert count: {job_alert_count}
-        Alerts without new emails to send: {nohits}
-        Successful emails: {successes}
-        Failed emails: {failures}"""
+        content = f"Job alert count: {job_alert_count}\nAlerts without new emails to send: {nohits}\nSuccessful emails: {successes}\nFailed emails: {failures}"
         print(content)
 
-        code = Code.SUCCESS if (nohits > 0 and successes > 0) else Code.FAILURE
-        status = "failure" if code == Code.SUCCESS else "success"
-        email_log(Task.EMAIL_ALERT, status, code, content=content)
+        code = Code.SUCCESS if (nohits > 0 or successes > 0) else Code.FAILURE
+        status = "Success" if code == Code.SUCCESS else "Failure"
+        email_log(Task.EMAIL_ALERT, code, status=status, content=content)
 
 
 def check_new_jobs(
