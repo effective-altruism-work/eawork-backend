@@ -131,25 +131,25 @@ class JobPostAdmin(DjangoObjectActions, admin.ModelAdmin):
     @options(label="Run 80k companies import")
     def run_80k_import_companies(self, request, queryset) -> HttpResponse:
         import_80_000_hours_jobs.delay(is_reindex=False, is_companies_only=True)
-        messages.success(request, "Companies importing")
+        messages.success(request, "Companies importing, await email")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
     @options(label="Run 80k jobs import")
     def run_80k_import_jobs(self, request, queryset) -> HttpResponse:
         import_80_000_hours_jobs.delay(is_reindex=False, is_jobs_only=True)
-        messages.success(request, "Jobs importing")
+        messages.success(request, "Jobs importing, await email")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
     @options(label="Reindex jobs & tags in Algolia")
     def reindex_algolia(self, request, queryset) -> HttpResponse:
         reindex_algolia.delay()
-        messages.success(request, "Reindexing jobs & tags")
+        messages.success(request, "Reindexing jobs & tags, await email")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
     @options(label="Combined Import & Reindex")
     def import_and_reindex(self, request, queryset) -> HttpResponse:
         import_80_000_hours_jobs.delay(is_reindex=True)
-        messages.success(request, "Importing and reindexing")
+        messages.success(request, "Importing and reindexing, await email")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
 

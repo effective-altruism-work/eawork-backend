@@ -81,5 +81,5 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
             "jobs_new": jobs_new,
             "job_alert": job_alert,
         },
-        email_to=job_alert.email,
+        email_to=[job_alert.email],
     )
