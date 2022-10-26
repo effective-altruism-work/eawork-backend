@@ -14,6 +14,7 @@ from eawork.models import JobPostTagTypeEnum
 from eawork.models import JobPostVersion
 from eawork.models import PostJobTagStatus
 from eawork.models import PostStatus
+from eawork.models.job_alert import JobAlert
 from eawork.services.email_log import Code, Task, email_log
 from sentry_sdk import capture_exception, capture_message
 
@@ -196,6 +197,11 @@ def _get_job_desc(job_raw: dict) -> str:
     return desc
 
 
+def update(alert: JobAlert):
+    json = alert.query_json
+    print(json)
+
+
 def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
     post_version.tags_generic.clear()
     post_version.tags_area.clear()
@@ -271,12 +277,21 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
                     tag_name="Remote",
                     tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
                 )
+
+            elif country == "Global":
+                add_tag(
+                    post=post_version,
+                    tag_name="Remote, Global",
+                    tag_type=JobPostTagTypeEnum.COUNTRY,
+                )
+
             elif country != "Remote":
                 add_tag(
                     post=post_version,
                     tag_name=country,
                     tag_type=JobPostTagTypeEnum.COUNTRY,
                 )
+
             add_tag(
                 post=post_version,
                 tag_name=country,
