@@ -20,7 +20,7 @@ def email_log(task: Task, code: Code, content=""):
     return send_email(
         subject=f"{icon} {task.value}: {code.value}",
         email_from=settings.DEFAULT_FROM_EMAIL,
-        email_to=settings.LOG_EMAIL,
+        email_to=[settings.LOG_EMAIL, settings.LOG_EMAIL_2],
         template_name="email_log.html",
         template_context={
             "task": task.value,

@@ -86,7 +86,7 @@ def flag_job(request, job_flag: JobFlag):
         subject=f"EA Work flag for #{job_flag.job_pk}"
         + (f"from {job_flag.email}" if job_flag.email else ""),
         content_html=job_flag.message,
-        email_to=settings.SERVER_EMAIL,
+        email_to=[settings.SERVER_EMAIL],
     )
     return {"success": True}
 
@@ -170,7 +170,7 @@ def _create_post_version(
     send_email(
         subject=f"Post needs review from {author.email}",
         content_html=f"""{settings.BASE_URL}{reverse("admin:eawork_jobpostversion_change", args=[post_version.pk])}""",
-        email_to=settings.SERVER_EMAIL,
+        email_to=[settings.SERVER_EMAIL],
     )
 
 

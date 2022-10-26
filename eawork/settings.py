@@ -238,6 +238,7 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 DEFAULT_BCC_ADDRESSES = ["bcc@jobs.80000hours.org"] if DJANGO_ENV == DjangoEnv.PROD else []
 REPLY_TO_EMAIL = env.str("REPLY_TO_EMAIL", "jobs@80000hours.org")
 LOG_EMAIL = env.str("LOG_EMAIL", "jobs@80000hours.org")
+LOG_EMAIL_2 = env.str("LOG_EMAIL_2", "jobs@80000hours.org")
 
 # if DJANGO_ENV == DjangoEnv.PROD:
 EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"

@@ -6,7 +6,7 @@ from django.template.loader import get_template
 
 def send_email(
     subject: str,
-    email_to: str,
+    email_to: list[str],
     template_name: str = None,
     content_html: str = None,
     template_context: dict = None,
@@ -33,7 +33,7 @@ def send_email(
         subject=subject,
         body=context_txt,
         from_email=email_from,
-        to=[email_to],
+        to=email_to,
         reply_to=[
             settings.REPLY_TO_EMAIL,
         ],
