@@ -13,7 +13,7 @@ from eawork.models.time_stamped import TimeStampedModel
 class JobAlert(TimeStampedModel):
     email = models.EmailField(max_length=511)
     query_json = JSONField(null=True, blank=True)
-    query_string = models.CharField(max_length=4095, blank=True) # legacy, to be deleted
+    query_string = models.CharField(max_length=4095, blank=True)  # legacy, to be deleted
     last_checked_at = models.DateTimeField(null=True, blank=True, default=timezone.now)
     post_pk_seen_last = models.PositiveIntegerField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
@@ -38,9 +38,13 @@ class JobAlert(TimeStampedModel):
         # facets
         for subarr in self.query_json["facetFilters"]:
             for i, key_val in enumerate(subarr):
+                if ":" not in key_val:
+                    print(f": not in {key_val} for {self.query_json}")
+                    continue
+
                 [key, val] = key_val.split(":")
 
-                if (query_string != "?"):
+                if query_string != "?":
                     query_string = query_string + "&"
 
                 query_string = (
