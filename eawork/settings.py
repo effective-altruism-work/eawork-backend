@@ -315,7 +315,7 @@ LOGGING = {
 }
 
 FRONTEND_URL = "https://jobs.80000hours.org"
-BASE_URL = "https://backend.eawork.org"
+BASE_URL = env.str("BASE_URL", default="https://backend.eawork.org")
 
 IS_ENABLE_ALGOLIA = env.bool("IS_ENABLE_ALGOLIA", default=False)
 ALGOLIA = {

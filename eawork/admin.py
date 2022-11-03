@@ -245,5 +245,13 @@ class UnsubscriptionAdmin(admin.ModelAdmin):
         "irrelevant",
         "other_reason",
         "created_at",
+        "job_alert",
+        "get_query_json"
     ]
+
+    def get_query_json(self, obj):
+        return obj.job_alert.query_json
+    
+    get_query_json.short_description = "Query JSON"
+
     search_fields = ["other_reason"]

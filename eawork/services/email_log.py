@@ -7,7 +7,7 @@ from enum import Enum
 class Task(Enum):
     IMPORT = "API import"
     EMAIL_ALERT = "Email alerts"
-    INDEX_PARITY_CHECK = "Algolia index parity check"
+    INDEX_PARITY_CHECK = "Algolia near-parity check"
 
 
 class Code(Enum):
