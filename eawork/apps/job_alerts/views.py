@@ -23,8 +23,8 @@ def jobs_unsubscribe_response(request: HttpRequest, token: str):
     alerts = bool(request.POST.get("alerts"))
     irrelevant = bool(request.POST.get("irrelevant"))
     unexpected = bool(request.POST.get("unexpected"))
-    other_reason = bool(request.POST.get("other_reason"))
-
+    other_reason = str(request.POST.get("other_reason"))
+    
     alert = JobAlert.objects.filter(unsubscribe_token=token).last()
 
     if alert is not None:
