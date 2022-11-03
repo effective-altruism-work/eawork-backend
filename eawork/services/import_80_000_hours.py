@@ -298,38 +298,6 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
                 tag_type=JobPostTagTypeEnum.LOCATION_80K,
             )
 
-    # keeping for reference while this gets moved to the airtable.
-    # SWE_roles = [
-    #     "Front End Developer",
-    #     "Full Stack Developer",
-    #     "Full-stack Developer",
-    #     "PHP Developer",
-    #     "Project Lead, Molecular Systems Engineering Software",
-    #     "Data Systems Developer",
-    #     "Senior Data Systems Developer",
-    #     "Software Developer",
-    #     "Software Engineer",
-    #     "S-Process Developer",
-    #     "Lead Developer, Global",
-    #     "Senior Developer / Team Lead",
-    #     "Web Developer",
-    #     "Android Security Developer",
-    #     "Software Security Research Engineer",
-    #     "Cyber Operations Developer, Registration of Interest",
-    #     "Front-End Developer",
-    # ]
-    # for SWE_role in SWE_roles:
-    #     if (
-    #         SWE_role.lower() in job_raw["Job title"].lower()
-    #         or job_raw["Job title"] == "Developer"
-    #     ):
-    #         add_tag(
-    #             post=post_version,
-    #             tag_name="Software Engineering",
-    #             tag_type=JobPostTagTypeEnum.ROLE_TYPE,
-    #         )
-    #         break
-
 
 def _strip_all_json_strings(jobs_raw: list[dict]) -> list[dict]:
     for job_raw in jobs_raw:

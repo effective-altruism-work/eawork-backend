@@ -55,20 +55,26 @@ def import_80_000_hours_jobs(
 def reindex_algolia():
     count = JobPostVersion.objects.all().count()
     print("\nreindex algolia")
-    
+
     reindex_all(JobPostVersion)
     reindex_all(JobPostTag)
 
     res = raw_search(JobPostVersion)
     hits = res.get("nbHits")
 
-    if count == hits:
-        email_log(Task.INDEX_PARITY_CHECK, Code.SUCCESS, content=f"Algolia indexed {hits}, which is the amount we have in our DB")
-    else:
+    successRatio = hits / count
+    # they usually won't line up due to closing dates, so only alert if there's a significant difference
+    if successRatio < 0.9:
         email_log(
             Task.INDEX_PARITY_CHECK,
             Code.FAILURE,
             content=f"We have {count} job post version in the DB, but Algolia only indexed {hits}",
+        )
+    else:
+        email_log(
+            Task.INDEX_PARITY_CHECK,
+            Code.SUCCESS,
+            content=f"Algolia indexed {hits} and we have {count} job post versions in our DB.",
         )
 
 
