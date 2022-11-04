@@ -33,7 +33,7 @@ def airtable_tweaks(apps, schema_editor):
                 map(
                     lambda x: x
                     if x != "tags_area:International security & cooperation"
-                    else "tags_area:Other policy-focused roles",
+                    else "tags_area:Other policy-focused",
                     newS,
                 )
             )
