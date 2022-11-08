@@ -264,6 +264,13 @@ class JobPostVersion(PostVersion):
             + html2text.html2text(self.description)
         )
 
+    def get_combined_org_data(self) -> list[str]:
+        name = self.get_company_name()
+        arr = [name]
+        if self.get_company_is_top_recommended_org():
+            arr.append("is_recommended_org")
+        return arr
+
     def is_should_submit_to_algolia(self) -> bool:
         if self.post:
             is_active = True
@@ -286,7 +293,7 @@ class JobPostVersion(PostVersion):
                 print(
                     f"is active: {is_active}, close date: {self.closes_at}, current version pk: {self.post.version_current.pk} self pk: {self.pk} status: {self.status}"
                 )
-                
+
             return factors
         else:
             return False

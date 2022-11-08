@@ -3,7 +3,7 @@
 <ul>
   {% for job in jobs_new %}
     <li>
-      <a style="color: #4CA6BC" href="https://jobs.80000hours.org/?jobPk={{ job.post_pk }}&utm_source=job-board-alerts">{{ job.title }} at {{ job.company_name}}</a>
+      <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}/?jobPk={{ job.post_pk }}&utm_source=job-board-alerts">{{ job.title }} at {{ job.company_name}}</a>
     </li>
   {% endfor %}
 </ul>
@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  Or see <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}?utm_source=job-board-alerts&utm_campaign=home">our full list of curated roles</a>.
+  Or see <a style="color: #4CA6BC" href="{{ settings.FRONTEND_URL }}/?utm_source=job-board-alerts&utm_campaign=home">our full list of curated roles</a>.
 </p>
 
 <p>

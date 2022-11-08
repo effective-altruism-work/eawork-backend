@@ -30,6 +30,7 @@ if settings.IS_ENABLE_ALGOLIA:
             "experience_avg",
             "salary_min",
             "salary_max",
+            ["get_combined_org_data", "org_data"],
             ["get_company_name", "company_name"],
             ["get_company_url", "company_url"],
             ["get_company_logo_url", "company_logo_url"],
