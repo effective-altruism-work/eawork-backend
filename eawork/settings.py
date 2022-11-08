@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     "django_jsonform",
     "django_filters",
     "algoliasearch_django",
+    "import_export",
     "eawork",
     "eawork.apps.job_alerts",
 ]
