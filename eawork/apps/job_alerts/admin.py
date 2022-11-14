@@ -27,7 +27,7 @@ class AlertResource(resources.ModelResource):
 
     class Meta:
         model = JobAlert
-        exclude = ("query_string", "unsubscribe_token")
+        exclude = ("unsubscribe_token")
         export_order = (
             "email",
             "id",
