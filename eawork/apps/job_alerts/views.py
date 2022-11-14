@@ -24,7 +24,7 @@ def jobs_unsubscribe_response(request: HttpRequest, token: str):
     irrelevant = bool(request.POST.get("irrelevant"))
     unexpected = bool(request.POST.get("unexpected"))
     other_reason = str(request.POST.get("other_reason"))
-    
+
     alert = JobAlert.objects.filter(unsubscribe_token=token).last()
 
     if alert is not None:
@@ -71,7 +71,6 @@ def jobs_unsubscribe(request, token: str):
 class JobAlertReq(Schema):
     email: str
     query_json: Optional[Any]
-    query_string: Optional[str]
 
 
 @api_ninja.post("/jobs/subscribe", url_name="jobs_subscribe")
@@ -79,7 +78,6 @@ def jobs_subscribe(request, job_alert_req: JobAlertReq):
     job_alert = JobAlert.objects.create(
         email=job_alert_req.email,
         query_json=job_alert_req.query_json,
-        query_string=job_alert_req.query_string,
     )
     check_new_jobs(job_alert, is_send_alert=False)
     return {"success": True}
