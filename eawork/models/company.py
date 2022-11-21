@@ -1,6 +1,8 @@
 from django.db import models
-
+from typing import List
 from eawork.models.user import User
+from django.apps import apps
+from django.utils import timezone
 
 
 class Company(models.Model):
@@ -23,3 +25,56 @@ class Company(models.Model):
 
     class Meta:
         verbose_name_plural = "companies"
+
+    def get_posts(self) -> List:
+        posts = apps.get_model("eawork", "JobPost")
+
+        arr = []
+        for post in posts.objects.filter(company__name=self.name):
+            vc = post.version_current
+
+            is_active = True
+            if vc.closes_at is not None:
+                is_active = timezone.now() <= vc.closes_at
+
+            if is_active:
+                d = {"pk": vc.pk, "title": vc.title}
+                arr.append(d)
+
+        return arr
+
+    def get_locations(self) -> List:
+        posts = apps.get_model("eawork", "JobPost")
+        arr = []
+        for post in posts.objects.filter(company__name=self.name):
+            vc = post.version_current
+
+            is_active = True
+            if vc.closes_at is not None:
+                is_active = timezone.now() <= vc.closes_at
+
+            if is_active:
+                locations = vc.get_tags_location_80k_formatted
+                for location in locations:
+                    if location not in arr:
+                        arr.append(location)
+
+        return arr
+
+    def get_problem_areas(self) -> List:
+        posts = apps.get_model("eawork", "JobPost")
+        arr = []
+        for post in posts.objects.filter(company__name=self.name):
+            vc = post.version_current
+
+            is_active = True
+            if vc.closes_at is not None:
+                is_active = timezone.now() <= vc.closes_at
+
+            if is_active:
+                prob_areas = vc.get_tags_area_formatted
+                for area in prob_areas:
+                    if area not in arr:
+                        arr.append(area)
+
+        return arr

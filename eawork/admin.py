@@ -140,10 +140,10 @@ class JobPostAdmin(DjangoObjectActions, admin.ModelAdmin):
         messages.success(request, "Jobs importing, await email")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
-    @options(label="Reindex jobs & tags in Algolia")
+    @options(label="Reindex Algolia")
     def reindex_algolia(self, request, queryset) -> HttpResponse:
         reindex_algolia.delay()
-        messages.success(request, "Reindexing jobs & tags, await email")
+        messages.success(request, "Reindexing Algolia, await email")
         return redirect(reverse("admin:eawork_jobpost_changelist"))
 
     @options(label="Combined Import & Reindex")

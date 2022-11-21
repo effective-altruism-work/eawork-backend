@@ -333,4 +333,8 @@ ALGOLIA = {
         "ALGOLIA_INDEX_NAME_TAGS",
         default="tags_prod",
     ),
+    "INDEX_NAME_COMPANIES": env.str(
+        "ALGOLIA_INDEX_NAME_COMPANIES",
+        default="companies_prod"
+    )
 }

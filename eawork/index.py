@@ -4,6 +4,7 @@ from django.conf import settings
 
 from eawork.models import JobPostTag
 from eawork.models import JobPostVersion
+from eawork.models import Company
 
 
 if settings.IS_ENABLE_ALGOLIA:
@@ -104,4 +105,22 @@ if settings.IS_ENABLE_ALGOLIA:
             "status",
             "is_featured",
             "count",
+        ]
+
+    @register(Company)
+    class CompanyIndex(AlgoliaIndex):
+        index_name = settings.ALGOLIA["INDEX_NAME_COMPANIES"]
+        fields = [
+            "name",
+            "description",
+            "logo_url",
+            "url",
+            "linkedin_url",
+            "facebook_url",
+            "career_page_url",
+            "forum_url",
+            "is_top_recommended_org",
+            ["get_posts", "posts"],
+            ["get_locations", "locations"],
+            ["get_problem_areas", "problem_areas"]
         ]
