@@ -8,8 +8,7 @@ from algoliasearch_django.decorators import disable_auto_indexing
 from django.conf import settings
 from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 
-from eawork.models import JobPostTag
-from eawork.models import JobPostVersion
+from eawork.models import JobPostVersion, JobPostTag, Company
 from eawork.services.email_log import Code, Task, email_log
 from eawork.services.import_80_000_hours import import_companies, import_jobs
 
@@ -58,6 +57,7 @@ def reindex_algolia():
 
     reindex_all(JobPostVersion)
     reindex_all(JobPostTag)
+    reindex_all(Company)
 
     res = raw_search(JobPostVersion)
     hits = res.get("nbHits")
