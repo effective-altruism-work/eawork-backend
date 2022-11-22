@@ -54,7 +54,7 @@ class Company(models.Model):
                 is_active = timezone.now() <= vc.closes_at
 
             if is_active:
-                locations = vc.get_tags_location_80k_formatted
+                locations = vc.get_tags_location_80k_formatted()
                 for location in locations:
                     if location not in arr:
                         arr.append(location)
@@ -72,7 +72,7 @@ class Company(models.Model):
                 is_active = timezone.now() <= vc.closes_at
 
             if is_active:
-                prob_areas = vc.get_tags_area_formatted
+                prob_areas = vc.get_tags_area_formatted()
                 for area in prob_areas:
                     if area not in arr:
                         arr.append(area)
