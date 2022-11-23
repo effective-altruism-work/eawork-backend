@@ -19,6 +19,7 @@ from eawork.services.email_log import Code, Task, email_log
 from sentry_sdk import capture_exception, capture_message
 
 
+
 class Bonus(TypedDict):
     forum_link: str
     is_recommended: bool
