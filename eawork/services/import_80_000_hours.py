@@ -72,7 +72,7 @@ def import_companies(data_raw: dict):
             Company.objects.create(
                 name=company_raw["name"],
                 id_external_80_000_hours=company_raw["name"],
-                description=company_raw["description"],
+                description=markdown.markdown(company_raw["description"]),
                 url=company_raw["homepage"],
                 logo_url=company_raw["logo"],
                 career_page_url=company_raw["career_page"],
