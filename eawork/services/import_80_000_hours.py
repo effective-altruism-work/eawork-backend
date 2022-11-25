@@ -3,6 +3,7 @@ from typing import TypedDict
 
 import pytz
 import requests
+import markdown
 from dateutil.parser import parse
 from django.conf import settings
 
@@ -17,7 +18,6 @@ from eawork.models import PostStatus
 from eawork.models.job_alert import JobAlert
 from eawork.services.email_log import Code, Task, email_log
 from sentry_sdk import capture_exception, capture_message
-
 
 
 class Bonus(TypedDict):
@@ -60,7 +60,8 @@ def import_companies(data_raw: dict):
         if Company.objects.filter(id_external_80_000_hours=company_id).exists():
             company = Company.objects.get(id_external_80_000_hours=company_id)
             company.name = company_raw["name"]
-            company.description = company_raw["description"]
+            # company.description = company_raw["description"]
+            company.description = markdown.markdown(company_raw["description"])
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
             company.career_page_url = company_raw["career_page"]
