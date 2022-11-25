@@ -120,7 +120,7 @@ if settings.IS_ENABLE_ALGOLIA:
             "career_page_url",
             "forum_url",
             "is_top_recommended_org",
+            "tags_locations",
+            "tags_areas",
             ["get_posts", "posts"],
-            ["get_locations", "locations"],
-            ["get_problem_areas", "problem_areas"]
         ]
