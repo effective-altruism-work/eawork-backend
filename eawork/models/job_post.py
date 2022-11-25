@@ -208,6 +208,9 @@ class JobPostVersion(PostVersion):
             + html2text.html2text(self.description)
         )
 
+    def get_text_hover(self) -> str:
+        return self.post.company.text_hover
+
     def get_combined_org_data(self) -> list[str]:
         name = self.get_company_name()
         arr = [name]

@@ -62,14 +62,17 @@ def import_companies(data_raw: dict):
             company.name = company_raw["name"]
             # company.description = company_raw["description"]
             company.description = markdown.markdown(company_raw["description"])
+            company.text_hover = markdown.markdown(company_raw["text_hover"])
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
             company.career_page_url = company_raw["career_page"]
             company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
             company.forum_url = bonus_data[company_raw["name"]]["forum_link"]
             company.save()
+            _update_or_add_tags_orgs(company, company_raw)
+
         else:
-            Company.objects.create(
+            comp = Company.objects.create(
                 name=company_raw["name"],
                 id_external_80_000_hours=company_raw["name"],
                 description=markdown.markdown(company_raw["description"]),
@@ -79,6 +82,8 @@ def import_companies(data_raw: dict):
                 is_top_recommended_org=bonus_data[company_raw["name"]]["is_recommended"],
                 forum_url=bonus_data[company_raw["name"]]["forum_link"],
             )
+
+            _update_or_add_tags_orgs(comp, company_raw)
 
 
 def import_jobs(data_raw: dict, limit: int = None):
@@ -112,6 +117,10 @@ def import_jobs(data_raw: dict, limit: int = None):
                 )
                 _update_post_version(post_version_last, job_raw)
             else:
+                salary = job_raw["Salary (display)"]
+                if not salary or salary == "Not Found":
+                    salary = ""
+
                 post = JobPost.objects.create(
                     id_external_80_000_hours=job_raw["id"],
                     is_refetch_from_80_000_hours=True,
@@ -119,6 +128,7 @@ def import_jobs(data_raw: dict, limit: int = None):
                 post_version = JobPostVersion.objects.create(
                     title=job_raw["Job title"],
                     status=PostStatus.PUBLISHED,
+                    salary=salary,
                     post=post,
                 )
                 post.version_current = post_version
@@ -151,6 +161,12 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
     version.title = job_raw["Job title"]
     version.description_short = _get_job_desc(job_raw)
     version.url_external = job_raw["Link"]
+
+    salary = job_raw["Salary (display)"]
+    if not salary or salary == "Not Found":
+        salary = ""
+
+    version.salary = job_raw["Salary (display)"]
 
     hardcoded_80_000h_stub = "2050-01-01"
     if job_raw["Closing date"] != hardcoded_80_000h_stub:
@@ -185,7 +201,7 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
     version.post.save()
     version.save()
 
-    _update_or_add_tags(version, job_raw)
+    _update_or_add_tags_posts(version, job_raw)
 
 
 def _get_job_desc(job_raw: dict) -> str:
@@ -204,7 +220,26 @@ def update(alert: JobAlert):
     print(json)
 
 
-def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
+def _update_or_add_tags_orgs(org: Company, org_raw: dict):
+    org.tags_areas.clear()
+    org.tags_locations.clear()
+
+    for area in org_raw["problem_areas"]:
+        add_tag_org(
+            org=org,
+            tag_name=area,
+            tag_type=JobPostTagTypeEnum.AREA,
+        )
+
+    for location in org_raw["locations"]:
+        add_tag_org(
+            org=org,
+            tag_name=location,
+            tag_type=JobPostTagTypeEnum.LOCATION_80K,
+        )
+
+
+def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
     post_version.tags_generic.clear()
     post_version.tags_area.clear()
     post_version.tags_degree_required.clear()
@@ -219,21 +254,21 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
     post_version.tags_immigration.clear()
 
     for role_type in job_raw["Role types"]:
-        add_tag(
+        add_tag_post(
             post=post_version,
             tag_name=role_type,
             tag_type=JobPostTagTypeEnum.ROLE_TYPE,
         )
 
     for area in job_raw["Problem areas"]:
-        add_tag(
+        add_tag_post(
             post=post_version,
             tag_name=area,
             tag_type=JobPostTagTypeEnum.AREA,
         )
 
     if job_raw["Degree requirements"]:
-        add_tag(
+        add_tag_post(
             post_version,
             tag_name=job_raw["Degree requirements"],
             tag_type=JobPostTagTypeEnum.DEGREE_REQUIRED,
@@ -246,7 +281,7 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
     )
 
     if exp_min:
-        add_tag(
+        add_tag_post(
             post_version,
             tag_name=exp_min,
             tag_type=JobPostTagTypeEnum.EXP_REQUIRED,
@@ -255,18 +290,18 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
     if job_raw["Locations"]:
         for city in job_raw["Locations"]["citiesAndCountries"]:
             if "remote" in city.lower():
-                add_tag(
+                add_tag_post(
                     post=post_version,
                     tag_name="Remote",
                     tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
                 )
             elif city != "Remote":
-                add_tag(
+                add_tag_post(
                     post=post_version,
                     tag_name=city,
                     tag_type=JobPostTagTypeEnum.CITY,
                 )
-            add_tag(
+            add_tag_post(
                 post=post_version,
                 tag_name=city,
                 tag_type=JobPostTagTypeEnum.LOCATION_80K,
@@ -274,27 +309,27 @@ def _update_or_add_tags(post_version: JobPostVersion, job_raw: dict):
 
         for country in job_raw["Locations"]["countries"]:
             if "remote" in country.lower():
-                add_tag(
+                add_tag_post(
                     post=post_version,
                     tag_name="Remote",
                     tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
                 )
 
             elif country == "Global":
-                add_tag(
+                add_tag_post(
                     post=post_version,
                     tag_name="Remote, Global",
                     tag_type=JobPostTagTypeEnum.COUNTRY,
                 )
 
             elif country != "Remote":
-                add_tag(
+                add_tag_post(
                     post=post_version,
                     tag_name=country,
                     tag_type=JobPostTagTypeEnum.COUNTRY,
                 )
 
-            add_tag(
+            add_tag_post(
                 post=post_version,
                 tag_name=country,
                 tag_type=JobPostTagTypeEnum.LOCATION_80K,
@@ -310,7 +345,7 @@ def _strip_all_json_strings(jobs_raw: list[dict]) -> list[dict]:
     return jobs_raw
 
 
-def add_tag(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum):
+def add_tag_post(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum):
     tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
     if not tag:
         tag = JobPostTag.objects.create(
@@ -321,3 +356,21 @@ def add_tag(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum):
     tag.types.add(tag_type_instance)
     tag.save()
     getattr(post, f"tags_{tag_type.value}").add(tag)
+
+
+# basically a duplicate for now
+def add_tag_org(org: Company, tag_name: str, tag_type: JobPostTagTypeEnum):
+    tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
+    if not tag:
+        tag = JobPostTag.objects.create(
+            name=tag_name,
+            status=PostJobTagStatus.APPROVED,
+        )
+    tag_type_instance = JobPostTagType.objects.get(type=tag_type)
+    tag.types.add(tag_type_instance)
+    tag.save()
+
+    if tag_type.value == "area":
+        getattr(org, "tags_areas").add(tag)
+    elif tag_type.value == "location_80k":
+        getattr(org, "tags_locations").add(tag)

@@ -59,6 +59,12 @@ class Company(models.Model):
 
         return arr
 
+    def get_locations(self) -> list[str]:
+        return [tag.name.replace(".", ", ") for tag in self.tags_locations.all()]
+
+    def get_problem_areas(self) -> list[str]:
+        return [tag.name for tag in self.tags_areas.all()]
+
     # def get_locations(self) -> List:
     #     posts = apps.get_model("eawork", "JobPost")
     #     arr = []
