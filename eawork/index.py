@@ -31,6 +31,8 @@ if settings.IS_ENABLE_ALGOLIA:
             "experience_avg",
             "salary_min",
             "salary_max",
+            "salary",
+            ["get_text_hover", "text_hover"],
             ["get_combined_org_data", "org_data"],
             ["get_company_name", "company_name"],
             ["get_company_url", "company_url"],
@@ -120,7 +122,8 @@ if settings.IS_ENABLE_ALGOLIA:
             "career_page_url",
             "forum_url",
             "is_top_recommended_org",
+            "text_hover",
             ["get_posts", "posts"],
             ["get_locations", "locations"],
-            ["get_problem_areas", "problem_areas"]
+            ["get_problem_areas", "problem_areas"],
         ]

@@ -1,4 +1,5 @@
 from .comment import *
+from .tag import *
 from .company import *
 from .job_alert import *
 from .job_post import *
