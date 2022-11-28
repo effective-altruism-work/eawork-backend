@@ -166,7 +166,7 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
     if not salary or salary == "Not Found":
         salary = ""
 
-    version.salary = job_raw["Salary (display)"]
+    version.salary = salary
 
     hardcoded_80_000h_stub = "2050-01-01"
     if job_raw["Closing date"] != hardcoded_80_000h_stub:
@@ -286,6 +286,21 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
             tag_name=exp_min,
             tag_type=JobPostTagTypeEnum.EXP_REQUIRED,
         )
+
+    for region in job_raw["Region"]:
+        if region is not None:
+            # we are counting regions as countries
+            add_tag_post(
+                post=post_version,
+                tag_name=region,
+                tag_type=JobPostTagTypeEnum.COUNTRY,
+            )
+
+            add_tag_post(
+                post=post_version,
+                tag_name=region,
+                tag_type=JobPostTagTypeEnum.LOCATION_80K,
+            )
 
     if job_raw["Locations"]:
         for city in job_raw["Locations"]["citiesAndCountries"]:

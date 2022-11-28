@@ -81,6 +81,8 @@ class JobPostVersion(PostVersion):
         blank=True,
         related_name=f"tags_{JobPostTagTypeEnum.EXP_REQUIRED.value}",
     )
+
+    # this includes regions!
     tags_country = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.COUNTRY},
