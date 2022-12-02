@@ -311,11 +311,19 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
                     tag_type=JobPostTagTypeEnum.LOCATION_TYPE,
                 )
             elif city != "Remote":
-                add_tag_post(
-                    post=post_version,
-                    tag_name=city,
-                    tag_type=JobPostTagTypeEnum.CITY,
-                )
+                # patch while api-builder is fixed
+                if city[-1] == ",":
+                    add_tag_post(
+                        post=post_version,
+                        tag_name=city[:-1],
+                        tag_type=JobPostTagTypeEnum.COUNTRY,
+                    )
+                else:
+                    add_tag_post(
+                        post=post_version,
+                        tag_name=city,
+                        tag_type=JobPostTagTypeEnum.CITY,
+                    )
             add_tag_post(
                 post=post_version,
                 tag_name=city,
