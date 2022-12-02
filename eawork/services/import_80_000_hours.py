@@ -318,7 +318,7 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
                         tag_name=city[:-1],
                         tag_type=JobPostTagTypeEnum.COUNTRY,
                     )
-                else:
+                elif city[0] != ',': # patch conditional while api-builder is fixed
                     add_tag_post(
                         post=post_version,
                         tag_name=city,
