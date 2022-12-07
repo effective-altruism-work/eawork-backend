@@ -71,6 +71,7 @@ def check_new_jobs(
 
 
 def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
+    query_string = job_alert.generate_query_string()
     return send_email(
         subject="New Jobs Alert [Beta]",
         template_name="job_alerts/job_alert.html",
@@ -79,7 +80,7 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
                 "api_ninja:jobs_unsubscribe", kwargs={"token": job_alert.unsubscribe_token}
             ),
             "jobs_new": jobs_new,
-            "job_alert": job_alert,
+            "query_string": query_string,
         },
         email_to=[job_alert.email],
     )
