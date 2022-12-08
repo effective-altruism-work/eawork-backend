@@ -86,12 +86,7 @@ class UserAdmin(UserAdmin):
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = [
-        "name",
-        "url",
-        "linkedin_url",
-        "facebook_url",
-    ]
+    list_display = ["name", "url", "year_founded"]
     search_fields = [
         "name",
     ]
@@ -246,12 +241,12 @@ class UnsubscriptionAdmin(admin.ModelAdmin):
         "other_reason",
         "created_at",
         "job_alert",
-        "get_query_json"
+        "get_query_json",
     ]
 
     def get_query_json(self, obj):
         return obj.job_alert.query_json
-    
+
     get_query_json.short_description = "Query JSON"
 
     search_fields = ["other_reason"]

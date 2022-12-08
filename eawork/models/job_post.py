@@ -157,6 +157,9 @@ class JobPostVersion(PostVersion):
     def get_tags_area_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_area.all()]
 
+    def get_tags_area_filter_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_area_filter.all()]
+
     def get_tags_generic_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_generic.all()]
 
