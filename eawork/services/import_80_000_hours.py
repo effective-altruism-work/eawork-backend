@@ -60,14 +60,22 @@ def import_companies(data_raw: dict):
         if Company.objects.filter(id_external_80_000_hours=company_id).exists():
             company = Company.objects.get(id_external_80_000_hours=company_id)
             company.name = company_raw["name"]
-            # company.description = company_raw["description"]
             company.description = markdown.markdown(company_raw["description"])
             company.text_hover = markdown.markdown(company_raw["text_hover"])
+            company.year_founded = company_raw["founded_year"]
+            company.org_size = company_raw["org_size"]
+            company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
+
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
             company.career_page_url = company_raw["career_page"]
-            company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
+            company.glassdoor_url = company_raw["glassdoor_link"]
             company.forum_url = bonus_data[company_raw["name"]]["forum_link"]
+
+            company.internal_links = markdown.markdown(company_raw["internal_links"])
+            company.external_links = markdown.markdown(company_raw["external_links"])
+            company.social_media_links = markdown.markdown(company_raw["social_media_links"])
+
             company.save()
             _update_or_add_tags_orgs(company, company_raw)
 
@@ -238,6 +246,11 @@ def _update_or_add_tags_orgs(org: Company, org_raw: dict):
             tag_type=JobPostTagTypeEnum.LOCATION_80K,
         )
 
+    if len(org_raw["region"]) and org_raw["region"][0] is not None:
+        add_tag_org(
+            org=org, tag_name=org_raw["region"][0], tag_type=JobPostTagTypeEnum.LOCATION_80K
+        )
+
 
 def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
     post_version.tags_generic.clear()
@@ -261,6 +274,11 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
         )
 
     for area in job_raw["Problem areas"]:
+        add_tag_post(
+            post=post_version, tag_name=area, tag_type=JobPostTagTypeEnum.AREA, concat="_filter"
+        )
+
+    for area in job_raw["Problem area (tags)"]:
         add_tag_post(
             post=post_version,
             tag_name=area,
@@ -318,7 +336,7 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
                         tag_name=city[:-1],
                         tag_type=JobPostTagTypeEnum.COUNTRY,
                     )
-                elif city[0] != ',': # patch conditional while api-builder is fixed
+                elif city[0] != ",":  # patch conditional while api-builder is fixed
                     add_tag_post(
                         post=post_version,
                         tag_name=city,
@@ -368,7 +386,7 @@ def _strip_all_json_strings(jobs_raw: list[dict]) -> list[dict]:
     return jobs_raw
 
 
-def add_tag_post(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum):
+def add_tag_post(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum, concat=""):
     tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
     if not tag:
         tag = JobPostTag.objects.create(
@@ -378,7 +396,10 @@ def add_tag_post(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEn
     tag_type_instance = JobPostTagType.objects.get(type=tag_type)
     tag.types.add(tag_type_instance)
     tag.save()
-    getattr(post, f"tags_{tag_type.value}").add(tag)
+    if len(concat):
+        getattr(post, f"tags_{tag_type.value}" + concat).add(tag)
+    else:
+        getattr(post, f"tags_{tag_type.value}").add(tag)
 
 
 # basically a duplicate for now

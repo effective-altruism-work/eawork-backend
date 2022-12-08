@@ -9,18 +9,27 @@ from django.utils import timezone
 class Company(models.Model):
     name = models.CharField(max_length=128)
     id_external_80_000_hours = models.CharField(max_length=511, blank=True)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True) # markdown
     logo_url = models.URLField(max_length=511, blank=True)
+
+    internal_links = models.TextField(blank=True) # markdown
+    external_links = models.TextField(blank=True) # markdown
+
     url = models.URLField(max_length=511, blank=True)
     linkedin_url = models.URLField(max_length=511, blank=True, verbose_name="Linkedin")
     facebook_url = models.URLField(max_length=511, blank=True, verbose_name="Facebook")
-    career_page_url = models.URLField(max_length=511, blank=True)
+    glassdoor_url = models.URLField(max_length=511, blank=True, verbose_name="Glassdoor")
     forum_url = models.URLField(max_length=511, blank=True, verbose_name="Forum")
+    career_page_url = models.URLField(max_length=511, blank=True)
+
     is_top_recommended_org = models.BooleanField(default=False)
+    year_founded = models.TextField(blank=True)
+    social_media_links = models.TextField(blank=True) # markdown
+    org_size = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    text_hover = models.TextField(blank=True)
+    text_hover = models.TextField(blank=True) # markdown
 
     tags_areas = models.ManyToManyField(
         JobPostTag,

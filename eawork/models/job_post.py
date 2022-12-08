@@ -57,18 +57,29 @@ class JobPostVersion(PostVersion):
     salary_min = models.PositiveIntegerField(null=True, blank=True)
     salary_max = models.PositiveIntegerField(null=True, blank=True)
 
+    recently_featured = models.BooleanField(default=False)
+
     tags_generic = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.GENERIC},
         blank=True,
         related_name="tags_generic",
     )
+
     tags_area = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.AREA},
         blank=True,
         related_name="tags_area",
     )
+
+    tags_area_filter = models.ManyToManyField(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.AREA},
+        blank=True,
+        related_name="tags_area_filter",
+    )
+
     tags_degree_required = models.ManyToManyField(
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.DEGREE_REQUIRED},
@@ -145,6 +156,9 @@ class JobPostVersion(PostVersion):
 
     def get_tags_area_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_area.all()]
+
+    def get_tags_area_filter_formatted(self) -> list[str]:
+        return [tag.name for tag in self.tags_area_filter.all()]
 
     def get_tags_generic_formatted(self) -> list[str]:
         return [tag.name for tag in self.tags_generic.all()]
