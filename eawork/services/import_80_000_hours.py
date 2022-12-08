@@ -60,14 +60,24 @@ def import_companies(data_raw: dict):
         if Company.objects.filter(id_external_80_000_hours=company_id).exists():
             company = Company.objects.get(id_external_80_000_hours=company_id)
             company.name = company_raw["name"]
-            # company.description = company_raw["description"]
             company.description = markdown.markdown(company_raw["description"])
             company.text_hover = markdown.markdown(company_raw["text_hover"])
+            company.year_founded = company_raw["year_founded"]
+            company.org_size = company_raw["org_size"]
+            company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
+
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
             company.career_page_url = company_raw["career_page"]
-            company.is_top_recommended_org = bonus_data[company_raw["name"]]["is_recommended"]
+            company.facebook_url = company_raw["facebook_url"]
+            company.linkedin_url = company_raw["linkedin_url"]
+            company.glassdoor_url = company_raw["glassdoor_url"]
             company.forum_url = bonus_data[company_raw["name"]]["forum_link"]
+
+            company.internal_links = company_raw["internal_links"]
+            company.external_links = company_raw["external_links"]
+            company.social_media_links = company_raw["social_media_links"]
+
             company.save()
             _update_or_add_tags_orgs(company, company_raw)
 
@@ -238,6 +248,8 @@ def _update_or_add_tags_orgs(org: Company, org_raw: dict):
             tag_type=JobPostTagTypeEnum.LOCATION_80K,
         )
 
+    add_tag_org(org=org, tag_name=org_raw["region"], tag_type=JobPostTagTypeEnum.LOCATION_80K)
+
 
 def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
     post_version.tags_generic.clear()
@@ -261,6 +273,13 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
         )
 
     for area in job_raw["Problem areas"]:
+        add_tag_post(
+            post=post_version,
+            tag_name=area,
+            tag_type=JobPostTagTypeEnum.AREA + "_filter",
+        )
+
+    for area in job_raw["Problem area (tags)"]:
         add_tag_post(
             post=post_version,
             tag_name=area,
@@ -318,7 +337,7 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
                         tag_name=city[:-1],
                         tag_type=JobPostTagTypeEnum.COUNTRY,
                     )
-                elif city[0] != ',': # patch conditional while api-builder is fixed
+                elif city[0] != ",":  # patch conditional while api-builder is fixed
                     add_tag_post(
                         post=post_version,
                         tag_name=city,
