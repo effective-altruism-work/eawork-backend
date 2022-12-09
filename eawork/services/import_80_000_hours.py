@@ -3,6 +3,7 @@ from typing import TypedDict
 
 import pytz
 import requests
+import re
 import markdown
 from dateutil.parser import parse
 from django.conf import settings
@@ -255,6 +256,7 @@ def _update_or_add_tags_orgs(org: Company, org_raw: dict):
 def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
     post_version.tags_generic.clear()
     post_version.tags_area.clear()
+    post_version.tags_area_filter.clear()
     post_version.tags_degree_required.clear()
     post_version.tags_exp_required.clear()
     post_version.tags_country.clear()
@@ -273,15 +275,21 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
             tag_type=JobPostTagTypeEnum.ROLE_TYPE,
         )
 
+    pattern = re.compile(r"\w+\. ")  # account for API oddity for now.
     for area in job_raw["Problem areas"]:
+        regexed_area = pattern.sub("", area, 1)
         add_tag_post(
-            post=post_version, tag_name=area, tag_type=JobPostTagTypeEnum.AREA, concat="_filter"
+            post=post_version,
+            tag_name=regexed_area,
+            tag_type=JobPostTagTypeEnum.AREA,
+            concat="_filter",
         )
 
     for area in job_raw["Problem area (tags)"]:
+        regexed_area = pattern.sub("", area, 1)
         add_tag_post(
             post=post_version,
-            tag_name=area,
+            tag_name=regexed_area,
             tag_type=JobPostTagTypeEnum.AREA,
         )
 

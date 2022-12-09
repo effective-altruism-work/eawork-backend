@@ -47,11 +47,11 @@ if settings.IS_ENABLE_ALGOLIA:
             ],
             [
                 "get_tags_area_formatted",
-                "tags_area",
+                "tags_area_card",  # consistency with alerts
             ],
             [
                 "get_tags_area_filter_formatted",
-                "tags_area_filter",
+                "tags_area",  # consistency with alerts
             ],
             [
                 "get_tags_degree_required_formatted",
