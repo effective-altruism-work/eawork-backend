@@ -63,7 +63,7 @@ class Company(models.Model):
                 is_active = timezone.now() <= vc.closes_at
 
             if is_active:
-                d = {"pk": vc.pk, "title": vc.title}
+                d = {"pk": vc.pk, "title": vc.title, "problem_areas": vc.get_tags_area_formatted(), "experience_required": vc.get_tags_exp_required_formatted()}
                 arr.append(d)
 
         return arr
