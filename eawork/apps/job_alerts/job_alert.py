@@ -84,3 +84,16 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
         },
         email_to=[job_alert.email],
     )
+
+
+def send_confirmation(email: str, unsubscribe_token: str):
+    return send_email(
+        subject="Job alerts from 80,000 Hours - Confirmation",
+        template_name="job_alerts/confirmation.html",
+        template_context={
+            "url_unsubscribe": reverse(
+                "api_ninja:jobs_unsubscribe", kwargs={"token": unsubscribe_token}
+            ),
+        },
+        email_to=[email],
+    )
