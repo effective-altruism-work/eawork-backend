@@ -9,7 +9,7 @@ from ninja import Schema
 from django.conf import settings
 
 from eawork.api.views import api_ninja
-from eawork.apps.job_alerts.job_alert import check_new_jobs
+from eawork.apps.job_alerts.job_alert import check_new_jobs, send_confirmation
 from eawork.models import JobAlert, job_alert
 from eawork.models import unsubscription
 from eawork.models.unsubscription import Unsubscription
@@ -80,4 +80,5 @@ def jobs_subscribe(request, job_alert_req: JobAlertReq):
         query_json=job_alert_req.query_json,
     )
     check_new_jobs(job_alert, is_send_alert=False)
+    send_confirmation(email=job_alert_req.email, unsubscribe_token=job_alert.unsubscribe_token)
     return {"success": True}
