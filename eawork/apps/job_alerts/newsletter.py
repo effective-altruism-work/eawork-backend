@@ -7,7 +7,6 @@ from django.conf import settings
 
 #  "subscribed", "unsubscribed", "cleaned", "pending", "transactional", or "archived"
 
-
 def get_newsletter_subscription_status(email: str) -> str:
     try:
         client = MailchimpMarketing.Client()
@@ -23,7 +22,8 @@ def get_newsletter_subscription_status(email: str) -> str:
         if "title" in error.text:
             jsn = json.loads(error.text)
             if jsn["title"] == "Resource Not Found":
-                # this isn't really an error, it just means we use a different endpoint later.
+                # this isn't really an error, it just means the user was not found
+                # Later we will use a different mailchimp endpoint
                 return None
         raise HttpError(error.status_code, error.text)
 
@@ -39,6 +39,7 @@ def post_newsletter_subscribe(email: str, status: str):
         )
 
         if status is None:
+            # member does not already exist, add with all the params.
             interests = {}
             for interest in settings.MAILCHIMP["INTERESTS"]:
                 interests[interest] = True
