@@ -7,6 +7,7 @@ from pathlib import Path
 import dj_database_url
 import environ
 import sentry_sdk
+import json
 from dotenv import load_dotenv
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -337,4 +338,11 @@ ALGOLIA = {
         "ALGOLIA_INDEX_NAME_COMPANIES",
         default="companies_prod"
     )
+}
+
+MAILCHIMP = {
+    "API_KEY": env.str("MAILCHIMP_API_KEY"),
+    "SERVER": env.str("MAILCHIMP_SERVER"),
+    "LIST_ID": env.str("MAILCHIMP_LIST_ID"),
+    "INTERESTS": json.loads(env.str("MAILCHIMP_INTERESTS_LIST"))
 }
