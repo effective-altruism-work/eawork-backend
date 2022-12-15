@@ -6,15 +6,19 @@ from django.template import Context, Template
 from django.conf import settings
 
 from ninja import Schema
-from django.conf import settings
 
 from eawork.api.views import api_ninja
 from eawork.apps.job_alerts.job_alert import check_new_jobs, send_confirmation
+from eawork.apps.job_alerts.newsletter import (
+    get_newsletter_subscription_status,
+    post_newsletter_subscribe,
+)
 from eawork.models import JobAlert, job_alert
 from eawork.models import unsubscription
 from eawork.models.unsubscription import Unsubscription
 from .forms import UnsubscribeForm
 from sentry_sdk import capture_exception, capture_message
+from ninja.errors import HttpError
 
 
 @api_ninja.post("/jobs/unsubscribe/thankyou/{token}", url_name="jobs_unsubscribe_thanks")
@@ -82,3 +86,12 @@ def jobs_subscribe(request, job_alert_req: JobAlertReq):
     check_new_jobs(job_alert, is_send_alert=False)
     send_confirmation(email=job_alert_req.email, unsubscribe_token=job_alert.unsubscribe_token)
     return {"success": True}
+
+
+class NewsletterReq(Schema):
+    email: str
+
+@api_ninja.post("/jobs/newsletter/subscribe", url_name="newsletter_subscribe")
+def newsletter_subscribe(request, newsletter_req: NewsletterReq):
+    status = get_newsletter_subscription_status(newsletter_req.email)
+    return post_newsletter_subscribe(email=newsletter_req.email, status=status)
