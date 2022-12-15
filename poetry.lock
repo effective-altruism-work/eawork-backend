@@ -607,6 +607,7 @@ django = "*"
 [package.source]
 type = "url"
 url = "https://github.com/bloodwithmilk25/django-modeladmin-reorder/archive/6cc5060dec2fe1e894c3ba17aeb703b56737c3e8.zip"
+
 [[package]]
 name = "django-nested-inline"
 version = "0.4.5"
@@ -1447,7 +1448,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.10"
-content-hash = "c0a8c25f7bd06aaa9ba94e0c9719ff5345817219c7faeb15ccda22923b254cfb"
+content-hash = "d988758c7bd027c19f87bdc60d57f594ff04d13728bdd47100e45078d2949a7e"
 
 [metadata.files]
 aiohttp = [
