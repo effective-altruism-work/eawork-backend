@@ -7,6 +7,7 @@ from django.conf import settings
 
 #  "subscribed", "unsubscribed", "cleaned", "pending", "transactional", or "archived"
 
+
 def get_newsletter_subscription_status(email: str) -> str:
     try:
         client = MailchimpMarketing.Client()
@@ -29,7 +30,7 @@ def get_newsletter_subscription_status(email: str) -> str:
 
 
 def post_newsletter_subscribe(email: str, status: str):
-    # we also have this check in views.py -> newsletter_subscribe out of an 
+    # we also have this check in views.py -> newsletter_subscribe out of an
     if status == "unsubscribed":
         raise HttpError("400", "email address was previously unsubscribed")
     try:
@@ -51,7 +52,7 @@ def post_newsletter_subscribe(email: str, status: str):
                     "email_address": email,
                     "id": hashlib.md5(email.encode("utf-8")).hexdigest(),
                     "interests": interests,
-                    "merge_fields": {"SOURCE": "Website"},
+                    "merge_fields": {"SOURCE": "Website", "CAMPAIGN": "Job board"},
                 },
             )
             return "subscribed"
