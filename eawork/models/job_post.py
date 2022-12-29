@@ -2,6 +2,7 @@ import html2text
 from django.db import models
 from django.utils import timezone
 from eawork.models.tag import JobPostTag, JobPostTagTypeEnum, PostJobTagStatus
+from datetime import timedelta
 
 import logging
 
@@ -238,7 +239,7 @@ class JobPostVersion(PostVersion):
         if self.post:
             is_active = True
             if self.closes_at:
-                is_active = timezone.now() <= self.closes_at
+                is_active = timezone.now() <= (self.closes_at + timedelta(1))
 
             if not self.post.version_current:
                 str = f"Post {self.post.pk} has no version_current field. Please check Post {self.post.pk} and PostVersion {self.pk}."
@@ -254,7 +255,7 @@ class JobPostVersion(PostVersion):
 
             if not factors:
                 print(
-                    f"is active: {is_active}, close date: {self.closes_at}, current version pk: {self.post.version_current.pk} self pk: {self.pk} status: {self.status}"
+                    f"Factors: is active: {is_active}, close date: {self.closes_at}, current version pk: {self.post.version_current.pk} self pk: {self.pk} status: {self.status}"
                 )
 
             return factors

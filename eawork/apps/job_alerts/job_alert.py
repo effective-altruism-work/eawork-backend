@@ -2,6 +2,7 @@ from algoliasearch_django import raw_search
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
+from datetime import timedelta
 
 from eawork.models import JobAlert
 from eawork.models import JobPostVersion
@@ -56,12 +57,20 @@ def check_new_jobs(
 
     if res_json["hits"]:
         jobs_new = []
+
+        any_closing_soon = False
         for hit in res_json["hits"]:
+            hit["closing_soon"] = False
+            if "closes_at" in hit and type(hit["closes_at"]) == int:
+                hit["closing_soon"] = ((timezone.now() + timedelta(7)).timestamp()) < hit[
+                    "closes_at"
+                ]
+                any_closing_soon = True
             jobs_new.append(hit)
 
         if is_send_alert:
             sent = _send_email(
-                job_alert, jobs_new
+                job_alert, jobs_new, any_closing_soon
             )  # sent is overwritten with a bool to indicate the success status of an email
 
         job_alert.last_checked_at = timezone.now()
@@ -70,7 +79,7 @@ def check_new_jobs(
     return sent  # if sent was not overwritten, its value remains None, indicating that there was nothing to send.
 
 
-def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
+def _send_email(job_alert: JobAlert, jobs_new: list[dict], any_closing_soon: bool):
     query_string = job_alert.generate_query_string()
     return send_email(
         subject="New Jobs Alert [Beta]",
@@ -81,6 +90,7 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict]):
             ),
             "jobs_new": jobs_new,
             "query_string": query_string,
+            "any_closing_soon": any_closing_soon,
         },
         email_to=[job_alert.email],
     )
