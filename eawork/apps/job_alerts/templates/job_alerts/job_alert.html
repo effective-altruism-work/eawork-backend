@@ -6,11 +6,14 @@
     <li>
       <a style="color: #4CA6BC;"
         href=" {{ settings.FRONTEND_URL }}/?jobPk={{ job.post_pk }}&utm_source=job-board-alerts">
-        {{ job.title }} at {{ job.company_name}}</a>
+        {{ job.title }} at {{ job.company_name}}{% if job.closing_soon %}*{% endif %}
+      </a>
     </li>
     {% endfor %}
   </ul>
-
+  {% if any_closing_soon %}
+  <p style="font-style: italic; font-size: 12px">* indicates a job closing within a week.</p>
+  {% endif %}
   <p>
     <a style="color: #4CA6BC;"
       href=" {{ settings.FRONTEND_URL }}/{{ query_string}}&utm_source=job-board-alerts&utm_campaign=filters">
