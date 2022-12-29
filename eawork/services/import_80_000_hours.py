@@ -7,7 +7,6 @@ import re
 import markdown
 from dateutil.parser import parse
 from django.conf import settings
-
 from eawork.models import Company
 from eawork.models import JobPost
 from eawork.models import JobPostTag
