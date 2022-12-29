@@ -329,6 +329,9 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
 
     if job_raw["Locations"]:
         for city in job_raw["Locations"]["citiesAndCountries"]:
+            if city == "":
+                continue
+
             if "remote" in city.lower():
                 add_tag_post(
                     post=post_version,
@@ -356,6 +359,9 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
             )
 
         for country in job_raw["Locations"]["countries"]:
+            if country == "":
+                continue
+
             if "remote" in country.lower():
                 add_tag_post(
                     post=post_version,
