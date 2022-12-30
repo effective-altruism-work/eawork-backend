@@ -82,7 +82,7 @@ def check_new_jobs(
 def _send_email(job_alert: JobAlert, jobs_new: list[dict], any_closing_soon: bool):
     query_string = job_alert.generate_query_string()
     return send_email(
-        subject="New Jobs Alert [Beta]",
+        subject="New Jobs Alert",
         template_name="job_alerts/job_alert.html",
         template_context={
             "url_unsubscribe": reverse(
