@@ -15,22 +15,11 @@
   <p style="font-style: italic; font-size: 12px">* indicates a job closing within a week.</p>
   {% endif %}
   <p>
-    <a style="color: #4CA6BC;"
+    See <a style="color: #4CA6BC;"
       href=" {{ settings.FRONTEND_URL }}/{{ query_string}}&utm_source=job-board-alerts&utm_campaign=filters">
-      Link to your search results.
-    </a>
-    <!-- (you can also see your filter terms here). -->
-  </p>
-
-  <p>
-    Or see <a style="color: #4CA6BC;"
-      href="{{ settings.FRONTEND_URL }}/?utm_source=job-board-alerts&utm_campaign=home">our
-      full list of {{ total_count }} curated roles</a>.
-  </p>
-
-  <p>
-    You can unsubscribe
-    <a style="color: #4CA6BC;" href="{{ settings.BASE_URL }}{{ url_unsubscribe }}">here</a>.
+      your search results</a> or view our <a style="color: #4CA6BC;"
+      href="{{ settings.FRONTEND_URL }}/?utm_source=job-board-alerts&utm_campaign=home">full list of {{ total_count }}
+      curated roles</a>.
   </p>
 
   <hr />
@@ -57,7 +46,10 @@
   <div style="font-size: 12px;">
     <div style="padding-bottom: 4px;">
       <p>You are receiving this alert because you signed up at <a style="color: #4CA6BC;"
-          href="{{settings.FRONTEND_URL}}">jobs.80000hours.org</a>.</p>
+          href="{{settings.FRONTEND_URL}}">jobs.80000hours.org</a>. If you no longer wish to receive this alert, you can
+        unsubscribe
+        <a style="color: #4CA6BC;" href="{{ settings.BASE_URL }}{{ url_unsubscribe }}">here</a>.
+      </p>
 
       <p>80,000 Hours is part of the Centre for Effective Altruism, a registered charity in England and Wales (Charity
         Number 1149828) and a registered 501(c)(3) Exempt Organization in the USA (EIN 47-1988398).</p>
