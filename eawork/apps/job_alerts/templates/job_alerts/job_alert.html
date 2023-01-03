@@ -1,12 +1,12 @@
 <div style="max-width: 600px; font-size: 16px; font-family: Helvetica, Arial, sans-serif;">
-  <p>New matched jobs:</p>
+  <p>{{matched_count}} new matched role{% if matched_count > 1 %}s{% endif %}:</p>
 
   <ul>
     {% for job in jobs_new %}
     <li>
       <a style="color: #4CA6BC;"
         href=" {{ settings.FRONTEND_URL }}/?jobPk={{ job.post_pk }}&utm_source=job-board-alerts">
-        {{ job.title }} at {{ job.company_name}}{% if job.closing_soon %}*{% endif %}
+        {{ job.title }} at {{ job.company_name }}{% if job.closing_soon %}*{% endif %}
       </a>
     </li>
     {% endfor %}
@@ -25,7 +25,7 @@
   <p>
     Or see <a style="color: #4CA6BC;"
       href="{{ settings.FRONTEND_URL }}/?utm_source=job-board-alerts&utm_campaign=home">our
-      full list of curated roles</a>.
+      full list of {{ total_count }} curated roles</a>.
   </p>
 
   <p>
