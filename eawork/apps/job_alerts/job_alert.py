@@ -2,7 +2,7 @@ from algoliasearch_django import raw_search
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 from eawork.models import JobAlert
 from eawork.models import JobPostVersion
@@ -62,9 +62,10 @@ def check_new_jobs(
         for hit in res_json["hits"]:
             hit["closing_soon"] = False
             if "closes_at" in hit and type(hit["closes_at"]) == int:
-                hit["closing_soon"] = ((timezone.now() + timedelta(7)).timestamp()) < hit[
+                hit["closing_soon"] = ((timezone.now() + timedelta(7)).timestamp()) > hit[
                     "closes_at"
                 ]
+
                 any_closing_soon = True
             jobs_new.append(hit)
 
