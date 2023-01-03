@@ -18,9 +18,11 @@ def check_new_jobs_for_all_alerts():
         failures = 0
 
         job_alert_count = 0
+
+        total_jobs = get_total_jobs()
         for job_alert in JobAlert.objects.filter(is_active=True):
             job_alert_count += 1
-            sent = check_new_jobs(job_alert)
+            sent = check_new_jobs(job_alert, total_jobs)
             if sent is not None:
                 if sent == True:
                     successes += 1
@@ -36,8 +38,22 @@ def check_new_jobs_for_all_alerts():
         email_log(Task.EMAIL_ALERT, code, content=content)
 
 
+# possible there is an
+def get_total_jobs() -> int:
+    res_json = raw_search(
+        model=JobPostVersion,
+        query="",
+        params={
+            "facetFilters": [],
+            "hitsPerPage": 3000,
+        },
+    )
+    return len(res_json["hits"])
+
+
 def check_new_jobs(
     job_alert: JobAlert,
+    total_jobs: int,
     is_send_alert: bool = True,
     algolia_hits_per_page: int = 500,
 ):
@@ -71,7 +87,7 @@ def check_new_jobs(
 
         if is_send_alert:
             sent = _send_email(
-                job_alert, jobs_new, any_closing_soon
+                job_alert, jobs_new, any_closing_soon, total_jobs
             )  # sent is overwritten with a bool to indicate the success status of an email
 
         job_alert.last_checked_at = timezone.now()
@@ -80,8 +96,13 @@ def check_new_jobs(
     return sent  # if sent was not overwritten, its value remains None, indicating that there was nothing to send.
 
 
-def _send_email(job_alert: JobAlert, jobs_new: list[dict], any_closing_soon: bool):
+def _send_email(
+    job_alert: JobAlert, jobs_new: list[dict], any_closing_soon: bool, total_count: int
+):
     query_string = job_alert.generate_query_string()
+
+    matched_count = len(jobs_new)
+
     return send_email(
         subject="New Jobs Alert",
         template_name="job_alerts/job_alert.html",
@@ -92,6 +113,8 @@ def _send_email(job_alert: JobAlert, jobs_new: list[dict], any_closing_soon: boo
             "jobs_new": jobs_new,
             "query_string": query_string,
             "any_closing_soon": any_closing_soon,
+            "matched_count": matched_count,
+            "total_count": total_count,
         },
         email_to=[job_alert.email],
     )
