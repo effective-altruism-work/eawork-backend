@@ -8,7 +8,7 @@ from django.conf import settings
 from ninja import Schema
 
 from eawork.api.views import api_ninja
-from eawork.apps.job_alerts.job_alert import check_new_jobs, send_confirmation
+from eawork.apps.job_alerts.job_alert import check_new_jobs, get_total_jobs, send_confirmation
 from eawork.apps.job_alerts.newsletter import (
     get_newsletter_subscription_status,
     post_newsletter_subscribe,
@@ -83,13 +83,16 @@ def jobs_subscribe(request, job_alert_req: JobAlertReq):
         email=job_alert_req.email,
         query_json=job_alert_req.query_json,
     )
-    check_new_jobs(job_alert, is_send_alert=False)
+
+    total = get_total_jobs()
+    check_new_jobs(job_alert, total, is_send_alert=False)
     send_confirmation(email=job_alert_req.email, unsubscribe_token=job_alert.unsubscribe_token)
     return {"success": True}
 
 
 class NewsletterReq(Schema):
     email: str
+
 
 @api_ninja.post("/jobs/newsletter/subscribe", url_name="newsletter_subscribe")
 def newsletter_subscribe(request, newsletter_req: NewsletterReq):
