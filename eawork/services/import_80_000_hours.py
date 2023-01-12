@@ -220,7 +220,7 @@ def _get_job_desc(job_raw: dict) -> str:
         desc = desc[:-7]
     if desc.endswith('"'):
         desc = desc[:-1]
-    return desc
+    return markdown.markdown(desc)
 
 
 def update(alert: JobAlert):
