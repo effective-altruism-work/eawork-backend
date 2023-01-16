@@ -134,6 +134,7 @@ if settings.IS_ENABLE_ALGOLIA:
             "is_top_recommended_org",
             "text_hover",
             ["get_posts", "posts"],
+            ["get_post_count", "post_count"],
             ["get_locations", "locations"],
             ["get_problem_areas", "problem_areas"],
         ]
