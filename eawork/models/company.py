@@ -74,6 +74,10 @@ class Company(models.Model):
 
         return arr
 
+    def get_post_count(self) -> int:
+        posts = self.get_posts()
+        return len(posts)
+
     def get_locations(self) -> list[str]:
         return [tag.name.replace(".", ", ") for tag in self.tags_locations.all()]
 
