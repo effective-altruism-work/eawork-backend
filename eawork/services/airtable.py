@@ -28,7 +28,6 @@ def import_from_airtable():
     }
 
     print(json.dumps(res, indent=4))
-
     raise Exception("not yet")
 
 
@@ -172,32 +171,18 @@ def get_raw_organisation_data():
 
 
 def transform_organisations_data(
-    organisations: list[dict], location_id_to_name_map=[], region_id_to_name_map=[]
+    organisations: list[dict], top_orgs_problem_areas=[], all_potential_tags=[]
 ):
-
-    # Create a map from problem area record ids to names of problem areas
-    top_orgs_problem_areas = get_top_orgs_problem_areas_data()
-
-    # create a map from tag record ids to names of all potential tags
-    all_potential_tags = get_all_potential_tags()
-    # top_org_problem_area_id_to_name_map should be an associative array
-    # like this:
-    #   [
-    #     "recnZBGYj1e2sYL0T": "Factory farming",
-    #     "rec1CZGJakBttZu3X": "Founder of new projects tackling top problems",
-    #     "rec1orbsgzWmBEN5q": "Grantmaker focused on pressing world problems",
-    #     ...
-    #   ]
 
     top_org_problem_area_id_to_name_map = {}
     for problem_area in top_orgs_problem_areas:
-        top_org_problem_area_id_to_name_map[problem_area["id"]] = trim(
-            problem_area["fields"]["!Name for front end"]
-        )
+        top_org_problem_area_id_to_name_map[problem_area["id"]] = problem_area["fields"]["!Name for front end"].strip()
 
     all_potential_tags_id_to_name_map = {}
     for tag in all_potential_tags:
-        all_potential_tags_id_to_name_map[tag["id"]] = trim(tag["fields"]["!Name for front end"])
+        all_potential_tags_id_to_name_map[tag["id"]] = tag["fields"]["!Name for front end"].strip()
+
+    transformed_orgs = []
 
     for org in organisations:
         # Rename some fields
@@ -236,34 +221,34 @@ def transform_organisations_data(
         org["fields"]["problem_areas"] = problem_area_names
 
         # Get tag names from record IDs
-        tag_names = array()
+        tag_names = []
 
         # account for null field in tags
-        if is_array(org["fields"]["tags"]):
+        if type(org["fields"]["tags"]) == list:
             tag_ids = org["fields"]["tags"]
             for tag_id in tag_ids:
-                print("todo")
+                print("todo") # # something something do the mapping
                 # tag_names[] = all_potential_tags_id_to_name_map[tag_id]
         org["fields"]["tags"] = tag_names
 
         # Get location names from record IDs
         location_ids = []
         location_names = []
-        if is_array(org["fields"]["locations"]):
+        if type(org["fields"]["locations"]) == list:
             location_ids = org["fields"]["locations"]
             for location_id in location_ids:
                 print("todo")
                 # location_names[] = location_id_to_name_map[location_id]
         org["fields"]["locations"] = location_names
 
-        region_ids = array()
-        region_names = array()
-        if is_array(organisations[org_key]["fields"]["region"]):
-            region_ids = organisations[org_key]["fields"]["region"]
+        region_ids = []
+        region_names = []
+        if type(org["fields"]["region"]) == list:
+            region_ids = org["fields"]["region"]
             for region_id in region_ids:
                 print("todo")
                 # region_names[] = region_id_to_name_map[region_id]
-        organisations[org_key]["fields"]["region"] = region_names
+        org["fields"]["region"] = region_names
 
         # "Domain", "Career Page" and "Company Logo" fields can contain:
         # (1) [null] -- array with single element with value null
@@ -275,71 +260,56 @@ def transform_organisations_data(
         # If (3) don't need to transform
 
         # Transform "Domain" field values from array to string
-        if is_array(organisations[org_key]["fields"]["Domain"]):
-            organisations[org_key]["fields"]["Domain"] = implode(
-                organisations[org_key]["fields"]["Domain"]
-            )
-        endif
+        if type(org["fields"]["Domain"]) == list:
+            org["fields"]["Domain"] =     org["fields"]["Domain"].join(", ")
 
         # Transform "Career Page" field values from array to string
-        if is_array(organisations[org_key]["fields"]["Career Page"]):
-            organisations[org_key]["fields"]["Career Page"] = implode(
-                organisations[org_key]["fields"]["Career Page"]
-            )
-        endif
+        if type(org["fields"]["Career Page"]) == list:
+            org["fields"]["Career Page"] =     org["fields"]["Career Page"].join(", ")
+            
 
-        if not organisations[org_key]["fields"]["Domain"]:
+        if not org["fields"]["Domain"]:
             # If domain is missing http prefix, add it.
-            if "http" not in organisations[org_key]["fields"]["Domain"]:
-                organisations[org_key]["fields"]["Domain"] = "https:#".organisations[org_key][
-                    "fields"
-                ]["Domain"]
+            if "http" not in org["fields"]["Domain"]:
+                org["fields"]["Domain"] = "https:#".org["fields"]["Domain"]
 
             # Add UTM params to homepage link
-            organisations[org_key]["fields"]["Domain"] = get_link_with_tracking_params(
-                organisations[org_key]["fields"]["Domain"]
+            org["fields"]["Domain"] = get_link_with_tracking_params(
+                org["fields"]["Domain"]
             )
 
-        if not organisations[org_key]["fields"]["Career Page"]:
+        if not org["fields"]["Career Page"]:
             # If career page is missing http prefix, add it.
-            if "http" not in organisations[org_key]["fields"]["Career Page"]:
-                organisations[org_key]["fields"]["Career Page"] = "https:#".organisations[
-                    org_key
-                ]["fields"]["Career Page"]
+            if "http" not in org["fields"]["Career Page"]:
+                org["fields"]["Career Page"] = "https:#".org["fields"]["Career Page"]
 
             # Add UTM params to career page link
-            organisations[org_key]["fields"]["Career Page"] = get_link_with_tracking_params(
-                organisations[org_key]["fields"]["Career Page"]
+            org["fields"]["Career Page"] = get_link_with_tracking_params(
+                org["fields"]["Career Page"]
             )
 
         # Transform "Company Logo" field values from array to string
-        if is_array(organisations[org_key]["fields"]["Company Logo"]):
-            organisations[org_key]["fields"]["Company Logo"] = implode(
-                organisations[org_key]["fields"]["Company Logo"]
-            )
+        if type(org["fields"]["Company Logo"]) == list:
+            org["fields"]["Company Logo"] = org["fields"]["Company Logo"].join(", ")
 
         # Transform "Company Description" field values from array to string
         # Haven't seen any values for this field being served as an array,
         # but since I (RD) don't really understand why sometimes get arrays back
         # from airtable so transforming it just in case.
-        if is_array(organisations[org_key]["fields"]["Company Logo"]):
-            organisations[org_key]["fields"]["Company Logo"] = implode(
-                organisations[org_key]["fields"]["Company Logo"]
-            )
-        endif
+        if type(org["fields"]["Company Logo"])==list:
+            org["fields"]["Company Logo"] = org["fields"]["Company Logo"].join(", ")
 
         # 2021-09: Rewrite company logo image url since we no longer use WP Engine's CDN at
         # cdn.80000hours.org, and now just use Cloudflare as a CDN for our images at
         # 80000hours.org
-        organisations[org_key]["fields"]["Company Logo"] = str_replace(
+        org["fields"]["Company Logo"] = org["fields"]["Company Logo"].replace(
             "https:#cdn.80000hours.org",
             "https:#80000hours.org",
-            organisations[org_key]["fields"]["Company Logo"],
         )
 
         # Should use thumbnail version of company logo if it exists
-        if not organisations[org_key]["fields"]["Company Logo"]:
-            if "-150x150" not in organisations[org_key]["fields"]["Company Logo"]:
+        if not org["fields"]["Company Logo"]:
+            if "-150x150" not in org["fields"]["Company Logo"]:
 
                 # /*
                 #   Usually WordPress does not generate a thumbnail if the uploaded
@@ -348,26 +318,22 @@ def transform_organisations_data(
 
                 #   See lib/wp-admin.php in the WordPress repository.
                 # */
-                thumbnail_url = str_replace(
-                    ".jpg", "-160x160.jpg", org["fields"]["Company Logo"]
-                )
-                thumbnail_url = str_replace(".jpeg", "-160x160.jpeg", thumbnail_url)
-                thumbnail_url = str_replace(".png", "-160x160.png", thumbnail_url)
-                thumbnail_url = str_replace(".gif", "-160x160.gif", thumbnail_url)
+                thumbnail_url = org["fields"]["Company Logo"].replace(".jpg", "-160x160.jpg")
+                thumbnail_url = thumbnail_url.replace(".jpeg", "-160x160.jpeg")
+                thumbnail_url = thumbnail_url.replace(".png", "-160x160.png")
+                thumbnail_url = thumbnail_url.replace(".gif", "-160x160.gif")
 
                 org["fields"]["Company Logo"] = thumbnail_url
 
         # simple typecast
         org["fields"]["recommended_org"] = bool(
-            organisations[org_key]["fields"]["recommended_org"]
+            org["fields"]["recommended_org"]
         )
-        # Flatten the org data - for parity with SheetDB, we don't want
-        # all the field data nested in the "fields" array. The transform
-        # looks like this:
-        #   organisation['fields']['xxx']: organisation['xxx']
-        organisations[org_key] = flatten_array(organisations[org_key], "fields")
+        
+        transformed_orgs.append(org)
 
-    return organisations
+    return transformed_orgs
+
 
 
 def get_raw_tag_data():
@@ -432,3 +398,29 @@ def get_airtable_data(table_name, params: dict):
     #   endif
 
     #   airtable_data = json_decode(result, true)
+
+def get_link_with_tracking_params(url):
+    print('todo')
+    # // https://www.jobs.cam.ac.uk/ and https://my.corehr.com/ don't accept any
+    # // query string params, so don't add tracking params to URLs at this domain.
+    # //
+    # // Should not add tracking params if domain is 80000hours.org.
+    # // Tracking params break a few hiring org websites.
+    # $domains_to_exclude = array(
+    #   '80000hours.org',
+    #   'jobs.cam.ac.uk',
+    #   'my.corehr.com'
+    # );
+
+    # $domain_match = (str_replace($domains_to_exclude, '', $url) !== $url);
+
+    # if(!$domain_match):
+    #   $params = array(
+    #     'utm_campaign' => '80000 Hours Job Board',
+    #     'utm_source' => '80000 Hours Job Board',
+    #   );
+
+    #   $url = append_query_params_to_url($url, $params);
+    # endif;
+
+    # return $url;
