@@ -1064,6 +1064,17 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pyairtable"
+version = "1.4.0"
+description = "Python Client for the Airtable API"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+requests = ">=2"
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -1455,7 +1466,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.10"
-content-hash = "0a8456395cf85a6a16b2d25178edd1847713f799f4005b6079e2ef3e27d6564c"
+content-hash = "ca3abe1d9f90255ec2a9e0942031c1ac23196977b16d8deefe0dc5ff3626569f"
 
 [metadata.files]
 aiohttp = [
@@ -2225,6 +2236,10 @@ psycopg2-binary = [
     {file = "psycopg2_binary-2.9.5-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:01ad49d68dd8c5362e4bfb4158f2896dc6e0c02e87b8a3770fc003459f1a4425"},
     {file = "psycopg2_binary-2.9.5-cp39-cp39-win32.whl", hash = "sha256:937880290775033a743f4836aa253087b85e62784b63fd099ee725d567a48aa1"},
     {file = "psycopg2_binary-2.9.5-cp39-cp39-win_amd64.whl", hash = "sha256:484405b883630f3e74ed32041a87456c5e0e63a8e3429aa93e8714c366d62bd1"},
+]
+pyairtable = [
+    {file = "pyairtable-1.4.0-py2.py3-none-any.whl", hash = "sha256:f127af0796bfe40d349937b4c1a0ff81b7740fc3c8ebd0e6d0e559f42026be4b"},
+    {file = "pyairtable-1.4.0.tar.gz", hash = "sha256:e2e9cf7b14afcf5bac69f79f6a61e61bb8c8ff94656e9c7ebeef406c0fbfbb8c"},
 ]
 pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},

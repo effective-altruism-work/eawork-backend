@@ -11,6 +11,7 @@ from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 from eawork.models import JobPostVersion, JobPostTag, Company
 from eawork.services.email_log import Code, Task, email_log
 from eawork.services.import_80_000_hours import import_companies, import_jobs
+from eawork.services.airtable import import_from_airtable
 
 logger = get_task_logger(__name__)
 
@@ -34,9 +35,9 @@ def import_80_000_hours_jobs(
         if json_to_import:
             data_raw = json_to_import["data"]
         else:
-            resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
-            data_raw = resp.json()["data"]
-
+            # resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
+            # data_raw = resp.json()["data"]
+            data_raw = import_from_airtable()
         if is_companies_only:
             import_companies(data_raw)
         elif is_jobs_only:
