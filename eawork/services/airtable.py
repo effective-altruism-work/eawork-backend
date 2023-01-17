@@ -2,8 +2,10 @@ from typing import Literal
 from typing import TypedDict
 from pyairtable import Table
 from django.conf import settings
+from urllib.parse import urlparse
 import json
 import time
+import collections
 
 class DropdownData(TypedDict):
     problem_areas: dict
@@ -399,28 +401,55 @@ def get_airtable_data(table_name, params: dict):
 
     #   airtable_data = json_decode(result, true)
 
-def get_link_with_tracking_params(url):
+def get_link_with_tracking_params(url: str):
+    # Should not add tracking params if domain is 80000hours.org.
+    # Tracking params break a few hiring org websites.
+    domains_to_exclude = [
+      '80000hours.org',
+      'jobs.cam.ac.uk',
+      'my.corehr.com'
+    ]
+
+
+    domain_match = True
+    for domain in domains_to_exclude:
+
+      if url.replace(domain, '') != url:
+        domain_match = False
+        break
+
+    if not domain_match:
+      params = {
+        'utm_campaign': '80000 Hours Job Board',
+        'utm_source': '80000 Hours Job Board',
+      }
+
+      url = append_query_params_to_url(url, params)
+
+    return url
+
+
+def append_query_params_to_url(url: str, params_to_append: dict):
+  url_parts = urlparse(url)
+  
+  if 'query' in url_parts:
+    params = urlparse(url_parts['query'])
+  else:
+    params = []
+
+  params = params + params_to_append
+
+  # Note that this will url_encode all values
+  url_parts['query'] = http_build_query(params)
+
+  url = url_parts['scheme'] + '://' + url_parts['host'] + url_parts['path'] + '?' + url_parts['query']
+
+  if url_parts['fragment']:
+    url = url + '#' + url_parts['fragment']
+
+  return url
+
+def http_build_query(data):
+    built = data
     print('todo')
-    # // https://www.jobs.cam.ac.uk/ and https://my.corehr.com/ don't accept any
-    # // query string params, so don't add tracking params to URLs at this domain.
-    # //
-    # // Should not add tracking params if domain is 80000hours.org.
-    # // Tracking params break a few hiring org websites.
-    # $domains_to_exclude = array(
-    #   '80000hours.org',
-    #   'jobs.cam.ac.uk',
-    #   'my.corehr.com'
-    # );
-
-    # $domain_match = (str_replace($domains_to_exclude, '', $url) !== $url);
-
-    # if(!$domain_match):
-    #   $params = array(
-    #     'utm_campaign' => '80000 Hours Job Board',
-    #     'utm_source' => '80000 Hours Job Board',
-    #   );
-
-    #   $url = append_query_params_to_url($url, $params);
-    # endif;
-
-    # return $url;
+    return built
