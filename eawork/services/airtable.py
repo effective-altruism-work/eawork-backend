@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, TypedDict, List
 from typing import TypedDict
 from pyairtable import Table
 from django.conf import settings
@@ -7,17 +7,17 @@ import json
 import time
 import collections
 
-# class Datum(TypedDict):
-#   list: str
-#   name: str
+class Datum(TypedDict):
+  link: str # can be blank
+  name: str
 
 class DropdownData(TypedDict):
-    problem_areas: dict
-    problem_area_tags: dict
-    problem_area_filter: dict
-    rationales: dict
-    location_filters: dict
-    top_org_problem_areas: dict
+    problem_areas: List[Datum]
+    problem_area_tags: List[Datum]
+    problem_area_filter: List[Datum]
+    rationales: List[Datum]
+    location_filters: List[Datum]
+    top_org_problem_areas: List[Datum]
 
 def import_from_airtable():
     print("\nimport airtable")
