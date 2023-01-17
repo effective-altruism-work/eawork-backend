@@ -61,6 +61,7 @@ def import_companies(data_raw: dict):
             company = Company.objects.get(id_external_80_000_hours=company_id)
             company.name = company_raw["name"]
             company.description = markdown.markdown(company_raw["description"])
+            company.description_short = markdown.markdown(company_raw["single_line_description"])
             company.text_hover = markdown.markdown(company_raw["text_hover"])
             company.year_founded = company_raw["founded_year"]
             company.org_size = company_raw["org_size"]
@@ -232,7 +233,7 @@ def _update_or_add_tags_orgs(org: Company, org_raw: dict):
     org.tags_areas.clear()
     org.tags_locations.clear()
 
-    for area in org_raw["problem_areas"]:
+    for area in org_raw["tags"]:
         add_tag_org(
             org=org,
             tag_name=area,

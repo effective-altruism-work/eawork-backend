@@ -11,6 +11,7 @@ class Company(models.Model):
     name = models.CharField(max_length=128)
     id_external_80_000_hours = models.CharField(max_length=511, blank=True)
     description = models.TextField(blank=True)  # markdown
+    description_short = models.TextField(blank=True)  # markdown
     logo_url = models.URLField(max_length=511, blank=True)
 
     internal_links = models.TextField(blank=True)  # markdown
