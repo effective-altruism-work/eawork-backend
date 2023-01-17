@@ -119,6 +119,7 @@ if settings.IS_ENABLE_ALGOLIA:
         fields = [
             "name",
             "description",
+            "description_short",
             "org_size",
             "social_media_links",
             "logo_url",
