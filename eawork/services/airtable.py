@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict, List
+from typing import Literal, TypedDict, List, Dict
 from typing import TypedDict
 from pyairtable import Table
 from django.conf import settings
@@ -28,9 +28,16 @@ def import_from_airtable():
     raw_organisations = get_raw_organisation_data()
     # raw_tags = get_raw_tag_data()
 
+    # todo: for the third param here, flatten `dropdown` into these categories:
+    # '!Problem area (tags)', '!Problem area', '!Rationale', '!Top orgs (problem area)'
+    # todo get locations
+    # todo get regions
+
+    organisations = transform_organisations_data(raw_organisations, dropdown["top_org_problem_areas"], {}, {}, {})
+
     res = {
         "meta": {"retrieved_at": round(time.time() * 1000)},
-        "data": {"status": "???", "vacancies": [], "organisations": [], "rationales": []},
+        "data": {"status": 'todo', "vacancies": [], "organisations": organisations, "rationales": []},
     }
 
     print(json.dumps(res, indent=4))
@@ -177,17 +184,8 @@ def get_raw_organisation_data():
 
 
 def transform_organisations_data(
-    organisations: list[dict], top_orgs_problem_areas=[], all_potential_tags=[]
+    organisations: List[Dict], top_orgs_problem_areas: Dict, all_potential_tags: Dict, location_id_to_name_map: Dict, region_id_to_name_map: Dict
 ):
-
-    top_org_problem_area_id_to_name_map = {}
-    for problem_area in top_orgs_problem_areas:
-        top_org_problem_area_id_to_name_map[problem_area["id"]] = problem_area["fields"]["!Name for front end"].strip()
-
-    all_potential_tags_id_to_name_map = {}
-    for tag in all_potential_tags:
-        all_potential_tags_id_to_name_map[tag["id"]] = tag["fields"]["!Name for front end"].strip()
-
     transformed_orgs = []
 
     for org in organisations:
@@ -215,14 +213,13 @@ def transform_organisations_data(
         # Transform some fields
 
         # Get problem area names from record IDs
-        problem_area_ids = []
         problem_area_names = []
 
         # account for null field in problem areas
         if type(org["fields"]["problem_areas"]) == list:
             problem_area_ids = org["fields"]["problem_areas"]
             for problem_area_id in problem_area_ids:
-                problem_area_names = top_org_problem_area_id_to_name_map[problem_area_id]
+                problem_area_names.append(top_orgs_problem_areas[problem_area_id])
 
         org["fields"]["problem_areas"] = problem_area_names
 
@@ -233,27 +230,23 @@ def transform_organisations_data(
         if type(org["fields"]["tags"]) == list:
             tag_ids = org["fields"]["tags"]
             for tag_id in tag_ids:
-                print("todo") # # something something do the mapping
-                # tag_names[] = all_potential_tags_id_to_name_map[tag_id]
+                tag_names.append(all_potential_tags[tag_id]["name"])
         org["fields"]["tags"] = tag_names
 
         # Get location names from record IDs
-        location_ids = []
         location_names = []
         if type(org["fields"]["locations"]) == list:
             location_ids = org["fields"]["locations"]
             for location_id in location_ids:
-                print("todo")
-                # location_names[] = location_id_to_name_map[location_id]
+                location_names.append(location_id_to_name_map[location_id]["name"])
         org["fields"]["locations"] = location_names
 
-        region_ids = []
+        # Get region names from record IDs
         region_names = []
         if type(org["fields"]["region"]) == list:
             region_ids = org["fields"]["region"]
             for region_id in region_ids:
-                print("todo")
-                # region_names[] = region_id_to_name_map[region_id]
+                region_names.append(region_id_to_name_map[region_id]["name"])
         org["fields"]["region"] = region_names
 
         # "Domain", "Career Page" and "Company Logo" fields can contain:
@@ -267,11 +260,11 @@ def transform_organisations_data(
 
         # Transform "Domain" field values from array to string
         if type(org["fields"]["Domain"]) == list:
-            org["fields"]["Domain"] =     org["fields"]["Domain"].join(", ")
+            org["fields"]["Domain"] = org["fields"]["Domain"].join(", ")
 
         # Transform "Career Page" field values from array to string
         if type(org["fields"]["Career Page"]) == list:
-            org["fields"]["Career Page"] =     org["fields"]["Career Page"].join(", ")
+            org["fields"]["Career Page"] = org["fields"]["Career Page"].join(", ")
             
 
         if not org["fields"]["Domain"]:
