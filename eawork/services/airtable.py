@@ -2,7 +2,7 @@ from typing import Literal, TypedDict, List, Dict
 from typing import TypedDict
 from pyairtable import Table
 from django.conf import settings
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode, quote_plus
 import json
 import time
 import collections
@@ -307,7 +307,6 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       # Avoid doing the computation to add tracking params client side.
       # I _think_ this works out ok: GZIP compresison means that the impact
       # on API payload size of adding this property should be less than 5KB.
-      vacancy['Link UTM'] = get_link_with_tracking_params(vacancy['Link'])
 
       vacancy['Role types'] = vacancy['Role type']
 
@@ -332,8 +331,7 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
         ids = vacancy[problem_area_key]
         if (type(ids) == list):
           problem_area_ids = ids
-        else:
-          print("PROBLEM AREA TODO")
+       
         
       
 
@@ -405,13 +403,7 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
         location_city = location_parts[0]
         location_country = location_parts[1]
 
-        # @TODO 2021-02-09: I guess we can remove these fields once we've
-        # removed references to them from job-board.js.
-        # Could also remove the "Location" field which only contains Airtable
-        # IDs.
-        # @TODO -- start block to delete
-
-        # Must always include these fields
+        # Must always include these fields (???)
         vacancy['Additional Location: City'] = ''
         vacancy['Additional Location: Country'] = ''
 
@@ -557,25 +549,23 @@ def transform_organisations_data(
             org["career_page"] = org["career_page"].join(", ")
             
 
-        if not org["homepage"]:
             # If domain is missing http prefix, add it.
-            if "http" not in org["homepage"]:
-                org["homepage"] = "https:#" + org["homepage"]
+        if "http" not in org["homepage"]:
+            org["homepage"] = "https://" + org["homepage"]
 
             # Add UTM params to homepage link
-            org["homepage"] = get_link_with_tracking_params(
+        org["homepage"] = get_link_with_tracking_params(
                 org["homepage"]
-            )
+        )
 
-        if not org["career_page"]:
             # If career page is missing http prefix, add it.
-            if "http" not in org["career_page"]:
-                org["career_page"] = "https:#" + org["career_page"]
+        if "http" not in org["career_page"]:
+            org["career_page"] = "https:#" + org["career_page"]
 
             # Add UTM params to career page link
-            org["career_page"] = get_link_with_tracking_params(
-                org["career_page"]
-            )
+        org["career_page"] = get_link_with_tracking_params(
+            org["career_page"]
+        )
 
         # Transform "Company Logo" field values from array to string
         if type(org["logo"]) == list:
@@ -597,22 +587,21 @@ def transform_organisations_data(
         )
 
         # Should use thumbnail version of company logo if it exists
-        if not org["logo"]:
-            if "-150x150" not in org["logo"]:
+        if "-150x150" not in org["logo"]:
 
-                # /*
-                #   Usually WordPress does not generate a thumbnail if the uploaded
-                #   image is already 160x160 or smaller. We have changed the default
-                #   behaviour so that thumbnails are always generated.
+            # /*
+            #   Usually WordPress does not generate a thumbnail if the uploaded
+            #   image is already 160x160 or smaller. We have changed the default
+            #   behaviour so that thumbnails are always generated.
 
-                #   See lib/wp-admin.php in the WordPress repository.
-                # */
-                thumbnail_url = org["logo"].replace(".jpg", "-160x160.jpg")
-                thumbnail_url = thumbnail_url.replace(".jpeg", "-160x160.jpeg")
-                thumbnail_url = thumbnail_url.replace(".png", "-160x160.png")
-                thumbnail_url = thumbnail_url.replace(".gif", "-160x160.gif")
+            #   See lib/wp-admin.php in the WordPress repository.
+            # */
+            thumbnail_url = org["logo"].replace(".jpg", "-160x160.jpg")
+            thumbnail_url = thumbnail_url.replace(".jpeg", "-160x160.jpeg")
+            thumbnail_url = thumbnail_url.replace(".png", "-160x160.png")
+            thumbnail_url = thumbnail_url.replace(".gif", "-160x160.gif")
 
-                org["logo"] = thumbnail_url
+            org["logo"] = thumbnail_url
 
         # simple typecast
         org["recommended_org"] = bool(
@@ -681,11 +670,12 @@ def get_link_with_tracking_params(url: str):
     ]
 
 
-    domain_match = True
+    domain_match = False
+
     for domain in domains_to_exclude:
 
       if url.replace(domain, '') != url:
-        domain_match = False
+        domain_match = True
         break
 
     if not domain_match:
@@ -694,45 +684,32 @@ def get_link_with_tracking_params(url: str):
         'utm_source': '80000 Hours Job Board',
       }
 
-      url = append_query_params_to_url(url, params)
+      querystring = urlencode(params, quote_via=quote_plus)
+      if ("?" in url):
+        return url + "&" + querystring
+      else:
+        return url + "?" + querystring
 
     return url
 
 
-def append_query_params_to_url(url: str, params_to_append: dict):
-  url_parts = urlparse(url)
+# def append_query_params_to_url(url: str, params_to_append: dict):
+#   url_parts = urlparse(url)
   
-  if 'query' in url_parts:
-    params = urlparse(url_parts['query'])
-  else:
-    params = []
+#   if 'query' in url_parts:
+#     params = urlparse(url_parts['query'])
+#   else:
+#     params = []
 
-  params = params + params_to_append
+#   params = params + params_to_append
 
-  # Note that this will url_encode all values
-  url_parts['query'] = http_build_query(params)
+#   # Note that this will url_encode all values
+#   url_parts['query'] = http_build_query(params)
 
-  url = url_parts['scheme'] + ':#' + url_parts['host'] + url_parts['path'] + '?' + url_parts['query']
+#   url = url_parts['scheme'] + ':#' + url_parts['host'] + url_parts['path'] + '?' + url_parts['query']
 
-  if url_parts['fragment']:
-    url = url + '#' + url_parts['fragment']
+#   if url_parts['fragment']:
+#     url = url + '#' + url_parts['fragment']
 
-  return url
+#   return url
 
-def http_build_query(data):
-    built = data
-    print('todo')
-    return built
-
-
-# def convert_array_field_to_string_fields(vacancy: Dict, field_label: str, field_array: List):
-#     for i, key in enumerate(field_array):
-
-#       new_field_label = field_label
-
-#       if i > 0:
-#         new_field_label = field_label + ' ' + (i + 1)
-
-#       vacancy[new_field_label] = field_array[key]
-
-#     return vacancy
