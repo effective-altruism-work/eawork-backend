@@ -88,7 +88,7 @@ def import_companies(data_raw: dict):
                 url=company_raw["homepage"],
                 logo_url=company_raw["logo"],
                 career_page_url=company_raw["career_page"],
-                is_top_recommended_org=company_raw["is_recommended"],
+                is_top_recommended_org=company_raw["recommended_org"],
                 forum_url=company_raw["forum_link"],
             )
 

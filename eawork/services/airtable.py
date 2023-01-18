@@ -5,7 +5,6 @@ from django.conf import settings
 from urllib.parse import urlparse, urlencode, quote_plus
 import json
 import time
-import collections
 import re
 
 class Datum(TypedDict):
@@ -26,11 +25,9 @@ def import_from_airtable():
     locations = get_locations_data()
 
     raw_vacancies = get_raw_vacancy_data()
-    raw_organisations = get_raw_organisation_data()
-
-
     vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], dropdown["rationales"], locations)
 
+    raw_organisations = get_raw_organisation_data()
     organisations = transform_organisations_data(
         raw_organisations, 
         dropdown["top_org_problem_areas"], 
@@ -51,9 +48,11 @@ def import_from_airtable():
     with open("output.txt", 'w') as writer:
         writer.write(json.dumps(res, indent=4))
 
-    raise Exception("not yet")
+    return res
+    # raise Exception("not yet")
 
 
+# these categories are used across vacancies, orgs, and rationales. We call all of them here to reduce the amount of calls to Airtable.
 def get_raw_dropdown_data():
     formula = "case '!Location filters (orgs tab)'"
     formula = """OR(
@@ -79,6 +78,7 @@ def get_raw_dropdown_data():
 
     return dropdown_data
 
+
 def get_dropdown_data() -> DropdownData:
   raw_data = get_raw_dropdown_data()
   
@@ -91,9 +91,9 @@ def get_dropdown_data() -> DropdownData:
     "top_org_problem_areas": {}
   }
 
-  # separate all the data we got in get_raw_dropdown_data into their own nests.
+  # separate all the data we got in get_raw_dropdown_data into their own maps.
   for record in raw_data:
-    properties = {"name": record["fields"]["!Name for front end"].strip(), "link": record.get("!Link for tag") or ""}
+    properties = {"name": record["fields"]["!Name for front end"].strip(), "link": record["fields"].get("!Link for tag") or ""}
     match record['fields']["!Category"]:
       case "!Problem area":
         map["problem_areas"][record["id"]] = properties
@@ -107,7 +107,6 @@ def get_dropdown_data() -> DropdownData:
         map["location_filters"][record["id"]] = properties
       case '!Top orgs (problem area)':
         map["top_org_problem_areas"][record["id"]] = properties
-
   return map
 
 
@@ -138,24 +137,18 @@ def get_raw_vacancy_data():
         "!Title",
         "!Org",
         "!Date it closes",
-        # '!Tier',
         "!Date published",
-        # '!Problem area (main)',
         "!Problem area (filters)",
-        # '!Problem area (others)',
         "!Description",
         "!Vacancy page",
         "!Role type",
         "!Required degree",
-        # '!Required experience',
         "!Location",
-        # '!CTA code',
         "!is_recommended_org",
         "!ea_forum_link",
         "!MinimumExperienceLevel",
         "!Salary (display)",
         "!Region",
-        # '!Rationale',
         "!Problem area (tags)",
         "!Featured",
     ]
@@ -200,6 +193,7 @@ def get_raw_organisation_data():
             "!Recommended org (star)",
             "!Single line description",
             "!Tags (orgs)",
+            "!Additional commentary"
         ],
     )
 
@@ -274,39 +268,9 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       else:
         vacancy['Featured'] = False
       
-
-        #   # "Job description" field is required, even if blank.
-        #   if(!isset(vacancy['fields']['Job description'])):
-        #     vacancy['fields']['Job description'] = ''
-        
-
-        # Get the human-friendly "time ago" string, so we don't have to
-        # generate this client side.
-        #   date_listed_human_friendly = get_human_friendly_time_ago(strtotime(vacancy['fields']['Date listed']))
-
-
-        #   # If vacancy was posted just minutes or hours ago, we should say
-        #   # "Posted today" instead of showing more accurate info. The reason is
-        #   # that we want to cache this API response for up to 24 hours.
-        #   if(strpos(date_listed_human_friendly, 'minute') !== false || strpos(date_listed_human_friendly, 'hour') !== false):
-        #     date_listed_human_friendly = 'today'
-        
-
-        #   vacancy['fields']['Date listed human friendly'] = date_listed_human_friendly
-
-        #   vacancy['Date listed'] = date('Y/m/d H:i', strtotime(vacancy['Date listed']))
-
-      # Add hiring org information to orgs_with_vacancies list.
-      hiring_org_name = vacancy['Hiring organisation ID']
-      vacancy['Hiring organisation ID'] = hiring_org_name
-
-        # hmm?
-        #   orgs_with_vacancies[hiring_org_name] = org_name_to_org_info_map[hiring_org_name]
-
-
-      # Avoid doing the computation to add tracking params client side.
-      # I _think_ this works out ok: GZIP compresison means that the impact
-      # on API payload size of adding this property should be less than 5KB.
+      if type(vacancy['Problem area (tags)'] == str):
+        vacancy['Problem area (tags)'] = vacancy['Problem area (tags)'].split(", ")
+    
 
       vacancy['Role types'] = vacancy['Role type']
 
@@ -315,12 +279,7 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       vacancy['Role type 3'] = ''
 
       vacancy.pop('Role type', '')
-      # if not vacancy['Role type']:
-      #   vacancy['Role type'] = []
-    #   else:
-    #     role_types = vacancy['Role type']
-    #     vacancy = convert_array_field_to_string_fields(vacancy, 'Role type', role_types)
-      
+
 
       # Get "Problem area main" and "Problem area others" record IDs into a single array.
       problem_area_key = "!Problem area (filters)" # transitional
@@ -331,13 +290,7 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
         ids = vacancy[problem_area_key]
         if (type(ids) == list):
           problem_area_ids = ids
-       
-        
       
-
-      # if(!empty(vacancy['fields']['!Problem area (others)'])):
-      #   problem_area_ids = array_merge(problem_area_ids, vacancy['fields']['!Problem area (others)'])
-      # 
 
       # Get problem area names from record IDs
       problem_area_names = []
@@ -355,40 +308,8 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
 
       # Remove the original fields
       vacancy.pop(problem_area_key, None)
-      # unset(vacancy['fields']['!Problem area (others)'])
 
-    #   # Get rationale names from record IDs
-    #   rationale_ids = []
-    #   if vacancy['Problem area (tags)']:
-    #     rationale_ids = vacancy['Problem area (tags)']
-      
-
-    #   rationale_names = []
-
-    #   # temporary accommodation of duplicate airtable column type being string instead of array.
-    #   if type(rationale_ids)== list:
-    #     for id in rationale_ids:
-    #       rationale_names.append(rationale_id_to_name_map[id])
-        
-    # #   else:
-    # #     rationale_names = array_map(function (id) {
-    # #       return preg_replace('/\d+. /','',id)
-    # #     }, explode(", ", rationale_ids))
-      
-
-    #   vacancy['Problem area (tags)'] = rationale_names
-
-
-      # # Response must include Vacancy CTA field, even if blank in Airtable.
-      # if(empty(vacancy['fields']['Vacancy CTA'])):
-      #   vacancy['fields']['Vacancy CTA'] = null
-      # 
-
-      # Format the location information for display in vacancy lists
-      # and the job board filters.
-      #
-      # We don't want to do this formatting on the client side.
-      vacancy['Locations'] = []
+      # Locations!
       cities_and_countries = []
       countries = []
 
@@ -435,7 +356,6 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
           city_and_country = location_country
         
 
-        # city_and_country = city_and_country.split()
         cities_and_countries.append(city_and_country)
 
         if location_country:
@@ -450,14 +370,9 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       }
 
       # Now that we've extracted the locations, remove the "Location" field
-      # which only contains Airtable IDs, and isn't needed by job-board.js
-      # in the front end.
+      # which only contains Airtable IDs, and isn't needed anymore
       vacancy.pop('Location')
 
-      # Flatten the vacancy data - for parity with SheetDB, we don't want
-      # all the field data nested in the "fields" array. The transform
-      # looks like this:
-      #   vacancy['fields']['xxx'] => vacancy['xxx']
       transformed_vacancies.append(vacancy)
     
     return transformed_vacancies
@@ -469,7 +384,7 @@ def transform_organisations_data(
 
     for preorg in organisations:
         org: Dict = preorg["fields"]
-        # Rename some fields
+        # Rename  fields
         org["name"] = org.pop("!Org")
         org["homepage"] = org.pop("!Home page", "")
         org["career_page"] = org.pop("!Vacancies page", "")
@@ -489,8 +404,9 @@ def transform_organisations_data(
         org["forum_link"] = org.pop("!EA Forum link", "")
         org["single_line_description"] = org.pop("!Single line description", "")
         org["tags"] = org.pop("!Tags (orgs)", [])
+        org["additional_commentary"] = org.pop("!Additional commentary", '')
 
-        # Transform some fields
+        # Transform fields
 
         # Get problem area names from record IDs
         problem_area_names = []
@@ -571,16 +487,11 @@ def transform_organisations_data(
         if type(org["logo"]) == list:
             org["logo"] = org["logo"].join(", ")
 
-        # Transform "Company Description" field values from array to string
-        # Haven't seen any values for this field being served as an array,
-        # but since I (RD) don't really understand why sometimes get arrays back
-        # from airtable so transforming it just in case.
+     
         if type(org["logo"])==list:
             org["logo"] = org["logo"].join(", ")
 
-        # 2021-09: Rewrite company logo image url since we no longer use WP Engine's CDN at
-        # cdn.80000hours.org, and now just use Cloudflare as a CDN for our images at
-        # 80000hours.org
+     
         org["logo"] = org["logo"].replace(
             "https:#cdn.80000hours.org",
             "https:#80000hours.org",
@@ -589,13 +500,6 @@ def transform_organisations_data(
         # Should use thumbnail version of company logo if it exists
         if "-150x150" not in org["logo"]:
 
-            # /*
-            #   Usually WordPress does not generate a thumbnail if the uploaded
-            #   image is already 160x160 or smaller. We have changed the default
-            #   behaviour so that thumbnails are always generated.
-
-            #   See lib/wp-admin.php in the WordPress repository.
-            # */
             thumbnail_url = org["logo"].replace(".jpg", "-160x160.jpg")
             thumbnail_url = thumbnail_url.replace(".jpeg", "-160x160.jpeg")
             thumbnail_url = thumbnail_url.replace(".png", "-160x160.png")
@@ -661,17 +565,14 @@ def get_airtable_data(table_name, params: dict):
     #   airtable_data = json_decode(result, true)
 
 def get_link_with_tracking_params(url: str):
-    # Should not add tracking params if domain is 80000hours.org.
-    # Tracking params break a few hiring org websites.
+    # Should not add tracking params if domain is 80000hours.org, or these other sites that get broken by tracking params
     domains_to_exclude = [
       '80000hours.org',
       'jobs.cam.ac.uk',
       'my.corehr.com'
     ]
 
-
     domain_match = False
-
     for domain in domains_to_exclude:
 
       if url.replace(domain, '') != url:
@@ -691,25 +592,4 @@ def get_link_with_tracking_params(url: str):
         return url + "?" + querystring
 
     return url
-
-
-# def append_query_params_to_url(url: str, params_to_append: dict):
-#   url_parts = urlparse(url)
-  
-#   if 'query' in url_parts:
-#     params = urlparse(url_parts['query'])
-#   else:
-#     params = []
-
-#   params = params + params_to_append
-
-#   # Note that this will url_encode all values
-#   url_parts['query'] = http_build_query(params)
-
-#   url = url_parts['scheme'] + ':#' + url_parts['host'] + url_parts['path'] + '?' + url_parts['query']
-
-#   if url_parts['fragment']:
-#     url = url + '#' + url_parts['fragment']
-
-#   return url
 

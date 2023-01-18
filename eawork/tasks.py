@@ -31,6 +31,7 @@ def import_80_000_hours_jobs(
     is_jobs_only: bool = False,
 ):
     print("\nimport 80K")
+    data_raw = {}
     with disable_auto_indexing():
         if json_to_import:
             data_raw = json_to_import["data"]
@@ -39,12 +40,12 @@ def import_80_000_hours_jobs(
             # data_raw = resp.json()["data"]
             data_raw = import_from_airtable()
         if is_companies_only:
-            import_companies(data_raw)
+            import_companies(data_raw["data"])
         elif is_jobs_only:
-            import_jobs(data_raw, limit=limit)
+            import_jobs(data_raw["data"], limit=limit)
         else:
-            import_companies(data_raw)
-            import_jobs(data_raw, limit=limit)
+            import_companies(data_raw["data"])
+            import_jobs(data_raw["data"], limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
         reindex_algolia()
