@@ -16,7 +16,8 @@ class Company(models.Model):
 
     internal_links = models.TextField(blank=True)  # markdown
     external_links = models.TextField(blank=True)  # markdown
-
+    additional_commentary  = models.TextField(blank=True)  # markdown
+    
     url = models.URLField(max_length=511, blank=True)
     linkedin_url = models.URLField(max_length=511, blank=True, verbose_name="Linkedin")
     facebook_url = models.URLField(max_length=511, blank=True, verbose_name="Facebook")
