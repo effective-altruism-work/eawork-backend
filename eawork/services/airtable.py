@@ -28,14 +28,15 @@ def import_from_airtable():
     raw_vacancies = get_raw_vacancy_data()
     raw_organisations = get_raw_organisation_data()
 
+
+    vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], dropdown["rationales"], locations)
+
     organisations = transform_organisations_data(
         raw_organisations, 
         dropdown["top_org_problem_areas"], 
         dropdown["problem_areas_tags"] | dropdown["problem_areas"] | dropdown["rationales"] | dropdown["top_org_problem_areas"], 
         locations, 
         dropdown["location_filters"])
-
-    vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], dropdown["rationales"], locations)
 
     res = {
         "meta": {"retrieved_at": round(time.time() * 1000)},
@@ -214,16 +215,18 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
      # Go through transforming individual vacancies.
     for prevacancy in vacancies:
       vacancy: dict = prevacancy["fields"]
+      vacancy['id'] = prevacancy['id']
+      vacancy['createdTime'] = prevacancy['createdTime']
       # Add the slug we'll use to link to the vacancy on *our* job board.
 
       # Generate first half of slug based on job title
       job_title_slug: str = vacancy['!Title'][0:40]
       job_title_slug = job_title_slug.strip()
       job_title_slug = job_title_slug.lower()
-      job_title_slug = re.sub('/[^a-z0-9\-]/', '-', job_title_slug)
+      job_title_slug = re.sub('[^a-z0-9\-]', '-', job_title_slug)
       job_title_slug = job_title_slug.replace('---', '-')
       job_title_slug = job_title_slug.replace('--', '-')
-      job_title_slug = re.sub('/-/', '', job_title_slug)
+      job_title_slug = re.sub('\-$', '', job_title_slug)
 
       # Slug will look something like this:
       #   strategic-policy-researcher___rec1A8kYUhb0mcIi7
@@ -312,8 +315,9 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       vacancy['Role type 2'] = ''
       vacancy['Role type 3'] = ''
 
-      if not vacancy['Role type']:
-        vacancy['Role type'] = []
+      vacancy.pop('Role type', '')
+      # if not vacancy['Role type']:
+      #   vacancy['Role type'] = []
     #   else:
     #     role_types = vacancy['Role type']
     #     vacancy = convert_array_field_to_string_fields(vacancy, 'Role type', role_types)
@@ -342,8 +346,7 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       for id in problem_area_ids:
         # temporary accommodation of duplicate airtable column type being string instead of array.
         if (type(vacancy[problem_area_key]) == list):
-          print(problem_area_key, vacancy[problem_area_key], id, problem_area_id_to_name_map.get(id))
-          problem_area_names.append(problem_area_id_to_name_map[id])
+          problem_area_names.append(problem_area_id_to_name_map[id]["name"])
         else:
           problem_area_names.append(id)
         
@@ -356,26 +359,26 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       vacancy.pop(problem_area_key, None)
       # unset(vacancy['fields']['!Problem area (others)'])
 
-      # Get rationale names from record IDs
-      rationale_ids = []
-      if vacancy['Problem area (tags)']:
-        rationale_ids = vacancy['Problem area (tags)']
+    #   # Get rationale names from record IDs
+    #   rationale_ids = []
+    #   if vacancy['Problem area (tags)']:
+    #     rationale_ids = vacancy['Problem area (tags)']
       
 
-      rationale_names = []
+    #   rationale_names = []
 
-      # temporary accommodation of duplicate airtable column type being string instead of array.
-      if type(rationale_ids)== list:
-        for id in rationale_ids:
-          rationale_names.append(rationale_id_to_name_map[id])
+    #   # temporary accommodation of duplicate airtable column type being string instead of array.
+    #   if type(rationale_ids)== list:
+    #     for id in rationale_ids:
+    #       rationale_names.append(rationale_id_to_name_map[id])
         
-    #   else:
-    #     rationale_names = array_map(function (id) {
-    #       return preg_replace('/\d+. /','',id)
-    #     }, explode(", ", rationale_ids))
+    # #   else:
+    # #     rationale_names = array_map(function (id) {
+    # #       return preg_replace('/\d+. /','',id)
+    # #     }, explode(", ", rationale_ids))
       
 
-      vacancy['Problem area (tags)'] = rationale_names
+    #   vacancy['Problem area (tags)'] = rationale_names
 
 
       # # Response must include Vacancy CTA field, even if blank in Airtable.
@@ -394,7 +397,6 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       # Transform location fields...
       location_ids = vacancy['Location']
       for idx, id in enumerate(location_ids):
-        print(idx)
         # Get location name
         location_name: str = location_id_to_name_map[id]
 
@@ -441,7 +443,7 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
           city_and_country = location_country
         
 
-        city_and_country = city_and_country.split()
+        # city_and_country = city_and_country.split()
         cities_and_countries.append(city_and_country)
 
         if location_country:
@@ -465,6 +467,8 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       # looks like this:
       #   vacancy['fields']['xxx'] => vacancy['xxx']
       transformed_vacancies.append(vacancy)
+    
+    return transformed_vacancies
 
 def transform_organisations_data(
     organisations: List[Dict], top_orgs_problem_areas: Dict, all_potential_tags: Dict, location_id_to_name_map: Dict, region_id_to_name_map: Dict
