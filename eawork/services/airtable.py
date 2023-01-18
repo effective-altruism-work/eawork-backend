@@ -469,16 +469,16 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
 def transform_organisations_data(
     organisations: List[Dict], top_orgs_problem_areas: Dict, all_potential_tags: Dict, location_id_to_name_map: Dict, region_id_to_name_map: Dict
 ):
-    transformed_orgs = []
+    transformed_orgs = {}
 
     for preorg in organisations:
         org: Dict = preorg["fields"]
         # Rename some fields
-        org["Name"] = org.pop("!Org")
-        org["Domain"] = org.pop("!Home page", "")
-        org["Career Page"] = org.pop("!Vacancies page", "")
-        org["Company Description"] = org.pop("!Description", "")
-        org["Company Logo"] = org.pop("!Logo", "")
+        org["name"] = org.pop("!Org")
+        org["homepage"] = org.pop("!Home page", "")
+        org["career_page"] = org.pop("!Vacancies page", "")
+        org["description"] = org.pop("!Description", "")
+        org["logo"] = org.pop("!Logo", "")
         org["text_hover"] = org.pop("!Text_hover", "")
         org["problem_areas"] = org.pop("!Problem area (orgs)", [])
         org["locations"] = org.pop("!Locations (orgs)", [])
@@ -543,56 +543,56 @@ def transform_organisations_data(
         # If (3) don't need to transform
 
         # Transform "Domain" field values from array to string
-        if type(org["Domain"]) == list:
-            org["Domain"] = org["Domain"].join(", ")
+        if type(org["homepage"]) == list:
+            org["homepage"] = org["homepage"].join(", ")
 
         # Transform "Career Page" field values from array to string
-        if type(org["Career Page"]) == list:
-            org["Career Page"] = org["Career Page"].join(", ")
+        if type(org["career_page"]) == list:
+            org["career_page"] = org["career_page"].join(", ")
             
 
         if not org["Domain"]:
             # If domain is missing http prefix, add it.
-            if "http" not in org["Domain"]:
-                org["Domain"] = "https:#" + org["Domain"]
+            if "http" not in org["homepage"]:
+                org["homepage"] = "https:#" + org["homepage"]
 
             # Add UTM params to homepage link
-            org["Domain"] = get_link_with_tracking_params(
-                org["Domain"]
+            org["homepage"] = get_link_with_tracking_params(
+                org["homepage"]
             )
 
-        if not org["Career Page"]:
+        if not org["career_page"]:
             # If career page is missing http prefix, add it.
-            if "http" not in org["Career Page"]:
-                org["Career Page"] = "https:#" + org["Career Page"]
+            if "http" not in org["career_page"]:
+                org["career_page"] = "https:#" + org["career_page"]
 
             # Add UTM params to career page link
-            org["Career Page"] = get_link_with_tracking_params(
-                org["Career Page"]
+            org["career_page"] = get_link_with_tracking_params(
+                org["career_page"]
             )
 
         # Transform "Company Logo" field values from array to string
-        if type(org["Company Logo"]) == list:
-            org["Company Logo"] = org["Company Logo"].join(", ")
+        if type(org["logo"]) == list:
+            org["logo"] = org["logo"].join(", ")
 
         # Transform "Company Description" field values from array to string
         # Haven't seen any values for this field being served as an array,
         # but since I (RD) don't really understand why sometimes get arrays back
         # from airtable so transforming it just in case.
-        if type(org["Company Logo"])==list:
-            org["Company Logo"] = org["Company Logo"].join(", ")
+        if type(org["logo"])==list:
+            org["logo"] = org["logo"].join(", ")
 
         # 2021-09: Rewrite company logo image url since we no longer use WP Engine's CDN at
         # cdn.80000hours.org, and now just use Cloudflare as a CDN for our images at
         # 80000hours.org
-        org["Company Logo"] = org["Company Logo"].replace(
+        org["logo"] = org["logo"].replace(
             "https:#cdn.80000hours.org",
             "https:#80000hours.org",
         )
 
         # Should use thumbnail version of company logo if it exists
-        if not org["Company Logo"]:
-            if "-150x150" not in org["Company Logo"]:
+        if not org["logo"]:
+            if "-150x150" not in org["logo"]:
 
                 # /*
                 #   Usually WordPress does not generate a thumbnail if the uploaded
@@ -601,19 +601,19 @@ def transform_organisations_data(
 
                 #   See lib/wp-admin.php in the WordPress repository.
                 # */
-                thumbnail_url = org["Company Logo"].replace(".jpg", "-160x160.jpg")
+                thumbnail_url = org["logo"].replace(".jpg", "-160x160.jpg")
                 thumbnail_url = thumbnail_url.replace(".jpeg", "-160x160.jpeg")
                 thumbnail_url = thumbnail_url.replace(".png", "-160x160.png")
                 thumbnail_url = thumbnail_url.replace(".gif", "-160x160.gif")
 
-                org["Company Logo"] = thumbnail_url
+                org["logo"] = thumbnail_url
 
         # simple typecast
         org["recommended_org"] = bool(
             org["recommended_org"]
         )
         
-        transformed_orgs.append(org)
+        transformed_orgs[org["name"]] = org
 
     return transformed_orgs
 
