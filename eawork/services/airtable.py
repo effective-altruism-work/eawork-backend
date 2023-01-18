@@ -484,8 +484,8 @@ def transform_organisations_data(
         org["locations"] = org.pop("!Locations (orgs)", [])
         org["internal_links"] = org.pop("!Internal links", "")
         org["external_links"] = org.pop("!External links", "")
-        org["org_size"] = org.pop("!Org size", 0)
-        org["founded_year"] = org.pop("!Founded year", 0)
+        org["org_size"] = org.pop("!Org size", "")
+        org["founded_year"] = org.pop("!Founded year", "")
         org["glassdoor_link"] = org.pop("!Glassdoor link", "")
         org["social_media_links"] = org.pop("!Social media links", "")
         org["region"] = org.pop("!Region (orgs)", "")
@@ -530,7 +530,9 @@ def transform_organisations_data(
         if type(org["region"]) == list:
             region_ids = org["region"]
             for region_id in region_ids:
-                region_names.append(region_id_to_name_map.get(region_id))
+                region_dict = region_id_to_name_map.get(region_id)
+                if region_dict:
+                  region_names.append(region_dict.get("name"))
         org["region"] = region_names
 
         # "Domain", "Career Page" and "Company Logo" fields can contain:
@@ -551,7 +553,7 @@ def transform_organisations_data(
             org["career_page"] = org["career_page"].join(", ")
             
 
-        if not org["Domain"]:
+        if not org["homepage"]:
             # If domain is missing http prefix, add it.
             if "http" not in org["homepage"]:
                 org["homepage"] = "https:#" + org["homepage"]
