@@ -275,6 +275,7 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
             tag_type=JobPostTagTypeEnum.ROLE_TYPE,
         )
 
+    #  these guys might have !Link for tag as well?
     pattern = re.compile(r"\w+\. ")  # account for API oddity for now.
     for area in job_raw["Problem areas"]:
         regexed_area = pattern.sub("", area, 1)
@@ -285,6 +286,7 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
             concat="_filter",
         )
 
+    # todo these guys have !Link for tag! 
     for area in job_raw["Problem area (tags)"]:
         regexed_area = pattern.sub("", area, 1)
         add_tag_post(
