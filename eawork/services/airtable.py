@@ -21,11 +21,13 @@ class DropdownData(TypedDict):
 
 def import_from_airtable():
     print("\nimport airtable")
+
+    # get related records that we'll use in vacancies, orgs, and rationales
     dropdown = get_dropdown_data()
     locations = get_locations_data()
 
     raw_vacancies = get_raw_vacancy_data()
-    vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], dropdown["rationales"], locations)
+    vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], locations)
 
     raw_organisations = get_raw_organisation_data()
     organisations = transform_organisations_data(
@@ -45,11 +47,10 @@ def import_from_airtable():
         },
     }
 
-    with open("output.txt", 'w') as writer:
-        writer.write(json.dumps(res, indent=4))
+    # with open("output.txt", 'w') as writer:
+    #     writer.write(json.dumps(res, indent=4))
 
     return res
-    # raise Exception("not yet")
 
 
 # these categories are used across vacancies, orgs, and rationales. We call all of them here to reduce the amount of calls to Airtable.
@@ -204,15 +205,15 @@ def get_raw_organisation_data():
     return organisations
 
 
-def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map: Dict, rationale_id_to_name_map: Dict, location_id_to_name_map: Dict):
+def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map: Dict, location_id_to_name_map: Dict):
     transformed_vacancies = []
      # Go through transforming individual vacancies.
     for prevacancy in vacancies:
       vacancy: dict = prevacancy["fields"]
       vacancy['id'] = prevacancy['id']
       vacancy['createdTime'] = prevacancy['createdTime']
-      # Add the slug we'll use to link to the vacancy on *our* job board.
 
+      # Add the slug we'll use to link to the vacancy on *our* job board.
       # Generate first half of slug based on job title
       job_title_slug: str = vacancy['!Title'][0:40]
       job_title_slug = job_title_slug.strip()
@@ -229,36 +230,20 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
 
       # Rename some fields
       vacancy["Job title"] = vacancy.pop('!Title')
-
       vacancy['Closing date'] = vacancy.pop('!Date it closes', None)
-
       vacancy['Link'] = vacancy.pop('!Vacancy page', "" )
-
       vacancy['Role type'] = vacancy.pop('!Role type', None )
-
       vacancy['Hiring organisation ID'] = vacancy.pop('!Org', None )
-
       vacancy['Date listed'] = vacancy.pop('!Date published', None )
-
       vacancy['Degree requirements'] = vacancy.pop('!Required degree', None )
-
       vacancy['Job description'] = vacancy.pop('!Description' "")
-
       vacancy['Location'] = vacancy.pop('!Location', [] )
-
-
       vacancy['is_recommended_org'] = vacancy.pop('!is_recommended_org', False)
-
       vacancy['ea_forum_link'] = vacancy.pop('!ea_forum_link', "")
-
       vacancy['MinimumExperienceLevel'] = vacancy.pop('!MinimumExperienceLevel', None)
-
       vacancy['Salary (display)'] = vacancy.pop('!Salary (display)', None)
-
       vacancy['Region'] = vacancy.pop('!Region', "")
-
       vacancy['Problem area (tags)'] = vacancy.pop('!Problem area (tags)', [])
-
       vacancy['Featured'] = vacancy.pop('!Featured', False)
 
 
@@ -280,10 +265,9 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
 
       vacancy.pop('Role type', '')
 
+      # Get problem areas from record IDs
 
-      # Get "Problem area main" and "Problem area others" record IDs into a single array.
       problem_area_key = "!Problem area (filters)" # transitional
-
       problem_area_ids = []
       if problem_area_key in vacancy:
         # temporary accommodation of duplicate airtable column type being string instead of array.
@@ -291,8 +275,6 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
         if (type(ids) == list):
           problem_area_ids = ids
       
-
-      # Get problem area names from record IDs
       problem_area_names = []
       for id in problem_area_ids:
         # temporary accommodation of duplicate airtable column type being string instead of array.
@@ -302,7 +284,6 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
           problem_area_names.append(id)
         
       
-
       # Add array of problem areas to the vacancy fields
       vacancy['Problem areas'] = problem_area_names
 
@@ -361,9 +342,6 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
         if location_country:
           countries.append(location_country)
         
-
-      
-
       vacancy['Locations'] = {
         'citiesAndCountries': cities_and_countries,
           'countries': countries,
@@ -470,7 +448,7 @@ def transform_organisations_data(
             org["homepage"] = "https://" + org["homepage"]
 
             # Add UTM params to homepage link
-        org["homepage"] = get_link_with_tracking_params(
+        org["homepage"] = append_url_params(
                 org["homepage"]
         )
 
@@ -479,7 +457,7 @@ def transform_organisations_data(
             org["career_page"] = "https:#" + org["career_page"]
 
             # Add UTM params to career page link
-        org["career_page"] = get_link_with_tracking_params(
+        org["career_page"] = append_url_params(
             org["career_page"]
         )
 
@@ -499,7 +477,6 @@ def transform_organisations_data(
 
         # Should use thumbnail version of company logo if it exists
         if "-150x150" not in org["logo"]:
-
             thumbnail_url = org["logo"].replace(".jpg", "-160x160.jpg")
             thumbnail_url = thumbnail_url.replace(".jpeg", "-160x160.jpeg")
             thumbnail_url = thumbnail_url.replace(".png", "-160x160.png")
@@ -564,7 +541,7 @@ def get_airtable_data(table_name, params: dict):
 
     #   airtable_data = json_decode(result, true)
 
-def get_link_with_tracking_params(url: str):
+def append_url_params(url: str):
     # Should not add tracking params if domain is 80000hours.org, or these other sites that get broken by tracking params
     domains_to_exclude = [
       '80000hours.org',
