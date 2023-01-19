@@ -51,6 +51,34 @@ def import_80_000_hours_jobs(
         reindex_algolia()
 
 
+@shared_task
+def old_import_80_000_hours_jobs(
+    json_to_import: dict = None,
+    limit: int = None,
+    is_reindex: bool = True,
+    is_companies_only: bool = False,
+    is_jobs_only: bool = False,
+):
+    print("\nimport 80K")
+    data_raw = {}
+    with disable_auto_indexing():
+        if json_to_import:
+            data_raw = json_to_import["data"]
+        else:
+            resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
+            data_raw = resp.json()["data"]
+        if is_companies_only:
+            import_companies(data_raw["data"])
+        elif is_jobs_only:
+            import_jobs(data_raw["data"], limit=limit)
+        else:
+            import_companies(data_raw["data"])
+            import_jobs(data_raw["data"], limit=limit)
+
+    if is_reindex and settings.IS_ENABLE_ALGOLIA:
+        reindex_algolia()
+
+
 # ALGOLIA
 @shared_task
 def reindex_algolia():

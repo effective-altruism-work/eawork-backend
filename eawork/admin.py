@@ -21,6 +21,7 @@ from eawork.tasks import (
     import_and_check_new_jobs_for_all_alerts,
     reindex_algolia,
     import_80_000_hours_jobs,
+    old_import_80_000_hours_jobs
 )
 
 
