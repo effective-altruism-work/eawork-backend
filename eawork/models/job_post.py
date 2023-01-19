@@ -50,15 +50,17 @@ class JobPostVersion(PostVersion):
 
     url_external = models.URLField(blank=True, max_length=1023)
 
-    salary = models.TextField(blank=True)
-
     experience_min = models.PositiveIntegerField(null=True, blank=True)
     experience_avg = models.PositiveIntegerField(null=True, blank=True)
 
+    salary = models.TextField(blank=True)
     salary_min = models.PositiveIntegerField(null=True, blank=True)
     salary_max = models.PositiveIntegerField(null=True, blank=True)
 
     recently_featured = models.BooleanField(default=False)
+
+    visa_sponsorship = models.TextField(blank=True)
+    evergreen = models.BooleanField(default=False)
 
     tags_generic = models.ManyToManyField(
         JobPostTag,
