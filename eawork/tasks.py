@@ -38,14 +38,14 @@ def import_80_000_hours_jobs(
         else:
             # resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
             # data_raw = resp.json()["data"]
-            data_raw = import_from_airtable()
+            data_raw = import_from_airtable()["data"]
         if is_companies_only:
-            import_companies(data_raw["data"])
+            import_companies(data_raw)
         elif is_jobs_only:
-            import_jobs(data_raw["data"], limit=limit)
+            import_jobs(data_raw, limit=limit)
         else:
-            import_companies(data_raw["data"])
-            import_jobs(data_raw["data"], limit=limit)
+            import_companies(data_raw)
+            import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
         reindex_algolia()
@@ -68,12 +68,12 @@ def old_import_80_000_hours_jobs(
             resp = requests.get(url="https://api.80000hours.org/job-board/vacancies")
             data_raw = resp.json()["data"]
         if is_companies_only:
-            import_companies(data_raw["data"])
+            import_companies(data_raw)
         elif is_jobs_only:
-            import_jobs(data_raw["data"], limit=limit)
+            import_jobs(data_raw, limit=limit)
         else:
-            import_companies(data_raw["data"])
-            import_jobs(data_raw["data"], limit=limit)
+            import_companies(data_raw)
+            import_jobs(data_raw, limit=limit)
 
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
         reindex_algolia()
