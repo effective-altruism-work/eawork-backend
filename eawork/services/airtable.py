@@ -154,6 +154,8 @@ def get_raw_vacancy_data():
         "!Region",
         "!Problem area (tags)",
         "!Featured",
+        "!Visa sponsorship",
+        "!Evergreen"
     ]
 
     filter = "AND( {!Publication (is it live?)} = '!yes', IS_AFTER({!Date it closes}, DATEADD(TODAY(),-1,'days')), IS_BEFORE({!Date published}, NOW()) )"
@@ -233,6 +235,8 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       vacancy['Region'] = vacancy.pop('!Region', "")
       vacancy['Problem area (tags)'] = vacancy.pop('!Problem area (tags)', [])
       vacancy['Featured'] = vacancy.pop('!Featured', False)
+      vacancy['visa'] = vacancy.pop('!Visa sponsorship', False)
+      vacancy['evergreen'] = vacancy.pop('!Evergreen', False)
 
 
       # Convert the Featured field to a boolean value instead of an empty string or an array.

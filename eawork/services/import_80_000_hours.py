@@ -138,6 +138,8 @@ def import_jobs(data_raw: dict, limit: int = None):
                     title=job_raw["Job title"],
                     status=PostStatus.PUBLISHED,
                     salary=salary,
+                    visa_sponsorship=job_raw["visa"],
+                    evergreen=job_raw["evergreen"],
                     post=post,
                 )
                 post.version_current = post_version
@@ -176,6 +178,8 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
         salary = ""
 
     version.salary = salary
+    version.visa_sponsorship = job_raw["visa"]
+    version.evergreen = job_raw["evergreen"]
 
     hardcoded_80_000h_stub = "2050-01-01"
     if job_raw["Closing date"] != hardcoded_80_000h_stub:
@@ -286,7 +290,7 @@ def _update_or_add_tags_posts(post_version: JobPostVersion, job_raw: dict):
             concat="_filter",
         )
 
-    # todo these guys have !Link for tag! 
+    # todo these guys have !Link for tag!
     for area in job_raw["Problem area (tags)"]:
         regexed_area = pattern.sub("", area, 1)
         add_tag_post(
