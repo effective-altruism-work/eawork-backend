@@ -334,15 +334,17 @@ ALGOLIA = {
         "ALGOLIA_INDEX_NAME_TAGS",
         default="tags_prod",
     ),
-    "INDEX_NAME_COMPANIES": env.str(
-        "ALGOLIA_INDEX_NAME_COMPANIES",
-        default="companies_prod"
-    )
+    "INDEX_NAME_COMPANIES": env.str("ALGOLIA_INDEX_NAME_COMPANIES", default="companies_prod"),
 }
 
 MAILCHIMP = {
     "API_KEY": env.str("MAILCHIMP_API_KEY"),
     "SERVER": env.str("MAILCHIMP_SERVER"),
     "LIST_ID": env.str("MAILCHIMP_LIST_ID"),
-    "INTERESTS": json.loads(env.str("MAILCHIMP_INTERESTS_LIST"))
+    "INTERESTS": json.loads(env.str("MAILCHIMP_INTERESTS_LIST")),
+}
+
+AIRTABLE = {
+    "API_KEY": env.str("AIRTABLE_API_KEY", ""),
+    "BASE_ID": env.str("AIRTABLE_BASE_ID", ""),
 }
