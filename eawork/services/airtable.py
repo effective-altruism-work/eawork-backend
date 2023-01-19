@@ -3,9 +3,9 @@ from typing import TypedDict
 from pyairtable import Table
 from django.conf import settings
 from urllib.parse import urlparse, urlencode, quote_plus
-import json
 import time
 import re
+from eawork.services.airtable_utils.title_to_slug import title_to_slug
 
 class Datum(TypedDict):
   link: str # can be blank
@@ -27,13 +27,13 @@ def import_from_airtable():
     locations = get_locations_data()
 
     raw_vacancies = get_raw_vacancy_data()
-    vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], locations)
+    vacancies = transform_vacancies_data(raw_vacancies, dropdown["problem_areas"] | dropdown["problem_areas_filters"], locations) # `|` does dictionary merge
 
     raw_organisations = get_raw_organisation_data()
     organisations = transform_organisations_data(
         raw_organisations, 
         dropdown["top_org_problem_areas"], 
-        dropdown["problem_areas_tags"] | dropdown["problem_areas"] | dropdown["rationales"] | dropdown["top_org_problem_areas"], 
+        dropdown["problem_areas_tags"] | dropdown["problem_areas"] | dropdown["rationales"] | dropdown["top_org_problem_areas"], # `|` does dictionary merge
         locations, 
         dropdown["location_filters"])
 
@@ -53,33 +53,6 @@ def import_from_airtable():
     return res
 
 
-# these categories are used across vacancies, orgs, and rationales. We call all of them here to reduce the amount of calls to Airtable.
-def get_raw_dropdown_data():
-    formula = "case '!Location filters (orgs tab)'"
-    formula = """OR(
-      {!Category} = '!Problem area', 
-      {!Category} = '!Problem area (tags)',
-      {!Category} = '!Problem areas (filters)', 
-      {!Category} = '!Rationale', 
-      {!Category} = '!Location filters (orgs tab)',
-      {!Category} = '!Top orgs (problem area)')"""
-
-    table_name = "!Dropdowns"
-    params = {
-        "fields": [
-            "!Name for front end",
-            "!Link for tag",  # maybe only some?
-            "!Category",  # crucial! We're pulling lots of different kinds of data, and we are going to need to separate them
-        ],
-        "filterByFormula": formula,
-        "maxRecords": 1000,
-    }
-
-    dropdown_data = get_airtable_data(table_name, params)
-
-    return dropdown_data
-
-
 def get_dropdown_data() -> DropdownData:
   raw_data = get_raw_dropdown_data()
   
@@ -94,26 +67,55 @@ def get_dropdown_data() -> DropdownData:
 
   # separate all the data we got in get_raw_dropdown_data into their own maps.
   for record in raw_data:
-    properties = {"name": record["fields"]["!Name for front end"].strip(), "link": record["fields"].get("!Link for tag") or ""}
+    properties = {"name": record["fields"].get("!Name for front end", "").strip(), "link": record["fields"].get("!Link for tag", "")}
+    key = ""
     match record['fields']["!Category"]:
       case "!Problem area":
-        map["problem_areas"][record["id"]] = properties
+        key = 'problem_areas'
       case '!Problem area (tags)':
-        map["problem_areas_tags"][record["id"]] = properties
+        key = 'problem_areas_tags'
       case '!Problem areas (filters)':
-        map["problem_areas_filters"][record["id"]] = properties
+        key = 'problem_areas_filters'
       case '!Rationale':
-        map["rationales"][record["id"]] = properties
+        key='rationales'
       case '!Location filters (orgs tab)':
-        map["location_filters"][record["id"]] = properties
+        key='location_filters'
       case '!Top orgs (problem area)':
-        map["top_org_problem_areas"][record["id"]] = properties
+        key='top_org_problem_areas'
+      
+    map[key][record["id"]] = properties
   return map
+
+# these categories are used across vacancies, orgs, and rationales. We call all of them here to reduce the amount of calls to Airtable.
+def get_raw_dropdown_data():
+    formula = "case '!Location filters (orgs tab)'"
+    formula = """OR(
+      {!Category} = '!Problem area', 
+      {!Category} = '!Problem area (tags)',
+      {!Category} = '!Problem areas (filters)', 
+      {!Category} = '!Rationale', 
+      {!Category} = '!Location filters (orgs tab)',
+      {!Category} = '!Top orgs (problem area)')"""
+
+    table_name = "!Dropdowns"
+    params: Param = {
+        "fields": [
+            "!Name for front end",
+            "!Link for tag",  # maybe only some?
+            "!Category",  # crucial! We're pulling lots of different kinds of data, and we are going to need to separate them
+        ],
+        "filterByFormula": formula,
+        "max_records": 1000,
+    }
+
+    dropdown_data = get_airtable_data(table_name, params)
+
+    return dropdown_data
 
 
 def get_locations_data():
     table_name = '!Locations'
-    params = {
+    params: Param = {
       'fields':['!Location',
       ],
       'max_records': 1000,
@@ -123,7 +125,7 @@ def get_locations_data():
     locations = get_airtable_data(table_name, params)
 
     if (type(locations) != list): 
-      return []
+      return {}
     location_id_to_name_map = {}
     for location in locations:
       location_id_to_name_map[location['id']] = location['fields']['!Location']
@@ -133,7 +135,7 @@ def get_locations_data():
 def get_raw_vacancy_data():
     table_name = "!Vacancies"
 
-    # note that airtable has a weird thing where 21 seems to be a hard limit for reqs.
+    # note that airtable has a weird thing where 21 seems to be a hard limit for number of fields requested.
     fields = [
         "!Title",
         "!Org",
@@ -156,7 +158,7 @@ def get_raw_vacancy_data():
 
     filter = "AND( {!Publication (is it live?)} = '!yes', IS_AFTER({!Date it closes}, DATEADD(TODAY(),-1,'days')), IS_BEFORE({!Date published}, NOW()) )"
 
-    params = {
+    params: Param = {
         "fields": fields,
         "filterByFormula": filter,
         "sort": [
@@ -208,25 +210,11 @@ def get_raw_organisation_data():
 def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map: Dict, location_id_to_name_map: Dict):
     transformed_vacancies = []
      # Go through transforming individual vacancies.
-    for prevacancy in vacancies:
-      vacancy: dict = prevacancy["fields"]
-      vacancy['id'] = prevacancy['id']
-      vacancy['createdTime'] = prevacancy['createdTime']
-
-      # Add the slug we'll use to link to the vacancy on *our* job board.
-      # Generate first half of slug based on job title
-      job_title_slug: str = vacancy['!Title'][0:40]
-      job_title_slug = job_title_slug.strip()
-      job_title_slug = job_title_slug.lower()
-      job_title_slug = re.sub('[^a-z0-9\-]', '-', job_title_slug)
-      job_title_slug = job_title_slug.replace('---', '-')
-      job_title_slug = job_title_slug.replace('--', '-')
-      job_title_slug = re.sub('\-$', '', job_title_slug)
-
-      # Slug will look something like this:
-      #   strategic-policy-researcher___rec1A8kYUhb0mcIi7
-      slug = job_title_slug + '___' + prevacancy['id']
-      vacancy['slug'] = slug
+    for vacancy_container in vacancies:
+      vacancy: dict = vacancy_container["fields"]
+      vacancy['id'] = vacancy_container['id']
+      vacancy['createdTime'] = vacancy_container['createdTime']
+      vacancy['slug'] = title_to_slug(vacancy['!Title'], vacancy['id'])
 
       # Rename some fields
       vacancy["Job title"] = vacancy.pop('!Title')
@@ -253,21 +241,19 @@ def transform_vacancies_data(vacancies: List[Dict], problem_area_id_to_name_map:
       else:
         vacancy['Featured'] = False
       
-      if type(vacancy['Problem area (tags)'] == str):
+      if type(vacancy['Problem area (tags)']) == str:
         vacancy['Problem area (tags)'] = vacancy['Problem area (tags)'].split(", ")
     
 
-      vacancy['Role types'] = vacancy['Role type']
+      vacancy['Role types'] = vacancy.pop('Role type', '')
 
       # Response must include three "Role type" fields, even if blank.
       vacancy['Role type 2'] = ''
       vacancy['Role type 3'] = ''
 
-      vacancy.pop('Role type', '')
-
       # Get problem areas from record IDs
 
-      problem_area_key = "!Problem area (filters)" # transitional
+      problem_area_key = "!Problem area (filters)" 
       problem_area_ids = []
       if problem_area_key in vacancy:
         # temporary accommodation of duplicate airtable column type being string instead of array.
@@ -360,8 +346,8 @@ def transform_organisations_data(
 ):
     transformed_orgs = {}
 
-    for preorg in organisations:
-        org: Dict = preorg["fields"]
+    for org_container in organisations:
+        org: Dict = org_container["fields"]
         # Rename  fields
         org["name"] = org.pop("!Org")
         org["homepage"] = org.pop("!Home page", "")
@@ -494,53 +480,23 @@ def transform_organisations_data(
     return transformed_orgs
 
 
-def get_airtable_data(table_name, params: dict):
+
+class Param(TypedDict):
+  fields: List[str]
+  filterByFormula: str
+  max_records: int
+  sort: List[str]
+
+def get_airtable_data(table_name: str, params: Param) -> List[dict]:
     table = Table(settings.AIRTABLE["API_KEY"], settings.AIRTABLE["BASE_ID"], table_name)
     data = table.all(
         fields=params["fields"],
-        formula=params.get("filterByFormula") or "",
-        sort=params.get("sort") or [],
-        max_records=params.get("max_records"),
+        formula=params.get("filterByFormula", ""),
+        sort=params.get("sort", []),
+        max_records=params.get("max_records", 1000),
     )
     return data
-    # For testing, we may wish to use sample Airtable API responses.
-    # Get live data from Airtable.
-    # request = this.airtable.getContent(table_name,params)
-
-    # while request = response.next():
-    #   response = request.getResponse()
-
-    #   if(isset(response.error)):
-    #     header('HTTP/1.0 500 Internal Server Error')
-    #     exit(var_dump(response.error))
-    #   else:
-    #     airtable_data = array_merge(airtable_data, response['records'])
-    #   
-
-    # # Convert Airtable response object to array.
-    # airtable_data = json_decode(json_encode(airtable_data), true)
-
-    # else:
-    #   # Get test data from local sample file.
-    #   sample = this.get_sample_param()
-    #   domain = EightyKAPI::get_current_domain()
-    #   sample_url = domain . '/samples/airtable/job-board/vacancies/index.php?sample=' . sample
-
-    #   ch = curl_init()
-    #   curl_setopt(ch, CURLOPT_SSL_VERIFYPEER, false)
-    #   curl_setopt(ch, CURLOPT_RETURNTRANSFER, true)
-    #   curl_setopt(ch, CURLOPT_URL, sample_url)
-    #   result = curl_exec(ch)
-    #   response_info = curl_getinfo(ch)
-    #   curl_close(ch)
-
-    #   if(response_info['http_code'] !== 200):
-    #     header('HTTP/1.0 500 Internal Server Error')
-    #     exit(result)
-    #   
-
-    #   airtable_data = json_decode(result, true)
-
+   
 def append_url_params(url: str):
     # Should not add tracking params if domain is 80000hours.org, or these other sites that get broken by tracking params
     domains_to_exclude = [
