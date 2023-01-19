@@ -1,8 +1,8 @@
-from typing import Literal, TypedDict, List, Dict
+from typing import TypedDict, List, Dict
 from typing import TypedDict
 from pyairtable import Table
 from django.conf import settings
-from urllib.parse import urlparse, urlencode, quote_plus
+from urllib.parse import urlencode, quote_plus
 import time
 import re
 from eawork.services.airtable_utils.title_to_slug import title_to_slug
@@ -440,7 +440,7 @@ def transform_organisations_data(
 
             # If career page is missing http prefix, add it.
         if "http" not in org["career_page"]:
-            org["career_page"] = "https:#" + org["career_page"]
+            org["career_page"] = "https://" + org["career_page"]
 
             # Add UTM params to career page link
         org["career_page"] = append_url_params(
