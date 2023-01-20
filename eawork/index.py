@@ -124,6 +124,7 @@ if settings.IS_ENABLE_ALGOLIA:
             "description",
             "description_short",
             "org_size",
+            "additional_commentary",
             "social_media_links",
             "logo_url",
             "url",

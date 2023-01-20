@@ -66,6 +66,7 @@ def import_companies(data_raw: dict):
             company.year_founded = company_raw["founded_year"]
             company.org_size = company_raw["org_size"]
             company.is_top_recommended_org = company_raw["recommended_org"]
+            company.additional_commentary = markdown.markdown(company_raw["additional_commentary"])
 
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
