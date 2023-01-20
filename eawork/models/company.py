@@ -69,6 +69,8 @@ class Company(models.Model):
                 d = {
                     "pk": vc.pk,
                     "title": vc.title,
+                    "salary": vc.salary,
+                    "visa_sponsorship": vc.visa_sponsorship,
                     "problem_areas": vc.get_tags_area_formatted(),
                     "experience_required": vc.get_tags_exp_required_formatted(),
                 }
