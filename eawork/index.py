@@ -114,6 +114,7 @@ if settings.IS_ENABLE_ALGOLIA:
             "status",
             "is_featured",
             "count",
+            "link",
         ]
 
     @register(Company)

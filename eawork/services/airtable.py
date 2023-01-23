@@ -43,7 +43,7 @@ def import_from_airtable():
             "status": 1, 
             "vacancies": vacancies, 
             "organisations": organisations, 
-            "rationales": dropdown["rationales"] | dropdown["problem_areas"] | dropdown["problem_areas_filters"]
+            "problem_area_tags": dropdown["rationales"] | dropdown["problem_areas"] | dropdown["problem_areas_filters"]
         },
     }
 

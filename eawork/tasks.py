@@ -1,4 +1,3 @@
-import json
 from celery import shared_task, chain
 from celery.utils.log import get_task_logger
 
@@ -10,7 +9,7 @@ from eawork.apps.job_alerts.job_alert import check_new_jobs_for_all_alerts
 
 from eawork.models import JobPostVersion, JobPostTag, Company
 from eawork.services.email_log import Code, Task, email_log
-from eawork.services.import_80_000_hours import import_companies, import_jobs
+from eawork.services.import_80_000_hours import import_companies, import_jobs, refine_tags
 from eawork.services.airtable import import_from_airtable
 
 logger = get_task_logger(__name__)
@@ -41,12 +40,14 @@ def import_80_000_hours_jobs(
             data_raw = import_from_airtable()["data"]
         if is_companies_only:
             import_companies(data_raw)
+            
         elif is_jobs_only:
             import_jobs(data_raw, limit=limit)
         else:
             import_companies(data_raw)
             import_jobs(data_raw, limit=limit)
 
+        refine_tags(data_raw["problem_area_tags"])
     if is_reindex and settings.IS_ENABLE_ALGOLIA:
         reindex_algolia()
 

@@ -46,12 +46,15 @@ class JobPostTag(models.Model):
     status = EnumField(PostJobTagStatus, default=PostJobTagStatus.APPROVED, max_length=64)
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    link = models.TextField(blank=True)
+    
 
     def get_types_formatted(self) -> list[str]:
         return [type_instance.type.value for type_instance in self.types.all()]
 
     def count(self) -> int:
         from eawork.models.job_post import JobPost
+
         count = 0
         for enum_member in JobPostTagTypeEnum:
             lookup_name = f"version_current__tags_{enum_member.value}__in"
