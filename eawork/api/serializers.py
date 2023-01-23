@@ -28,6 +28,7 @@ class TagSerializer(serializers.ModelSerializer):
             "pk",
             "name",
             "is_featured",
+            "link"
             # "types",
             # "count",
         ]
