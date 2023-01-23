@@ -37,7 +37,7 @@ class Company(models.Model):
         JobPostTag,
         limit_choices_to={"types__type": JobPostTagTypeEnum.LOCATION_80K},
         null=True,
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
     )
 
     tags_areas = models.ManyToManyField(
@@ -93,3 +93,8 @@ class Company(models.Model):
 
     def get_problem_areas(self) -> list[str]:
         return [tag.name for tag in self.tags_areas.all()]
+
+    def get_hq(self) -> list[str]:
+        if self.headquarters is None:
+            return ""
+        return self.headquarters.name

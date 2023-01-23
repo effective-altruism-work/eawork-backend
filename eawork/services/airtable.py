@@ -198,7 +198,8 @@ def get_raw_organisation_data():
             "!Recommended org (star)",
             "!Single line description",
             "!Tags (orgs)",
-            "!Additional commentary"
+            "!Additional commentary",
+            "!HQ"
         ],
     )
 
@@ -373,9 +374,14 @@ def transform_organisations_data(
         org["single_line_description"] = org.pop("!Single line description", "")
         org["tags"] = org.pop("!Tags (orgs)", [])
         org["additional_commentary"] = org.pop("!Additional commentary", '')
+        org['headquarters'] = org.pop('!HQ', '')
 
         # Transform fields
 
+        if type(org["headquarters"]) == list:
+          hq_id = org['headquarters'][0]
+          org['headquarters'] = location_id_to_name_map[hq_id]
+          
         # Get problem area names from record IDs
         problem_area_names = []
 
