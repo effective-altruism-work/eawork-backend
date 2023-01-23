@@ -20,7 +20,7 @@ class DropdownData(TypedDict):
     top_org_problem_areas: List[Datum]
 
 def import_from_airtable():
-    print("\nimport airtable")
+    print("import airtable")
 
     # get related records that we'll use in vacancies, orgs, and rationales
     dropdown = get_dropdown_data()

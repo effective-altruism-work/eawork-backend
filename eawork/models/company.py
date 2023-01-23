@@ -79,6 +79,7 @@ class Company(models.Model):
                     "visa_sponsorship": vc.visa_sponsorship,
                     "problem_areas": vc.get_tags_area_formatted(),
                     "experience_required": vc.get_tags_exp_required_formatted(),
+                    "closes_at": vc.closes_at,
                 }
                 arr.append(d)
 

@@ -25,7 +25,7 @@ class AirtableTag(TypedDict):
 
 
 def import_companies(data_raw: dict):
-    print("\nimport companies")
+    print("import companies")
     companies_dict: dict[str, dict] = data_raw["organisations"]
     # bonus_data = _derive_some_company_data(data_raw)
     for company_id in companies_dict:
@@ -58,7 +58,6 @@ def import_companies(data_raw: dict):
 
             company.save()
             _update_or_add_tags_orgs(company, company_raw)
-            print(f'headquarters: {company_raw["headquarters"]}')
             add_headquarters(company, company_raw["headquarters"])
 
         else:
@@ -77,7 +76,7 @@ def import_companies(data_raw: dict):
 
 
 def import_jobs(data_raw: dict, limit: int = None):
-    print("\nimport jobs")
+    print("import jobs")
 
     try:
         jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
