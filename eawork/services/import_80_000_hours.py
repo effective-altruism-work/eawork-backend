@@ -1,5 +1,4 @@
-from typing import Literal
-from typing import TypedDict
+from typing import Literal, TypedDict, Mapping
 
 import pytz
 import requests
@@ -20,33 +19,9 @@ from eawork.services.email_log import Code, Task, email_log
 from sentry_sdk import capture_exception, capture_message
 
 
-# class Bonus(TypedDict):
-#     forum_link: str
-#     is_recommended: bool
-
-
-# # At present, the Airtable API returns the below properties only attached to vacancies, not companies.
-# # We want these properties associated with companies, so we extract them here.
-# def _derive_some_company_data(data_raw: dict):
-#     jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
-#     mixed_up_data: dict[str, Bonus] = {}
-#     for job_raw in jobs_raw:
-#         if job_raw["Hiring organisation ID"] not in mixed_up_data:
-#             mixed_up_data[job_raw["Hiring organisation ID"]] = {
-#                 "forum_link": str(
-#                     job_raw["ea_forum_link"][0]
-#                     if isinstance(job_raw["ea_forum_link"], list)
-#                     and job_raw["ea_forum_link"][0] != None
-#                     else ""
-#                 ),
-#                 "is_recommended": bool(
-#                     job_raw["is_recommended_org"][0]
-#                     if isinstance(job_raw["is_recommended_org"], list)
-#                     else False
-#                 ),
-#             }
-
-#     return mixed_up_data
+class AirtableTag(TypedDict):
+    name: str
+    link: str
 
 
 def import_companies(data_raw: dict):
@@ -66,7 +41,9 @@ def import_companies(data_raw: dict):
             company.year_founded = company_raw["founded_year"]
             company.org_size = company_raw["org_size"]
             company.is_top_recommended_org = company_raw["recommended_org"]
-            company.additional_commentary = markdown.markdown(company_raw["additional_commentary"])
+            company.additional_commentary = markdown.markdown(
+                company_raw["additional_commentary"]
+            )
 
             company.url = company_raw["homepage"]
             company.logo_url = company_raw["logo"]
@@ -157,6 +134,21 @@ def import_jobs(data_raw: dict, limit: int = None):
         capture_exception(err)
 
 
+# this is not analogous to the above imports. This adds metadata to existing tags in the database.
+# airtable's tag IDs are not the same as our DB's tag ideas, so we find them by name and supply them with  bonus data.
+def refine_tags(tags_raw: Mapping[str, AirtableTag]):
+    count = 0
+    missing = 0
+    for key in tags_raw:
+        count += 1
+        tag = JobPostTag.objects.filter(name__iexact=tags_raw[key]["name"]).first()
+        if not tag:
+            missing += 1
+            continue
+        tag.link = tags_raw[key]["link"]
+        tag.save()
+
+
 def _cleanup_removed_jobs(jobs_raw: list[dict]):
     jobs_new_ids: list[str] = list(map(lambda job: job["id"], jobs_raw))
     jobs_current_ids: list[str] = JobPost.objects.exclude(
@@ -185,10 +177,10 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
     hardcoded_80_000h_stub = "2050-01-01"
     if job_raw["Closing date"] != hardcoded_80_000h_stub:
         version.closes_at = parse(job_raw["Closing date"]).replace(
-            tzinfo=pytz.timezone("Europe/London")
+            tzinfo=pytz.timezone("Etc/GMT0")
         )
     version.posted_at = parse(job_raw["Date listed"]).replace(
-        tzinfo=pytz.timezone("Europe/London")
+        tzinfo=pytz.timezone("Etc/GMT0")
     )
 
     exp_min: str = (
@@ -407,7 +399,12 @@ def _strip_all_json_strings(jobs_raw: list[dict]) -> list[dict]:
     return jobs_raw
 
 
-def add_tag_post(post: JobPostVersion, tag_name: str, tag_type: JobPostTagTypeEnum, concat=""):
+def add_tag_post(
+    post: JobPostVersion,
+    tag_name: str,
+    tag_type: JobPostTagTypeEnum,
+    concat="",
+):
     tag = JobPostTag.objects.filter(name__iexact=tag_name).first()
     if not tag:
         tag = JobPostTag.objects.create(

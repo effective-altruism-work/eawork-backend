@@ -12,7 +12,7 @@ from eawork.services.email_log import Code, Task, email_log
 
 def check_new_jobs_for_all_alerts():
     if settings.IS_ENABLE_ALGOLIA:  # todo remove
-        print("\ncheck new jobs for all alerts")
+        print("check new jobs for all alerts")
         nohits = 0
         successes = 0
         failures = 0
