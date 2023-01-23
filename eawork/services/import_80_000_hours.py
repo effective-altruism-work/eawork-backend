@@ -137,7 +137,6 @@ def import_jobs(data_raw: dict, limit: int = None):
 # this is not analogous to the above imports. This adds metadata to existing tags in the database.
 # airtable's tag IDs are not the same as our DB's tag ideas, so we find them by name and supply them with  bonus data.
 def refine_tags(tags_raw: Mapping[str, AirtableTag]):
-    print(tags_raw)
     count = 0
     missing = 0
     for key in tags_raw:
@@ -148,7 +147,7 @@ def refine_tags(tags_raw: Mapping[str, AirtableTag]):
             continue
         tag.link = tags_raw[key]["link"]
         tag.save()
-    print(f"count: {count}, missing: {missing}")
+
 
 def _cleanup_removed_jobs(jobs_raw: list[dict]):
     jobs_new_ids: list[str] = list(map(lambda job: job["id"], jobs_raw))
@@ -178,10 +177,10 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
     hardcoded_80_000h_stub = "2050-01-01"
     if job_raw["Closing date"] != hardcoded_80_000h_stub:
         version.closes_at = parse(job_raw["Closing date"]).replace(
-            tzinfo=pytz.timezone("Europe/London")
+            tzinfo=pytz.timezone("Etc/GMT0")
         )
     version.posted_at = parse(job_raw["Date listed"]).replace(
-        tzinfo=pytz.timezone("Europe/London")
+        tzinfo=pytz.timezone("Etc/GMT0")
     )
 
     exp_min: str = (

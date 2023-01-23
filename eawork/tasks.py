@@ -29,7 +29,7 @@ def import_80_000_hours_jobs(
     is_companies_only: bool = False,
     is_jobs_only: bool = False,
 ):
-    print("\nimport 80K")
+    print("import 80K")
     data_raw = {}
     with disable_auto_indexing():
         if json_to_import:
@@ -60,7 +60,7 @@ def old_import_80_000_hours_jobs(
     is_companies_only: bool = False,
     is_jobs_only: bool = False,
 ):
-    print("\nimport 80K")
+    print("import 80K")
     data_raw = {}
     with disable_auto_indexing():
         if json_to_import:
@@ -84,7 +84,7 @@ def old_import_80_000_hours_jobs(
 @shared_task
 def reindex_algolia():
     count = JobPostVersion.objects.all().count()
-    print("\nreindex algolia")
+    print("reindex algolia")
 
     reindex_all(JobPostVersion)
     reindex_all(JobPostTag)
