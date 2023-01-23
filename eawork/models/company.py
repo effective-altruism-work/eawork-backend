@@ -16,8 +16,8 @@ class Company(models.Model):
 
     internal_links = models.TextField(blank=True)  # markdown
     external_links = models.TextField(blank=True)  # markdown
-    additional_commentary  = models.TextField(blank=True)  # markdown
-    
+    additional_commentary = models.TextField(blank=True)  # markdown
+
     url = models.URLField(max_length=511, blank=True)
     linkedin_url = models.URLField(max_length=511, blank=True, verbose_name="Linkedin")
     facebook_url = models.URLField(max_length=511, blank=True, verbose_name="Facebook")
@@ -33,6 +33,12 @@ class Company(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_hover = models.TextField(blank=True)  # markdown
+    headquarters = models.ForeignKey(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.LOCATION_80K},
+        null=True,
+        on_delete=models.SET_NULL
+    )
 
     tags_areas = models.ManyToManyField(
         JobPostTag,
