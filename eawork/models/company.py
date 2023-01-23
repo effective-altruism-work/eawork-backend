@@ -16,8 +16,8 @@ class Company(models.Model):
 
     internal_links = models.TextField(blank=True)  # markdown
     external_links = models.TextField(blank=True)  # markdown
-    additional_commentary  = models.TextField(blank=True)  # markdown
-    
+    additional_commentary = models.TextField(blank=True)  # markdown
+
     url = models.URLField(max_length=511, blank=True)
     linkedin_url = models.URLField(max_length=511, blank=True, verbose_name="Linkedin")
     facebook_url = models.URLField(max_length=511, blank=True, verbose_name="Facebook")
@@ -33,6 +33,12 @@ class Company(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_hover = models.TextField(blank=True)  # markdown
+    headquarters = models.ForeignKey(
+        JobPostTag,
+        limit_choices_to={"types__type": JobPostTagTypeEnum.LOCATION_80K},
+        null=True,
+        on_delete=models.SET_NULL,
+    )
 
     tags_areas = models.ManyToManyField(
         JobPostTag,
@@ -73,6 +79,7 @@ class Company(models.Model):
                     "visa_sponsorship": vc.visa_sponsorship,
                     "problem_areas": vc.get_tags_area_formatted(),
                     "experience_required": vc.get_tags_exp_required_formatted(),
+                    "closes_at": vc.closes_at,
                 }
                 arr.append(d)
 
@@ -87,3 +94,8 @@ class Company(models.Model):
 
     def get_problem_areas(self) -> list[str]:
         return [tag.name for tag in self.tags_areas.all()]
+
+    def get_hq(self) -> list[str]:
+        if self.headquarters is None:
+            return ""
+        return self.headquarters.name

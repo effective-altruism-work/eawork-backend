@@ -143,4 +143,5 @@ if settings.IS_ENABLE_ALGOLIA:
             ["get_post_count", "post_count"],
             ["get_locations", "locations"],
             ["get_problem_areas", "problem_areas"],
+            ["get_hq", "hq"],
         ]

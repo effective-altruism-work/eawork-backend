@@ -25,12 +25,13 @@ class AirtableTag(TypedDict):
 
 
 def import_companies(data_raw: dict):
-    print("\nimport companies")
+    print("import companies")
     companies_dict: dict[str, dict] = data_raw["organisations"]
     # bonus_data = _derive_some_company_data(data_raw)
     for company_id in companies_dict:
         company_raw: dict[
-            Literal["name", "description", "homepage", "logo", "career_page"], str
+            Literal["name", "description", "homepage", "logo", "career_page", "headquarters"],
+            str,
         ] = companies_dict[company_id]
         if Company.objects.filter(id_external_80_000_hours=company_id).exists():
             company = Company.objects.get(id_external_80_000_hours=company_id)
@@ -57,6 +58,7 @@ def import_companies(data_raw: dict):
 
             company.save()
             _update_or_add_tags_orgs(company, company_raw)
+            add_headquarters(company, company_raw["headquarters"])
 
         else:
             comp = Company.objects.create(
@@ -74,7 +76,7 @@ def import_companies(data_raw: dict):
 
 
 def import_jobs(data_raw: dict, limit: int = None):
-    print("\nimport jobs")
+    print("import jobs")
 
     try:
         jobs_raw: list[dict] = _strip_all_json_strings(data_raw["vacancies"])
@@ -179,9 +181,7 @@ def _update_post_version(version: JobPostVersion, job_raw: dict):
         version.closes_at = parse(job_raw["Closing date"]).replace(
             tzinfo=pytz.timezone("Etc/GMT0")
         )
-    version.posted_at = parse(job_raw["Date listed"]).replace(
-        tzinfo=pytz.timezone("Etc/GMT0")
-    )
+    version.posted_at = parse(job_raw["Date listed"]).replace(tzinfo=pytz.timezone("Etc/GMT0"))
 
     exp_min: str = (
         job_raw["MinimumExperienceLevel"][0]
@@ -436,3 +436,20 @@ def add_tag_org(org: Company, tag_name: str, tag_type: JobPostTagTypeEnum):
         getattr(org, "tags_areas").add(tag)
     elif tag_type.value == "location_80k":
         getattr(org, "tags_locations").add(tag)
+
+
+def add_headquarters(org: Company, hq_name: str):
+    if len(hq_name) == 0:
+        return
+    hq = JobPostTag.objects.filter(name__iexact=hq_name).first()
+    if not hq:
+        hq = JobPostTag.objects.create(
+            name=hq_name,
+            status=PostJobTagStatus.APPROVED,
+        )
+    hq_type_instance = JobPostTagType.objects.get(type=JobPostTagTypeEnum.LOCATION_80K)
+    hq.types.add(hq_type_instance)
+    hq.save()
+
+    org.headquarters = hq
+    org.save()
